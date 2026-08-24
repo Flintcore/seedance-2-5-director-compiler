@@ -2,7 +2,7 @@
 
 独立的 Codex skill：先用影视知识与大师作品完成镜头设计，再把锁定设计编译为 Seedance 2.5 九层中文提示词。
 
-当前版本：`0.1.0`
+当前版本：`0.1.1`
 
 ## 核心架构
 
@@ -95,7 +95,7 @@ python C:/Users/ASUS/.codex/skills/.system/skill-creator/scripts/quick_validate.
 node scripts/validate-prompt.mjs prompt.txt
 ```
 
-校验器只做静默结构检查，不把检查内容写进最终提示词。
+这些校验器只用于 skill 开发与维护，不参与运行时提示词生成；成品提示词没有最终自检阶段。
 
 ## 来源边界
 

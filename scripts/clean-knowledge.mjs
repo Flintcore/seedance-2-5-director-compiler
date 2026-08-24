@@ -151,6 +151,27 @@ function finishText(lines) {
 function masterHeadingAction(heading) {
   const text = heading.text;
 
+  if (heading.level === 2 && /扩展阅读.*二级\s*references/iu.test(text)) {
+    return { type: "remove" };
+  }
+
+  const renamed = text
+    .replace(/^(?:(?:★|⓿)\s*|顶部)?索引摘要(?:（[^）]*）)?$/u, "索引摘要（用于快速匹配，不替代正文）")
+    .replace(/^一、\s*整体风格指纹（Style Fingerprint[^）]*）$/iu, "一、整体风格观察")
+    .replace(/^二、\s*标志性场景逐镜分析（[^）]*(?:每场|≥\s*4\s*镜)[^）]*）$/u, "二、标志性场景逐镜分析")
+    .replace(/^一、\s*核心心智模型（[^）]*）$/u, "一、核心方法")
+    .replace(/^三、\s*判别公式（[^）]*）$/u, "三、条件性判断")
+    .replace(/^五、\s*正反案例速查（[^）]*）$/u, "五、正反案例")
+    .replace(/^五、\s*表演分寸\s*DNA$/iu, "五、表演与状态变化")
+    .replace(/^([八九十]+)、\s*本作[“"]?禁忌[”"]?清单(?:（[^）]*）)?$/u, "$1、本作风格的偏离风险")
+    .replace(/^七、\s*禁忌清单(?:（[^）]*）)?$/u, "七、风格偏离与失真风险")
+    .replace(/^九、\s*来源与诚实边界(?:（[^）]*）)?$/u, "九、来源与证据边界")
+    .replace(/^九、\s*Doubt-Log(?:（[^）]*）)?$/iu, "九、来源与证据边界")
+    .replace(/^([九十]+)、\s*扩展阅读\s*·\s*二级\s*references$/iu, "$1、扩展阅读与证据")
+    .replace(/判别公式/gu, "判断维度")
+    .replace(/每镜必过/gu, "关键镜头判断");
+  if (renamed !== text) return { type: "rename", text: renamed };
+
   if (/^四、\s*信条对应与适用边界$/.test(text)) {
     return { type: "rename", text: "四、设计维度与适用边界" };
   }
@@ -159,11 +180,58 @@ function masterHeadingAction(heading) {
     return { type: "remove" };
   }
 
-  if (heading.level === 2 && /^(?:六|八)、.*(?:信条|创作原则)/.test(text)) {
+  if (heading.level === 2 && /^(?:六|八)、.*(?:信条(?:体系|关联|映射|对应)|创作原则映射)/.test(text)) {
     return { type: "remove" };
   }
 
   return null;
+}
+
+function normalizePerformanceScale(line) {
+  const percentage = String.raw`(?:(?:≤|≥|<|>)?\s*\d+(?:\.\d+)?|\d+(?:\.\d+)?\s*%?\s*[-–—~至]\s*\d+(?:\.\d+)?)\s*%`;
+  const percentageSequence = String.raw`${percentage}(?:\s*(?:↔|→)\s*${percentage})*`;
+  const performanceDescriptor = String.raw`(?:Deadpan|极致克制|克制|标准(?:偏开|偏大)?|古典戏剧化|戏剧化|大开大合|大开|外放|麻木|躁狂|浓烈|含蓄|喜剧化|冷峻|热烈|鲜活|松弛|庄重写意|释放|癫狂|放飞|内省|爆发)`;
+  let clean = line
+    .replace(/(Deadpan|极致克制|克制|标准|古典戏剧化|戏剧化|大开大合|外放|麻木|躁狂)\s*(?:(?:≤|≥|<|>)?\s*\d+(?:\.\d+)?|\d+(?:\.\d+)?\s*%?\s*[-–—~至]\s*\d+(?:\.\d+)?)\s*%/giu, "$1")
+    .replace(/(Deadpan|极致克制|克制|标准|古典戏剧化|戏剧化|大开大合|外放|麻木|躁狂)\s*[（(]\s*(?:(?:≤|≥|<|>)?\s*\d+(?:\.\d+)?|\d+(?:\.\d+)?\s*%?\s*[-–—~至]\s*\d+(?:\.\d+)?)\s*%\s*[）)]/giu, "$1")
+    .replace(/表演分寸\s*(?:为|[:：])?\s*(?:(?:≤|≥|<|>)?\s*\d+(?:\.\d+)?|\d+(?:\.\d+)?\s*%?\s*[-–—~至]\s*\d+(?:\.\d+)?)\s*%/gu, "表演分寸")
+    .replace(/主导分寸(?:级别)?/gu, "主导表演基调")
+    .replace(/分寸级别/gu, "表演状态");
+
+  const performanceOnlyField = /^\s*(?:(?:[-*]|\d+\.)\s*)?\*{1,2}(?:(?:本片主导)?表演(?:分寸|状态|变化|基调)?|演员代表性表演细节)\*{1,2}\s*[:：|]/u
+    .test(clean) || /^\s*\|\s*\*{0,2}(?:本片主导)?表演(?:分寸|状态|基调)?\*{0,2}\s*\|/u.test(clean);
+  if (performanceOnlyField) {
+    clean = clean.replace(new RegExp(percentageSequence, "giu"), "");
+  }
+
+  clean = clean.replace(
+    new RegExp(String.raw`(${performanceDescriptor})([^，。；;|+\n]{0,24}?)${percentageSequence}`, "giu"),
+    "$1$2",
+  );
+
+  return clean;
+}
+
+function stripPlatformMusicOverride(line) {
+  const platform = String.raw`(?:AIGC\s*视频生成|AI\s*视频生成|视频生成|生成模型|(?<!Porta-)prompt)`;
+  const music = String.raw`(?:BGM|配乐)`;
+  const pair = new RegExp(`(?:${platform})[^\n]{0,120}${music}|${music}[^\n]{0,120}(?:${platform})`, "iu");
+  if (!pair.test(line)) return { line, changed: false };
+
+  let clean = line
+    .replace(new RegExp(String.raw`[（(][^）)\n]*(?:${platform})[^）)\n]*${music}[^）)\n]*[）)]`, "giu"), "")
+    .replace(new RegExp(String.raw`[（(][^）)\n]*${music}[^）)\n]*(?:${platform})[^）)\n]*[）)]`, "giu"), "")
+    .replace(new RegExp(String.raw`(?:⚠️\s*)?(?:${platform})\s*(?:中|时)?\s*\*{0,2}(?:不写\s*${music}|禁\s*配乐)\*{0,2}`, "giu"), "")
+    .replace(new RegExp(String.raw`写\s*(?:镜头表达|提示词|(?<!Porta-)prompt)\s*时\s*\*{0,2}绝不把\s*${music}\s*写(?:进去|入)?\*{0,2}`, "giu"), "")
+    .replace(new RegExp(String.raw`在\s*(?:${platform})\s*(?:里|中)?\s*(?:靠\s*)?${music}\s*驱动节奏`, "giu"), "")
+    .replace(new RegExp(String.raw`[，,；;]\s*(?:不靠|不交给|不写)\s*${music}`, "giu"), "")
+    .replace(new RegExp(String.raw`\*{0,2}绝不(?:把\s*)?${music}\s*写(?:进去|入)?\*{0,2}`, "giu"), "")
+    .replace(/（\s*(?:↔|→|[-–—~至])*\s*）|\(\s*(?:↔|→|[-–—~至])*\s*\)/gu, "")
+    .replace(/，\s*[，。；]|；\s*[，。；]/gu, "，")
+    .replace(/\s{2,}/g, " ")
+    .replace(/[ \t]+$/g, "");
+
+  return { line: clean, changed: clean !== line };
 }
 
 function sanitizeMasterLine(line) {
@@ -172,9 +240,23 @@ function sanitizeMasterLine(line) {
   if (/创作原则编号\s*\/\s*名称/.test(line)) return null;
   if (/reviewer|实读校验/i.test(line)) return null;
   if (/^\s*>.*(?:AI\s*模型直接复用|Copy-Paste)/i.test(line)) return null;
+  if (/^\s*>\s*\*\*(?:用途|红线|本文件由)\*\*/u.test(line)) return null;
+  if (/^\s*>.*(?:女娲|Skill\s*造人|体系导航).*(?:焕新|蒸馏|生成)/iu.test(line)) return null;
+  if (/^\s*>.*本摘要仅供.*(?:§一至§|全部内容|实读)/u.test(line)) return null;
+  if (/^\s*-\s*\*\*🎯\s*(?:大师|风格)指纹本镜体现\*\*/u.test(line)) return null;
+  if (/按表演分寸\s*4\s*级/u.test(line)) return null;
+  if (/^\s*>.*(?:写\s*prompt|每张卡片必带)/iu.test(line)) return null;
+  if (/^\s*>.*v3\.2\.(?:3|6)/iu.test(line)) return null;
+  if (/^\s*<\/(?:content|invoke)>\s*$/iu.test(line)) return null;
+  if (/^\s*>?.*(?:r\.jina\.ai|本环境一律\s*403|bot\s*拦截|refresh\/references|\/root\/\.claude\/skills)/iu.test(line)) return null;
+  const musicResult = stripPlatformMusicOverride(line);
+  const hadPlatformMusicOverride = musicResult.changed;
 
-  let clean = line
+  let clean = normalizePerformanceScale(musicResult.line.replace(/Porta-Prompt/giu, "__PORTA_DEVICE_NAME__"))
     .replace(/从�STEP密切突转长镜/g, "剪辑从骤密突转长镜")
+    .replace(/[（(][^）)\n]*长镜头加载铁律[^）)\n]*[）)]/gu, "")
+    .replace(/[（(]\s*≤\s*25\s*字\s*[）)]/gu, "")
+    .replace(/[（(][^）)\n]*(?:女娲|Skill\s*造人|焕新|蒸馏)[^）)\n]*[）)]/giu, "")
     .replace(/\/Layer\s*2句式/gi, "")
     .replace(/\/Layer2句式/gi, "")
     .replace(/Layer1\s*\(/g, "前景层(")
@@ -185,14 +267,62 @@ function sanitizeMasterLine(line) {
     .replace(/\bL2\b/g, "镜头表达")
     .replace(/\bP0\b/g, "严重问题")
     .replace(/\bP1\b/g, "待复核项")
-    .replace(/\bLLM\b/gi, "索引")
-    .replace(/Seedance(?:\s*2(?:\.0|\.5)?)?/gi, "生成模型")
-    .replace(/提示词/g, "镜头描述")
-    .replace(/信条/g, "创作原则")
+    .replace(/\bLLM\b/gi, "读者")
+    .replace(/Seedance(?:\s*2(?:\.0|\.5)?)?/gi, "镜头设计")
+    .replace(/反\s*AI\s*味(?:终极典范|多重典范|典范)?/giu, "实拍在场感")
+    .replace(/\banti[-\s]*AI\b/gi, "避免合成感")
+    .replace(/AI\s*slop/gi, "套路化画面")
+    .replace(/AI\s*(?:视频|分镜|pipeline)/gi, "镜头设计")
+    .replace(/AI\s*模型/gi, "镜头设计")
+    .replace(/AIGC\s*视频/gi, "镜头设计")
+    .replace(/\bAIGC\b/gi, "镜头设计")
+    .replace(/生成模型/gu, "镜头设计")
+    .replace(/视频生成/gu, "镜头设计")
+    .replace(/prompt\s*(?:显式)?写/giu, "画面需呈现")
+    .replace(/prompt\s*(?:里|中|内)/giu, "镜头设计中")
+    .replace(/写\s*prompt/giu, "描述镜头")
+    .replace(/prompt/giu, "镜头表达")
+    .replace(/提示词/g, "镜头表达")
+    .replace(/不可抄/gu, "不可照搬")
+    .replace(/可抄/gu, "可迁移")
+    .replace(/供\s*镜头设计\s*(?:落地|复用)/gu, "作为镜头设计参考")
+    .replace(/直接改写复用/gu, "按场景改造")
+    .replace(/蒸馏范围/gu, "覆盖范围")
+    .replace(/蒸馏/gu, "提炼")
     .replace(/自检/g, "设计判断")
     .replace(/自查/g, "诊断")
-    .replace(/验收/g, "判断")
-    .replace(/checklist/gi, "要点");
+    .replace(/checklist/gi, "要点")
+    .replace(/\bPASS\b/gi, "成立征兆")
+    .replace(/\bFAIL\b/gi, "失真征兆")
+    .replace(/每镜必过/gu, "用于关键镜头判断")
+    .replace(/命中\s*(?:≥|>=|>|至少)\s*\d+\s*项(?:才算|即属|即为)?/gu, "多项同时成立时")
+    .replace(/配额制/gu, "按场景需要选择")
+    .replace(/调研时间\s*20\d{2}-\d{2}/gu, "")
+    .replace(/__PORTA_DEVICE_NAME__/gu, "Porta-Prompt")
+    .replace(/\*\*6\s*大风格指纹\*\*/gu, "**主要风格观察**")
+    .replace(/\*\*\d+\s*场标志性场景\*\*/gu, "**代表性场景**")
+    .replace(/\*\*反例（绝不会做）\*\*/gu, "**风格偏离风险**")
+    .replace(/\*\*首选引用场景\*\*/gu, "**优先借鉴场景**")
+    .replace(/（\s*）|\(\s*\)/gu, "")
+    .replace(/\s{2,}/g, " ")
+    .replace(/\s+([，。；：])/g, "$1")
+    .replace(/[ \t]+$/g, "");
+
+  if (hadPlatformMusicOverride) {
+    clean = clean
+      .replace(/[（(][^）)\n]*(?:镜头设计|AIGC|生成模型|视频生成)[^）)\n]*(?:BGM|配乐)[^）)\n]*[）)]/giu, "")
+      .replace(/(?:镜头设计|AIGC|生成模型|视频生成)\s*(?:禁|不写|不使用)[^，。；\n]*(?:BGM|配乐)\s*[，,:：]?/giu, "")
+      .replace(/不靠\s*BGM/giu, "由环境声与剪辑共同承载")
+      .replace(/\bBGM\s*(?:禁令|限制|替代)\b/giu, "音乐与环境声关系")
+      .replace(/\bBGM\b/giu, "配乐")
+      .replace(/\b改用\b/gu, "并用")
+      .replace(/(?:镜头设计\s*)?(?:生成)?(?:中|时)?\s*(?:禁|不写|不使用)\s*(?:BGM|配乐)/giu, "")
+      .replace(/(?:绝不|不要)把\s*(?:BGM|配乐)\s*写(?:进去|入)/giu, "")
+      .replace(/，\s*[，。；]/gu, "，")
+      .replace(/但\s*[—-]+/gu, "并且")
+      .replace(/\s{2,}/g, " ")
+      .replace(/[ \t]+$/g, "");
+  }
 
   if (/(?:直接复制|可直接喂视频生成|镜头表达句式)/.test(clean)) return null;
   return clean;

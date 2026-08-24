@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: "2026-08-24T02:36:47.544Z"
+generated_at: "2026-08-24T11:13:50.367Z"
 skill: "seedance-2-5-director-compiler"
 inventory:
   cinema_content_files: 44
@@ -7,7 +7,7 @@ inventory:
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "9e8481638e9987f98ef4eec3656ddf2eb38e959d626ceea8045fa88ddc2989a8"
+  aggregate_sha256: "25b8bcdaa515f0404949d701833057da12eff4c86d9faa53a80942d1eecf3bdc"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
     bytes: 8374
@@ -22,11 +22,11 @@ files:
     bytes: 6897
     sha256: "33585f9f31c2fa2476c8c1cea0cf01435bc35b163c2c069407946606899c0fa4"
   - path: "references/cinema/超详细运镜规格参考库.md"
-    bytes: 7493
-    sha256: "515d8585557ff5bdea4aece4cc836ea8fe129fcd40c70273ba16b3bf33976f4c"
+    bytes: 12230
+    sha256: "c10fad652868a725023d0e827fd8f600150f830178bb5f9c55470a7d19ed66b0"
   - path: "references/cinema/创意镜头与记忆点设计库.md"
-    bytes: 13765
-    sha256: "b9517819dc5e2ce999cd2e615a8cc473e1242443e3c63552cd5ffb693c431357"
+    bytes: 11209
+    sha256: "ea8eae274fb795298d9377c9f8c8b785dffbdc71e78b5def7d6cf0f3e0fbd888"
   - path: "references/cinema/大师层视觉语言.md"
     bytes: 11308
     sha256: "ce04bd1a3d1146253bfc74fa4fe5bc600ba5ffc656a0cb173c47d865c9222d62"
@@ -34,29 +34,29 @@ files:
     bytes: 4884
     sha256: "c23053e092d5a6bcfb5369e106395e9df9d5819138f2b841429c94161b974a65"
   - path: "references/cinema/动态分镜决策树.md"
-    bytes: 12629
-    sha256: "dd98c5e3914f99ce69cb609741248ac9abc34616b5a96e229ee5814a80c2d745"
+    bytes: 13891
+    sha256: "96cc1f231d8e84b5b619172bc297509586063925ff57828c647fc278346e79f2"
   - path: "references/cinema/动作设计与武指体系参考库.md"
     bytes: 9390
     sha256: "808b20425c51a3e85dd222a87f597b389fa1c3c67f0ccad20404351d3d853e8d"
   - path: "references/cinema/对白情绪表达参考库.md"
-    bytes: 12459
-    sha256: "d4212d565f9e83e0fe0b18f70d77cd5521816efccbc99890fbd1fa5c9d1a6118"
+    bytes: 13480
+    sha256: "24768b8da7b3955fa502f09278d90e5b7dd017d800b768f86945ed66d1b3e10f"
   - path: "references/cinema/反平庸案例库.md"
-    bytes: 10144
-    sha256: "267fdd248d1b08b17246ab59d4214f475ecc0f5c005fee694bd8736ab11fc6d0"
+    bytes: 8987
+    sha256: "5fdf2ec241a1eb2ed7f2a486a7951926bb6534d89fedcf138d8e75c49dff5067"
   - path: "references/cinema/分镜设计知识库_十三讲.md"
-    bytes: 24751
-    sha256: "e5f77e78a2d17479be760598cdb22c06dad8dac48ed8d5df363747d4b1cdc1ec"
+    bytes: 15221
+    sha256: "5cee147e3c9c0d08d16ee9996f7e897c93899426481dd78750daaebdf5260547"
   - path: "references/cinema/构图设计参考库.md"
     bytes: 7401
     sha256: "f70ce42a7432c8eb7472c5ec18364b001d9d339551c88b7120f94f4b0b11039f"
   - path: "references/cinema/光影设计参考库.md"
-    bytes: 13529
-    sha256: "2dafbf7433a941d917ca73c5c0d11031f27cfcd1eb38c1a387ff59fe1d5de32a"
+    bytes: 11837
+    sha256: "a1013c644ed71c28237fd8ffca57a7f642d229bb96b13707da5756738e9119c3"
   - path: "references/cinema/机位技术规格详细参数库.md"
-    bytes: 14679
-    sha256: "76252001bd0a28a72cb9bce88d4d2faedcaa7f6272d8c790232fe5556234fa65"
+    bytes: 15153
+    sha256: "d37d6c73f00e1ead57d9f9d0f51d96507d65e3972aa91c9b4b8418cfd70c0e94"
   - path: "references/cinema/机位情绪决策参考库.md"
     bytes: 5265
     sha256: "e1ffcc8d2ea37b4e5368d15908b4a96acd77e9888446eb8f23a7d70c255d90c8"
@@ -67,11 +67,11 @@ files:
     bytes: 7056
     sha256: "c9af4979ee5bc5a6080ae0311a6d7bbf54a72c69185f75fab0e6fab260ee2e83"
   - path: "references/cinema/角色与场景设定参考库.md"
-    bytes: 5732
-    sha256: "8140b9b9b7ee563f3ef3b8550b62e6f9caa6608ee74431a43fdbf0d03a8c16c5"
+    bytes: 6438
+    sha256: "1e7b6e90cc34df6fb2ba157a049ef2b93f79aa36a10ffb9f612e101bdf52f1f4"
   - path: "references/cinema/节奏与时长编排库.md"
-    bytes: 7127
-    sha256: "9926e4c697acf144df8f4f5b5d922785d6032819e99631dd89a3c233b7f3cd3f"
+    bytes: 8104
+    sha256: "f96ec0c64275003926a1f4fd6f350ba95ed6d825bbc6b6fc55d35414d7c60692"
   - path: "references/cinema/景深与焦点叙事决策库.md"
     bytes: 5123
     sha256: "e790a267074f8ef287b788671638452c7dd34a0eb5bd423ecb6981af376603d4"
@@ -85,14 +85,14 @@ files:
     bytes: 6668
     sha256: "a1c71577c1e9f12ab5d41a8f42aa70e40dd834271f65530cbd5c9367fc5ea45c"
   - path: "references/cinema/空镜素材库.md"
-    bytes: 9309
-    sha256: "7ccf8a6bf301afff5fd05fe178b2d5c83e9c9efdd5ec187afc9ed9e9afdaff3f"
+    bytes: 10719
+    sha256: "0ba7dd42d7788a3655cce0068613c4d53e317974a1ae6289c7707b0c85ca3b38"
   - path: "references/cinema/类型片镜头语法库.md"
     bytes: 27161
     sha256: "325678c4b38721323d85da0da3e0b812be98db3dfaf8e270366dd16712339796"
   - path: "references/cinema/蒙太奇与组接意义库.md"
-    bytes: 9009
-    sha256: "91c14c34d49a1f0b8ec453d974641337b5940c5bb0db3effce3684e02f06562a"
+    bytes: 8417
+    sha256: "3125c09ea82d7bb72734d4ce53f34ff1bed32f07cb8b13c6b012dae6faf30fd9"
   - path: "references/cinema/面部表情四部位参考库.md"
     bytes: 3678
     sha256: "7129a0c402050c057627d421488909665d7f69f36fde9c46076ded2f804ba188"
@@ -106,14 +106,14 @@ files:
     bytes: 5278
     sha256: "e9fea3b50e73030eb29806c737d5fb3cf15ddc03d2a55defa7f70d5a7271eaf0"
   - path: "references/cinema/色彩调性参考库.md"
-    bytes: 5807
-    sha256: "4344e81d2612e15977a76395836def5ce18c703dad72244b4c547c4d7a822d85"
+    bytes: 10402
+    sha256: "360fe20701592777637b1a8aff7b2de005cf405d5dca972a157dd5888f2787f2"
   - path: "references/cinema/声音与音效叙事决策库.md"
     bytes: 7431
     sha256: "c4834fa631f4b1c36c2ab5d040ceed864353d61347f804561b3f9d9c513d2d4c"
   - path: "references/cinema/视点体系与镜头运动地基.md"
-    bytes: 11768
-    sha256: "ba5bf0cc5a4c706dccf48155459cbc0afbf3165a87f1f648f6ecf9b184aca16f"
+    bytes: 9823
+    sha256: "72edce5d13f9cd160deffe112ed63ba03f03b9f41af1e31377f879e7c35d355e"
   - path: "references/cinema/视觉创意词典.md"
     bytes: 24042
     sha256: "567e7ba257295b3e350155459d2a3316fe9fc32cd732246515bfb9eff17f9234"
@@ -121,11 +121,11 @@ files:
     bytes: 6710
     sha256: "c8dbf79077bb7d46d34b77e456a592d85b09a2b0058466b9717e6dbc7e03ac17"
   - path: "references/cinema/特殊镜头与视角参考库.md"
-    bytes: 6971
-    sha256: "bb5aba01af43f0e7446b0d1121bb719a9526157c362061724d3f20a70ff8b906"
+    bytes: 11740
+    sha256: "d7f61362a7ec688f7838dc9cdad1b992e2693b426ec755f51ff3b806408f4e3b"
   - path: "references/cinema/特效真实感引擎.md"
-    bytes: 8237
-    sha256: "0f10f2ac1fa15fced5f3a14cba951c1b34ca34c4cb9a3aac60e73fea3e178eb1"
+    bytes: 13762
+    sha256: "cec26ba03f58e3a83aff0f05ec77389da8122d5964d2795578699451a0df9c1a"
   - path: "references/cinema/文戏编排参考库.md"
     bytes: 9161
     sha256: "90a1207b8f92659b2a525e0e46229f9b6cd8db85c69b9081d1aaf785d70a4fb3"
@@ -133,563 +133,563 @@ files:
     bytes: 6512
     sha256: "d09a9f54876123f497eeb30c2b20a7e9fe4c8759d7dbbcd4f4a88cc5d6848490"
   - path: "references/cinema/物理交互与破坏效果参考库.md"
-    bytes: 8100
-    sha256: "08131e39e65f8b3908a19e8d52d8cb8fc407bb97b37b7399340e51b34eb92455"
+    bytes: 11412
+    sha256: "e4567c354101874f46c8612a10a1b7547da9217d2b97e3e79ffcf27a9a43c0bf"
   - path: "references/cinema/戏点选择与主镜框架法.md"
-    bytes: 21479
-    sha256: "98ee075ac880ce13cae4a3250aed4e5b226e9a580475c996d7c032a52c2551fa"
+    bytes: 12938
+    sha256: "2d2b9344bed33ca1fcc4e19358fff92f08e7ccaaa9a904042bc48868d9eee0dc"
   - path: "references/cinema/信息素控制参考库.md"
-    bytes: 5680
-    sha256: "a60e4d0bbc4d67e06b9f414212e1371627d554a1f4709b61f104e3a50b2de37c"
+    bytes: 8800
+    sha256: "d82450dfaa17c5600f422edd9705a3a5ed79dafb8b49b812a098a1b8ab0d16b9"
   - path: "references/masters/alejandro-inarritu/_亚利桑德罗·伊纳里图方法论总纲.md"
-    bytes: 26853
-    sha256: "edd187e21d7d006b01b5f0d3c8af06c2430899cb6d38fd8e9afb27eeca88fc8a"
+    bytes: 25804
+    sha256: "80e8c0f9748b52820c88167bc3ec50a89d4563675a729bd93d701a04a68c5099"
   - path: "references/masters/alejandro-inarritu/爱情是狗娘.md"
-    bytes: 28894
-    sha256: "330a3fbb5e32ce5c7c073b3fe0182b586bd12410cccbfd3305c97ad6033f4b89"
+    bytes: 24454
+    sha256: "3179015f26f76b05a59419e2baf4a1195cbbc7a30d386e0e7dc2d5c69e04da41"
   - path: "references/masters/alejandro-inarritu/荒野猎人.md"
-    bytes: 29263
-    sha256: "b5089662633261e27e8937b9f18ec56e1977d3432940e5d1f83122b5e0df5bc5"
+    bytes: 25003
+    sha256: "641a8aa24d6edb7cd483fe46c1b469d6f6a5a008c471001fb1acdf7f49b3581b"
   - path: "references/masters/alejandro-inarritu/鸟人.md"
-    bytes: 30825
-    sha256: "29054d149096a4bd0ed808a8596e75ee72f52e43f6cb22d2a5c5ae5528e65d97"
+    bytes: 26934
+    sha256: "9b2d973b16bf01aa03de39e09d72f08b606b2208fa4db8458561e92cd446a2c5"
   - path: "references/masters/almodovar/_阿莫多瓦方法论总纲.md"
-    bytes: 18922
-    sha256: "52e29cd761b9c35a569b0606c5e4b90e4e0c578dae33e81456b7d4b272d9cbf2"
+    bytes: 17979
+    sha256: "77b898ff7d6864917c90f0537bb220e8526ff9994966d9c43b6bbd6c62492d61"
   - path: "references/masters/almodovar/关于我母亲的一切.md"
-    bytes: 13882
-    sha256: "03ca5f85abac263a332657b7ff760aafdd09d11f160c8d8fd03a97c62a902097"
+    bytes: 11960
+    sha256: "e9509bc70634fed81b36f54be1006bc1b8f92cc49022ebb729147dff99fc28be"
   - path: "references/masters/ang-lee/_李安方法论总纲.md"
-    bytes: 28447
-    sha256: "40984a238db792362c23b321bed291080d248b483f22a8acc01dbe520b7a5629"
+    bytes: 27452
+    sha256: "7deedd0c85401a96b4af776e8b1d73d870e80ecbc88b49660ae8d8df56a7de43"
   - path: "references/masters/ang-lee/少年派的奇幻漂流.md"
-    bytes: 14339
-    sha256: "a44b3f74ce1f0e98f11de859b50b6ed32879c89e178843aec54b157d4a0921e0"
+    bytes: 12143
+    sha256: "b05b75eea524678ddec56d6c0df7b74819e9c343d6a61a8fab470b861080d887"
   - path: "references/masters/ang-lee/卧虎藏龙.md"
-    bytes: 14606
-    sha256: "54f76df6861b4bc801241b52ea224c01406c9f1eeb95682fb906fd6f292e0607"
+    bytes: 12135
+    sha256: "77efab31bdd46c36f7cbb4861a1568bf7b8e2fdd5aa21bcad45a1f0b22359e47"
   - path: "references/masters/antonioni/_安东尼奥尼方法论总纲.md"
-    bytes: 20728
-    sha256: "4caee644dd1279873f27097ff824b5e7a4e3b2e8967487f223e0123c7d5fc08b"
+    bytes: 19785
+    sha256: "917d14e4500344561abc16c4c13d30536d92e94e8bdf8ce35ea2db77b69145cd"
   - path: "references/masters/antonioni/放大.md"
-    bytes: 11966
-    sha256: "12ff1c327359c7baa3bd7ea89024eae44fdc4e64ee6a0fbbe7f040b26cc69724"
+    bytes: 11303
+    sha256: "a8092e566b00c6f08af929f335bd64ffbf9f9d2b08354f92717835a83ee825d3"
   - path: "references/masters/bergman/_伯格曼方法论总纲.md"
-    bytes: 20496
-    sha256: "b75baef0f6e2b2b0a618b1d4e5eff2ca31312431dd1b061a4df9a36503603de4"
+    bytes: 19606
+    sha256: "a1127a9491762a3df2c7372b7d4215f3fe743b020dfe94683311d0675aa647c6"
   - path: "references/masters/bergman/假面.md"
-    bytes: 12030
-    sha256: "e22740cc6e33be5aa40196d4906f87d8c19c2451ff22144f345fc068877e81e0"
+    bytes: 11473
+    sha256: "06dd464bca2b750b97b067b11726bcbe8ede0e4104d861998680128bb2a1d430"
   - path: "references/masters/better-call-saul/_风骚律师方法论总纲.md"
-    bytes: 19901
-    sha256: "ade069d9ba6929840de57d8efe07081b56f529024acf822ab56f4480e8311dee"
+    bytes: 18832
+    sha256: "af3ed802f20b4ca7104c098db4fd32c79c2219fb55e19da68d1198d89dc726b5"
   - path: "references/masters/better-call-saul/风骚律师.md"
-    bytes: 9256
-    sha256: "0cc6d624d474d54545998cdfd7ed38e051539788907622c8cb9694dda0ce43d3"
+    bytes: 8673
+    sha256: "d5872f0c7d92f9ce64d240b5d21b9eb6b5f89f31259ec08b7b35b60246d906f1"
   - path: "references/masters/bigelow/_凯瑟琳·毕格罗方法论总纲.md"
-    bytes: 20059
-    sha256: "66de50b6ec424bd7d27a5c95a138248c74863d021b97e1cbf005cd66bad2c754"
+    bytes: 19038
+    sha256: "0de1dd7d48cc0523d6181e2caa668610bb97127bd94074dfab762b7560ddf297"
   - path: "references/masters/bigelow/拆弹部队.md"
-    bytes: 14133
-    sha256: "23c19133f963a176728fb01e78c78356cef09add8e4e8851b0b54f82b96806b6"
+    bytes: 12067
+    sha256: "9dd54aefdcec1725fafe4167a92541d1f435c777cd82bed83c1745974f59025f"
   - path: "references/masters/billy-wilder/_比利·怀尔德方法论总纲.md"
-    bytes: 22106
-    sha256: "308fbfd0770437fa4318727bbe8883958618c444de1acc36313432b18bb1d0c9"
+    bytes: 21096
+    sha256: "63e40a872769c9e632d8fb0cfe99632077636ec4a75b402aa1bb5899277084c9"
   - path: "references/masters/billy-wilder/日落大道.md"
-    bytes: 11825
-    sha256: "063208db1a20ec8bc0a263e7fbbea03c55f63bb641f988f22356e5319dc4d429"
+    bytes: 11252
+    sha256: "8bf19efbac047ba2e539657b6fb070676ec54700876edfa116899dc6b6e6ce0e"
   - path: "references/masters/bong-joon-ho/_奉俊昊方法论总纲.md"
-    bytes: 26449
-    sha256: "3196c0a7f26658b8f56e60c7988c2a630f37addef6607d219f627c6048d71470"
+    bytes: 25229
+    sha256: "19343ef0152ffb9a6a0d6cf3df7987a6b27dba41db87afff8599238de9c75107"
   - path: "references/masters/bong-joon-ho/寄生虫.md"
-    bytes: 21771
-    sha256: "88baaeaecce07ae724fcb337bcbdfe9bc88ee50bc016219255cec2ef68c81f35"
+    bytes: 18556
+    sha256: "6285695c00c76e0f60890fb691424507a4cf2e12c3c4b0d3f7ceb2bde8d7cfb2"
   - path: "references/masters/bong-joon-ho/杀人回忆.md"
-    bytes: 12119
-    sha256: "55d453ee5b9b902a19bdaab6c8aca6419ea5a575a841f22a6f15b21ccf45eea6"
+    bytes: 11230
+    sha256: "ad4b1242497e6447a202eb4802c7fc87ed24ab649f30e4fe38348181e5d5aaad"
   - path: "references/masters/cameron/_詹姆斯·卡梅隆方法论总纲.md"
-    bytes: 20027
-    sha256: "d6221d1821886f4a460033e988cc30590b46c6f1caac40079d78d20d33e62ad0"
+    bytes: 18630
+    sha256: "dab1ab7743b60ffa27c96a27a25dda80d72d6ff1d5175fc387859ae599c443f7"
   - path: "references/masters/cameron/阿凡达.md"
-    bytes: 20931
-    sha256: "8e54f237f900b8092b21230a2729347eb8aaf17d29e34c007ec25f5efe23af30"
+    bytes: 18236
+    sha256: "255d0fc59f797986e7894e70faefed4521c40391b1e5f7caa07403a5e9acbe13"
   - path: "references/masters/carpenter/_约翰·卡朋特方法论总纲.md"
-    bytes: 20292
-    sha256: "4c90ca0b12ef7945616e819e498c9f86618da65e9bcf83e76c88c609f56d26da"
+    bytes: 19270
+    sha256: "650daac154478641acca5619e38676c5457e74e3c995c8d6a9679afa0e3f05b5"
   - path: "references/masters/carpenter/怪形.md"
-    bytes: 23501
-    sha256: "9e27a63d14007460d8973e8e6b099caac98e283486cc11d8b70882f65b1e85d7"
+    bytes: 20428
+    sha256: "ab0ba7d92a57e12fa9b388240979b74f68423243f0e83cca2e77a9d6824e4e1d"
   - path: "references/masters/celine-sciamma/_瑟琳·席安玛方法论总纲.md"
-    bytes: 20057
-    sha256: "589a647619c21bbe6a60e4c1f88b135c3ae1ba19a188fba4d2de4b1f5b725980"
+    bytes: 18997
+    sha256: "0c51463b5ca6f66120db78be33bd2b76388463d8a1c6db769a3af6173b2c1c66"
   - path: "references/masters/celine-sciamma/燃烧女子的肖像.md"
-    bytes: 14599
-    sha256: "ca187b106f2c04a3de8cd3a93342191a1a6e5b85b534238874f94a77f395ba1d"
+    bytes: 12314
+    sha256: "521071d2d38701655e171fa475c21929e28bda90a2b4535e0dde509fb063d705"
   - path: "references/masters/chen-kaige/_陈凯歌方法论总纲.md"
-    bytes: 20069
-    sha256: "8a95ce3b7fe1831bda34413af737dfb4b9ce29665af2a020acd6accc37d2f7b2"
+    bytes: 19053
+    sha256: "3c193a979871093d390c4d0eeb47f0e41f64e965dd6102192046825138739547"
   - path: "references/masters/chen-kaige/霸王别姬.md"
-    bytes: 12186
-    sha256: "290d1fe9caeb56bf62426b6b470f9f8f639afe2e9716ec98b438f7749efb5982"
+    bytes: 11651
+    sha256: "1b6c8aacfe5405ee745d338c5c92a3ddade3fcaade212397e571423c5da8bc34"
   - path: "references/masters/coen/_科恩兄弟方法论总纲.md"
-    bytes: 21565
-    sha256: "ef8679ff257fa9fcfb9d21aa1f6f271d64a61efa3ed1f3f8ca57c420c913496f"
+    bytes: 20478
+    sha256: "b441dedc8368c503b3a2269e6e18505519d50d95e3914556cac285fa50095954"
   - path: "references/masters/coen/老无所依.md"
-    bytes: 14199
-    sha256: "a9c82dba157ec7f1078d37276b8b5fec26b5b6d0ca8b58f55af7e3d94883b61f"
+    bytes: 12142
+    sha256: "98db2aa9f9fb64654ca49c8e2cc271e98d094d339b6d77774fb7cfe4000e06b2"
   - path: "references/masters/coppola/_科波拉方法论总纲.md"
-    bytes: 19286
-    sha256: "c462dc35030210d96228eda309b54f22ae54e98d8cbc4652e6791f8d9aa5f009"
+    bytes: 18264
+    sha256: "ccaf4b85fdb90ee3ccceb08adba9628faf9ba1e355024e591e92dfd8b86b8e00"
   - path: "references/masters/coppola/教父.md"
-    bytes: 21307
-    sha256: "b161cec757305d359bb820856e9313388c999ec1509f758395f49c41a38147ba"
+    bytes: 18566
+    sha256: "478cf45610c9d6b9f2f71a02296b6f633d603402f38cb6588d31384374e1c722"
   - path: "references/masters/cuaron/_卡隆方法论总纲.md"
-    bytes: 29861
-    sha256: "c8526746bef7703e4ceaec8e6f2b3becd5fd9a2e5a9bb529d9737256d3589317"
+    bytes: 28346
+    sha256: "d3761393ff2934d7f7a323fb543f71caf81b629721fb2ca2f4cf8310dd72f0d5"
   - path: "references/masters/cuaron/地心引力.md"
-    bytes: 15042
-    sha256: "30cfbe1512bd377dadf4683cc119c111510f09d385c1731f651e012aa62b0a3a"
+    bytes: 12569
+    sha256: "b32966d8f55e2f6d5a3e2f69ad237ce7db3b89275e004255bd1cc035b3257d74"
   - path: "references/masters/cuaron/人类之子.md"
-    bytes: 24352
-    sha256: "14d6a90a1d5fc2d1e1029b42ad140f7cd5f53aaed3b8466406e0e6c796b5dbb1"
+    bytes: 21147
+    sha256: "a9b7f76c783bed7f6d780baa36b8efd6fe17c3d1c5e71dcb46f0c423deb151c5"
   - path: "references/masters/damien-chazelle/_达米恩·查泽雷方法论总纲.md"
-    bytes: 20680
-    sha256: "f2a8954d4c9741293f37ea2f29f974c7259075402cb81c68abadc328463cd9df"
+    bytes: 19576
+    sha256: "978b91c5619f3f0937909f16c7f4918945e4aa3c2ff0507e0c45a43d836e1f03"
   - path: "references/masters/damien-chazelle/爱乐之城.md"
-    bytes: 14230
-    sha256: "f25b215ef9c09f6737ac545cbfd9c8a673b1ed551dc5692ab027b8c4292d881c"
+    bytes: 12109
+    sha256: "768edc0a3d455ed48daf19a57979df135168a619a7e6bd6f699444cb26d17d46"
   - path: "references/masters/de-sica/_德·西卡方法论总纲.md"
-    bytes: 22175
-    sha256: "67820f559cee6efc8232fabcc9679d0e42992bfd5520342350b1460364beda4d"
+    bytes: 21184
+    sha256: "1dd7db1762366dfc8785a4b9487f516ca4d32a35548199e24bcf5d263b0c1527"
   - path: "references/masters/de-sica/偷自行车的人.md"
-    bytes: 29638
-    sha256: "9f0e8db8ec054a928a3d089857ffcd6f14224c227b9c40828f7070e8d17fa5e6"
+    bytes: 25843
+    sha256: "131ff4dead576fcd3582ae1883eaac4f5e2ac2b07278f6e4e30bad3abf532457"
   - path: "references/masters/feng-xiaogang/_冯小刚方法论总纲.md"
-    bytes: 19803
-    sha256: "4dc5420a71a325daa337a994d3f6905734364e78fb98c14c7c1c6cfaaad6283f"
+    bytes: 18728
+    sha256: "4bf91545eb51f51eb7e8e0e17c38cd53c7eba37297ec6694d65461d41f53f6f9"
   - path: "references/masters/feng-xiaogang/一九四二.md"
-    bytes: 14287
-    sha256: "148c3619826a262aac9339bc16984495a8b231b5297c87e70c4a3cd2df620b0f"
+    bytes: 12046
+    sha256: "bf639f6a7a3ee5f9f573088c48830878591e6a429bdc330f63c7bfdcb0e1e229"
   - path: "references/masters/fincher/_芬奇方法论总纲.md"
-    bytes: 26479
-    sha256: "b0e512905e26c460e25eb7af124bf2480649d1ca1bce7f17805d580ce6bef7a6"
+    bytes: 25150
+    sha256: "c4ec8f86af8d597331a1367d3947752bc21e074e27372625cfb78eefa8fe2be5"
   - path: "references/masters/fincher/七宗罪.md"
-    bytes: 15013
-    sha256: "f9dba9188eddc291e348f4d6291d696c22dac7d5cf6dcc80bb6cbaf358743d5a"
+    bytes: 12773
+    sha256: "c78e3f03060e38e25d43e9965bf4c454ca21faa350893448a2c9a4d4a28537f0"
   - path: "references/masters/fincher/社交网络.md"
-    bytes: 14524
-    sha256: "200f8c41a79ae1e1301aa8a24b435f5bc13b2215a910f539eba449ece2fd231a"
+    bytes: 12518
+    sha256: "8b9a498007fc260fd555266807b96f06d462f4f974361ca818b22157fc67f2cd"
   - path: "references/masters/frankel/_大卫·弗兰克尔方法论总纲.md"
-    bytes: 22327
-    sha256: "f480dc809be219282a3073479a56d3122dbcb0191a62e501c9452ae57e99be2d"
+    bytes: 20884
+    sha256: "d982c7e56f88d1e0577e008667efc8a334ca43fcf72939580846948fa540f567"
   - path: "references/masters/frankel/穿普拉达的女王.md"
-    bytes: 26115
-    sha256: "ffe10b87f33c34aa5a4d3f3bff5990810f011fe9970e1a29aba6773ff8483d9e"
+    bytes: 23115
+    sha256: "494cf24ee6a0e5699f6493cf3fa6e47a0407db90dc4bd8d13771209787497758"
   - path: "references/masters/george-miller/_乔治米勒方法论总纲.md"
-    bytes: 18309
-    sha256: "d70ced58235c0994caf86c12f120eea37ac2b57f97629f11442ca9fc473c8e2e"
+    bytes: 17273
+    sha256: "2010ec9afcdea31fb84837a3ff89a9cb08bf2a68fea5052f016bf031e6f02fcb"
   - path: "references/masters/george-miller/疯狂麦克斯.md"
-    bytes: 26662
-    sha256: "a36daf686cc30354a3162cba0f6f7614d900aae8c802711632aacce247d31056"
+    bytes: 22567
+    sha256: "55cdc95e31403afeac5539522fc656bc7183b2a6c0ab2716460e8bff0e752e3a"
   - path: "references/masters/george-miller/芙莉欧莎.md"
-    bytes: 29467
-    sha256: "b69e2b5dcf1d294942d004731d8ea3cb2839478bd80b3782215da4dea9331fbb"
+    bytes: 25190
+    sha256: "4d6d4980574248fad17e36748822cc97aa6a11ddf4354f6b2df8744ddfc7a211"
   - path: "references/masters/george-miller/公路战士.md"
-    bytes: 30824
-    sha256: "f8c719cc6f91a543a7f2235e1c974d998e8a2724f2557ef505e247960e36382f"
+    bytes: 26428
+    sha256: "b0cc107f3afaf617789e9994daf847900d7c3006ca9a99cfb56c7435fceafb60"
   - path: "references/masters/george-miller/狂暴之路.md"
-    bytes: 32818
-    sha256: "19007552cbaed89ca5aacfe3a898daa6f718ecd53f9ec17112b1363dffd1940a"
+    bytes: 28327
+    sha256: "b53db3054ac6c97f852eadb57112c0a435c5d4a96fe9967dbe7678538b17df75"
   - path: "references/masters/godard/_戈达尔方法论总纲.md"
-    bytes: 20516
-    sha256: "4b5c7c75dd8f06afb87d453d5cd7c669f4310ba92d49be2331c5ba672093b17b"
+    bytes: 19374
+    sha256: "0858422d40aa94f642174cf236fb64c94fb54d6d3c258e7d2472828d533d414d"
   - path: "references/masters/godard/精疲力尽.md"
-    bytes: 17378
-    sha256: "fa00bde6f8a761dcb26f2c3b98279b16c5c05762231fb879c1087ff15a5c8f55"
+    bytes: 15202
+    sha256: "466dfcc08368c895071003614faf2adbfa0468384c93a0f062bbee40e623d24e"
   - path: "references/masters/guillermo-del-toro/_吉尔莫·德尔·托罗方法论总纲.md"
-    bytes: 28274
-    sha256: "e1aa7d4d1fa9aa3d30b14c3aae8ae099d5427359cd4024d9587bda14997021d4"
+    bytes: 27327
+    sha256: "a18dca27e810241dbff4f9e321548ce7da690cd22d210d48398bb7cca5eb2764"
   - path: "references/masters/guillermo-del-toro/潘神的迷宫.md"
-    bytes: 28733
-    sha256: "59d161ec2f33964b42fdc942f03a5bf03eaefebb101740efa988dcc35348a7eb"
+    bytes: 24659
+    sha256: "41eb09e142233eb49cf86ed61eea37307721c0aec4da0cc3ec0d12bfd8e6e60b"
   - path: "references/masters/guillermo-del-toro/水形物语.md"
-    bytes: 26889
-    sha256: "76366dea81f54aea0da9744e705730c3fca6debe2810b107aa22d4eee076fb1a"
+    bytes: 22670
+    sha256: "ddeb4a73fe3ca73725223edd60920553a2ffbead42481e32b634676c29b9e89f"
   - path: "references/masters/guillermo-del-toro/猩红山峰.md"
-    bytes: 26790
-    sha256: "083329586a4e41ca2cf946cced9a1bb071e899b0c9b9488a60c319c12ad131e9"
+    bytes: 22640
+    sha256: "5fc15fef07f25992f21bb959028daf03848ddce270c4ad47a971e87fc733786f"
   - path: "references/masters/hitchcock/_希区柯克方法论总纲.md"
-    bytes: 22058
-    sha256: "9263dac7da348feb617155226a3f28477cdb4a41bb86275805d4e360e411c04f"
+    bytes: 20844
+    sha256: "534944f5b2d3072045696b8e67f66c37096f53ea59963b7a9a0dab27f3eb474b"
   - path: "references/masters/hitchcock/后窗.md"
-    bytes: 27681
-    sha256: "e4e7dd04316ac3a09dcd2c7300387a3accd51af2e0907dd557eeb69c5e3006b4"
+    bytes: 23535
+    sha256: "b9a7570ceae8c55c8d067218a92e4d8a1f7c71c557900c2fddab1c5031138125"
   - path: "references/masters/hitchcock/火车怪客.md"
-    bytes: 33348
-    sha256: "79b2c87e8666aa818b310c72a382236a133d61938ee1ef480385aa781271bfd5"
+    bytes: 28279
+    sha256: "f82aeb12b90003201754941da7056d66610c8b2138cf60c7cea35a6bc205b1e4"
   - path: "references/masters/hitchcock/惊魂记.md"
-    bytes: 14469
-    sha256: "78a38300705ee2863cdd4c3ef611aabea1ccc2ce15b656f4db66e2c6ffb9cf05"
+    bytes: 11793
+    sha256: "8dcaf7531b1e0736dbbf0394918dfd776697df3f634eee3a8ed5cd580094e930"
   - path: "references/masters/hitchcock/美人计.md"
-    bytes: 33168
-    sha256: "7f8f32a557ee2bab5adb70be28a5756ef54d1bc166ea0c67f239680c6c3f6263"
+    bytes: 28488
+    sha256: "3458e669a456336fd1c3e987b7e5005628afbc4fb5e1f3c66fdad636af6bbdde"
   - path: "references/masters/hitchcock/迷魂记.md"
-    bytes: 24351
-    sha256: "a2dc2e37e8fb88d16205015baa738d89f99b3c439a42daa7aeaa93859be38c50"
+    bytes: 21154
+    sha256: "4ac076d4352f09f79fed62c5fbe71aefb1bed3c261f547af84945adfe38ab762"
   - path: "references/masters/hitchcock/群鸟.md"
-    bytes: 33826
-    sha256: "c04cd291aff45b371693213678977c704c711d085fd80db20408e13dc6d28e2a"
+    bytes: 28434
+    sha256: "fe57875f14789582e7a264b217c64a854e87b2e609362da6e84cbe99cb900f39"
   - path: "references/masters/hitchcock/西北偏北.md"
-    bytes: 31802
-    sha256: "3fe091d07bddbd31cc9f1dbf5b0a2e2305118d4a19516c3c49dde128406717a7"
+    bytes: 27281
+    sha256: "e185859628f1d186825526df55ebeea413642fe38fda0d5146210b1a85d145eb"
   - path: "references/masters/hou-hsiao-hsien/_侯孝贤方法论总纲.md"
-    bytes: 20010
-    sha256: "ef93ecdafef2e9e310683b385414a93ac399faee89f1542e42b1fdd9456523c6"
+    bytes: 19094
+    sha256: "db9f881912b79d0292dadf7441bed40b396869bc688dd4a7093f72a1db25c91a"
   - path: "references/masters/hou-hsiao-hsien/悲情城市.md"
-    bytes: 14590
-    sha256: "3e182dc886f89cb5ef7e9812977b5ffbac19761a805e6d7b503cf4ea9256717b"
+    bytes: 12390
+    sha256: "dcddfc31655a45f9e1c2b57b04a3570a7e6badaaad58eda10279d09ed84d4a2b"
   - path: "references/masters/jia-zhangke/_贾樟柯方法论总纲.md"
-    bytes: 17383
-    sha256: "caded24d968795eab77469552bd6fad168d8405f63d9185fe6646e18827e3d3f"
+    bytes: 16233
+    sha256: "92487ef2ceccb5d7c3f2a33dc544731196c72a4340e3c90f2c0ec0dc4b6228ff"
   - path: "references/masters/jia-zhangke/三峡好人.md"
-    bytes: 29087
-    sha256: "8724f3fafed61f154e1ad14c164a8ef7f3e2fc9aef9ecc5f2777eb745344deec"
+    bytes: 25829
+    sha256: "416500a8d560d319f0f2d758a7d4cb887eb93e3ab93e3db67fcb2b9b7fce13f5"
   - path: "references/masters/jia-zhangke/山河故人.md"
-    bytes: 28441
-    sha256: "1674694aca6d8940a3c26fc576b9e284b374d1ad6e5678aa9f9cb3c891547d62"
+    bytes: 24575
+    sha256: "bd3eccc1d4c97d2eb0359b7facdd0c70663161004f0d87215bbc951e10b11b34"
   - path: "references/masters/jia-zhangke/小武.md"
-    bytes: 31840
-    sha256: "b27ee29e9cdb78655fb51f12157460b3903222d9d9cbd1564428f5798a4dff8d"
+    bytes: 27640
+    sha256: "0cd078402d7f1344b75bb3555dea2268d428281983219ea8d072ca985d09ea22"
   - path: "references/masters/jia-zhangke/站台.md"
-    bytes: 30339
-    sha256: "a05eaeaeed43e5a63d60f7b5a75b68de6952e3ffced84d70747dbfa02e6fd203"
+    bytes: 24757
+    sha256: "2af069dc72262842acfd45e4e011daeab9067ab9bb87b87e8b6a479b25dd35dd"
   - path: "references/masters/jiang-wen/_姜文方法论总纲.md"
-    bytes: 19701
-    sha256: "8c26e1f0d2b7cc5ce0322040461331b72cb7f2307de4df1f8a035ac8709fdcc9"
+    bytes: 18633
+    sha256: "17323da58d98111622752eebc5c17739a17edac3eefe28ebfd1965b584ca6873"
   - path: "references/masters/jiang-wen/让子弹飞.md"
-    bytes: 12031
-    sha256: "b90760d87f89858b8b8451cfe928909c73c598c84ae81ba95250bd25e2f50aee"
+    bytes: 11514
+    sha256: "ff8eaa945e99b0a9f1889215c900fce7de201ba70173ef75a63f18deed0fbbdb"
   - path: "references/masters/john-woo/_吴宇森方法论总纲.md"
-    bytes: 19932
-    sha256: "37f20bb9112f609ecb202deb0ea80fa13d8ee4d2dbd32915efdf6cbecc26c9ee"
+    bytes: 20100
+    sha256: "7495f954c7e7a315ee062033fd735d072d19f30aa5fc5468e338291ed6f3bdb6"
   - path: "references/masters/john-woo/喋血双雄.md"
-    bytes: 21955
-    sha256: "e572dba9aab67b1b7c13184aa76ba8609d7b709de0ef7625ed5c37b13c2e986d"
+    bytes: 19056
+    sha256: "ee138b085bd5fde1618a85d75b7f45124e43c684f39cac84b87d6c1cee0ce732"
   - path: "references/masters/johnnie-to/_杜琪峰方法论总纲.md"
-    bytes: 22969
-    sha256: "740b0b4911983bf056cdc18730430378c36e578359e4f49d669a697a79e94bf8"
+    bytes: 21564
+    sha256: "07fdbb0291ca32a953fc90d5683307850c5b9b3284690eb060251c29ffba7ecd"
   - path: "references/masters/johnnie-to/枪火.md"
-    bytes: 27377
-    sha256: "16c58d4951ed667d1ca47a463251605a64d6d0af897d6c0369f7baa316be2593"
+    bytes: 20837
+    sha256: "c80f311cc57e2d6503165c20c5a69d07d63061323183a2502a9cd52ef0f9b0ce"
   - path: "references/masters/kiarostami/_阿巴斯方法论总纲.md"
-    bytes: 20762
-    sha256: "a2163c34bf13e829a0b397c92a25f711d976b80a66e57481226253716e7c4a65"
+    bytes: 20514
+    sha256: "4ebf4a08188718e31365cec132ae56435ff00ac08a7a042038f5c8ca464fc8a0"
   - path: "references/masters/kiarostami/樱桃的滋味.md"
-    bytes: 22619
-    sha256: "08dc91679a267e06852eccd7f12996e084c9b9c0cba1aecf5dc1c255ab1f6b00"
+    bytes: 19933
+    sha256: "b643e4a27e1139058a4833b176508146dcdcb5a352677fe11f047d0b9a33199e"
   - path: "references/masters/kon/_今敏方法论总纲.md"
-    bytes: 21049
-    sha256: "8260b1aa7d5462845daf37daf89e7f4eab9637db43efb7ad37d09419f1c994eb"
+    bytes: 20015
+    sha256: "878c0fcf504d9d9a7bb098683ce09b4b5f0592bb35c73de2e5ae2028cc2f337b"
   - path: "references/masters/kon/盗梦侦探.md"
-    bytes: 26029
-    sha256: "54885160b15b0b8988ee2b46082a8c53d1558194aed20720e2c4aa00e3322f5c"
+    bytes: 22423
+    sha256: "86baa02d49131bcf215c6d831e3370881b8ef550e72e0e09fd8580c3e544ca1d"
   - path: "references/masters/kore-eda/_是枝裕和方法论总纲.md"
-    bytes: 19625
-    sha256: "34eb1b14e6e6267064bb640e7d5c2a913720bc9967cd50a4d299ae865df52d6e"
+    bytes: 19052
+    sha256: "282891b4b74a3c5999bcd908641d6a0c88af5ed635ba01d0e6c0e0d2999ced64"
   - path: "references/masters/kore-eda/小偷家族.md"
-    bytes: 21989
-    sha256: "ceec8ccef354dad6f8979ca68ffb03330f8caddee882e687cb780fd681aeb326"
+    bytes: 19910
+    sha256: "ebc8b0f466afa5e371f7f2bf66c7a1fa8d5ff6b12890ee0432c31b0825d0c38e"
   - path: "references/masters/kubrick/_库布里克方法论总纲.md"
-    bytes: 29953
-    sha256: "d24e8e2eb3823e89dc91c2640e16a1f7d4db405f9db6d7ffff0c67565f2fbaea"
+    bytes: 27749
+    sha256: "8256350a9b60a1ded59e05ee5838ca07cd9583fd33e4971ac6f987a6e52f2364"
   - path: "references/masters/kubrick/2001-太空漫游.md"
-    bytes: 17994
-    sha256: "47745b4df090a1534a1977b1b0a228bc7cfc8805b3360b38fbffbe4075c74e38"
+    bytes: 16697
+    sha256: "4163d02852b0f910192f6fd176dec2f9478b04b05343d993e78286919d0bafeb"
   - path: "references/masters/kubrick/巴里林登.md"
-    bytes: 19524
-    sha256: "289e462a495c729c4323e16489b8aad287796f2fb91ca04122590a915e27cd7e"
+    bytes: 17566
+    sha256: "7e7079427c4dd53f53523505a413e45e66d5ca7f9c53a57a92668927feeb0d8e"
   - path: "references/masters/kubrick/闪灵.md"
-    bytes: 16268
-    sha256: "56d3f36b11592bb301717995f5f84fedc875a34064d7d881fe0c7d134e40cac3"
+    bytes: 15026
+    sha256: "fbcdde12111b7631f9707e72809a86add681438e50dd79a64a47616949ec7262"
   - path: "references/masters/kurosawa/_黑泽明方法论总纲.md"
-    bytes: 17490
-    sha256: "953f005b01a2862edbd98e42da09398c3fa6110c5197538dec284e43cbe0a6da"
+    bytes: 18229
+    sha256: "c5d1f96a5c3666749a06a981f831d8b8637b28f41796e1bd4a03fb00154bd074"
   - path: "references/masters/kurosawa/乱.md"
-    bytes: 30834
-    sha256: "2e43de6de1f621aab588944c9fedbf1f9df8ba1dda1e3147d05d6abde823ce7e"
+    bytes: 26803
+    sha256: "bc985ecde02836d3a70809c2db281a7db8feed055cfe8ce71ee8c12736e73855"
   - path: "references/masters/kurosawa/罗生门.md"
-    bytes: 14847
-    sha256: "c6e522b430d8fddc5f00ee2d65f3e95381e315faf7dca497813feb7935599ad6"
+    bytes: 13231
+    sha256: "1b490025805ed8641d6cd0d0297032f3d55964413315ef950e12d93cb8d0c871"
   - path: "references/masters/kurosawa/七武士.md"
-    bytes: 22339
-    sha256: "f7c5811749c7bf0d66a69e11cfbd04eef914cbb69024fbcfb12927a7c81243f8"
+    bytes: 20152
+    sha256: "ac5e6e857f0c626406182f41f7a4445354f8f92d39aef5864dd912dd48fff043"
   - path: "references/masters/kurosawa/天国与地狱.md"
-    bytes: 32370
-    sha256: "b806a1995ac2c123c78b71c4577c32994c21cf126e124b1669e19367b77fefdb"
+    bytes: 26498
+    sha256: "240fe02ae98b627ea8a72edb586d877fee22a1c8ba0c0960c6f832f40d5fcedc"
   - path: "references/masters/kurosawa/用心棒.md"
-    bytes: 31507
-    sha256: "32ba382aaed3b93a7ac03bc6942b63a6e72645190a84d71163b4629f1bf941a5"
+    bytes: 27037
+    sha256: "b17c804094779db437762f971c0c665bd027c91065dee23fb51914561a9c35a2"
   - path: "references/masters/kurosawa/蜘蛛巢城.md"
-    bytes: 31671
-    sha256: "196eef376d1f0f237746f940fe3c551a2a60600b4b0a26d10237ea1fa7f1155d"
+    bytes: 25507
+    sha256: "c8b57843243b45b82c4fa6f8f97bf557d44dcb73a0024b678f72545a3a597bb7"
   - path: "references/masters/lean/_大卫·里恩方法论总纲.md"
-    bytes: 19603
-    sha256: "04407816bb4f68b915b6da7f85b6266912f7729c052505b97aad7d8ff6e6c507"
+    bytes: 16852
+    sha256: "79be6920a4684e7b9eed008694a16e6ec3780676525c55b6ae8111004ec6c816"
   - path: "references/masters/lean/阿拉伯的劳伦斯.md"
-    bytes: 13685
-    sha256: "df12eb1ba7508f1682f4a066a628dba00500ab623461213d020dd89f09b4c037"
+    bytes: 12140
+    sha256: "f8a0d10798298d2beb17136a8cbb3a81b8a693cc9ed37f712a784a8913c3178f"
   - path: "references/masters/lynch/_大卫·林奇方法论总纲.md"
-    bytes: 19440
-    sha256: "7f7a8f167b9d1cbba705ff567c1f91a24c256b947e71a01450e2ad12be938fc5"
+    bytes: 15811
+    sha256: "817450307bc18e5e529186d34c1c6cdd9ea4dc398753cf9d777763c21aa3800f"
   - path: "references/masters/lynch/穆赫兰道.md"
-    bytes: 14445
-    sha256: "5c8166d49c4298aec50f8a282025cb34cf19011735ab6db3f42375b06e8b16fe"
+    bytes: 12390
+    sha256: "9fcb09035d15d82569aaa5b5615caf0b03508feb18245d903fb2d02a3b7a78f5"
   - path: "references/masters/malick/_泰伦斯·马力克方法论总纲.md"
-    bytes: 20082
-    sha256: "d46e9f0af86b9061b5ef89e2ff3f2e94f53dfd09a8db2caa924d7ef53b47d24a"
+    bytes: 19541
+    sha256: "b14b94e69a5ffcc108fdd88b1ed0c73dd2deff93fc35424444479c19a2d65f75"
   - path: "references/masters/malick/细细的红线.md"
-    bytes: 14452
-    sha256: "f88ac479a7766133a0ccd83c75365b5d1f19b7f4a313d2975a5da3bb4bbc9cc1"
+    bytes: 12295
+    sha256: "04804370d9ef1aaf5a74198218f915c595b0fc39f836e4230d5cc07ee71dec5c"
   - path: "references/masters/mann/_迈克尔·曼方法论总纲.md"
-    bytes: 19556
-    sha256: "977196491c02398ce4f88d527a60d278d417a064f7708628144d95208486846f"
+    bytes: 16392
+    sha256: "54ab24f8d13df6be6f67fd5dd79a1f3f128190481e77bd694de7413e836d349d"
   - path: "references/masters/mann/盗火线.md"
-    bytes: 14828
-    sha256: "723480b43949d7e0ff33759d1164ef3477eb2c880a38e3aea226d4715e00e3af"
+    bytes: 13149
+    sha256: "40c91ca0940a1c09ee631e9ffa737a00d4762bec1b8336a55836e9c5c90b5b7d"
   - path: "references/masters/mendes/_萨姆·门德斯方法论总纲.md"
-    bytes: 19184
-    sha256: "dd2e0738cdd611f3f2e7c8d1a2406c395703247be9625ea591643bd0be581698"
+    bytes: 16472
+    sha256: "3969de0cfc3569d44365a3d369e8d56767025da7808fd9a6be912365f2df4827"
   - path: "references/masters/mendes/1917.md"
-    bytes: 15792
-    sha256: "0a471f6519015a0c49e7dbfa9b8172195784620a5a767589d0099716aae21deb"
+    bytes: 14161
+    sha256: "4fe2c2fccb67ea0d5ea2e8777da19a6a4466ca97b60236d1fb06188f9995661f"
   - path: "references/masters/michael-haneke/_迈克尔·哈内克方法论总纲.md"
-    bytes: 29769
-    sha256: "61ea676f101cb611f1e71c11d41acc78f139bb95897312758106c1b7ad503a97"
+    bytes: 29831
+    sha256: "e9a199bdaf5ab71d2e004d05f652eac9cf0d66f010b58f424cf5eb5e5d66d95a"
   - path: "references/masters/michael-haneke/爱.md"
-    bytes: 32209
-    sha256: "4912bc0037b6738289cc93c0646cae530f1a7fc759368c20bed859ab78d09857"
+    bytes: 24789
+    sha256: "31c899485482cef4d9fe95badb87692409cb42875ae327d1c6e90c46677652c4"
   - path: "references/masters/michael-haneke/趣味游戏.md"
-    bytes: 29104
-    sha256: "45f24483366d399fdd7ff8bb4e95c39d329471d6deea60c595012ad5d63e120d"
+    bytes: 23009
+    sha256: "29d856d390e370d70c45dc9f42c71adc64b5f46f8f164d156b555af6d10ec1c8"
   - path: "references/masters/michael-haneke/隐藏摄像机.md"
-    bytes: 29099
-    sha256: "ae2c42483ba61deaa29d7611be26d027c84b69e7a5fbea690760c82a438a7424"
+    bytes: 23122
+    sha256: "8351014521da60b669c06bd19107d230ff829b170851ae0a49c5972744509a5d"
   - path: "references/masters/miyazaki/_宫崎骏方法论总纲.md"
-    bytes: 22745
-    sha256: "0f402326fce2a9e2f0b87c73d03c4f16ee61614beb4efee4b40ec31491d51429"
+    bytes: 19109
+    sha256: "0746f7a5d42c56792d6a60ec8a6059b1c8f05442a05de6e560561ab62e8a24a8"
   - path: "references/masters/miyazaki/千与千寻.md"
-    bytes: 30137
-    sha256: "88fdf8a195fb0ed745681b1a3b266baf209723c74b0e39ab862c6a0af052a49d"
+    bytes: 23766
+    sha256: "b6135dacf8f24256da6f6a42a7c8cbdaf3234b702b989ca0bda7a051db4788e6"
   - path: "references/masters/nolan/_诺兰方法论总纲.md"
-    bytes: 26636
-    sha256: "382cc2e875ca2b7caad220b3237aedd502a7974d1622412f1f8df56b329d3ee3"
+    bytes: 23015
+    sha256: "c523784338cb56e7138a3f3237d51f38470f35d48f84fa7104a7ec7b66f4ba03"
   - path: "references/masters/nolan/盗梦空间.md"
-    bytes: 14845
-    sha256: "397c554f1c5f8305bcccea44dda71b703e21992720e3daae2927fb32b462de02"
+    bytes: 16292
+    sha256: "b4be363235db284f0b2331587087dd7efcc9cffce052f041264a049047e15a13"
   - path: "references/masters/nolan/敦刻尔克.md"
-    bytes: 14565
-    sha256: "c0e7c24f06eeea494f197f409919a3c03d69d5911dae8f0395983cac59d2897c"
+    bytes: 12873
+    sha256: "3bbb10219ae35c7f18d129c30ad2a7c5cdf451c3a7bbcd8a886a0c5612e5772e"
   - path: "references/masters/ozu/_小津安二郎方法论总纲.md"
-    bytes: 18658
-    sha256: "8d927c59cbd0826250d188e1c28d0c0425eeae739b79a75e8ad27c092c00ef93"
+    bytes: 16686
+    sha256: "4e80cbb8270984f4079e8c3d693a2bed9da3dde2754b1fdbd75d085982a13870"
   - path: "references/masters/ozu/东京物语.md"
-    bytes: 13112
-    sha256: "8846615eb6f0159e7f675603543b330a67a13aaa30f44cc7da5f21d7c468a6ea"
+    bytes: 11853
+    sha256: "7f472731e827893e771396d8f28563b21d0a50291adb55d646c9c1ec3821aba2"
   - path: "references/masters/park-chan-wook/_朴赞郁方法论总纲.md"
-    bytes: 20385
-    sha256: "de8a00abfd50c312e85239c89b6c84bdea70e7b84c4b7ab2a1f956b33e14b901"
+    bytes: 17201
+    sha256: "ffeed341b3396acc64a29164e3058270c68ccbcbad904787be6f90c76f9a9da2"
   - path: "references/masters/park-chan-wook/老男孩.md"
-    bytes: 14449
-    sha256: "d4a7ed84cd1e4062dd2516687caf340f923ea5ab8cd9e712a12e5dbf206181be"
+    bytes: 12924
+    sha256: "de236a9864a3bb0ec00fc1cdb7321ac8e19feb8064321726f3ca4e4581fb401e"
   - path: "references/masters/polanski/_波兰斯基方法论总纲.md"
-    bytes: 18839
-    sha256: "2fa423679b9c05e94ba2d8ebf8f0f253035ea28812a04675af265612a24df53c"
+    bytes: 16799
+    sha256: "f06517cc23206783b22ad6a0e7804ec52fff754605092cc2c697ad0235231a9c"
   - path: "references/masters/polanski/钢琴家.md"
-    bytes: 14547
-    sha256: "d4f78d6e3d6a5eb0cd73e18b26f58134ddfc927848ed84be5a7a839d5db9f1cd"
+    bytes: 13317
+    sha256: "8ed3a53bdcee80b2b107838c95843cafed40f979e450a1f0334a4a31afc3204d"
   - path: "references/masters/pta/_保罗·托马斯·安德森方法论总纲.md"
-    bytes: 20507
-    sha256: "5eacd402324acbfa2e52148ad12c99986efef54ff0f10682089aa93f04cadbed"
+    bytes: 18638
+    sha256: "ea3900f88c984983776134fe1d279379995cdbc64606fe1f3b6142c0e3c83599"
   - path: "references/masters/pta/血色将至.md"
-    bytes: 15814
-    sha256: "87b872f6118cc9286965b63862fa32aaf3636770b2305e76aae0309a3a6e9b46"
+    bytes: 14784
+    sha256: "efc555b9ef4ffb320a91921e5effd073838ecae1e72ee800fd79a7871a6b7a8f"
   - path: "references/masters/reeves/_马特·里维斯方法论总纲.md"
-    bytes: 21275
-    sha256: "c49c45414b3a55b9da281231dd69b5bd38a0a48c0514d79112f63949408539c6"
+    bytes: 16443
+    sha256: "64371b9f571aedd7c0e920fcc8726225d8b9893fb1a75e5e66e4277f945f1520"
   - path: "references/masters/reeves/科洛弗档案.md"
-    bytes: 23396
-    sha256: "4a54686ae2c9d6899287fe0f19bbef01cb843d5bde01c6617d915ad2467b34f4"
-  - path: "references/masters/ridley-scott/_雷德利·斯科特方法论总纲.md"
-    bytes: 29484
-    sha256: "9a68f8bb3b2d925b6b934fbdb1943ebd8e94f591e6a27044ee00752a5393c8ed"
-  - path: "references/masters/ridley-scott/角斗士.md"
-    bytes: 28461
-    sha256: "b12b877147e7c4f993a82e990edf628d685c75484bd36f37819edba809a22dff"
-  - path: "references/masters/ridley-scott/异形.md"
-    bytes: 30096
-    sha256: "8aa71f07d1d405f03fd4ba2b0ade2c3933f8172ec42d94dc79fe1b758f3cd146"
-  - path: "references/masters/ridley-scott/银翼杀手.md"
-    bytes: 28710
-    sha256: "9f0fa99d41420c6025b7c5d25806ee13fa68d99889780b7fc149b9c59dff05f1"
-  - path: "references/masters/robert-eggers/_罗伯特·艾格斯方法论总纲.md"
-    bytes: 30141
-    sha256: "3537568b6beab32b1cdbb08a08fe69076e3290131dc24370fee9232fa4400d72"
-  - path: "references/masters/robert-eggers/北欧人.md"
-    bytes: 26160
-    sha256: "475be0becb8549a0a7941641e37ce6a5474240019a759fc9708b1779cca5914b"
-  - path: "references/masters/robert-eggers/灯塔.md"
-    bytes: 24559
-    sha256: "b9f988153e8ad04de98fec84c90a81788f217f0b2671e3be848235dbbf8a5603"
-  - path: "references/masters/robert-eggers/女巫.md"
-    bytes: 25913
-    sha256: "75aa27a0ff5e497f3edf67ab011cc17184e696895a92461d91d61de4a09653ca"
-  - path: "references/masters/russo/_罗素兄弟方法论总纲.md"
-    bytes: 23564
-    sha256: "e98e890d77157c2cac4abfcfd33019573f99d6db7b48d6da87184f2534364a2e"
-  - path: "references/masters/russo/复仇者联盟4-终局之战.md"
-    bytes: 14749
-    sha256: "63e42a4d123a8b0a7497baabb248eeb7a0258c1d102e1f2cdee534f7dce682a8"
-  - path: "references/masters/satyajit-ray/_萨蒂亚吉特·雷伊方法论总纲.md"
-    bytes: 23325
-    sha256: "9123dfa644c64d20cee98fcfb2a31f3827226a8e6428b1fc4a0e18db3d24e4b1"
-  - path: "references/masters/satyajit-ray/大地之歌.md"
-    bytes: 37731
-    sha256: "68f16b076316c90f187cbfa65393b78821cc07903ce1e801a507e9e735137d48"
-  - path: "references/masters/scorsese/_斯科塞斯方法论总纲.md"
-    bytes: 30120
-    sha256: "54c5c1a446a37997ddca5494164cb8ced9afa5343b83438f5e8ba01100676fa9"
-  - path: "references/masters/scorsese/出租车司机.md"
-    bytes: 15027
-    sha256: "8e41a4e12ca08f03e10a60d4d0a899a304ee690aedde3662e3b451e1b6a0c614"
-  - path: "references/masters/scorsese/好家伙.md"
-    bytes: 14487
-    sha256: "ff1aa6c4466c30a285854889486b7773da5af28e768faeb6ab0361d314b4631e"
-  - path: "references/masters/sergio-leone/_赛尔乔·莱昂内方法论总纲.md"
-    bytes: 21783
-    sha256: "92c969ddcbb151290ed52a22122c087484eef50e5867cac5735dc64f1138073f"
-  - path: "references/masters/sergio-leone/黄金三镖客.md"
-    bytes: 13786
-    sha256: "8e2d7c0f42454c998a2827ae4abd2dc8055f7e665aeb181f9582f999bb989596"
-  - path: "references/masters/spielberg/_斯皮尔伯格方法论总纲.md"
-    bytes: 17667
-    sha256: "c2cc1d3c6132d8db196c30d557e5e0fde090ed2e7ae1ee35b4a7d2fb2c971edf"
-  - path: "references/masters/spielberg/大白鲨.md"
-    bytes: 21208
-    sha256: "c9bf03ff1ed36a0d295a4fe5ec0751d41e13629b5af16ec6c3d59e2498eea3e4"
-  - path: "references/masters/spielberg/第三类接触.md"
-    bytes: 33148
-    sha256: "ddbafdb83dbc2b008819acba3b621c6fef6f73583cf34d6ff67ada0f5f75fa48"
-  - path: "references/masters/spielberg/夺宝奇兵.md"
-    bytes: 30434
-    sha256: "6fa0869ba6b9cbba30113e73ae6a9ea6201b1fba9b146a336390cbfaff644e7f"
-  - path: "references/masters/spielberg/世界大战.md"
-    bytes: 21138
-    sha256: "b033592f890c1dd031dc6642eb604ac43299ab6ea1ac8339653b5bb94aa49659"
-  - path: "references/masters/spielberg/辛德勒的名单.md"
-    bytes: 21614
-    sha256: "c547f4f1340175fd5c60ad75dd172412678420dcc9fff8502bf7d3f896b8829d"
-  - path: "references/masters/spielberg/拯救大兵瑞恩.md"
-    bytes: 25460
-    sha256: "2f5c9155fc7fc0611738e19eb9cb6e0cc52fd90ec09e4f3d5d0dd9a60275ee01"
-  - path: "references/masters/spielberg/侏罗纪公园.md"
-    bytes: 31323
-    sha256: "449bdf5e1651b67f11c78f44216a315763ce46aad2f5b034f5c3f4c50055a84b"
-  - path: "references/masters/spielberg/ET 外星人.md"
-    bytes: 32836
-    sha256: "e2f77b98ffb660500f19fba4922a1345f377169a84d424eed5405bbb90690617"
-  - path: "references/masters/stephen-chow/_周星驰方法论总纲.md"
-    bytes: 23156
-    sha256: "6bc2dbd0c10993b1f441d66a3f59c388bbf35a6d0596eb4a5e9bd94526057d69"
-  - path: "references/masters/stephen-chow/功夫.md"
-    bytes: 14277
-    sha256: "89c2ab2b412d5cc1f67b6708af95159d639f3eaee35152bc576c86cebc030108"
-  - path: "references/masters/succession/_继承之战方法论总纲.md"
-    bytes: 18380
-    sha256: "a3ce14c18f9ce43ee2df771380d0bf89099acc10028d5eb046bf935830b814fc"
-  - path: "references/masters/succession/继承之战.md"
-    bytes: 10276
-    sha256: "b2d27de684c12a4fc432a392e28fd660223ce461a5c538270f39098c4db18861"
-  - path: "references/masters/tarantino/_昆汀方法论总纲.md"
-    bytes: 19428
-    sha256: "9f37b635e1527a884237639aea3421c3e644f6335b29c7a1d627bf96896d817e"
-  - path: "references/masters/tarantino/低俗小说.md"
-    bytes: 13771
-    sha256: "a7e4336733f973cd1e7f008f7b4703cec95383fc125d394268c58605d74d7bdf"
-  - path: "references/masters/tarkovsky/_塔可夫斯基方法论总纲.md"
-    bytes: 21877
-    sha256: "69e8a13dc42158279d320909a715d6765e48566df843c476d8b77664dbf55d75"
-  - path: "references/masters/tarkovsky/潜行者.md"
-    bytes: 14695
-    sha256: "0ebe1bea92d3bc7434ba63ffbcd4f0f788f4e8adf5642e1c83881f7dbc322f60"
-  - path: "references/masters/villeneuve/_维伦纽瓦方法论总纲.md"
-    bytes: 27333
-    sha256: "67bfaa6dcbd0c279d6907178f9295aa29329f8e188de8847d095a887b0206c97"
-  - path: "references/masters/villeneuve/降临.md"
-    bytes: 19645
-    sha256: "574980d3d280d3273cd8910755de38a930a1140d53b3b8b9c83f5c8886fa3861"
-  - path: "references/masters/villeneuve/银翼杀手2049.md"
-    bytes: 14368
-    sha256: "86debb1ae81aa4334ac9883e53dccac1354a3c08edaa00bc9342c99e44246cb2"
-  - path: "references/masters/welles/_奥逊·威尔斯方法论总纲.md"
-    bytes: 20909
-    sha256: "8372bb1df01461d42875c664b6c06bf12136ef2fc497d2d7555ddc31929760fb"
-  - path: "references/masters/welles/公民凯恩.md"
-    bytes: 18223
-    sha256: "c7b20217845ec095631c926d3f6065f038b3ff950cd42cb312f91b645cae1fdb"
-  - path: "references/masters/wes-anderson/_韦斯·安德森方法论总纲.md"
-    bytes: 21382
-    sha256: "cc49f169609803678c3d32d54187a7db2b74d23698646e61724d465919a7350d"
-  - path: "references/masters/wes-anderson/布达佩斯大饭店.md"
-    bytes: 23324
-    sha256: "08194366b960140cdc8d6312b69ccd1cddd06e36f3e3a29b448c705f07a2e580"
-  - path: "references/masters/wong-kar-wai/_王家卫方法论总纲.md"
-    bytes: 17531
-    sha256: "4a33d9df53e3ed513eddd7c855612a89ea05a8ad94a736d6cb1aca86fe085707"
-  - path: "references/masters/wong-kar-wai/阿飞正传.md"
-    bytes: 28295
-    sha256: "2b7b4be15b65b440dffc889536fa84ad0bf7cc526dcf8071b55e2c36e8adb044"
-  - path: "references/masters/wong-kar-wai/重庆森林.md"
-    bytes: 15520
-    sha256: "9c1e06158fb35791a37b8e9c6fe92481c1bd82ec64c4af532af57f2bda1c01d4"
-  - path: "references/masters/wong-kar-wai/春光乍泄.md"
-    bytes: 29477
-    sha256: "2faef97577c45a66c044496a263d98bcf49021b042a535bc2a65f17d10992dcf"
-  - path: "references/masters/wong-kar-wai/东邪西毒.md"
-    bytes: 32035
-    sha256: "a53d97aabc4207ace7870b23b3e731f8d4cf867b07a80fe2722d2c5d951f2e1f"
-  - path: "references/masters/wong-kar-wai/堕落天使.md"
-    bytes: 26334
-    sha256: "ff2e99d0fae10905067ce24b5e24a4908b6bd399145d4ae833553807c92f1740"
-  - path: "references/masters/wong-kar-wai/花样年华.md"
-    bytes: 19943
-    sha256: "7aa3f666f220636d77d538e57bf68011a73456f42e768d372c90112d245ce93b"
-  - path: "references/masters/yang-dechang/_杨德昌方法论总纲.md"
-    bytes: 19653
-    sha256: "edf1eb79556d57aafd60459024d56ebd94c5a98b57fdd807cfd49cfe40d9646a"
-  - path: "references/masters/yang-dechang/一一.md"
-    bytes: 14050
-    sha256: "005e74927a85b80a8e9aae3c5fcec6582bec1a089b8213358c7ff8a6a6cadb67"
-  - path: "references/masters/yorgos-lanthimos/_欧格斯·兰斯莫斯方法论总纲.md"
-    bytes: 30412
-    sha256: "1d25461398e43719aa3fccd5069a381ce919ce923870fdf683fa20ba09a4bdb7"
-  - path: "references/masters/yorgos-lanthimos/宠儿.md"
-    bytes: 26539
-    sha256: "6fd9da024263e732db8768d5f0312e5d694d1d92251a0db0c6f480d6138ae88a"
-  - path: "references/masters/yorgos-lanthimos/可怜的东西.md"
-    bytes: 29598
-    sha256: "88985bdd27a53854d1a0f70b082a9dd4e9e7ad046d9e441dc14463b1ad4dc6ee"
-  - path: "references/masters/yorgos-lanthimos/龙虾.md"
-    bytes: 28751
-    sha256: "ce3d73940a4934d48d951033b64f299e89d888c2310972abf06dac662985fdcd"
-  - path: "references/masters/zhang-yimou/_张艺谋方法论总纲.md"
     bytes: 19783
-    sha256: "f9b8695589a8aa943baba0baf9a97c3b2a7ef96b176d2811215465be0e77fb0e"
+    sha256: "6ef443ebaa5ffa14c4a8e669634671973ee2d402dd956072ac3b1146a0e4e602"
+  - path: "references/masters/ridley-scott/_雷德利·斯科特方法论总纲.md"
+    bytes: 26615
+    sha256: "d20d3f663d2552e7f165a0fd7c4990546d0148a83fbdf5e83a95ce2d56dd581e"
+  - path: "references/masters/ridley-scott/角斗士.md"
+    bytes: 20887
+    sha256: "2f87225cd4aa0ef68230119c561b3b7566d2d4b675ec9a8883bc42e95b5d4476"
+  - path: "references/masters/ridley-scott/异形.md"
+    bytes: 22968
+    sha256: "ff8da74cfa4287abf6a1eed20f5ea10125b706679227d766a89127304afa78fe"
+  - path: "references/masters/ridley-scott/银翼杀手.md"
+    bytes: 23576
+    sha256: "3275dcec1988a6fcb5014f4b6310e1cb4afc54e8affa44612fc5b90ddeef6b51"
+  - path: "references/masters/robert-eggers/_罗伯特·艾格斯方法论总纲.md"
+    bytes: 29549
+    sha256: "15c51f305c3ee4af8404d52d7c39c7ad7d847ec228064e0574a11070bb4ff7e3"
+  - path: "references/masters/robert-eggers/北欧人.md"
+    bytes: 22575
+    sha256: "31eb0504d071a4133e5f59d5a8b4166e0129c56393982b72f84e4d4af035dfb7"
+  - path: "references/masters/robert-eggers/灯塔.md"
+    bytes: 21668
+    sha256: "8901737069e5b6461be88cd6ff72d704bd0b5bb0701244991477a0ca37047e0c"
+  - path: "references/masters/robert-eggers/女巫.md"
+    bytes: 22310
+    sha256: "817d42e844c14d4eeb0f5b68128296fe03410c51240834427517d2f33fd862bf"
+  - path: "references/masters/russo/_罗素兄弟方法论总纲.md"
+    bytes: 23002
+    sha256: "7848ba827a4955bc99def0329c9d579fa35814289114afc7352b8171d30e4a7a"
+  - path: "references/masters/russo/复仇者联盟4-终局之战.md"
+    bytes: 14455
+    sha256: "53c9f7446f748e7ba305de129be3ab27f1a1af46645aa49060d16b649f19397d"
+  - path: "references/masters/satyajit-ray/_萨蒂亚吉特·雷伊方法论总纲.md"
+    bytes: 22967
+    sha256: "6a50c1cc15a02e134311ff05bb021d78cbf648615fad276258eb6e8ef9ff00d6"
+  - path: "references/masters/satyajit-ray/大地之歌.md"
+    bytes: 32720
+    sha256: "3505c25b2164d1811ec974b6890da1cdbc4c8da9262d148448a9284f2a9a34a4"
+  - path: "references/masters/scorsese/_斯科塞斯方法论总纲.md"
+    bytes: 28478
+    sha256: "604f4b3f61130b2db29578beccc7d5fb91cbbb3ac017f51333fc35fb33611699"
+  - path: "references/masters/scorsese/出租车司机.md"
+    bytes: 12707
+    sha256: "65417bb8f69be69ad475d1f308be547b7402ad8261ba623134257b9428a6885e"
+  - path: "references/masters/scorsese/好家伙.md"
+    bytes: 12335
+    sha256: "849165f3acbfa0cd5d7b005635181d1e29f969e64e14f24d8faeb9e5e24165dc"
+  - path: "references/masters/sergio-leone/_赛尔乔·莱昂内方法论总纲.md"
+    bytes: 21060
+    sha256: "95a4043e40c270e3ee98df23eeaa737c1fca0e98b1076859d854cbbc6c1d05e1"
+  - path: "references/masters/sergio-leone/黄金三镖客.md"
+    bytes: 11704
+    sha256: "7796aa6473b281c894eb1a47f75c1a326cf088e71af17073abd332cd65961ca9"
+  - path: "references/masters/spielberg/_斯皮尔伯格方法论总纲.md"
+    bytes: 16710
+    sha256: "2f683e711c6ac3f65ee262b8c2f75dcaf632f76394587948c395c905bf839848"
+  - path: "references/masters/spielberg/大白鲨.md"
+    bytes: 17994
+    sha256: "be337c9ac89f4394190aafef23544a74cde7ae4e7b1c3d6931f01932096ccc1e"
+  - path: "references/masters/spielberg/第三类接触.md"
+    bytes: 27751
+    sha256: "4086fcae0a0892bae002adac158cffb0908bdcdd66ddaf79f28ab467a5ec9932"
+  - path: "references/masters/spielberg/夺宝奇兵.md"
+    bytes: 26441
+    sha256: "cf2838c5940c6dd560642164010bbd9c06dbdbc195f02168bf39c86bbb4a59ba"
+  - path: "references/masters/spielberg/世界大战.md"
+    bytes: 17869
+    sha256: "20f1c8966ffa79b98e36552624d08fc3ea6ac01438560c27d4455ea1079e571b"
+  - path: "references/masters/spielberg/辛德勒的名单.md"
+    bytes: 18324
+    sha256: "e99ce097be3ded96e1316c78b6acfd5205ba8de84af177f30fdb9f58ced1dec8"
+  - path: "references/masters/spielberg/拯救大兵瑞恩.md"
+    bytes: 21144
+    sha256: "2126d44bd51dfa14f083b0e3cf20bfe878b35e6f25c9d81e9582b0c46470120a"
+  - path: "references/masters/spielberg/侏罗纪公园.md"
+    bytes: 26460
+    sha256: "c906dbf6114871a160b431526f11451f7529631fa917f9a41ef8dd14ae4dfb1b"
+  - path: "references/masters/spielberg/ET 外星人.md"
+    bytes: 28138
+    sha256: "5390516cba163eeaf485230acdb7bb6dde6efa422c7a53d2173dd4d72b5e5d6e"
+  - path: "references/masters/stephen-chow/_周星驰方法论总纲.md"
+    bytes: 21993
+    sha256: "37cb2ff4569f38951324f27fc7f733363f72b19e772156ea2a55cc40b8e14b7c"
+  - path: "references/masters/stephen-chow/功夫.md"
+    bytes: 11809
+    sha256: "5527a10469280de2958f13ae788c02bd6318219445a58aa0c9be55bdbcf1783d"
+  - path: "references/masters/succession/_继承之战方法论总纲.md"
+    bytes: 17756
+    sha256: "9dc6899b20bfc83317975a2d48043aaa40eb02c64eb4e3a6858c102e1d9a9d63"
+  - path: "references/masters/succession/继承之战.md"
+    bytes: 9894
+    sha256: "3c64ff02514ed05b741a44cfeae7b344b610b973ffa1ebdfb21cc81e0b88d97f"
+  - path: "references/masters/tarantino/_昆汀方法论总纲.md"
+    bytes: 19139
+    sha256: "8ba805969f88e59cb454c5a0e6a615391177f63c3268e0e5b98da764ef2cbcc8"
+  - path: "references/masters/tarantino/低俗小说.md"
+    bytes: 11760
+    sha256: "3b4bb0e8cf23dbc5b0f382fe8f214f6435bded55e4cec6d1a8a2a92daac58ebb"
+  - path: "references/masters/tarkovsky/_塔可夫斯基方法论总纲.md"
+    bytes: 21233
+    sha256: "aafc476fdff9fe991e3826ac776fffd55c571ae0a4bcb00a8ca3635a7cce0104"
+  - path: "references/masters/tarkovsky/潜行者.md"
+    bytes: 12390
+    sha256: "a8d6f5deab3f4e0984135037d1c23b830aef8fd57f08f2265d19d725fa3ba811"
+  - path: "references/masters/villeneuve/_维伦纽瓦方法论总纲.md"
+    bytes: 28085
+    sha256: "ca56b489706647a0a93b69cf72be63f6494e5efd55dc63397f4183c2919d24ee"
+  - path: "references/masters/villeneuve/降临.md"
+    bytes: 16728
+    sha256: "962877074741eb571a42aaadff8416fceb048127cef49547ff16045ad2789f15"
+  - path: "references/masters/villeneuve/银翼杀手2049.md"
+    bytes: 12260
+    sha256: "0d391f71f1ec9b231ecb712ffe69d90f9b10df325711d05d9fcf4ed5b3e40bc4"
+  - path: "references/masters/welles/_奥逊·威尔斯方法论总纲.md"
+    bytes: 19373
+    sha256: "ca7da9f9ef9c467ef8f0a6441b6389ba4f6fabba9c726581ed296fb30ae8e9bb"
+  - path: "references/masters/welles/公民凯恩.md"
+    bytes: 15955
+    sha256: "146073ebd8c757a3432e5bfee40bd0c1097b5292674119484fd6da143f35cb19"
+  - path: "references/masters/wes-anderson/_韦斯·安德森方法论总纲.md"
+    bytes: 21198
+    sha256: "0482f6c07be32a24b259e153362ac1f21ebcb1ad7d605d3624fddf55db1ee12c"
+  - path: "references/masters/wes-anderson/布达佩斯大饭店.md"
+    bytes: 21594
+    sha256: "a5c7ac8ebe159f554c9f235d42ff557d93ddbbbf984f31a99ec7ed2b194cee3a"
+  - path: "references/masters/wong-kar-wai/_王家卫方法论总纲.md"
+    bytes: 17972
+    sha256: "e68833f42ceac886395409f28a2481907eb30faa3453df8f7f354b7ac3dafba9"
+  - path: "references/masters/wong-kar-wai/阿飞正传.md"
+    bytes: 23297
+    sha256: "de2a284a673b4ec1aaeaffe83702f29c75e65d63d825ffd34e7283f86b94c45f"
+  - path: "references/masters/wong-kar-wai/重庆森林.md"
+    bytes: 14683
+    sha256: "d822a0713e966a9047535cf082b07d5965be06ce4b8352923a31edc5b98a4a26"
+  - path: "references/masters/wong-kar-wai/春光乍泄.md"
+    bytes: 25688
+    sha256: "a128c302f4c159d140ee7c676044cce04fcc18d8da9cb46d37b8abf94e6d83bc"
+  - path: "references/masters/wong-kar-wai/东邪西毒.md"
+    bytes: 27053
+    sha256: "d80161e751d969616ff987db9220f5f4819a286a20079be6b0b28ef27f1f26c2"
+  - path: "references/masters/wong-kar-wai/堕落天使.md"
+    bytes: 22534
+    sha256: "88a33fa5d80ffaf5a6b3fe1d49ac9bb55d909610e9d6e8c60b88d8f5b8526860"
+  - path: "references/masters/wong-kar-wai/花样年华.md"
+    bytes: 18911
+    sha256: "a519adb3a3d39274b5d6246cba462e9c01e611a04e687e8f64b3d76abc0af3a2"
+  - path: "references/masters/yang-dechang/_杨德昌方法论总纲.md"
+    bytes: 19024
+    sha256: "452b25bf0dc427d206b4de33dcd5ee6d9eb40e61db4ea17ea5ea19701f1d35c4"
+  - path: "references/masters/yang-dechang/一一.md"
+    bytes: 13678
+    sha256: "831581a59d3ec0eceda249109ad16ec6c424fb4928ec3756545928806f3e9d64"
+  - path: "references/masters/yorgos-lanthimos/_欧格斯·兰斯莫斯方法论总纲.md"
+    bytes: 31444
+    sha256: "f8f407e9a95545d517bb345653af1e9e96bd24acd2943f9c4cf7817cc151f733"
+  - path: "references/masters/yorgos-lanthimos/宠儿.md"
+    bytes: 23378
+    sha256: "c1d5822066822434684d4c9f12d1d8bcf27c0b6cc2f9d48ca58d6bdc21b6ffbd"
+  - path: "references/masters/yorgos-lanthimos/可怜的东西.md"
+    bytes: 19306
+    sha256: "e65a46c3024d521a2383e412a02e9821d8d0ad3f09af77545b042384c7dc4b7c"
+  - path: "references/masters/yorgos-lanthimos/龙虾.md"
+    bytes: 22686
+    sha256: "f2d560f3bacab08d3cbe1d962fc76a09f8c0c200c382a02dddcfe59afadc6d63"
+  - path: "references/masters/zhang-yimou/_张艺谋方法论总纲.md"
+    bytes: 20155
+    sha256: "735541364ed1cacfb094012ecdb575706145218141cf074a93df6d74c8a97994"
   - path: "references/masters/zhang-yimou/英雄.md"
-    bytes: 13954
-    sha256: "da0a3d073619c2b710428594090980e80181d1b6813177692ef5aadcaa9fd9d9"
+    bytes: 11751
+    sha256: "89fb8597e753aafc55bd88e31ab6c2cb70f80965e9a7c8494ca6eb30d9a4a30b"
   - path: "references/masters/zhao/_赵婷方法论总纲.md"
-    bytes: 19622
-    sha256: "dca3f5b786c30c557c91287e5ece71306f0438a4322fc1b4a527c581a1682b6e"
+    bytes: 20852
+    sha256: "f0eafbc8b61d96963a60386be650c143afd8b86d3c06425be948dd98f28c2049"
   - path: "references/masters/zhao/无依之地.md"
-    bytes: 20898
-    sha256: "3932709e29c28029358ab273df348e92bd69ce22c33e3e524f61d019dc2213b5"
+    bytes: 13632
+    sha256: "14168264d863c164b36aa639460879512882312c4e6dd04c9b241380d63ab25d"

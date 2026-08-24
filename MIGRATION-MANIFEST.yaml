@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: "2026-08-24T02:36:47.544Z"
+generated_at: "2026-08-24T11:13:50.367Z"
 source:
   skill: "seedance-agent-2-5"
   local_path: "C:/Users/ASUS/.codex/skills/seedance-agent-2-5"
@@ -20,8 +20,8 @@ action_fusion_source:
 target:
   skill: "seedance-2-5-director-compiler"
   content_files: 228
-  content_bytes: 4471403
-  aggregate_sha256: "9e8481638e9987f98ef4eec3656ddf2eb38e959d626ceea8045fa88ddc2989a8"
+  content_bytes: 4025579
+  aggregate_sha256: "25b8bcdaa515f0404949d701833057da12eff4c86d9faa53a80942d1eecf3bdc"
 retained:
   cinema_knowledge_files: 44
   master_methodology_files: 67
@@ -40,12 +40,12 @@ confirmed_platform_contract:
 sanitation:
   changed_cinema_files: 44
   changed_master_files: 184
-  sections_removed: 404
+  sections_removed: 513
   sections_replaced: 3
-  headings_renamed: 15
-  individual_lines_removed: 3566
+  headings_renamed: 972
+  individual_lines_removed: 5173
   bytes_before: 6462307
-  bytes_after: 4756179
+  bytes_after: 4342274
   policy:
     - "Retain cinematography, blocking, performance, editing, sound, action aesthetics, sources, and master-work analysis."
     - "Remove legacy prompt templates, creed mappings, reviewer gates, self-check output, maintenance chatter, and hard output quotas."

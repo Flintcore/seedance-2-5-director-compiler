@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a Seedance 2.5 nine-layer Chinese prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, multi-clip continuity, dialogue binding, action scenes, prompt optimization, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -105,7 +105,7 @@ Default output is concise:
 2. One complete nine-layer prompt per segment when compilation is requested.
 3. A minimal repair block for `DIAGNOSE`.
 
-Do not append self-check tables, pass/fail cards, scores, read logs, progress logs, capability essays, or repeated rationale. Mechanical structure validation may run silently before delivery; it never becomes part of the prompt.
+Do not run or append a final self-check stage. Do not add pass/fail cards, scores, read logs, progress logs, capability essays, or repeated rationale.
 
 Use Chinese for the final prompt. Keep exact dialogue, asset IDs, model names, timecodes, and necessary on-screen foreign text unchanged.
 

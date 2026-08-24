@@ -84,6 +84,79 @@ test("removes the Eggers-era creative-principle maintenance line", () => {
   assert.match(result.text, /构图方法/);
 });
 
+test("master cleaner removes migration shell and softens artificial evaluation scales", () => {
+  const input = `# 作品
+
+> **用途**：生成模型「分镜设计」知识库顶层调用文件。
+> **红线**：写 prompt；每张卡片必带五件套。
+> **⚠️ 警告**：本摘要仅供快速判断匹配——一旦引用，必须阅读下文 §一至§九全部内容。
+
+## 一、整体风格指纹（Style Fingerprint · 6 项可量化特征）
+
+- **表演**：Deadpan 10-30%，其后转为大开大合 70-95%。
+- **表演**：热烈交谈 + 笑闹 · 浓烈 65%，随后收回。
+- **演员代表性表演细节**：爆发（30%↔95%）→收招立刻转冷（40%）。
+- **运镜**：locked-off 12 秒（长镜头加载铁律 · ≥6s 必满足 5 项）。
+- **摄影**：暗部 ≥70%，人物占比 <8%。
+- **🎯 大师指纹本镜体现**：固定机位 + 空间压力。
+**情感核心**：空间先于人物（≤25 字）
+
+## 二、标志性场景逐镜分析（3 场 · 每场 ≥4 镜）
+保留具体镜头分析。
+`;
+  const result = cleanMasterText(input);
+
+  assert.match(result.text, /## 一、整体风格观察/);
+  assert.match(result.text, /## 二、标志性场景逐镜分析/);
+  assert.match(result.text, /Deadpan.*大开大合/);
+  assert.match(result.text, /热烈交谈.*随后收回/);
+  assert.match(result.text, /爆发→收招立刻转冷/);
+  assert.match(result.text, /locked-off 12 秒/);
+  assert.match(result.text, /暗部 ≥70%.*人物占比 <8%/);
+  assert.match(result.text, /保留具体镜头分析/);
+  assert.doesNotMatch(result.text, /生成模型|写 prompt|每张卡片|§一至§九全部内容|10-30%|70-95%|浓烈 65%|30%|95%|40%|长镜头加载铁律|大师指纹本镜体现|≤25 字/);
+});
+
+test("master cleaner removes platform music overrides but preserves film craft around them", () => {
+  const input = `# 声音
+
+- 原片以画内广播和配乐完成转调。
+- 节拍靠鞋跟和电梯声，不靠 BGM（AIGC 视频生成不写配乐）。
+- James Horner 的史诗配乐与异世界环境声形成对位，AIGC 视频生成中**不写 BGM**。
+- 原片有配乐，但写 prompt 时绝不把 BGM 写进去，用雨声和脚步保留余韵。
+- 摄影机保留真实碰撞和环境反馈。
+`;
+  const result = cleanMasterText(input);
+
+  assert.match(result.text, /原片以画内广播和配乐完成转调/);
+  assert.match(result.text, /节拍靠鞋跟和电梯声/);
+  assert.match(result.text, /James Horner 的史诗配乐与异世界环境声形成对位/);
+  assert.match(result.text, /原片有配乐/);
+  assert.match(result.text, /雨声和脚步保留余韵/);
+  assert.match(result.text, /摄影机保留真实碰撞和环境反馈/);
+  assert.doesNotMatch(result.text, /AIGC|视频生成|不靠 BGM|不写 BGM|绝不把 BGM|禁配乐/);
+});
+
+test("master cleaner preserves the Porta-Prompt device name", () => {
+  const input = "# 摄影\n\n- 使用 Porta-Prompt 两向镜沿镜头光轴制造眼神光。\n";
+  const result = cleanMasterText(input);
+  assert.match(result.text, /Porta-Prompt/);
+  assert.doesNotMatch(result.text, /Porta-镜头表达/);
+});
+
+test("master cleaner preserves film titles, visual percentages, and ordinary craft boundaries", () => {
+  const input = `# 摄影\n\n《信条》的 747 属于作品级实拍资料，不设数字效果用途白名单，也不是所有镜头的验收合同。\n\n**主要风格观察**：① 居中偏移近似约 ±5%）② Deadpan 表演；对白约 120-180 词/min。\n\n- **影像与表演观察**：深黑暗部 60-80% 为画面估读，演员以冷眼旁观形成 deadpan 表演。\n`;
+  const result = cleanMasterText(input);
+
+  assert.match(result.text, /《信条》的 747/);
+  assert.match(result.text, /白名单/);
+  assert.match(result.text, /验收合同/);
+  assert.match(result.text, /±5%）② Deadpan/);
+  assert.match(result.text, /深黑暗部 60-80% 为画面估读/);
+  assert.doesNotMatch(result.text, /《创作原则》|高强度情境/);
+  assert.equal(cleanMasterText(result.text).text, result.text);
+});
+
 test("all new cleanup rules are idempotent", () => {
   const input = "# 文戏\n\n**嵌入格式**：\n```text\n旧格式\n```\n\n克制 30-50% + NOT subtitles + NOT BGM\n";
   const once = cleanCinemaText(input, "文戏编排参考库.md").text;
