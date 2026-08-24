@@ -18,6 +18,15 @@ hard_contracts:
     counting_rule: image_video_audio_combined
     applies_to: one_generated_segment
 
+  formal_reference_placeholders:
+    image: "@imageN"
+    video: "@videoN"
+    audio: "@audioN"
+    numbering: contiguous_per_type_from_1_in_first_use_order
+    occurrence: once_per_unique_source
+    layer: "参考图权重"
+    source_locator_output: forbidden
+
   stability_zones_seconds:
     head: 0.5
     tail: 0.5

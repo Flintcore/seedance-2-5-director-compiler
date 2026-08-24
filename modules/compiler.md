@@ -11,7 +11,7 @@ Accept any combination of:
 - approved L1 director design or an existing locked shot list;
 - user locks, exact story facts, exact dialogue, and world rules;
 - segment duration and neighboring segment states;
-- asset IDs and the intended responsibility of each asset;
+- asset source locators, media types, and the intended responsibility of each asset;
 - an internal action contract from `action-design.md`.
 
 Treat user locks and approved L1 as immutable creative input. The compiler may make relationships explicit, assign IDs consistently, divide time, and compress redundant wording. It may not add, remove, reorder, restage, or reinterpret shots, performances, actions, outcomes, or aesthetics.
@@ -39,13 +39,16 @@ source_ledger:
 
 No runtime log or project file is required for an ordinary single segment.
 
+For each asset, keep its source locator and output placeholder separate. A local path, filename, URL, upload label, or platform-native ID may identify the source inside this ledger, but the formal prompt receives only the canonical placeholder.
+
 ### 2. Normalize IDs and States
 
 - Give every speaking character, continuity-critical character, prop, device, and off-screen source one stable ID.
 - Distinguish one physical body from reflections, screens, shadows, memories, or other non-body appearances.
 - Record position, facing, gaze, contact, possession, condition, visibility, and motion only where they affect this segment.
 - Separate world direction from screen direction.
-- Preserve exact asset IDs supplied by the user or platform.
+- Preserve exact source locators internally. Deduplicate identical sources, then assign canonical output placeholders by media type and first-use order: `@image1...`, `@video1...`, and `@audio1...`.
+- Do not copy a source path, filename, URL, upload label, or platform-native ID into the formal prompt.
 
 ### 3. Enforce the Confirmed Platform Contract
 
@@ -82,7 +85,7 @@ Emit the exact order and headings defined in `references/model/nine-layer-schema
 8. `【参考图权重】`
 9. `【执行约束】`
 
-Each fact has one primary home. Repeat it only when the model needs the same fact at an exact time or continuity boundary.
+Each fact has one primary home. Repeat it only when the model needs the same fact at an exact time or continuity boundary. Asset placeholders are stricter: each appears once only, in `【参考图权重】`; timed use is expressed in that line's scope and by semantic entity IDs in the timeline.
 
 ### 6. Compress Without Semantic Loss
 
@@ -125,10 +128,17 @@ Place delivery, mouth visibility, emotion, timing, and listener behavior outside
 Count image, video, and audio references together. For each referenced asset write:
 
 ```text
-素材ID：定义对象或职责｜继承：具体特征｜不继承：冲突内容｜作用范围：镜头/时间段
+@image1：定义对象或职责｜继承：具体特征｜不继承：冲突内容｜作用范围：镜头/时间段
 ```
 
-One asset defines only its stated responsibility. A reference image does not create an extra body or prop. A motion reference does not replace character identity. An audio reference does not import background voices, music, or picture content unless explicitly locked.
+Use these steps before emitting the layer:
+
+1. Deduplicate repeated mentions of the same physical source.
+2. Assign separate contiguous sequences for images, videos, and audio, all starting at 1.
+3. Merge every duty and time range for one source into its one placeholder line.
+4. Emit that placeholder exactly once in the whole formal prompt and never repeat it in the head lock, timeline, sound, or execution layers.
+
+The source locator remains internal and is never used as the display token. One asset defines only its stated responsibility. A reference image does not create an extra body or prop. A motion reference does not replace character identity. An audio reference does not import background voices, music, or picture content unless explicitly locked.
 
 ## Output Discipline
 

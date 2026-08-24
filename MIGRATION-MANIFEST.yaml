@@ -37,6 +37,15 @@ confirmed_platform_contract:
     closing: 0.5
   dialogue_syntax: "角色ID说{逐字台词}"
   narration_syntax: "旁白{逐字旁白}"
+confirmed_output_contract:
+  canonical_asset_placeholders:
+    image: "@imageN"
+    video: "@videoN"
+    audio: "@audioN"
+  numbering: contiguous_per_type_from_1_in_first_use_order
+  occurrence: once_per_unique_source
+  formal_layer: "参考图权重"
+  source_locator_output: forbidden
 sanitation:
   changed_cinema_files: 44
   changed_master_files: 184

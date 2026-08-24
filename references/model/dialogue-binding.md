@@ -61,8 +61,10 @@ A device voice names the device as spatial source and leaves all character mouth
 Bind each voice asset to one declared role and responsibility:
 
 ```text
-AUDIO_A：只定义角色A的音色、语速、语气与呼吸；不继承原素材台词、背景人声、音乐、画面人物或环境。
+@audio1：定义角色A的声音｜继承：音色、语速、语气与呼吸｜不继承：原素材台词、背景人声、音乐、画面人物或环境｜作用范围：角色A全部台词
 ```
+
+This canonical placeholder appears only on that single `【参考图权重】` line. In the timeline and sound layer, refer to `角色A` or `角色A声源` without repeating `@audio1`.
 
 An image defines appearance, a motion reference defines approved movement, and an audio reference defines approved sound qualities. None of them silently creates another speaking character.
 

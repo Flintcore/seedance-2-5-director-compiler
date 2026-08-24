@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a Seedance 2.5 nine-layer Chinese prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, multi-clip continuity, dialogue binding, action scenes, prompt optimization, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.1.1"
+  version: "0.1.2"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -42,6 +42,13 @@ These project facts are confirmed and may be treated as hard constraints:
 - Reserve the first and last **0.5 seconds** as stability zones.
 - Exact spoken dialogue uses `角色ID说{逐字台词}`; narration uses `旁白{逐字旁白}`; braces contain spoken text only.
 
+Formal prompt references follow one canonical output contract:
+
+- Number unique sources by media type and first-use order: `@image1`, `@image2`; `@video1`, `@video2`; `@audio1`, `@audio2`.
+- Keep source paths, filenames, URLs, upload labels, and platform-native IDs in the internal source ledger. Never print them in the formal prompt.
+- Print each canonical `@` placeholder exactly once in the entire formal prompt, only in `【参考图权重】`. Merge all duties and time ranges for that source into its single line.
+- In every other layer, refer to the bound character, prop, place, motion, or voice by semantic ID rather than repeating the `@` placeholder.
+
 Do not invent additional numeric platform limits, reference weights, control fields, or guaranteed behaviors. Read `references/model/capability-registry.yaml` when a platform capability affects the answer.
 
 ## Route
@@ -79,7 +86,7 @@ When compilation is required:
 
 1. Treat the locked L1 as immutable creative input.
 2. Read [modules/compiler.md](modules/compiler.md).
-3. Read model references only for the active issue: dialogue, continuity, action, complexity, or diagnosis.
+3. Read model references only for the active issue: dialogue, references, continuity, action, complexity, or diagnosis.
 4. Compile into the nine-layer Chinese format. The compiler may clarify and compress, but it may not add, remove, reorder, or reinterpret shots.
 
 For `DIAGNOSE`, read [modules/diagnosis.md](modules/diagnosis.md) and repair the earliest causal layer only.
@@ -107,7 +114,7 @@ Default output is concise:
 
 Do not run or append a final self-check stage. Do not add pass/fail cards, scores, read logs, progress logs, capability essays, or repeated rationale.
 
-Use Chinese for the final prompt. Keep exact dialogue, asset IDs, model names, timecodes, and necessary on-screen foreign text unchanged.
+Use Chinese for the final prompt. Keep exact dialogue, canonical asset placeholder order, model names, timecodes, and necessary on-screen foreign text unchanged. Source-side asset IDs remain internal.
 
 ## Runtime Discipline
 

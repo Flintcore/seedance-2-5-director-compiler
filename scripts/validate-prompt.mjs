@@ -79,41 +79,109 @@ function hasExactTimeRange(text, expectedStart, expectedEnd) {
   return false;
 }
 
-function assetCount(text) {
-  const ids = new Set();
-  let rangedCountLowerBound = 0;
-  const normalizeType = (type) => ({ 图片: "image", 视频: "video", 音频: "audio" }[type.toLowerCase()] ?? type.toLowerCase());
-  const range = /@(image|video|audio|图片|视频|音频)\s*#?\s*(\d+)\s*(?:-|–|—|~|～|至)\s*(?:@?(image|video|audio|图片|视频|音频)\s*#?\s*)?(\d+)/gi;
-  let match;
-  while ((match = range.exec(text))) {
-    const type = normalizeType(match[1]);
-    const endType = match[3] ? normalizeType(match[3]) : type;
-    const start = Number(match[2]);
-    const end = Number(match[4]);
-    if (type === endType && end >= start) {
-      const count = end - start + 1;
-      rangedCountLowerBound = Math.max(rangedCountLowerBound, count);
-      if (count <= 10000) {
-        for (let value = start; value <= end; value += 1) ids.add(`${type}:${value}`);
-      }
+const CANONICAL_ASSET_TOKEN = /@(image|video|audio)([1-9]\d*)\b/g;
+const ASSETISH_AT_TOKEN = /@(?:image|video|audio|img|图片|视频|音频)[\p{L}\p{N}_-]*/giu;
+const ASSET_RANGE = /@(image|video|audio)[1-9]\d*\s*(?:-|–|—|~|～|至)\s*@?(?:(?:image|video|audio))?[1-9]\d*/g;
+const LOCAL_SOURCE_PATH = /(?:file:\/\/|[A-Za-z]:[\\/]|(?:^|[\s：｜|])\.{1,2}[\\/])/imu;
+const SOURCE_URL = /https?:\/\//iu;
+const SOURCE_FILENAME = /(?:^|[\s：｜|])[^\r\n：｜|]*?\.(?:png|jpe?g|webp|gif|bmp|tiff?|heic|mp4|mov|mkv|avi|webm|mp3|wav|m4a|flac|aac)(?=$|[\s，。；;｜|])/imu;
+
+function canonicalAssetOccurrences(text) {
+  return [...text.matchAll(CANONICAL_ASSET_TOKEN)].map((match) => ({
+    token: match[0],
+    type: match[1],
+    number: Number(match[2]),
+  }));
+}
+
+function assetContract(text) {
+  const errors = [];
+  const referenceText = layerBody(text, "参考图权重");
+  const allOccurrences = canonicalAssetOccurrences(text);
+  const referenceOccurrences = canonicalAssetOccurrences(referenceText);
+  const allCounts = new Map();
+  const referenceCounts = new Map();
+
+  for (const occurrence of allOccurrences) {
+    allCounts.set(occurrence.token, (allCounts.get(occurrence.token) ?? 0) + 1);
+  }
+  for (const occurrence of referenceOccurrences) {
+    referenceCounts.set(occurrence.token, (referenceCounts.get(occurrence.token) ?? 0) + 1);
+  }
+
+  const invalidTokens = [...new Set(
+    [...text.matchAll(ASSETISH_AT_TOKEN)]
+      .map((match) => match[0])
+      .filter((token) => !/^@(image|video|audio)[1-9]\d*$/.test(token)),
+  )];
+  if (invalidTokens.length) {
+    errors.push({
+      code: "ASSET_TOKEN_FORMAT",
+      message: `non-canonical asset placeholders: ${invalidTokens.join(", ")}; use @imageN, @videoN, or @audioN`,
+    });
+  }
+
+  const ranges = [...referenceText.matchAll(ASSET_RANGE)].map((match) => match[0]);
+  if (ranges.length) {
+    errors.push({ code: "ASSET_RANGE", message: `asset ranges are not allowed: ${ranges.join(", ")}` });
+  }
+
+  if (LOCAL_SOURCE_PATH.test(text) || SOURCE_URL.test(referenceText) || SOURCE_FILENAME.test(referenceText)) {
+    errors.push({
+      code: "ASSET_SOURCE_LOCATOR",
+      message: "formal prompts must not contain asset paths, URLs, or source filenames",
+    });
+  }
+
+  for (const [token, count] of allCounts) {
+    if (count > 1) {
+      errors.push({ code: "ASSET_DUPLICATE_REFERENCE", message: `${token} appears ${count} times; each placeholder must appear once` });
+    }
+    if ((referenceCounts.get(token) ?? 0) !== count) {
+      errors.push({ code: "ASSET_REFERENCE_LAYER", message: `${token} appears outside 【参考图权重】` });
     }
   }
-  const single = /@(image|video|audio|图片|视频|音频)\s*#?\s*(\d+)/gi;
-  while ((match = single.exec(text))) ids.add(`${normalizeType(match[1])}:${Number(match[2])}`);
 
-  const declared = /(?:素材总数|参考素材总数|素材数量)\s*[:：]\s*(\d+)/g;
-  let declaredMax = 0;
-  while ((match = declared.exec(text))) declaredMax = Math.max(declaredMax, Number(match[1]));
-
-  const typeCounts = { image: 0, video: 0, audio: 0 };
-  const typedDeclared = /(?:图片|图像|image|视频|video|音频|audio)(?:参考)?(?:素材)?(?:总数|数量|数)\s*[:：]\s*(\d+)/gi;
-  while ((match = typedDeclared.exec(text))) {
-    const raw = match[0].toLowerCase();
-    const type = /(?:图片|图像|image)/i.test(raw) ? "image" : /(?:视频|video)/i.test(raw) ? "video" : "audio";
-    typeCounts[type] = Math.max(typeCounts[type], Number(match[1]));
+  for (const line of referenceText.split("\n")) {
+    const occurrences = canonicalAssetOccurrences(line);
+    if (occurrences.length > 1 || (occurrences.length === 1 && !line.trimStart().startsWith(occurrences[0].token))) {
+      errors.push({
+        code: "ASSET_LINE_FORMAT",
+        message: "each asset line must start with exactly one canonical placeholder",
+      });
+      break;
+    }
   }
-  const typedTotal = typeCounts.image + typeCounts.video + typeCounts.audio;
-  return Math.max(ids.size, rangedCountLowerBound, declaredMax, typedTotal);
+
+  for (const type of ["image", "video", "audio"]) {
+    const numbers = referenceOccurrences.filter((item) => item.type === type).map((item) => item.number);
+    if (numbers.some((number, index) => number !== index + 1)) {
+      errors.push({
+        code: "ASSET_NUMBERING",
+        message: `@${type} placeholders must be contiguous from @${type}1 in appearance order`,
+      });
+    }
+  }
+
+  const uniqueTokens = new Set(allOccurrences.map((occurrence) => occurrence.token));
+  const declaredValues = [...referenceText.matchAll(/(?:素材总数|参考素材总数|素材数量)\s*[:：]\s*(\d+)/g)]
+    .map((match) => Number(match[1]));
+  const declared = declaredValues.length ? Math.max(...declaredValues) : null;
+  if (declaredValues.length !== 1) {
+    errors.push({
+      code: "ASSET_COUNT_DECLARATION",
+      message: `【参考图权重】 must contain exactly one asset-count declaration; found ${declaredValues.length}`,
+    });
+  }
+  if (declared !== null && declared !== uniqueTokens.size) {
+    errors.push({
+      code: "ASSET_COUNT_MISMATCH",
+      message: `declared asset count ${declared} does not match ${uniqueTokens.size} unique canonical placeholders`,
+    });
+  }
+
+  const assets = Math.max(uniqueTokens.size, declared ?? 0);
+  return { assets, tokens: [...uniqueTokens], errors };
 }
 
 function braceError(text) {
@@ -181,7 +249,9 @@ export function validatePrompt(text) {
     });
   }
 
-  const assets = assetCount(text);
+  const asset = assetContract(text);
+  errors.push(...asset.errors);
+  const assets = asset.assets;
   if (assets > 50) errors.push({ code: "ASSET_LIMIT", message: `asset count ${assets} exceeds 50` });
 
   const brace = braceError(text);
@@ -190,7 +260,7 @@ export function validatePrompt(text) {
   return {
     ok: errors.length === 0,
     errors,
-    facts: { duration, assets, headings: actual, rawHeadings: headings.map((heading) => heading.raw) },
+    facts: { duration, assets, assetTokens: asset.tokens, headings: actual, rawHeadings: headings.map((heading) => heading.raw) },
   };
 }
 

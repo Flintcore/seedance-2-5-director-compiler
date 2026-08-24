@@ -63,9 +63,10 @@ properties:
         items:
           type: object
           additionalProperties: false
-          required: [id, binds_to, purpose]
+          required: [source_ref, type, binds_to, purpose]
           properties:
-            id: {type: string, minLength: 1}
+            source_ref: {type: string, minLength: 1}
+            type: {enum: [image, video, audio]}
             binds_to: {type: string, minLength: 1}
             purpose: {type: string, minLength: 1}
       assumptions:

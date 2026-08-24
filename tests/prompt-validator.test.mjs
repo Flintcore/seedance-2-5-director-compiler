@@ -6,7 +6,7 @@ import { validatePrompt } from "../scripts/validate-prompt.mjs";
 function validPrompt({
   duration = 8,
   timelineDuration = duration,
-  references = "@image1",
+  references = "素材总数：1/50\n@image1：主角色身份｜继承：脸部与服装｜不继承：背景｜作用范围：全片",
   dialogue = "角色说{我回来了。}",
 } = {}) {
   return `【头锁区·全片统一】
@@ -124,28 +124,89 @@ test("rejects durations outside 4-30 seconds and metadata conflicts", () => {
 });
 
 test("counts image, video, and audio references together", () => {
+  const referenceLines = (imageCount, videoCount, audioCount) => [
+    `素材总数：${imageCount + videoCount + audioCount}/50`,
+    ...Array.from({ length: imageCount }, (_, index) => `@image${index + 1}：图像职责${index + 1}｜作用范围：全片`),
+    ...Array.from({ length: videoCount }, (_, index) => `@video${index + 1}：动作职责${index + 1}｜作用范围：全片`),
+    ...Array.from({ length: audioCount }, (_, index) => `@audio${index + 1}：声音职责${index + 1}｜作用范围：全片`),
+  ].join("\n");
+
   const exactlyFifty = validatePrompt(validPrompt({
-    references: "@image1-@image20；@video1-@video20；@audio1-@audio10",
+    references: referenceLines(20, 20, 10),
   }));
   assert.equal(exactlyFifty.ok, true, JSON.stringify(exactlyFifty.errors));
   assert.equal(exactlyFifty.facts.assets, 50);
 
   const fiftyOne = validatePrompt(validPrompt({
-    references: "@image1-@image20；@video1-@video20；@audio1-@audio11",
+    references: referenceLines(20, 20, 11),
   }));
   assert(fiftyOne.errors.some((error) => error.code === "ASSET_LIMIT"));
   assert.equal(fiftyOne.facts.assets, 51);
 });
 
-test("normalizes Chinese asset aliases and sums declared per-type totals", () => {
-  const aliases = validatePrompt(validPrompt({ references: "@image1 与 @图片1 指向同一素材" }));
-  assert.equal(aliases.facts.assets, 1);
-
-  const declared = validatePrompt(validPrompt({
-    references: "图片数量：20；视频数量：20；音频数量：11",
+test("accepts one canonical placeholder per unique source and merges multiple duties", () => {
+  const result = validatePrompt(validPrompt({
+    references: "素材总数：1/50\n@image1：主角色身份与手持道具材质｜继承：脸部、服装、刀鞘｜不继承：背景人物｜作用范围：身份覆盖全片；刀鞘覆盖2.0-6.0s",
   }));
-  assert.equal(declared.facts.assets, 51);
-  assert(declared.errors.some((error) => error.code === "ASSET_LIMIT"));
+  assert.equal(result.ok, true, JSON.stringify(result.errors));
+  assert.deepEqual(result.facts.assetTokens, ["@image1"]);
+});
+
+test("rejects canonical placeholders repeated inside or outside the reference layer", () => {
+  const outside = validatePrompt(validPrompt().replace(
+    "中段人物推门",
+    "中段人物按@image1的身份推门",
+  ));
+  assert(outside.errors.some((error) => error.code === "ASSET_DUPLICATE_REFERENCE"));
+  assert(outside.errors.some((error) => error.code === "ASSET_REFERENCE_LAYER"));
+
+  const inside = validatePrompt(validPrompt({
+    references: "素材总数：1/50\n@image1：主角色身份｜作用范围：全片\n@image1：服装细节｜作用范围：全片",
+  }));
+  assert(inside.errors.some((error) => error.code === "ASSET_DUPLICATE_REFERENCE"));
+});
+
+test("rejects paths, URLs, source filenames, and non-canonical asset aliases", () => {
+  for (const locator of ["C:\\refs\\hero.png", "hero.png", "https://example.com/hero.png"]) {
+    const result = validatePrompt(validPrompt({
+      references: `素材总数：1/50\n@image1：主角色身份｜来源：${locator}｜作用范围：全片`,
+    }));
+    assert(result.errors.some((error) => error.code === "ASSET_SOURCE_LOCATOR"), locator);
+  }
+
+  for (const token of ["@图片1", "@img-1", "@image_1", "@image01", "@Image1"]) {
+    const result = validatePrompt(validPrompt({
+      references: `素材总数：1/50\n${token}：主角色身份｜作用范围：全片`,
+    }));
+    assert(result.errors.some((error) => error.code === "ASSET_TOKEN_FORMAT"), token);
+  }
+
+  const aliasOutside = validatePrompt(validPrompt().replace(
+    "中段人物推门",
+    "中段人物按@图片1的身份推门",
+  ));
+  assert(aliasOutside.errors.some((error) => error.code === "ASSET_TOKEN_FORMAT"));
+});
+
+test("rejects ranges, gaps, out-of-order numbering, and count mismatches", () => {
+  const cases = [
+    ["素材总数：2/50\n@image1-@image2：两张角色图", "ASSET_RANGE"],
+    ["素材总数：2/50\n@image1：角色\n@image3：场景", "ASSET_NUMBERING"],
+    ["素材总数：2/50\n@image2：场景\n@image1：角色", "ASSET_NUMBERING"],
+    ["素材总数：2/50\n@image1：角色", "ASSET_COUNT_MISMATCH"],
+    ["@image1：角色", "ASSET_COUNT_DECLARATION"],
+    ["素材总数：1/50\n素材总数：1/50\n@image1：角色", "ASSET_COUNT_DECLARATION"],
+  ];
+  for (const [references, code] of cases) {
+    const result = validatePrompt(validPrompt({ references }));
+    assert(result.errors.some((error) => error.code === code), `${code}: ${JSON.stringify(result.errors)}`);
+  }
+});
+
+test("accepts a segment with no reference assets", () => {
+  const result = validatePrompt(validPrompt({ references: "素材总数：0/50\n无参考素材。" }));
+  assert.equal(result.ok, true, JSON.stringify(result.errors));
+  assert.equal(result.facts.assets, 0);
 });
 
 test("rejects both opening and closing brace imbalance", () => {

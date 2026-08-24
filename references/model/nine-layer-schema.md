@@ -70,7 +70,8 @@ Do not add another formal layer. The last layer is model-facing instruction, not
 
 【参考图权重】
 素材总数：{N}/50
-{素材ID}：{定义对象或职责}｜继承：{具体特征}｜不继承：{冲突内容}｜作用范围：{镜头/时段}
+@image1：{定义对象或职责}｜继承：{具体特征}｜不继承：{冲突内容}｜作用范围：{镜头/时段}
+{其余素材按类型分别连续编号为 @imageN / @videoN / @audioN；每个占位符仅写这一处}
 {“权重”使用主身份/局部特征/动作/空间/声音等语义职责；不编造数字权重}
 
 【执行约束】
@@ -90,4 +91,7 @@ Do not add another formal layer. The last layer is model-facing instruction, not
 - For an independent opening or ending, state that condition explicitly instead of pretending there is an adjacent segment.
 - In `【风险预判】`, translate the active risk into a desired visible state. Do not explain internal reasoning.
 - In `【参考图权重】`, “weight” means responsibility and priority unless an actual platform field is provided by the user.
+- Deduplicate sources before assigning contiguous, type-specific placeholders in first-use order: `@imageN`, `@videoN`, and `@audioN`, each sequence starting at 1.
+- Print each placeholder exactly once in the formal prompt, as the leading token of its one `【参考图权重】` line. Merge all duties and time ranges there; use semantic entity IDs everywhere else.
+- Never expose an asset path, filename, URL, upload label, or platform-native source ID in the formal prompt.
 - In `【执行约束】`, write only instructions the generation model should obey. No evaluation language belongs there.
