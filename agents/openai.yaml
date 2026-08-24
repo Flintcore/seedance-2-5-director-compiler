@@ -1,0 +1,4 @@
+interface:
+  display_name: "Seedance 2.5 导演编译器"
+  short_description: "影视导演知识驱动的专业分镜设计与九层中文提示词编译器"
+  default_prompt: "使用 $seedance-2-5-director-compiler 将剧本设计成专业分镜，并编译为 Seedance 2.5 九层中文提示词。"

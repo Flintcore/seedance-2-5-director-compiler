@@ -1,0 +1,63 @@
+schema_version: 1
+generated_at: "2026-08-24T02:36:47.544Z"
+source:
+  skill: "seedance-agent-2-5"
+  local_path: "C:/Users/ASUS/.codex/skills/seedance-agent-2-5"
+  git_commit: "2282bbcf1fe7e42f6e6fb2e1ad4666b77dd87bf5"
+  matched_content_files: 228
+  matched_content_bytes: 6462307
+  aggregate_sha256: "f3d8272c7e5ac64804dc68ec1d52cdf5300badcf06235f1a5e12c82a14f1f592"
+action_fusion_source:
+  skill: "seedance-2-5-prompt-optimizer-action-fusion"
+  local_path: "C:/Users/ASUS/.codex/skills/seedance-2-5-prompt-optimizer-action-fusion"
+  evidence:
+    - path: "SKILL.md"
+      sha256: "261304C7FDE3D684C5E912DCE00D132AC20CD78A495F97ECFD05B37428AE1C1D"
+    - path: "references/03_九层提示词模板.md"
+      sha256: "0E25D895A7D1E71D99BD9DD9E8A9A2EFCB1E5083A919A9701D0E112C86BA3BC4"
+    - path: "references/10_动作场景与打戏母机.md"
+      sha256: "C16907960917F586304DB51953221906B048742BAF72BBE3DD09AAACEB2548BB"
+target:
+  skill: "seedance-2-5-director-compiler"
+  content_files: 228
+  content_bytes: 4471403
+  aggregate_sha256: "9e8481638e9987f98ef4eec3656ddf2eb38e959d626ceea8045fa88ddc2989a8"
+retained:
+  cinema_knowledge_files: 44
+  master_methodology_files: 67
+  master_work_analysis_files: 117
+confirmed_platform_contract:
+  authority: user_confirmed_L1
+  segment_duration_seconds:
+    minimum: 4
+    maximum: 30
+  maximum_total_reference_assets: 50
+  stability_zone_seconds:
+    opening: 0.5
+    closing: 0.5
+  dialogue_syntax: "角色ID说{逐字台词}"
+  narration_syntax: "旁白{逐字旁白}"
+sanitation:
+  changed_cinema_files: 44
+  changed_master_files: 184
+  sections_removed: 404
+  sections_replaced: 3
+  headings_renamed: 15
+  individual_lines_removed: 3566
+  bytes_before: 6462307
+  bytes_after: 4756179
+  policy:
+    - "Retain cinematography, blocking, performance, editing, sound, action aesthetics, sources, and master-work analysis."
+    - "Remove legacy prompt templates, creed mappings, reviewer gates, self-check output, maintenance chatter, and hard output quotas."
+    - "Keep platform syntax and capability evidence outside the cinema and masters corpora."
+excluded_runtime_mechanisms:
+  - legacy_multi_agent_role_spawning
+  - legacy_two_layer_prompt_assembly
+  - legacy_2_0_output_templates
+  - project_state_ledgers_and_automatic_writes
+  - delivery_bundle_and_log_generation
+  - reviewer_score_and_self_check_loops
+excluded_source_files:
+  - "references/内容安全参考库.md"
+  - "references/提示词防污染案例库.md"
+  - "references/masters/README.md"

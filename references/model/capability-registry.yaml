@@ -1,0 +1,36 @@
+schema_version: 1
+model_family: Seedance 2.5
+authority: user_confirmed
+scope: compiler_domain
+provenance:
+  seed_material: action-fusion capability evidence and workflow notes
+  resolution: user-confirmed contracts supersede uncertainty in the seed material
+  runtime_dependency: none
+
+hard_contracts:
+  segment_duration_seconds:
+    minimum: 4
+    maximum: 30
+    applies_to: one_generated_segment
+
+  reference_assets:
+    maximum_total: 50
+    counting_rule: image_video_audio_combined
+    applies_to: one_generated_segment
+
+  stability_zones_seconds:
+    head: 0.5
+    tail: 0.5
+    purpose: reproducible_entry_and_exit_state
+
+  exact_speech_syntax:
+    onscreen_or_offscreen_character: '角色ID说{逐字台词}'
+    narration: '旁白{逐字旁白}'
+    brace_content: exact_spoken_text_only
+
+unknown_field_policy:
+  - Do not infer numeric reference weights.
+  - Do not infer token or character limits.
+  - Do not infer camera-control parameters.
+  - Do not infer a separate negative-prompt field.
+  - Do not infer switches, guarantees, or capabilities absent from this registry.
