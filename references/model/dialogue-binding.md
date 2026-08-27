@@ -28,12 +28,12 @@ dialogue_line:
   post_line_reaction:
 ```
 
-Then compile it into the relevant `【时间线 卡{时长}秒】` block and `【声音设计】`.
+Then compile it into the relevant shot paragraph and, when useful, the shared `光影色彩风格` row's sound-base text.
 
 ## On-Screen Speech
 
 ```text
-6.0-8.5s，角色A位于画面左侧，抬眼看向角色B，短暂吸气后开口；角色A说{门没有锁，是我们一直没推。} 只有角色A的嘴部自然同步。角色B闭口聆听，台词结束后才转向门。
+6.0-8.5s，父亲位于画面左侧，抬眼看向女儿，短暂吸气后开口；父亲说{门没有锁，是我们一直没推。} 只有父亲的嘴部自然同步。女儿闭口聆听，台词结束后才转向门。
 ```
 
 - One brace block has one speaker ID and one time window.
@@ -51,7 +51,7 @@ Then compile it into the relevant `【时间线 卡{时长}秒】` block and `�
 For an off-screen character, retain the character ID:
 
 ```text
-角色A的声音来自门外，不绑定画内人物嘴部；角色A说{把灯关掉。}
+父亲的声音来自门外，不绑定画内人物嘴部；父亲说{把灯关掉。}
 ```
 
 A device voice names the device as spatial source and leaves all character mouths unbound.
@@ -61,10 +61,10 @@ A device voice names the device as spatial source and leaves all character mouth
 Bind each voice asset to one declared role and responsibility:
 
 ```text
-@audio1：定义角色A的声音｜继承：音色、语速、语气与呼吸｜不继承：原素材台词、背景人声、音乐、画面人物或环境｜作用范围：角色A全部台词
+@audio1：定义父亲的声音｜继承：音色、语速、语气与呼吸｜不继承：原素材台词、背景人声、音乐、画面人物或环境｜作用范围：父亲全部台词
 ```
 
-This canonical placeholder appears only on that single `【参考图权重】` line. In the timeline and sound layer, refer to `角色A` or `角色A声源` without repeating `@audio1`.
+This canonical placeholder appears only on the single `素材绑定` row in `【通用约束栏 · 本 segment 共享】`. In shot paragraphs, refer to `父亲` or `父亲声源` without repeating `@audio1`.
 
 An image defines appearance, a motion reference defines approved movement, and an audio reference defines approved sound qualities. None of them silently creates another speaking character.
 

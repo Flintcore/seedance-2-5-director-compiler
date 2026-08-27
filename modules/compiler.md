@@ -1,28 +1,26 @@
-# Nine-Layer Compiler
+# Native Shot Prompt Compiler
 
-The compiler translates a locked L1 director design into the canonical Seedance 2.5 prompt. It is a semantic-preserving compiler, not a second director.
+The compiler translates a locked L1 director design into a self-contained Seedance 2.5 shot prompt. It preserves the director's choices and writes them in the readable format used by `seedance-agent-2-5`; it is not a second director.
 
-Read `references/model/INDEX.md`, then load only the issue-specific model reference named there. For every full prompt, read `references/model/nine-layer-schema.md` and `references/model/capability-registry.yaml`.
+Read `references/model/INDEX.md`, then load only the model references needed for the active issue. For every full prompt, read `references/model/nine-layer-schema.md` and `references/model/capability-registry.yaml`. The schema filename is retained for compatibility; its contents define the native shot format.
 
 ## Input Contract
 
 Accept any combination of:
 
-- approved L1 director design or an existing locked shot list;
+- an approved L1 director design or an existing locked shot list;
 - user locks, exact story facts, exact dialogue, and world rules;
-- segment duration and neighboring segment states;
+- the current segment duration and, when relevant, its physical boundary state;
 - asset source locators, media types, and the intended responsibility of each asset;
 - an internal action contract from `action-design.md`.
 
-Treat user locks and approved L1 as immutable creative input. The compiler may make relationships explicit, assign IDs consistently, divide time, and compress redundant wording. It may not add, remove, reorder, restage, or reinterpret shots, performances, actions, outcomes, or aesthetics.
-
-When a missing operational value is essential, derive the least-committal value from the locked spatial and temporal facts. Keep any remaining creative uncertainty outside the formal prompt as one compact assumption; never hide a new creative choice inside compilation.
+Treat user locks and approved L1 as immutable creative input. The compiler may make relationships explicit, assign stable semantic IDs, divide time, and remove duplicated wording. It must preserve shot order, performance, action, outcome, and aesthetics. A missing operational value is filled with the least-committal choice supported by the locked facts; unresolved creative uncertainty stays outside the formal prompt.
 
 ## Compile Pipeline
 
 ### 1. Freeze the Source
 
-Create an in-memory source ledger:
+Create a small in-memory ledger:
 
 ```yaml
 source_ledger:
@@ -37,111 +35,90 @@ source_ledger:
   assets: []
 ```
 
-No runtime log or project file is required for an ordinary single segment.
-
-For each asset, keep its source locator and output placeholder separate. A local path, filename, URL, upload label, or platform-native ID may identify the source inside this ledger, but the formal prompt receives only the canonical placeholder.
+An ordinary single segment needs no project file, runtime log, or read-history artifact. Keep source locators internal and keep their output placeholders separate.
 
 ### 2. Normalize IDs and States
 
-- Give every speaking character, continuity-critical character, prop, device, and off-screen source one stable ID.
-- Distinguish one physical body from reflections, screens, shadows, memories, or other non-body appearances.
-- Record position, facing, gaze, contact, possession, condition, visibility, and motion only where they affect this segment.
+- Give speaking characters, continuity-critical characters, props, devices, and off-screen sources stable semantic IDs based on the user's story names or natural scene roles. Do not emit `ROLE_A`, `ROLE_B`, `角色A`, or similar bookkeeping labels when the story provides a usable name such as `父亲`, `女儿`, `店员`, or `蒙面人`.
+- Distinguish one physical body from a reflection, screen image, shadow, memory, or other non-body appearance.
+- Record position, facing, gaze, contact, possession, condition, visibility, and motion only when they affect this segment.
 - Separate world direction from screen direction.
-- Preserve exact source locators internally. Deduplicate identical sources, then assign canonical output placeholders by media type and first-use order: `@image1...`, `@video1...`, and `@audio1...`.
-- Do not copy a source path, filename, URL, upload label, or platform-native ID into the formal prompt.
+- Deduplicate identical sources, then number their placeholders by media type and first appearance: `@image1...`, `@video1...`, `@audio1...`.
+- Keep paths, filenames, URLs, upload labels, and platform-native IDs out of the formal prompt.
 
-### 3. Enforce the Confirmed Platform Contract
+### 3. Apply Confirmed Facts
 
-Use only the hard facts in `references/model/capability-registry.yaml`:
+Use only the confirmed facts in `references/model/capability-registry.yaml`:
 
-- segment duration is `4-30s`;
-- all reference assets combined are `<=50`;
+- one generated segment is `4-30s`;
+- image, video, and audio references together are at most `50`;
 - the first and last `0.5s` are stability zones;
-- dialogue syntax is `角色ID说{逐字台词}` and narration syntax is `旁白{逐字旁白}`.
+- exact dialogue is `角色ID说{逐字台词}` and narration is `旁白{逐字旁白}`.
 
-Do not manufacture a numeric weight, token limit, camera parameter, negative-prompt field, platform switch, or other capability.
+Do not invent platform weights, token or character budgets, camera-control switches, separate negative fields, or guarantees.
 
-### 4. Allocate Time
+### 4. Build the Segment Prompt
 
-- Cover the entire segment from `0.0s` to its declared end with ordered, non-overlapping blocks.
-- Use `0.0-0.5s` to establish a reproducible entry state and the last `0.5s` to settle into the declared exit state.
-- Give each block one dominant visual event or state change.
-- Place dialogue, contact, reaction, and sound at the time they occur.
-- Preserve L1 rhythm. Timing clarifies the design; it does not redesign it.
+Use the native output order in `references/model/nine-layer-schema.md`:
 
-For action modes, inject the action contract's causal beats. For dialogue, apply `references/model/dialogue-binding.md`. For sequences, apply `references/model/continuity.md`.
+1. `【通用约束栏 · 本 segment 共享】` with only the useful current-segment rows, led by `素材绑定` and `光影色彩风格`; add separate `角色外观` or `场景外观` rows only when the segment needs them.
+2. `【本段戏剧任务】正文` with the core observable change for this segment on the same line as its heading.
+3. `【本段情节】正文` with a plain-language start-to-end summary of this segment only, also on the heading line.
+4. Ordered `【镜头N】| M:SS-M:SS` blocks.
+5. `【收尾约束】正文` with the final stable state and any confirmed end constraints on the same line.
 
-### 5. Compile the Nine Layers
+The prompt is self-contained at the segment level. Do not print other segment names, cross-segment IDs, internal lock names, review notes, or process commentary. Continuity is expressed as visible opening and closing states, not as a separate transition card.
 
-Emit the exact order and headings defined in `references/model/nine-layer-schema.md`:
+### 5. Write Each Shot
 
-1. `【头锁区·全片统一】`
-2. `【元信息】`
-3. `【风险预判】`
-4. `【衔接入】`
-5. `【时间线 卡{时长}秒】`
-6. `【衔接出】`
-7. `【声音设计】`
-8. `【参考图权重】`
-9. `【执行约束】`
+For every shot, write the original native block:
 
-Each fact has one primary home. Repeat it only when the model needs the same fact at an exact time or continuity boundary. Asset placeholders are stricter: each appears once only, in `【参考图权重】`; timed use is expressed in that line's scope and by semantic entity IDs in the timeline.
+1. an optional cut declaration and one short technical declaration containing shot size, lens, tilt, and camera position;
+2. one natural-language paragraph in the order the viewer perceives it:
+   - establish foreground, middle ground, background, and left/right placement;
+   - show the action from initiation through process to result, with performance, reaction, and information change;
+   - place exact dialogue or narration and synchronized sound at the moment they occur;
+   - write camera movement and focus handoff when they happen, then land the ending composition and focus.
 
-### 6. Compress Without Semantic Loss
+The common camera/texture baseline is stated once in the `光影色彩风格` row; repeat it in a shot only when it changes. Do not turn the technical declaration into a long parameter list.
 
-When the prompt is dense, preserve in this order:
+Action contracts are woven into the shot paragraph: intention -> path -> contact -> force/inertia -> feedback -> resulting state. Do not add an action appendix or a second prompt format.
 
-1. user locks, exact dialogue, story result, and world rules;
-2. character identity, instance count, speaking source, and critical props;
-3. entry/exit state, spatial causality, and action continuity;
-4. shot, performance, and timing decisions locked by L1;
-5. reference responsibilities and active execution constraints;
-6. decorative modifiers already marked flexible by L1.
+### 6. Keep the Prompt Lean
 
-Delete duplication and synonyms before deleting information. Never replace concrete states with praise words such as “电影感”“高级感” or “震撼”.
-
-## Layer Responsibilities
-
-- `【头锁区·全片统一】`: global identity, world, medium, approved visual grammar, viewpoint, and exact immutable facts.
-- `【元信息】`: segment ID, duration, dramatic task, audience landing, action mode, and format facts actually supplied.
-- `【风险预判】`: current high-risk failure translated into a positive target state; it is an instruction layer, not an audit.
-- `【衔接入】`: reproducible first `0.5s` state, including incoming action phase and sound bridge.
-- `【时间线 卡{时长}秒】`: executable shots and beats, with time, framing from L1, staging, performance, action physics, dialogue, and synchronized visible results. Replace `{时长}` with the actual segment duration.
-- `【衔接出】`: reproducible final `0.5s` state and next-segment handoff.
-- `【声音设计】`: environment, effects, dialogue/narration sources, music policy if supplied, spatial origin, timing, and carryover.
-- `【参考图权重】`: asset responsibility map. The heading is fixed; use semantic priority and scope, not invented numeric weights.
-- `【执行约束】`: concise model-facing imperatives needed to preserve this segment's identity, count, causality, continuity, dialogue source, and active high-risk state.
+Remove repeated adjectives, duplicated scene facts, internal labels, and decorative technical values. Keep every fact that controls identity, count, space, causality, performance, sound, dialogue, or continuity. There is no character-count quota, shot-count quota, mandatory field count, or formal self-check section.
 
 ## Dialogue Compilation
 
-The braces contain spoken text only:
+Braces contain spoken text only:
 
 ```text
-角色A说{门没有锁，是我们一直没推。}
+父亲看向女儿，停一拍后说{门没有锁，是我们一直没推。}
 旁白{那天以后，钟再也没有走过。}
 ```
 
-Place delivery, mouth visibility, emotion, timing, and listener behavior outside the braces. Preserve every character and punctuation mark inside braces unless the user revises the line.
+Put delivery, mouth visibility, emotion, timing, position, sound source, and listener response outside the braces. Preserve every character and punctuation mark inside braces unless the user revises the line. An off-screen line states that its voice is off-screen and does not bind to a visible mouth.
+
+Use `<具体音效>` for a point sound embedded at its moment, and `（背景播放具体音乐）` for music when the project calls for it. Keep continuous ambience in the shared `光影色彩风格` row or in the shot prose where it changes.
 
 ## Asset Compilation
 
-Count image, video, and audio references together. For each referenced asset write:
+All image, video, and audio references count together. Place the references in one natural-language row in the common section:
 
 ```text
-@image1：定义对象或职责｜继承：具体特征｜不继承：冲突内容｜作用范围：镜头/时间段
+─ 素材绑定：@image1=父亲参考图（外观与服装）· @image2=夜街场景图（空间与光色）· @video1=起身动作参考（起身与转身节奏）
 ```
 
-Use these steps before emitting the layer:
+1. Deduplicate the physical sources before numbering.
+2. Number each media type contiguously from 1 in first-use order.
+3. Give each placeholder a semantic name and a short description of what it contributes.
+4. Put every unique placeholder exactly once on the `素材绑定` row; merge its duties and scope there.
+5. In every shot, use the semantic name rather than repeating `@imageN`, `@videoN`, or `@audioN`.
 
-1. Deduplicate repeated mentions of the same physical source.
-2. Assign separate contiguous sequences for images, videos, and audio, all starting at 1.
-3. Merge every duty and time range for one source into its one placeholder line.
-4. Emit that placeholder exactly once in the whole formal prompt and never repeat it in the head lock, timeline, sound, or execution layers.
+When there are no reference assets, omit the `素材绑定` row entirely. Do not print an empty row or a sentence saying that the segment has no assets.
 
-The source locator remains internal and is never used as the display token. One asset defines only its stated responsibility. A reference image does not create an extra body or prop. A motion reference does not replace character identity. An audio reference does not import background voices, music, or picture content unless explicitly locked.
+A reference image defines only its declared object, a motion reference defines only its declared movement or camera relation, and a voice reference defines only its declared sound qualities. None silently adds a person, prop, voice, or setting.
 
 ## Output Discipline
 
-For a full compilation, output one complete nine-layer Chinese prompt per segment and end at `【执行约束】`. Keep process narration, evaluation material, reading history, and capability commentary outside the deliverable.
-
-For `OPTIMIZE`, preserve the locked creative design and return the complete revised prompt unless the user requests only a replacement block. For `DIAGNOSE`, follow `modules/diagnosis.md`.
+For a full compilation, output one complete native shot prompt per segment inside its own fenced code block so line breaks remain copyable, and end the prompt at `【收尾约束】`. Keep segment-wide exclusions and tail-state constraints in that final block rather than scattering them across shots. Do not append a self-check, score, report, read log, capability essay, or rationale. For `OPTIMIZE`, preserve the locked shot design and return the complete revised prompt unless the user requests one replacement block. For `DIAGNOSE`, follow `modules/diagnosis.md` and return the smallest affected prompt block.

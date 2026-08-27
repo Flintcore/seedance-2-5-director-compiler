@@ -24,7 +24,7 @@ hard_contracts:
     audio: "@audioN"
     numbering: contiguous_per_type_from_1_in_first_use_order
     occurrence: once_per_unique_source
-    layer: "参考图权重"
+    location: "通用约束栏 > 素材绑定"
     source_locator_output: forbidden
 
   stability_zones_seconds:
@@ -36,6 +36,24 @@ hard_contracts:
     onscreen_or_offscreen_character: '角色ID说{逐字台词}'
     narration: '旁白{逐字旁白}'
     brace_content: exact_spoken_text_only
+
+output_format:
+  style: native_shot_prompt
+  order:
+    - "通用约束栏 · 本 segment 共享"
+    - "本段戏剧任务"
+    - "本段情节"
+    - "镜头 blocks"
+    - "收尾约束"
+  inline_heading_body:
+    - "本段戏剧任务"
+    - "本段情节"
+    - "收尾约束"
+  shot_heading: "【镜头N】| M:SS-M:SS"
+  asset_row: "素材绑定（有素材时才输出）"
+  optional_common_rows: true
+  self_check_section: forbidden
+  character_limit: unknown
 
 unknown_field_policy:
   - Do not infer numeric reference weights.

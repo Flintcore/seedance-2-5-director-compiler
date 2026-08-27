@@ -3,222 +3,163 @@ import test from "node:test";
 
 import { validatePrompt } from "../scripts/validate-prompt.mjs";
 
-function validPrompt({
-  duration = 8,
-  timelineDuration = duration,
-  references = "素材总数：1/50\n@image1：主角色身份｜继承：脸部与服装｜不继承：背景｜作用范围：全片",
-  dialogue = "角色说{我回来了。}",
-} = {}) {
-  return `【头锁区·全片统一】
-写实电影质感。
-【元信息】
-片段时长：${duration}秒
-【风险预判】
-空间方向清晰。
-【衔接入】
-0.0-0.5秒稳定入场：人物站在门外。
-【时间线 卡${timelineDuration}秒】
-0.0-0.5秒保持起始状态；中段人物推门，${dialogue}；末0.5秒保持落幅。
-【衔接出】
-${timelineDuration - 0.5}-${timelineDuration}秒稳定出场：人物停在门内。
-【声音设计】
-门轴轻响，台词绑定说话人。
-【参考图权重】
-${references}仅参考已声明职责。
-【执行约束】
-保持身份、空间、动作和声音连续。`;
+function shot(number, start, end, body) {
+  return [
+    "【镜头" + number + "】| " + start + "-" + end,
+    "中景，50mm镜头，平视，机位位于主角正前方。",
+    body,
+  ].join("\n");
 }
 
-test("accepts exact nine-layer headings at both duration boundaries", () => {
+function validPrompt(options = {}) {
+  const duration = options.duration ?? 8;
+  const references = Object.hasOwn(options, "references")
+    ? options.references
+    : "─ 素材绑定：@image1=主角定妆照；@video1=街道运动参考";
+  const commonRows = [];
+  if (references) commonRows.push(references);
+  commonRows.push(options.style ?? "─ 光影色彩风格：真实数码摄影机质感，冷色阴影与暖色街灯形成对照；保留自然运动模糊、雨声和远处车流。");
+  commonRows.push("─ 角色外观：主角穿深色外套。");
+  commonRows.push("─ 场景外观：湿润街道，空间关系连续。");
+  const shots = options.shots ?? [
+    shot(1, "0:00", "3", "开头0.5秒保持起始状态，主角抬眼看向街口，摄影机缓慢靠近。"),
+    shot(2, "3", String(duration), "主角迈入雨幕并停在画面中心，最后0.5秒保持结束状态。"),
+  ];
+  return [
+    "【通用约束栏 · 本 segment 共享】",
+    ...commonRows,
+    "",
+    "【本段戏剧任务】让主角在犹豫后作出不可逆的选择，并把观众注意力引向街口。",
+    "",
+    "【本段情节】主角发现街口的信号后穿过雨幕，停在新的位置。",
+    "",
+    shots.join("\n\n"),
+    "",
+    "【收尾约束】最后0.5秒保持主角停定、视线朝向街口的结束状态，声音自然延续。",
+  ].join("\n");
+}
+
+function codes(result) {
+  return result.errors.map((error) => error.code);
+}
+
+test("accepts native prompts at the 4s and 30s boundaries", () => {
   for (const duration of [4, 30]) {
-    const result = validatePrompt(validPrompt({ duration }));
+    const result = validatePrompt(validPrompt({
+      duration,
+      shots: [shot(1, "0:00", String(duration), "开头0.5秒保持起始状态，人物完成动作，最后0.5秒保持结束状态。")],
+    }));
     assert.equal(result.ok, true, JSON.stringify(result.errors));
     assert.equal(result.facts.duration, duration);
-    assert.deepEqual(result.facts.headings, [
-      "头锁区·全片统一",
-      "元信息",
-      "风险预判",
-      "衔接入",
-      "时间线",
-      "衔接出",
-      "声音设计",
-      "参考图权重",
-      "执行约束",
-    ]);
+    assert.deepEqual(result.facts.headings, ["通用约束栏 · 本 segment 共享", "本段戏剧任务", "本段情节", "收尾约束"]);
   }
 });
 
-test("requires the exact dynamic timeline heading instead of metadata fallback", () => {
-  for (const malformed of ["【时间线】", "【时间线 卡 8 秒】", "【时间线 8秒】"]) {
-    const prompt = validPrompt().replace("【时间线 卡8秒】", malformed);
-    const result = validatePrompt(prompt);
-    assert.equal(result.ok, false);
-    assert(result.errors.some((error) => error.code === "INVALID_LAYER_HEADING"));
-    assert(result.errors.some((error) => error.code === "DURATION_MISSING"));
-  }
+test("requires the single added dramatic-task section and rejects legacy headings", () => {
+  const missing = validPrompt().replace("【本段戏剧任务】", "【段落说明】");
+  const missingResult = validatePrompt(missing);
+  assert.ok(codes(missingResult).includes("DRAMA_TASK_MISSING"));
+  assert.ok(codes(missingResult).includes("UNEXPECTED_SECTION"));
+
+  const legacy = validPrompt().replace("【本段戏剧任务】", "【头锁区·全片统一】");
+  const legacyResult = validatePrompt(legacy);
+  assert.ok(codes(legacyResult).includes("LEGACY_SECTION"));
+  assert.ok(codes(legacyResult).includes("DRAMA_TASK_MISSING"));
+
+  const retired = validPrompt().replace("【本段戏剧任务】", "【光影风格卡】旧容器\n\n【本段戏剧任务】");
+  assert.ok(codes(validatePrompt(retired)).includes("LEGACY_SECTION"));
+
+  const splitStory = validPrompt().replace("【本段情节】", "【本段情节】\n");
+  assert.ok(codes(validatePrompt(splitStory)).includes("STORY_INLINE"));
 });
 
-test("accepts numeric .0 variants and s units in both stability zones", () => {
-  const prompt = validPrompt().replace(
-    "0.0-0.5秒稳定入场",
-    "0.0s-0.5s稳定入场",
-  ).replace(
-    "7.5-8秒稳定出场",
-    "7.5s-8.0s稳定出场",
-  );
-  const result = validatePrompt(prompt);
-  assert.equal(result.ok, true, JSON.stringify(result.errors));
-});
-
-test("requires the entry stability range inside the entry layer", () => {
-  const prompt = validPrompt().replace(
-    "0.0-0.5秒稳定入场：人物站在门外。",
-    "人物站在门外。",
-  );
-  const result = validatePrompt(prompt);
-  assert(result.errors.some((error) => error.code === "ENTRY_STABILITY_ZONE"));
-});
-
-test("rejects an incorrect final stability range", () => {
-  const prompt = validPrompt().replace("7.5-8秒稳定出场", "7.0-8.0秒稳定出场");
-  const result = validatePrompt(prompt);
-  assert(result.errors.some((error) => error.code === "EXIT_STABILITY_ZONE"));
-});
-
-test("requires the final stability range inside the exit layer", () => {
-  const prompt = validPrompt().replace(
-    "7.5-8秒稳定出场：人物停在门内。",
-    "人物停在门内。",
-  );
-  const result = validatePrompt(prompt);
-  assert(result.errors.some((error) => error.code === "EXIT_STABILITY_ZONE"));
-});
-
-test("rejects shortened, additional, duplicated, and reordered layer headings", () => {
-  const prompts = [
-    validPrompt().replace("【头锁区·全片统一】", "【头锁】"),
-    `${validPrompt()}\n【附加说明】\n无。`,
-    validPrompt().replace("【衔接出】", "【衔接入】\n重复。\n【衔接出】"),
-    validPrompt().replace("【风险预判】\n空间方向清晰。\n【衔接入】", "【衔接入】\n人物站在门外。\n【风险预判】"),
-  ];
-  for (const prompt of prompts) {
-    const result = validatePrompt(prompt);
-    assert.equal(result.ok, false);
-    assert(result.errors.some((error) => ["INVALID_LAYER_HEADING", "NINE_LAYER_ORDER"].includes(error.code)));
-  }
-});
-
-test("rejects durations outside 4-30 seconds and metadata conflicts", () => {
-  for (const duration of [3.99, 30.01]) {
-    const result = validatePrompt(validPrompt({ duration }));
-    assert(result.errors.some((error) => error.code === "DURATION_RANGE"));
-  }
-  const mismatch = validatePrompt(validPrompt({ duration: 9, timelineDuration: 8 }));
-  assert(mismatch.errors.some((error) => error.code === "DURATION_MISMATCH"));
-
-  const localBeatDuration = validatePrompt(validPrompt().replace(
-    "0.0-0.5秒保持起始状态；",
-    "动作时长：1秒\n0.0-0.5秒保持起始状态；",
-  ));
-  assert.equal(localBeatDuration.ok, true, JSON.stringify(localBeatDuration.errors));
-});
-
-test("counts image, video, and audio references together", () => {
-  const referenceLines = (imageCount, videoCount, audioCount) => [
-    `素材总数：${imageCount + videoCount + audioCount}/50`,
-    ...Array.from({ length: imageCount }, (_, index) => `@image${index + 1}：图像职责${index + 1}｜作用范围：全片`),
-    ...Array.from({ length: videoCount }, (_, index) => `@video${index + 1}：动作职责${index + 1}｜作用范围：全片`),
-    ...Array.from({ length: audioCount }, (_, index) => `@audio${index + 1}：声音职责${index + 1}｜作用范围：全片`),
-  ].join("\n");
-
-  const exactlyFifty = validatePrompt(validPrompt({
-    references: referenceLines(20, 20, 10),
-  }));
-  assert.equal(exactlyFifty.ok, true, JSON.stringify(exactlyFifty.errors));
-  assert.equal(exactlyFifty.facts.assets, 50);
-
-  const fiftyOne = validatePrompt(validPrompt({
-    references: referenceLines(20, 20, 11),
-  }));
-  assert(fiftyOne.errors.some((error) => error.code === "ASSET_LIMIT"));
-  assert.equal(fiftyOne.facts.assets, 51);
-});
-
-test("accepts one canonical placeholder per unique source and merges multiple duties", () => {
+test("allows long native prose without character quotas", () => {
+  const longText = "连续动作与空间关系保持清晰。".repeat(1200);
   const result = validatePrompt(validPrompt({
-    references: "素材总数：1/50\n@image1：主角色身份与手持道具材质｜继承：脸部、服装、刀鞘｜不继承：背景人物｜作用范围：身份覆盖全片；刀鞘覆盖2.0-6.0s",
+    style: "─ 光影色彩风格：" + longText,
   }));
   assert.equal(result.ok, true, JSON.stringify(result.errors));
-  assert.deepEqual(result.facts.assetTokens, ["@image1"]);
 });
 
-test("rejects canonical placeholders repeated inside or outside the reference layer", () => {
-  const outside = validatePrompt(validPrompt().replace(
-    "中段人物推门",
-    "中段人物按@image1的身份推门",
-  ));
-  assert(outside.errors.some((error) => error.code === "ASSET_DUPLICATE_REFERENCE"));
-  assert(outside.errors.some((error) => error.code === "ASSET_REFERENCE_LAYER"));
+test("detects shot gaps, overlaps, and duration violations", () => {
+  const gap = validPrompt({
+    shots: [
+      shot(1, "0:00", "2", "开头0.5秒保持起始状态，人物观察街口。"),
+      shot(2, "2.2", "8", "人物向前走，最后0.5秒保持结束状态。"),
+    ],
+  });
+  assert.ok(codes(validatePrompt(gap)).includes("SHOT_TIME_GAP"));
 
-  const inside = validatePrompt(validPrompt({
-    references: "素材总数：1/50\n@image1：主角色身份｜作用范围：全片\n@image1：服装细节｜作用范围：全片",
+  const overlap = validPrompt({
+    shots: [
+      shot(1, "0:00", "3", "开头0.5秒保持起始状态，人物观察街口。"),
+      shot(2, "2", "8", "人物向前走，最后0.5秒保持结束状态。"),
+    ],
+  });
+  assert.ok(codes(validatePrompt(overlap)).includes("SHOT_TIME_OVERLAP"));
+
+  const tooShort = validPrompt({
+    shots: [shot(1, "0:00", "3", "开头0.5秒保持起始状态，最后0.5秒保持结束状态。")],
+  });
+  assert.ok(codes(validatePrompt(tooShort)).includes("DURATION_RANGE"));
+});
+
+test("counts mixed media references together and requires one common reference row", () => {
+  const result = validatePrompt(validPrompt({
+    references: "─ 素材绑定：@image1=人物；@video1=动作；@audio1=环境声",
   }));
-  assert(inside.errors.some((error) => error.code === "ASSET_DUPLICATE_REFERENCE"));
+  assert.equal(result.ok, true, JSON.stringify(result.errors));
+  assert.equal(result.facts.assets, 3);
+  assert.deepEqual(result.facts.assetTokens, ["@image1", "@video1", "@audio1"]);
 });
 
-test("rejects paths, URLs, source filenames, and non-canonical asset aliases", () => {
-  for (const locator of ["C:\\refs\\hero.png", "hero.png", "https://example.com/hero.png"]) {
-    const result = validatePrompt(validPrompt({
-      references: `素材总数：1/50\n@image1：主角色身份｜来源：${locator}｜作用范围：全片`,
-    }));
-    assert(result.errors.some((error) => error.code === "ASSET_SOURCE_LOCATOR"), locator);
-  }
+test("rejects duplicate, misplaced, aliased, ranged, and source-locator references", () => {
+  const duplicate = validPrompt().replace("主角定妆照", "主角定妆照 @image1");
+  assert.ok(codes(validatePrompt(duplicate)).includes("ASSET_DUPLICATE_REFERENCE"));
 
-  for (const token of ["@图片1", "@img-1", "@image_1", "@image01", "@Image1"]) {
-    const result = validatePrompt(validPrompt({
-      references: `素材总数：1/50\n${token}：主角色身份｜作用范围：全片`,
-    }));
-    assert(result.errors.some((error) => error.code === "ASSET_TOKEN_FORMAT"), token);
-  }
+  const misplaced = validPrompt().replace("主角抬眼看向街口", "主角抬眼看向街口并参考@image1");
+  assert.ok(codes(validatePrompt(misplaced)).includes("ASSET_REFERENCE_LOCATION"));
 
-  const aliasOutside = validatePrompt(validPrompt().replace(
-    "中段人物推门",
-    "中段人物按@图片1的身份推门",
-  ));
-  assert(aliasOutside.errors.some((error) => error.code === "ASSET_TOKEN_FORMAT"));
+  const alias = validPrompt().replace("@image1", "@img-1");
+  assert.ok(codes(validatePrompt(alias)).includes("ASSET_TOKEN_FORMAT"));
+
+  const oldLabel = validPrompt().replace("─ 素材绑定：", "─ 素材引用：");
+  assert.ok(codes(validatePrompt(oldLabel)).includes("ASSET_REFERENCE_LOCATION"));
+
+  const range = validPrompt().replace("@image1=主角定妆照；@video1=街道运动参考", "@image1-@image2=人物组");
+  assert.ok(codes(validatePrompt(range)).includes("ASSET_RANGE"));
+
+  const locator = validPrompt().replace("@image1=主角定妆照", "@image1=C:/refs/hero.png");
+  assert.ok(codes(validatePrompt(locator)).includes("ASSET_SOURCE_LOCATOR"));
 });
 
-test("rejects ranges, gaps, out-of-order numbering, and count mismatches", () => {
-  const cases = [
-    ["素材总数：2/50\n@image1-@image2：两张角色图", "ASSET_RANGE"],
-    ["素材总数：2/50\n@image1：角色\n@image3：场景", "ASSET_NUMBERING"],
-    ["素材总数：2/50\n@image2：场景\n@image1：角色", "ASSET_NUMBERING"],
-    ["素材总数：2/50\n@image1：角色", "ASSET_COUNT_MISMATCH"],
-    ["@image1：角色", "ASSET_COUNT_DECLARATION"],
-    ["素材总数：1/50\n素材总数：1/50\n@image1：角色", "ASSET_COUNT_DECLARATION"],
-  ];
-  for (const [references, code] of cases) {
-    const result = validatePrompt(validPrompt({ references }));
-    assert(result.errors.some((error) => error.code === code), `${code}: ${JSON.stringify(result.errors)}`);
-  }
+test("accepts 50 unique references, rejects 51, and does not require a count row", () => {
+  const fifty = Array.from({ length: 50 }, (_, index) => "@image" + (index + 1) + "=素材" + (index + 1)).join("；");
+  const accepted = validatePrompt(validPrompt({ references: "─ 素材绑定：" + fifty }));
+  assert.equal(accepted.ok, true, JSON.stringify(accepted.errors));
+  assert.equal(accepted.facts.assets, 50);
+
+  const fiftyOne = fifty + "；@video1=额外运动参考";
+  const rejected = validatePrompt(validPrompt({ references: "─ 素材绑定：" + fiftyOne }));
+  assert.ok(codes(rejected).includes("ASSET_LIMIT"));
 });
 
-test("accepts a segment with no reference assets", () => {
-  const result = validatePrompt(validPrompt({ references: "素材总数：0/50\n无参考素材。" }));
+test("allows a segment without references", () => {
+  const result = validatePrompt(validPrompt({ references: null }));
   assert.equal(result.ok, true, JSON.stringify(result.errors));
   assert.equal(result.facts.assets, 0);
+  assert.doesNotMatch(validPrompt({ references: null }), /素材绑定|无外部素材/);
 });
 
-test("rejects both opening and closing brace imbalance", () => {
-  for (const dialogue of ["角色说{我回来了。", "角色说我回来了。}"]) {
-    const result = validatePrompt(validPrompt({ dialogue }));
-    assert(result.errors.some((error) => error.code === "BRACE_BALANCE"));
-  }
-});
+test("rejects unbalanced dialogue braces and a self-check section", () => {
+  const braces = validPrompt().replace("主角抬眼看向街口", "主角说{我要走向街口");
+  assert.ok(codes(validatePrompt(braces)).includes("BRACE_BALANCE"));
 
-test("rejects a self-check layer even when all nine prompt layers remain valid", () => {
-  const prompt = `${validPrompt()}\n## 自检\n九层齐全。`;
-  const result = validatePrompt(prompt);
-  assert.equal(result.ok, false);
-  assert(result.errors.some((error) => error.code === "SELF_CHECK_HEADING"));
+  const selfCheck = validPrompt().replace("【收尾约束】", "【自检】\n通过\n\n【收尾约束】");
+  const result = validatePrompt(selfCheck);
+  assert.ok(codes(result).includes("SELF_CHECK_HEADING"));
+  assert.ok(codes(result).includes("LEGACY_SECTION"));
+
+  const titledShot = validPrompt().replace("【镜头1】", "【镜头1：雨中犹豫 · 中景】");
+  assert.ok(codes(validatePrompt(titledShot)).includes("SHOT_HEADING_FORMAT"));
 });

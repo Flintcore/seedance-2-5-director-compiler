@@ -8,8 +8,8 @@ For hard continuity:
 
 ```text
 segment N actual final state
-= segment N 【衔接出】
-= segment N+1 【衔接入】
+= segment N final shot / `【收尾约束】`
+= segment N+1 opening shot
 ```
 
 The outgoing shot and incoming shot may frame the state differently, but the physical state remains equal until an observable transition changes it.
@@ -37,7 +37,7 @@ boundary_state:
 ## Safety Zones
 
 - The first `0.5s` establishes the declared entry state without a continuity reset.
-- The final `0.5s` settles or sustains the declared exit state so the next segment has a reproducible interface.
+- The final `0.5s` settles or sustains the declared ending state so a later segment can reproduce it when needed.
 - A continuing action may remain in motion, but its exact phase, direction, speed, balance, and contact state must be stable enough to reproduce.
 
 ## Transition Types

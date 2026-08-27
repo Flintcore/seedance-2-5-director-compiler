@@ -1,7 +1,7 @@
 $schema: "https://json-schema.org/draft/2020-12/schema"
 $id: "https://local.codex/seedance-2-5-director-compiler/director-ir.schema.yaml"
 title: "Seedance 2.5 Director IR"
-description: "Locked director decisions passed to the nine-layer compiler; no platform syntax lives here."
+description: "Locked director decisions passed to the native shot-prompt compiler; no platform syntax lives here."
 type: object
 additionalProperties: false
 required:

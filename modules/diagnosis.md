@@ -29,7 +29,7 @@ Trace the symptom in this order:
 3. entry state, world/screen position, or continuity interface;
 4. tactical cause, action path, contact, force, or timing;
 5. speaking source, exact text, mouth target, or sound timing;
-6. prompt-layer translation or execution constraint;
+6. prompt translation or end constraint;
 7. optional decoration.
 
 Stop at the first layer that can explain every observed downstream symptom. Do not rewrite later layers independently when correcting the earlier cause will resolve them.
@@ -62,7 +62,7 @@ Return a compact repair card followed by the exact replacement text:
 {complete replacement text ready to paste}
 ```
 
-When the error is structural across the whole prompt, return the complete corrected nine-layer prompt. Otherwise, do not regenerate unaffected layers.
+When the error is structural across the whole prompt, return the complete corrected native shot prompt. Otherwise, do not regenerate unaffected blocks.
 
 The repair card is diagnostic output outside the platform prompt. Keep it limited to symptom, earliest cause, change scope, preserved facts, and replacement text.
 
@@ -81,7 +81,7 @@ Preserve the director's action aesthetics and camera design. A weak impact does 
 When a fault begins at a cut, define one corrected state vector and apply it to both sides:
 
 ```text
-previous 【衔接出】 = current 【衔接入】
+previous segment's visible end state = current segment's visible opening state
 ```
 
 If the user intends a discontinuity or time jump, label that transition and state the new entry condition rather than fabricating an unseen continuous movement.

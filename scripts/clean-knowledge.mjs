@@ -701,7 +701,7 @@ async function writeManifests(skillRoot, report, records) {
     `    audio: ${yaml("@audioN")}`,
     "  numbering: contiguous_per_type_from_1_in_first_use_order",
     "  occurrence: once_per_unique_source",
-    `  formal_layer: ${yaml("参考图权重")}`,
+    `  formal_layer: ${yaml("通用约束栏 > 素材绑定")}`,
     "  source_locator_output: forbidden",
     "sanitation:",
     `  changed_cinema_files: ${sanitation.cinema.changedFiles}`,

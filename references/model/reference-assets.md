@@ -18,10 +18,10 @@ asset:
   instance_effect: none | declared_instance
 ```
 
-Compile as:
+Compile as one natural-language row in `【通用约束栏 · 本 segment 共享】`:
 
 ```text
-@image1：定义对象或职责｜继承：具体特征｜不继承：冲突内容｜作用范围：镜头/时段
+─ 素材绑定：@image1=定义对象或职责（内容描述）· @video1=动作职责（内容描述）
 ```
 
 ## Canonical Placeholder Contract
@@ -30,8 +30,8 @@ Compile as:
 - Number each media type independently in first-use order, starting at 1: `@image1`, `@image2`; `@video1`, `@video2`; `@audio1`, `@audio2`.
 - Use lowercase English type names, no hyphen, underscore, space, Chinese alias, original filename, or path.
 - Keep paths, filenames, URLs, upload labels, and platform-native IDs only in the internal source ledger.
-- Emit each canonical placeholder exactly once in the entire formal prompt, only as the leading token of its line in `【参考图权重】`.
-- Merge multiple duties and disjoint time ranges for the same source into that one line. Elsewhere use the bound semantic ID, such as `角色A`, `场景A`, `动作参考A`, or `声源A`, without another `@`.
+- Emit each canonical placeholder exactly once in the entire formal prompt, on the `素材绑定` row in `【通用约束栏 · 本 segment 共享】`.
+- Merge multiple duties and disjoint time ranges for the same source into that row. Elsewhere use the story's natural name, such as `父亲`, `旧车站`, `起身动作`, or `父亲声源`, without another `@`.
 
 The placeholder is deliberately a convenient replacement token. It does not claim that the destination platform has already bound the asset.
 
@@ -47,7 +47,7 @@ If one asset genuinely owns multiple duties, list every duty and scope on its si
 
 ## Semantic Weight
 
-The formal layer remains named `【参考图权重】`, but no numeric weight is assumed. Express priority through responsibilities such as:
+No numeric weight is assumed. Express priority through responsibilities such as:
 
 - primary identity;
 - required costume/prop detail;

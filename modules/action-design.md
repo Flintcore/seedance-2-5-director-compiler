@@ -33,7 +33,7 @@ Use for sustained combat, weapons, 1vN, heavy weapons, powers, or dense projecti
 
 ## Internal Action Contract
 
-Keep this structure internal; compile its content into `【时间线 卡{时长}秒】`, `【衔接入】`, `【衔接出】`, and `【声音设计】` rather than printing a second prompt format.
+Keep this structure internal. Compile its content into the relevant native shot paragraphs, the shared `光影色彩风格` row when a sound base matters, and the final `【收尾约束】`; do not print a second prompt format.
 
 ```yaml
 action_contract:
@@ -168,10 +168,10 @@ Do not reset a stance, grip, wound, broken object, opponent position, or momentu
 
 Return only the completed internal action contract to the compiler. The compiler places:
 
-- start state and incoming momentum in `【衔接入】`;
-- causal beats, paths, contact, force, inertia, and feedback in `【时间线 卡{时长}秒】`;
-- exact action sounds at their corresponding time windows in `【声音设计】`;
-- end state and outgoing momentum in `【衔接出】`;
-- only active model-facing stability instructions in `【执行约束】`.
+- start state and incoming momentum in the opening of the first shot;
+- causal beats, paths, contact, force, inertia, and feedback in the relevant shot paragraphs;
+- exact action sounds at their corresponding moments in the shot prose or sound-base row;
+- end state and outgoing momentum in the final shot and `【收尾约束】`;
+- only active generation constraints in `【收尾约束】`.
 
-End the formal output at the nine-layer prompt; the action contract remains internal.
+Keep the action contract internal and end the formal output at `【收尾约束】`.

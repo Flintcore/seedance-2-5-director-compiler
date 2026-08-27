@@ -44,7 +44,7 @@ confirmed_output_contract:
     audio: "@audioN"
   numbering: contiguous_per_type_from_1_in_first_use_order
   occurrence: once_per_unique_source
-  formal_layer: "参考图权重"
+  formal_layer: "通用约束栏 > 素材绑定"
   source_locator_output: forbidden
 sanitation:
   changed_cinema_files: 44
