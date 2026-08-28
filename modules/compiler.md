@@ -62,7 +62,7 @@ Do not invent platform weights, token or character budgets, camera-control switc
 Use the native output order in `references/model/nine-layer-schema.md`:
 
 1. `【通用约束栏 · 本 segment 共享】` with only the useful current-segment rows, led by `素材绑定` and `光影色彩风格`; add separate `角色外观` or `场景外观` rows only when the segment needs them.
-2. `【本段戏剧任务】正文` with the core observable change for this segment on the same line as its heading.
+2. `【本段戏剧任务】正文` on the same line as its heading. Compile the L1 `objective/turn/audience_landing` into one causal sentence: the character's original situation becomes a new situation through an explicit action or turn, followed by the relationship, emotional, or next-action result the audience should understand or feel at the end.
 3. `【本段情节】正文` with a plain-language start-to-end summary of this segment only, also on the heading line.
 4. Ordered `【镜头N】| M:SS-M:SS` blocks.
 5. `【收尾约束】正文` with the final stable state and any confirmed end constraints on the same line.

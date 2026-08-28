@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, multi-clip continuity, dialogue binding, action scenes, prompt optimization, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.1.3"
+  version: "0.1.4"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -48,6 +48,8 @@ Formal prompt references follow one canonical output contract:
 - Keep source paths, filenames, URLs, upload labels, and platform-native IDs in the internal source ledger. Never print them in the formal prompt.
 - Print each canonical `@` placeholder exactly once in the entire formal prompt, on the `─ 素材绑定：` row inside `【通用约束栏 · 本 segment 共享】`. Merge all duties and scopes for that source into that row.
 - In the shot paragraphs and all other rows, refer to the bound character, prop, place, motion, or voice by semantic name rather than repeating the `@` placeholder.
+
+The `【本段戏剧任务】` row is a single causal sentence: state the character's original situation, the new situation, the explicit action or turn that moves between them, and the relationship, emotional, or next-action result the audience should understand or feel at the end. Keep it segment-local and concrete; do not turn it into a separate analysis block.
 
 Do not invent additional numeric platform limits, reference weights, control fields, or guaranteed behaviors. Read `references/model/capability-registry.yaml` when a platform capability affects the answer.
 
