@@ -26,9 +26,18 @@ Preserve:
 
 Remove duplicate phrasing and flexible background business first. Then reduce decorative effects, secondary motion, redundant reference duties, and nonessential camera complexity. Do not solve overload by changing the locked meaning or dropping the physical result.
 
-## Split at a Stable State
+## Single Segment First; Split Only Beyond 30s
 
-When the causal spine still does not fit inside one `4-30s` segment, split after a readable state change:
+One coherent scene remains one generated segment whenever its required narrative span fits inside `4-30s`. Multiple beats, camera cuts, dialogue turns, action phases, and reference duties belong inside that segment; they are not separate generation segments.
+
+Split only when one of these conditions is present:
+
+- the user explicitly requests multiple generated segments; or
+- the required narrative span is demonstrably longer than 30 seconds through user-stated timing or locked events whose minimum necessary duration still exceeds 30 seconds.
+
+Complexity, action density, dialogue, reference count, or continuity concerns alone are not evidence for a boundary. Before splitting, compress optional embellishment, merge redundant camera changes, and preserve the causal spine in one segment. If the duration evidence is ambiguous, keep one segment.
+
+When a split is genuinely required, place it after a readable state change:
 
 - decision made;
 - approach completed;

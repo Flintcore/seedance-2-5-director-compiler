@@ -104,7 +104,7 @@ prepare or perceive -> initiate -> travel -> contact or evade -> force response 
 - Keep the first and last `0.5s` as stable entry and exit phases.
 - Let acceleration, contact, recoil, landing, and recovery occupy visible time; do not collapse cause and result into the same instant.
 - Preserve director-locked slow/fast contrast. Do not introduce slow motion, freeze frames, speed ramps, or impact camera effects on the engine's own initiative.
-- When the locked actions do not fit, compress optional embellishment first. If the causal spine still does not fit, propose a segment boundary at a stable physical state.
+- When the locked actions do not fit, compress optional embellishment first and keep the action chain in one generated segment whenever its required narrative span is 30 seconds or less. Propose a segment boundary only for an explicit multi-segment request or a causal spine whose user-stated/locked minimum timing demonstrably exceeds 30 seconds, and place it at a stable physical state.
 
 ## Direction, Path, and Axis
 

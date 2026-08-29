@@ -1,9 +1,9 @@
 ---
 name: seedance-2-5-director-compiler
-description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, multi-clip continuity, dialogue binding, action scenes, prompt optimization, and result diagnosis."
+description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.1.4"
+  version: "0.1.5"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -42,6 +42,13 @@ These project facts are confirmed and may be treated as hard constraints:
 - Reserve the first and last **0.5 seconds** as stability zones.
 - Exact spoken dialogue uses `角色ID说{逐字台词}`; narration uses `旁白{逐字旁白}`; braces contain spoken text only.
 
+## Segment Boundary Policy
+
+- Treat one coherent scene or shot request as **one generated segment by default**. A segment may contain many `【镜头N】` blocks; a camera cut is not a generation-segment boundary.
+- Select `SEQUENCE` only when the user explicitly requests multiple generated segments, or when the required narrative span is demonstrably longer than 30 seconds from user-stated timing or locked events whose minimum necessary duration still exceeds 30 seconds. Multiple beats, action density, dialogue, references, or continuity concerns alone do not justify a split.
+- Before creating a boundary, compress optional embellishment, merge redundant shot changes, and keep the causal spine in one segment. If the evidence for more than 30 seconds is unclear, keep one segment and preserve the complete requested event.
+- When a boundary is genuinely required, place it after a readable settled state and carry the physical, visual, and audio state forward; do not split in the middle of an unresolved action or reaction.
+
 Formal prompt references follow one canonical output contract:
 
 - Number unique sources by media type and first-use order: `@image1`, `@image2`; `@video1`, `@video2`; `@audio1`, `@audio2`.
@@ -62,7 +69,7 @@ Task modes:
 - `CREATE_AUTO`: design L1 and compile the matching prompt in one pass.
 - `DIRECTOR_CHECKPOINT`: deliver L1 first; compile only after the user approves or revises it.
 - `COMPILE`: translate an existing locked shot list or approved L1 without redesigning it.
-- `SEQUENCE`: design or compile multiple segments with explicit entry/exit continuity.
+- `SEQUENCE`: design or compile multiple generated segments only under the boundary policy above.
 - `OPTIMIZE`: preserve the existing creative design and improve the prompt only.
 - `DIAGNOSE`: trace an observed result to the earliest cause and return a minimal replacement block.
 - `AUDIT`: review only when the user explicitly asks for review or audit.
@@ -111,7 +118,7 @@ The curated cinema and masters corpora contain filmmaking knowledge only. Any pl
 Default output is concise:
 
 1. L1 director design when this turn includes shot design.
-2. One complete native shot prompt per segment when compilation is requested, enclosed in its own fenced code block for copyable line breaks.
+2. One complete native shot prompt for each requested generation segment (one segment by default), enclosed in its own fenced code block for copyable line breaks.
 3. A minimal repair block for `DIAGNOSE`.
 
 Do not run or append a final self-check stage. Do not add pass/fail cards, scores, read logs, progress logs, capability essays, or repeated rationale.

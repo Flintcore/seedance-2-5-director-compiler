@@ -14,7 +14,9 @@ Accept any combination of:
 - asset source locators, media types, and the intended responsibility of each asset;
 - an internal action contract from `action-design.md`.
 
-Treat user locks and approved L1 as immutable creative input. The compiler may make relationships explicit, assign stable semantic IDs, divide time, and remove duplicated wording. It must preserve shot order, performance, action, outcome, and aesthetics. A missing operational value is filled with the least-committal choice supported by the locked facts; unresolved creative uncertainty stays outside the formal prompt.
+Treat user locks and approved L1 as immutable creative input. The compiler may make relationships explicit, assign stable semantic IDs, divide time within the locked generation segment, and remove duplicated wording. It must preserve shot order, performance, action, outcome, and aesthetics. A missing operational value is filled with the least-committal choice supported by the locked facts; unresolved creative uncertainty stays outside the formal prompt.
+
+The compiler does not create a new generation segment for a coherent scene. It compiles the supplied segment as one prompt unless a multi-segment boundary is explicitly requested or already justified by the boundary policy; all camera cuts and beats remain inside that prompt.
 
 ## Compile Pipeline
 
@@ -121,4 +123,4 @@ A reference image defines only its declared object, a motion reference defines o
 
 ## Output Discipline
 
-For a full compilation, output one complete native shot prompt per segment inside its own fenced code block so line breaks remain copyable, and end the prompt at `【收尾约束】`. Keep segment-wide exclusions and tail-state constraints in that final block rather than scattering them across shots. Do not append a self-check, score, report, read log, capability essay, or rationale. For `OPTIMIZE`, preserve the locked shot design and return the complete revised prompt unless the user requests one replacement block. For `DIAGNOSE`, follow `modules/diagnosis.md` and return the smallest affected prompt block.
+For a full compilation, output one complete native shot prompt for each explicitly requested or boundary-justified generation segment inside its own fenced code block so line breaks remain copyable; ordinary single-scene input produces one block. Multiple camera shots, cuts, and action beats inside one locked `4-30s` scene remain in that one prompt; do not turn each shot into a separate generated segment. End each prompt at `【收尾约束】`. Keep segment-wide exclusions and tail-state constraints in that final block rather than scattering them across shots. Do not append a self-check, score, report, read log, capability essay, or rationale. For `OPTIMIZE`, preserve the locked shot design and return the complete revised prompt unless the user requests one replacement block. For `DIAGNOSE`, follow `modules/diagnosis.md` and return the smallest affected prompt block.

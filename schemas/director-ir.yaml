@@ -23,6 +23,7 @@ properties:
       segment_id:
         type: string
         minLength: 1
+        description: "One generation segment; it may contain multiple camera shots."
       l1_version:
         type: integer
         minimum: 1
@@ -32,6 +33,7 @@ properties:
         maximum: 30
       task_mode:
         enum: [CREATE_AUTO, DIRECTOR_CHECKPOINT, COMPILE, SEQUENCE, OPTIMIZE, DIAGNOSE, AUDIT]
+        description: "SEQUENCE is reserved for an explicit multi-segment request or a minimum duration established by user-stated timing or locked events that exceeds 30 seconds."
       action_mode:
         enum: [NARRATIVE, ACTION_LITE, ACTION_FULL]
 

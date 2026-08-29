@@ -1,6 +1,8 @@
 # Segment and Shot Continuity
 
-Continuity is a state-transfer contract, not a prose reminder.
+Here `segment` means one platform generation clip. A camera shot, edit point, or cinematic paragraph is an internal unit and does not authorize a new generated segment.
+
+Continuity is a state-transfer contract, not a prose reminder. Treat one coherent scene as one generated segment by default; use the cross-segment contract below only when a multi-segment request is explicit or the required narrative span is demonstrably longer than 30 seconds.
 
 ## Boundary Equality
 
