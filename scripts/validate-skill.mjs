@@ -39,6 +39,7 @@ const REQUIRED_FILES = [
   "tests/clean-knowledge.test.mjs",
   "tests/knowledge-cleaner.test.mjs",
   "tests/prompt-validator.test.mjs",
+  "tests/narrative-guidance.test.mjs",
   "tests/skill-validator.test.mjs",
   "KNOWLEDGE-MANIFEST.yaml",
   "MIGRATION-MANIFEST.yaml",

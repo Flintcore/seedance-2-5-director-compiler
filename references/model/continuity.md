@@ -4,6 +4,8 @@ Here `segment` means one platform generation clip. A camera shot, edit point, or
 
 Continuity is a state-transfer contract, not a prose reminder. Treat one coherent scene as one generated segment by default; use the cross-segment contract below only when a multi-segment request is explicit or the required narrative span is demonstrably longer than 30 seconds.
 
+At every camera cut or focus handoff, the incoming shot paragraph re-establishes the active spatial relation, attention target, possession, and action phase that the viewer needs to read the event. A shared row or previous shot supplies context, but it does not replace the visible opening state of the current shot.
+
 ## Boundary Equality
 
 For hard continuity:

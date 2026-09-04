@@ -14,7 +14,7 @@ Accept any combination of:
 - asset source locators, media types, and the intended responsibility of each asset;
 - an internal action contract from `action-design.md`.
 
-Treat user locks and approved L1 as immutable creative input. The compiler may make relationships explicit, assign stable semantic IDs, divide time within the locked generation segment, and remove duplicated wording. It must preserve shot order, performance, action, outcome, aesthetics, and any attention/gaze anchor or performance-bearing small behavior that controls the shot's meaning. A missing operational value is filled with the least-committal choice supported by the locked facts; unresolved creative uncertainty stays outside the formal prompt.
+Treat user locks and approved L1 as immutable creative input. The compiler may make relationships explicit, assign stable semantic IDs, divide time within the locked generation segment, and remove only semantically duplicated static wording. It must preserve shot order, performance, action, outcome, aesthetics, and any attention/gaze anchor or performance-bearing small behavior that controls the shot's meaning. Dynamic spatial relations, action phase, reactions, and transition causes remain available wherever they are needed to reconstruct the current frame. A missing operational value is filled with the least-committal choice supported by the locked facts; unresolved creative uncertainty stays outside the formal prompt.
 
 The compiler does not create a new generation segment for a coherent scene. It compiles the supplied segment as one prompt unless a multi-segment boundary is explicitly requested or already justified by the boundary policy; all camera cuts and beats remain inside that prompt.
 
@@ -69,18 +69,30 @@ Use the native output order in `references/model/nine-layer-schema.md`:
 4. Ordered `【镜头N】| M:SS-M:SS` blocks.
 5. `【收尾约束】正文` with the final stable state and any confirmed end constraints on the same line.
 
-The prompt is self-contained at the segment level. Do not print other segment names, cross-segment IDs, internal lock names, review notes, or process commentary. Continuity is expressed as visible opening and closing states, not as a separate transition card.
+The prompt is self-contained at the segment level, and each shot block is independently readable enough to reconstruct its current visual event. Do not print other segment names, cross-segment IDs, internal lock names, review notes, or process commentary. Continuity is expressed as visible opening and closing states, not as a separate transition card.
+
+### Shot-Level Continuous Visual Narrative
+
+Treat each shot block as a continuous visual event rather than a field-by-field transcription. Form the causal spine before prose compilation, then weave the available L1 fields into one paragraph in this soft order:
+
+`current composition and spatial relation -> trigger -> action process -> linked reaction -> dialogue or sound at its moment -> camera/focus response -> result, ending composition, and next cut`
+
+The order is a writing aid, not a quota. Present a trigger, action, or reaction only when the locked L1 contains that event; for an observing, held, or purely continuous shot, describe the active state, attention, and tension that are actually present without inventing a new event. A shot paragraph should let a reader answer, from that block alone, who is where, what each visible subject is attending to, what caused the change when a change occurs, how the action unfolds when action is present, how the surrounding subjects respond, and what state remains at the end. Keep the common rows as navigation; the concrete action, reaction, dialogue placement, spatial relationship, and cut/continuation reason belong in the shot body. Repeat dynamic anchors when a cut or focus change would otherwise erase the frame from working memory; compress only stable static facts that have no effect on this shot's comprehension.
+
+When the same space or camera continues, connect internal beats with natural temporal clauses such as "此时", "同时", "看到后", "就在这时", and "随后". A held or observational shot may explicitly state that the action, sound, or attention continues and that there is no new cut; it does not need a manufactured event. When a cut occurs, state the outgoing result and the first visible state after the cut so the new view has an explicit cause and landing point.
+
+写法示意（只示范信息织合，不是固定句式）：机位保持在三人中景，宋佳居中、粑粑在右侧、大胃袋在左侧；宋佳先看向粑粑，看到它后退半步便伸手把它挡回队伍，同时锅巴在她头顶探身看热闹。宋佳说{回到原位}，大胃袋收住脚步，摄影机随宋佳的手把焦点带到粑粑脸上，最后停在三人重新形成的关系上，为下一次视线转移留下明确起点。
 
 ### 5. Write Each Shot
 
 For every shot, write the original native block:
 
 1. an optional cut declaration and one short technical declaration containing shot size, lens, tilt, and camera position;
-2. one natural-language paragraph in the order the viewer perceives it:
-   - establish foreground, middle ground, background, and left/right placement;
-   - show the action from initiation through process to result, with performance, reaction, and information change;
+2. one natural-language paragraph that reconstructs the shot as a visible causal event in the order the viewer perceives it:
+   - establish the current composition, foreground/middle/background, left/right placement, and attention relations;
+   - show the trigger and action from initiation through process to result, including performance, linked reactions, and information change;
    - place exact dialogue or narration and synchronized sound at the moment they occur;
-   - write camera movement and focus handoff when they happen, then land the ending composition and focus.
+   - write camera movement and focus handoff as responses to the event, then land the ending composition, focus, and next-cut state.
 
 The common camera/texture baseline is stated once in the `光影色彩风格` row; repeat it in a shot only when it changes. Do not turn the technical declaration into a long parameter list.
 
@@ -88,11 +100,11 @@ Action contracts are woven into the shot paragraph: intention -> path -> contact
 
 ### 表演连续性
 
-压缩提示词时保留已锁定的注意力/视线锚点和承担意义的表演证据；按景别编译为姿态、距离、手/物件、呼吸或反应等自然语言，不补造动作，也不把微表情拆成部位清单。连续性承接的是注意力、控制、呼吸与重心轨迹，小动作只在自然持续或再次触发时延续；有意静止仍写清目标或张力。`COMPILE` 只保留既有证据，不为满足基线另造手势。
+压缩提示词时保留已锁定的注意力/视线锚点和承担意义的表演证据；按景别编译为姿态、距离、手/物件、呼吸或反应等自然语言，不补造动作，也不把微表情拆成部位清单。把表演的触发、可见变化和反应结果放在同一条镜头因果叙事里，避免悬空成独立标签。连续性承接的是注意力、控制、呼吸与重心轨迹，小动作只在自然持续或再次触发时延续；有意静止仍写清目标或张力。`COMPILE` 只保留既有证据，不为满足基线另造手势。
 
 ### 6. Keep the Prompt Lean
 
-Remove repeated adjectives, duplicated scene facts, internal labels, and decorative technical values. Keep every fact that controls identity, count, space, causality, performance, sound, dialogue, or continuity. There is no character-count quota, shot-count quota, mandatory field count, or formal self-check section.
+Remove repeated adjectives, semantically duplicated static scene facts, internal labels, and decorative technical values. Keep every dynamic or static fact that controls identity, count, space, causality, performance, sound, dialogue, or continuity; a repeated spatial or action anchor is useful when it restores shot-level comprehension. There is no character-count quota, shot-count quota, mandatory field count, or formal self-check section.
 
 ## Dialogue Compilation
 

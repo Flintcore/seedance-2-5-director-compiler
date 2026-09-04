@@ -141,7 +141,10 @@ properties:
         id: {type: string, minLength: 1}
         time: {type: string, pattern: "^\\d{2}:\\d{2}\\.\\d-\\d{2}:\\d{2}\\.\\d$"}
         function: {type: string, minLength: 1}
-        image_action: {type: string, minLength: 1}
+        image_action:
+          type: string
+          minLength: 1
+          description: "可读的完整画面事件链：当前构图/关系、触发、主动作、联动反应和结果"
         camera: {type: string, minLength: 1}
         staging:
           type: string
@@ -152,7 +155,10 @@ properties:
           minLength: 1
           description: "可观察的注意力、行为、控制和反应，按景别取舍"
         sound: {type: string, minLength: 1}
-        transition: {type: string, minLength: 1}
+        transition:
+          type: string
+          minLength: 1
+          description: "切点或镜内连续的因果承接，包含前一状态结果与新视点首个可见状态"
         end_state: {type: string, minLength: 1}
 
   action:

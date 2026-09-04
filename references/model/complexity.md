@@ -24,7 +24,7 @@ Preserve:
 4. L1 shot and performance decisions;
 5. the single strongest approved texture, atmosphere, or impact detail;
 
-Remove duplicate phrasing and flexible background business first. Then reduce decorative effects, secondary motion, redundant reference duties, and nonessential camera complexity. Do not solve overload by changing the locked meaning or dropping the physical result.
+Remove semantically duplicate static phrasing and flexible background business first. Preserve the shot's causal spine and the dynamic anchors that make the current frame readable: active positions, attention targets, held objects, action phase, linked reactions, and the result that motivates the next view. Then reduce decorative effects, secondary motion, redundant reference duties, and nonessential camera complexity. Do not solve overload by changing the locked meaning or dropping the physical result.
 
 ## Single Segment First; Split Only Beyond 30s
 

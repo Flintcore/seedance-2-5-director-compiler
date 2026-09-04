@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.1.6"
+  version: "0.1.7"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -36,6 +36,10 @@ Domain ownership is fixed:
 ## Performance Baseline
 
 For shot design, use the soft default in [shot-design.md](modules/shot-design.md): establish a concrete attention/gaze target and timing, then choose only the performance evidence the shot needs. The target, head/eye/body relation, and action timing should agree; when an opponent, listener, or watched object is visible, its response should also fit the gaze unless the design intentionally uses avoidance, side-glance surveillance, or delayed attention. Let emotion read through control, behavior, breath, posture, hands/props, distance, or listener response; facial detail is conditional on scale, light, and causal value. User locks, character habits, genre grammar, and deliberate formal stillness take precedence.
+
+## Shot Narrative Contract
+
+Each shot block is a readable visual event, not a list of internal fields. Build a soft causal spine—current composition and spatial relation, trigger, action process, linked reactions, dialogue or sound at its moment, camera/focus response, and resulting state—then weave it into one natural paragraph. Repeat dynamic anchors such as who is where, who is looking at what, the current action phase, and background movement whenever they are needed to reconstruct the frame; compress only static facts that no longer affect comprehension. The common rows provide navigation, while the shot body carries the concrete story event and the reason for the next cut or continuation.
 
 ## Confirmed Seedance 2.5 Facts
 
