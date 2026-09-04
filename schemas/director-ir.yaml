@@ -143,8 +143,14 @@ properties:
         function: {type: string, minLength: 1}
         image_action: {type: string, minLength: 1}
         camera: {type: string, minLength: 1}
-        staging: {type: string, minLength: 1}
-        performance: {type: string, minLength: 1}
+        staging:
+          type: string
+          minLength: 1
+          description: "人物和关键物的空间关系、注意力/视线落点、头眼身关系及出入画"
+        performance:
+          type: string
+          minLength: 1
+          description: "可观察的注意力、行为、控制和反应，按景别取舍"
         sound: {type: string, minLength: 1}
         transition: {type: string, minLength: 1}
         end_state: {type: string, minLength: 1}

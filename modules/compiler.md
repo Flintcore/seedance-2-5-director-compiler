@@ -14,7 +14,7 @@ Accept any combination of:
 - asset source locators, media types, and the intended responsibility of each asset;
 - an internal action contract from `action-design.md`.
 
-Treat user locks and approved L1 as immutable creative input. The compiler may make relationships explicit, assign stable semantic IDs, divide time within the locked generation segment, and remove duplicated wording. It must preserve shot order, performance, action, outcome, and aesthetics. A missing operational value is filled with the least-committal choice supported by the locked facts; unresolved creative uncertainty stays outside the formal prompt.
+Treat user locks and approved L1 as immutable creative input. The compiler may make relationships explicit, assign stable semantic IDs, divide time within the locked generation segment, and remove duplicated wording. It must preserve shot order, performance, action, outcome, aesthetics, and any attention/gaze anchor or performance-bearing small behavior that controls the shot's meaning. A missing operational value is filled with the least-committal choice supported by the locked facts; unresolved creative uncertainty stays outside the formal prompt.
 
 The compiler does not create a new generation segment for a coherent scene. It compiles the supplied segment as one prompt unless a multi-segment boundary is explicitly requested or already justified by the boundary policy; all camera cuts and beats remain inside that prompt.
 
@@ -85,6 +85,10 @@ For every shot, write the original native block:
 The common camera/texture baseline is stated once in the `光影色彩风格` row; repeat it in a shot only when it changes. Do not turn the technical declaration into a long parameter list.
 
 Action contracts are woven into the shot paragraph: intention -> path -> contact -> force/inertia -> feedback -> resulting state. Do not add an action appendix or a second prompt format.
+
+### 表演连续性
+
+压缩提示词时保留已锁定的注意力/视线锚点和承担意义的表演证据；按景别编译为姿态、距离、手/物件、呼吸或反应等自然语言，不补造动作，也不把微表情拆成部位清单。连续性承接的是注意力、控制、呼吸与重心轨迹，小动作只在自然持续或再次触发时延续；有意静止仍写清目标或张力。`COMPILE` 只保留既有证据，不为满足基线另造手势。
 
 ### 6. Keep the Prompt Lean
 

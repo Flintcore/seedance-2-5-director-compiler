@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.1.5"
+  version: "0.1.6"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -32,6 +32,10 @@ Domain ownership is fixed:
 - Action aesthetics: director domain.
 - Action execution, inertia, timing, direction, impact, and action continuity: action engine.
 - Final prompt format: native shot-prompt compiler only; internal planning fields stay internal.
+
+## Performance Baseline
+
+For shot design, use the soft default in [shot-design.md](modules/shot-design.md): establish a concrete attention/gaze target and timing, then choose only the performance evidence the shot needs. The target, head/eye/body relation, and counterpart response should agree unless the design intentionally uses avoidance, side-glance surveillance, or delayed attention. Let emotion read through control, behavior, breath, posture, hands/props, distance, or listener response; facial detail is conditional on scale, light, and causal value. User locks, character habits, genre grammar, and deliberate formal stillness take precedence.
 
 ## Confirmed Seedance 2.5 Facts
 
@@ -76,7 +80,7 @@ Task modes:
 
 Action modes:
 
-- `NARRATIVE`: dialogue, emotion, ordinary movement, suspense, and non-action staging.
+- `NARRATIVE`: dialogue, emotion, ordinary movement, suspense, and non-action staging; retain a character's attention anchor and natural small behavior when they carry the beat.
 - `ACTION_LITE`: chase, fall, grab, collision, single attack, block, or dodge.
 - `ACTION_FULL`: sustained combat, weapons, 1vN, heavy weapons, powers, dense projectiles, or explicit fight direction.
 
@@ -108,6 +112,8 @@ For every `CREATE_AUTO`, `DIRECTOR_CHECKPOINT`, or requested shot redesign:
 - Read **1-3** cinema references selected for the scene's actual decision problem: 1-2 for a focused scene, 2-3 only when the scene genuinely crosses domains. Never use zero for a director task.
 - Read `references/masters/INDEX.md`, then read **one actual masters work file** selected for the scene. A second work is allowed only when a genuine contrast improves a key decision.
 - Apply the sources to specific shot decisions. Do not imitate a master's surface style or copy a reusable recipe without testing it against this scene.
+
+When performance, lifelikeness, gaze alignment, micro-reactions, or character small actions are the main problem, the selected set must include `表演细节参考库` and one gaze, blocking, or performance-arc reference while staying within the same 1-3 reference limit. If facial control is the main problem, use `面部表情四部位参考库` as one of those selections; do not load it by default. If action causality is the main problem, keep the action reference first and add the most relevant performance or gaze reference within the same limit.
 
 `COMPILE`, prompt-only `OPTIMIZE`, and syntax-only `DIAGNOSE` skip cinema reads because the creative design is already locked. This is routing, not a shortcut.
 

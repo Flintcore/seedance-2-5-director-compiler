@@ -75,6 +75,10 @@ action_contract:
   next_shot_interface:
 ```
 
+## 表演连续性
+
+The action engine receives the director's performance anchor with the physical start state. Carry the character's attention target or gaze direction, control level, breath load, and body trajectory through preparation, contact, recovery, and the outgoing state when those cues are part of the locked design. A small action repeats only when it naturally continues or is triggered again; continuity is not repeated gesture. Physical completeness must not erase the acting; express it through gaze, timing, grip, posture, weight, breath, recovery, or the opponent's reaction rather than a facial checklist.
+
 ## Tactical Causality
 
 Write each exchange as a causal chain:
