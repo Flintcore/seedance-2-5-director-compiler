@@ -35,7 +35,7 @@ Domain ownership is fixed:
 
 ## Performance Baseline
 
-For shot design, use the soft default in [shot-design.md](modules/shot-design.md): establish a concrete attention/gaze target and timing, then choose only the performance evidence the shot needs. The target, head/eye/body relation, and counterpart response should agree unless the design intentionally uses avoidance, side-glance surveillance, or delayed attention. Let emotion read through control, behavior, breath, posture, hands/props, distance, or listener response; facial detail is conditional on scale, light, and causal value. User locks, character habits, genre grammar, and deliberate formal stillness take precedence.
+For shot design, use the soft default in [shot-design.md](modules/shot-design.md): establish a concrete attention/gaze target and timing, then choose only the performance evidence the shot needs. The target, head/eye/body relation, and action timing should agree; when an opponent, listener, or watched object is visible, its response should also fit the gaze unless the design intentionally uses avoidance, side-glance surveillance, or delayed attention. Let emotion read through control, behavior, breath, posture, hands/props, distance, or listener response; facial detail is conditional on scale, light, and causal value. User locks, character habits, genre grammar, and deliberate formal stillness take precedence.
 
 ## Confirmed Seedance 2.5 Facts
 
