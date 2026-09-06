@@ -82,20 +82,20 @@ The order is a writing aid, not a quota. Present a trigger, action, or reaction 
 
 When the same space or camera continues, connect internal beats with natural temporal clauses such as "此时", "同时", "看到后", "就在这时", and "随后". A held or observational shot may explicitly state that the action, sound, or attention continues and that there is no new cut; it does not need a manufactured event. When a cut occurs, state the outgoing result and the first visible state after the cut so the new view has an explicit cause and landing point.
 
-写法示意（只示范信息织合，不是固定句式）：机位保持在三人中景，宋佳居中、粑粑在右侧、大胃袋在左侧；宋佳先看向粑粑，看到它后退半步便伸手把它挡回队伍，同时锅巴在她头顶探身看热闹。宋佳说{回到原位}，大胃袋收住脚步，摄影机随宋佳的手把焦点带到粑粑脸上，最后停在三人重新形成的关系上，为下一次视线转移留下明确起点。
+写法示意（只示范信息织合，不是固定句式）：35mm三人中景，摄影机位于宋佳正面、与她眼睛等高，平视并保持固定。画面中宋佳居中、粑粑在右侧、大胃袋在左侧；宋佳先看向粑粑，看到它后退半步便伸手把它挡回队伍，同时锅巴在她头顶探身看热闹。宋佳说{回到原位}，大胃袋收住脚步，焦点随宋佳的手带到粑粑脸上，最后停在三人重新形成的关系上，为下一次视线转移留下明确起点。
 
 ### 5. Write Each Shot
 
 For every shot, write the original native block:
 
-1. an optional cut declaration and one short technical declaration containing shot size, lens, tilt, and camera position;
+1. an optional cut declaration and one short technical sentence containing shot size, focal length, camera position relative to a named character/place/object (horizontal bearing and height), viewing tilt (level/up/down), and movement or a fixed camera; movement may continue in the event prose at its actual moment;
 2. one natural-language paragraph that reconstructs the shot as a visible causal event in the order the viewer perceives it:
    - establish the current composition, foreground/middle/background, left/right placement, and attention relations;
    - show the trigger and action from initiation through process to result, including performance, linked reactions, and information change;
    - place exact dialogue or narration and synchronized sound at the moment they occur;
    - write camera movement and focus handoff as responses to the event, then land the ending composition, focus, and next-cut state.
 
-The common camera/texture baseline is stated once in the `光影色彩风格` row; repeat it in a shot only when it changes. Do not turn the technical declaration into a long parameter list.
+Apply the complete-shot requirements in [nine-layer-schema.md](../references/model/nine-layer-schema.md). Keep each shot's camera information locally readable even for a continued setup or previs-assisted prompt; distinguish camera height from viewing tilt. Shared image texture, capture medium, and light/color baseline may stay in `光影色彩风格`, but they do not replace shot-local size, focal length, position, angle, and movement. This is a compact technical sentence plus continuous performance, not a field list or a new output format.
 
 Action contracts are woven into the shot paragraph: intention -> path -> contact -> force/inertia -> feedback -> resulting state. Do not add an action appendix or a second prompt format.
 
@@ -105,7 +105,7 @@ Action contracts are woven into the shot paragraph: intention -> path -> contact
 
 ### 6. Keep the Prompt Lean
 
-Remove repeated adjectives, semantically duplicated static scene facts, internal labels, and decorative technical values. Keep every dynamic or static fact that controls identity, count, space, causality, performance, sound, dialogue, or continuity; a repeated spatial or action anchor is useful when it restores shot-level comprehension. There is no character-count quota, shot-count quota, mandatory field count, or formal self-check section.
+Remove repeated adjectives, semantically duplicated static scene facts, internal labels, and decorative technical values; the complete-shot camera information above is useful content, not decoration. Keep every dynamic or static fact that controls identity, count, space, causality, performance, sound, dialogue, or continuity; a repeated spatial or action anchor is useful when it restores shot-level comprehension. There is no character-count quota, shot-count quota, mandatory output field count, or formal self-check section.
 
 ## Dialogue Compilation
 

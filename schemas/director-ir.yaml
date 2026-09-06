@@ -145,7 +145,10 @@ properties:
           type: string
           minLength: 1
           description: "可读的完整画面事件链：当前构图/关系、触发、主动作、联动反应和结果"
-        camera: {type: string, minLength: 1}
+        camera:
+          type: string
+          minLength: 1
+          description: "景别、焦距、相对角色/场景/物品的水平方位与机位高度、平视/仰拍/俯拍、运动或固定状态；按事件表达视点、焦点与运动动机"
         staging:
           type: string
           minLength: 1
