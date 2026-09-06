@@ -1,9 +1,9 @@
 ---
 name: seedance-2-5-director-compiler
-description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, and result diagnosis."
+description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.1.7"
+  version: "0.1.8"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -59,7 +59,7 @@ These project facts are confirmed and may be treated as hard constraints:
 
 Formal prompt references follow one canonical output contract:
 
-- Number unique sources by media type and first-use order: `@image1`, `@image2`; `@video1`, `@video2`; `@audio1`, `@audio2`.
+- For a new prompt, number unique sources by media type and first-use order: `@image1`, `@image2`; `@video1`, `@video2`; `@audio1`, `@audio2`. When augmenting an existing prompt, preserve its canonical source-to-placeholder mappings and order; append genuinely new sources after the highest existing number of their type, without closing gaps.
 - Keep source paths, filenames, URLs, upload labels, and platform-native IDs in the internal source ledger. Never print them in the formal prompt.
 - Print each canonical `@` placeholder exactly once in the entire formal prompt, on the `─ 素材绑定：` row inside `【通用约束栏 · 本 segment 共享】`. Merge all duties and scopes for that source into that row.
 - In the shot paragraphs and all other rows, refer to the bound character, prop, place, motion, or voice by semantic name rather than repeating the `@` placeholder.
@@ -81,6 +81,8 @@ Task modes:
 - `OPTIMIZE`: preserve the existing creative design and improve the prompt only.
 - `DIAGNOSE`: trace an observed result to the earliest cause and return a minimal replacement block.
 - `AUDIT`: review only when the user explicitly asks for review or audit.
+
+An existing prompt plus a Blender coarse previs video is reference-only `OPTIMIZE`, not white-model generation or automatic shot redesign. Read [previs-reference.md](references/model/previs-reference.md) with the asset rules for this branch: identify proxy characters, add the video's scoped reference, and retain the original prompt's camera, performance, action, dialogue, effects, and existing assets. Load this reference only when a previs video is involved; ordinary compilation keeps its current path.
 
 Action modes:
 

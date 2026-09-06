@@ -133,7 +133,7 @@ function braceError(text) {
   return stack.length ? "unclosed opening brace at character " + (stack.at(-1) + 1) : null;
 }
 
-function assetContract(text, scan, common) {
+function assetContract(text, scan, common, preserveAssetNumbering) {
   const errors = [];
   const commonText = common ? commonBody(scan, common) : "";
   const allOccurrences = [...text.matchAll(CANONICAL_ASSET_TOKEN)].map((match) => ({
@@ -178,10 +178,14 @@ function assetContract(text, scan, common) {
   for (const [token, count] of counts) {
     if (count > 1) errors.push({ code: "ASSET_DUPLICATE_REFERENCE", message: token + " appears " + count + " times; each placeholder must appear once" });
   }
-  for (const type of ["image", "video", "audio"]) {
-    const numbers = commonOccurrences.filter((item) => item.type === type).map((item) => item.number);
-    if (numbers.some((number, index) => number !== index + 1)) {
-      errors.push({ code: "ASSET_NUMBERING", message: "@" + type + " placeholders must be contiguous from @" + type + "1 in appearance order" });
+  // Existing prompts may retain sparse or reordered IDs when a reference is added.
+  // This development-only option leaves every other asset check in force.
+  if (preserveAssetNumbering !== true) {
+    for (const type of ["image", "video", "audio"]) {
+      const numbers = commonOccurrences.filter((item) => item.type === type).map((item) => item.number);
+      if (numbers.some((number, index) => number !== index + 1)) {
+        errors.push({ code: "ASSET_NUMBERING", message: "@" + type + " placeholders must be contiguous from @" + type + "1 in appearance order" });
+      }
     }
   }
   const declaredValues = [...commonText.matchAll(/(?:素材总数|参考素材总数|素材数量)\s*[:：]\s*(\d+)/gu)].map((match) => Number(match[1]));
@@ -195,7 +199,7 @@ function assetContract(text, scan, common) {
   return { assets, tokens: [...uniqueTokens], errors };
 }
 
-export function validatePrompt(input) {
+export function validatePrompt(input, { preserveAssetNumbering = false } = {}) {
   const text = normalize(input);
   const scan = scanPrompt(text);
   const errors = [];
@@ -251,7 +255,7 @@ export function validatePrompt(input) {
     if (!hasEndingStability(lastBody + "\n" + endingBody, duration)) errors.push({ code: "EXIT_STABILITY_ZONE", message: "the ending must describe a stable final 0.5s state" });
   }
 
-  const asset = assetContract(text, scan, common);
+  const asset = assetContract(text, scan, common, preserveAssetNumbering);
   errors.push(...asset.errors);
   const brace = braceError(text);
   if (brace) errors.push({ code: "BRACE_BALANCE", message: brace });
@@ -271,7 +275,7 @@ export function validatePrompt(input) {
 }
 
 async function readInput(args) {
-  if (args.length > 1) throw new Error("Usage: node scripts/validate-prompt.mjs [--json] [prompt-file]");
+  if (args.length > 1) throw new Error("Usage: node scripts/validate-prompt.mjs [--json] [--preserve-asset-numbering] [prompt-file]");
   if (args.length === 1) return readFile(path.resolve(args[0]), "utf8");
   const chunks = [];
   for await (const chunk of process.stdin) chunks.push(chunk);
@@ -283,7 +287,10 @@ async function main() {
   const jsonIndex = args.indexOf("--json");
   const json = jsonIndex !== -1;
   if (json) args.splice(jsonIndex, 1);
-  const result = validatePrompt(await readInput(args));
+  const preserveIndex = args.indexOf("--preserve-asset-numbering");
+  const preserveAssetNumbering = preserveIndex !== -1;
+  if (preserveAssetNumbering) args.splice(preserveIndex, 1);
+  const result = validatePrompt(await readInput(args), { preserveAssetNumbering });
   if (json) process.stdout.write(JSON.stringify(result, null, 2) + "\n");
   else if (result.ok) process.stdout.write("valid duration=" + result.facts.duration + "s assets=" + result.facts.assets + " shots=" + result.facts.shots.length + "\n");
   else process.stderr.write(result.errors.map((error) => error.code + ": " + error.message).join("\n") + "\n");

@@ -9,6 +9,7 @@ Read `references/model/INDEX.md`, then load only the model references needed for
 Accept any combination of:
 
 - an approved L1 director design or an existing locked shot list;
+- an existing final prompt to augment without rebuilding L1; when adding a Blender coarse previs video, read [previs-reference.md](../references/model/previs-reference.md);
 - user locks, exact story facts, exact dialogue, and world rules;
 - the current segment duration and, when relevant, its physical boundary state;
 - asset source locators, media types, and the intended responsibility of each asset;
@@ -45,7 +46,7 @@ An ordinary single segment needs no project file, runtime log, or read-history a
 - Distinguish one physical body from a reflection, screen image, shadow, memory, or other non-body appearance.
 - Record position, facing, gaze, contact, possession, condition, visibility, and motion only when they affect this segment.
 - Separate world direction from screen direction.
-- Deduplicate identical sources, then number their placeholders by media type and first appearance: `@image1...`, `@video1...`, `@audio1...`.
+- Deduplicate identical sources and follow the numbering policy in [reference-assets.md](../references/model/reference-assets.md): initialize new prompts by media type and first appearance; preserve existing canonical source bindings when augmenting a prompt.
 - Keep paths, filenames, URLs, upload labels, and platform-native IDs out of the formal prompt.
 
 ### 3. Apply Confirmed Facts
@@ -127,8 +128,8 @@ All image, video, and audio references count together. Place the references in o
 ─ 素材绑定：@image1=父亲参考图（外观与服装）· @image2=夜街场景图（空间与光色）· @video1=起身动作参考（起身与转身节奏）
 ```
 
-1. Deduplicate the physical sources before numbering.
-2. Number each media type contiguously from 1 in first-use order.
+1. Deduplicate the physical sources before numbering; a previously bound video gains duties on its existing binding rather than a second placeholder.
+2. Follow `reference-assets.md`: new prompts start each media type at 1; reference augmentation preserves existing canonical numbers and order, appending new sources after that type's highest number.
 3. Give each placeholder a semantic name and a short description of what it contributes.
 4. Put every unique placeholder exactly once on the `素材绑定` row; merge its duties and scope there.
 5. In every shot, use the semantic name rather than repeating `@imageN`, `@videoN`, or `@audioN`.
@@ -136,6 +137,8 @@ All image, video, and audio references count together. Place the references in o
 When there are no reference assets, omit the `素材绑定` row entirely. Do not print an empty row or a sentence saying that the segment has no assets.
 
 A reference image defines only its declared object, a motion reference defines only its declared movement or camera relation, and a voice reference defines only its declared sound qualities. None silently adds a person, prop, voice, or setting.
+
+For a Blender coarse previs video, use the narrower duties in [previs-reference.md](../references/model/previs-reference.md), not an automatic exact-motion or rhythm lock. The reference supplements the existing shot paragraphs; it does not replace their camera prose, continuous story, performance, action detail, or effects with an instruction to follow the video.
 
 ## Output Discipline
 

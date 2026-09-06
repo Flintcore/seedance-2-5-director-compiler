@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
 import { validatePrompt } from "../scripts/validate-prompt.mjs";
 
@@ -149,6 +151,59 @@ test("allows a segment without references", () => {
   assert.equal(result.ok, true, JSON.stringify(result.errors));
   assert.equal(result.facts.assets, 0);
   assert.doesNotMatch(validPrompt({ references: null }), /素材绑定|无外部素材/);
+});
+
+test("preserves sparse existing asset IDs only with the explicit development option", () => {
+  const input = validPrompt({
+    references: "─ 素材绑定：@image4=主角；@image1=街道；@video7=动作参考；@video8=新增白模预演",
+  });
+  for (const options of [undefined, { preserveAssetNumbering: false }, { preserveAssetNumbering: "true" }]) {
+    assert.ok(codes(validatePrompt(input, options)).includes("ASSET_NUMBERING"));
+  }
+  const result = validatePrompt(input, { preserveAssetNumbering: true });
+  assert.equal(result.ok, true, JSON.stringify(result.errors));
+  assert.deepEqual(result.facts.assetTokens, ["@image4", "@image1", "@video7", "@video8"]);
+  assert.equal(result.facts.assets, 4);
+});
+
+test("preserved numbering counts actual references rather than the highest ID", () => {
+  const existing = Array.from({ length: 49 }, (_, index) => "@image" + (index + 100) + "=既有素材").join("；");
+  const fifty = validPrompt({ references: "─ 素材绑定：" + existing + "；@video70=新增白模预演" });
+  const accepted = validatePrompt(fifty, { preserveAssetNumbering: true });
+  assert.equal(accepted.ok, true, JSON.stringify(accepted.errors));
+  assert.equal(accepted.facts.assets, 50);
+  const fiftyOne = fifty.replace("@video70=新增白模预演", "@video70=新增白模预演；@audio90=声音参考");
+  const rejected = validatePrompt(fiftyOne, { preserveAssetNumbering: true });
+  assert.ok(codes(rejected).includes("ASSET_LIMIT"));
+  assert.equal(rejected.facts.assets, 51);
+});
+
+test("preserved numbering still rejects duplicate, noncanonical, and misplaced references", () => {
+  const input = validPrompt({ references: "─ 素材绑定：@image4=主角；@video8=白模预演" });
+  const cases = [
+    [input.replace("主角；", "主角 @image4；"), "ASSET_DUPLICATE_REFERENCE"],
+    [input.replace("@image4", "@img-4"), "ASSET_TOKEN_FORMAT"],
+    [input.replace("主角抬眼看向街口", "主角抬眼看向街口并参考@video8"), "ASSET_REFERENCE_LOCATION"],
+    [input.replace("@image4=主角", "@image4=C:/refs/hero.png"), "ASSET_SOURCE_LOCATOR"],
+  ];
+  for (const [candidate, expectedCode] of cases) {
+    const result = validatePrompt(candidate, { preserveAssetNumbering: true });
+    assert.equal(result.ok, false);
+    assert.ok(codes(result).includes(expectedCode), JSON.stringify(result.errors));
+  }
+});
+
+test("CLI supports preserved numbering with JSON output and stdin", () => {
+  const script = fileURLToPath(new URL("../scripts/validate-prompt.mjs", import.meta.url));
+  const input = validPrompt({ references: "─ 素材绑定：@image4=主角；@video8=白模预演" });
+  const strict = spawnSync(process.execPath, [script, "--json"], { input, encoding: "utf8" });
+  assert.equal(strict.status, 1, strict.stderr);
+  assert.ok(codes(JSON.parse(strict.stdout)).includes("ASSET_NUMBERING"));
+  const preserved = spawnSync(process.execPath, [script, "--preserve-asset-numbering", "--json"], { input, encoding: "utf8" });
+  assert.equal(preserved.status, 0, preserved.stderr);
+  const result = JSON.parse(preserved.stdout);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.facts.assetTokens, ["@image4", "@video8"]);
 });
 
 test("rejects unbalanced dialogue braces and a self-check section", () => {

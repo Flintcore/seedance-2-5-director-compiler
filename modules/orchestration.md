@@ -38,6 +38,8 @@
 | `DIAGNOSE` | A → G；确认是导演原因后再进入 B/C/D | 最小替换块或针对性重设计 |
 | `AUDIT` | A → B/C/D/G | 用户明确要求的审阅结论 |
 
+已有正式提示词加 Blender 白模预演视频，进入 `OPTIMIZE` 的 A → F 素材增补分支，读取 [白模参考接入](../references/model/previs-reference.md)。原提示词直接作为当前创意基线，无需重建 L1、重跑导演或动作设计；只接入参考时由编译角色完成。即使原段为动作戏，也保留已有动作设计而非重新展开动作母机。只有用户另行要求修改镜头或表演设计时，才进入对应导演取材阶段。
+
 动作模式：
 
 - `NARRATIVE`：文戏、对白、情绪、悬念、普通移动；角色承担戏点时保留注意力落点和自然小动作，不把普通移动压成无状态站位。
@@ -68,7 +70,7 @@
 4. 实际通读至少一部大师作品正文；方法论总纲不计入“作品正文”。
 5. 将借鉴写成“来源中的具体方法 → 本场的变形 → 落在哪个镜头”的设计依据。
 
-纯 `COMPILE`、只改语法的 `OPTIMIZE`、只查模型字段的 `DIAGNOSE` 跳过本阶段。详细规则见 [knowledge-routing.md](knowledge-routing.md)。
+纯 `COMPILE`、只改语法或增补素材参考的 `OPTIMIZE`、只查模型字段的 `DIAGNOSE` 跳过本阶段。详细规则见 [knowledge-routing.md](knowledge-routing.md)。
 
 ### C. 镜头导演
 

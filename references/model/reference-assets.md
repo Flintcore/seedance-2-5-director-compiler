@@ -27,7 +27,8 @@ Compile as one natural-language row in `【通用约束栏 · 本 segment 共享
 ## Canonical Placeholder Contract
 
 - Deduplicate identical physical sources before numbering.
-- Number each media type independently in first-use order, starting at 1: `@image1`, `@image2`; `@video1`, `@video2`; `@audio1`, `@audio2`.
+- For a new prompt, number each media type independently in first-use order, starting at 1: `@image1`, `@image2`; `@video1`, `@video2`; `@audio1`, `@audio2`.
+- When augmenting an existing prompt, preserve its canonical source-to-placeholder mappings and binding order, including gaps. Append each genuinely new source at the highest existing number of its media type plus 1 (or 1 if that type is absent). Reuse an already bound source and merge its new duties; do not renumber or replace the existing image, video, or audio references. Count unique sources, not the largest numeric suffix. This preserves established bindings, not malformed aliases or repeated occurrences.
 - Use lowercase English type names, no hyphen, underscore, space, Chinese alias, original filename, or path.
 - Keep paths, filenames, URLs, upload labels, and platform-native IDs only in the internal source ledger.
 - Emit each canonical placeholder exactly once in the entire formal prompt, on the `素材绑定` row in `【通用约束栏 · 本 segment 共享】`.
@@ -41,6 +42,7 @@ The placeholder is deliberately a convenient replacement token. It does not clai
 - Costume/prop image: declared garment or prop details; it does not import the source wearer or setting.
 - Location image: spatial or material facts; it does not import source people or events.
 - Motion video: approved movement, rhythm, or camera relation; it does not replace identity, costume, setting, dialogue, or sound.
+- Blender coarse previs video: the scoped spatial and shot reference in [previs-reference.md](previs-reference.md), not the generic motion video's exact performance or internal rhythm. Read that reference only for this input type.
 - Voice audio: approved vocal qualities for one source; it does not import its words, other voices, music, ambience, or image content.
 
 If one asset genuinely owns multiple duties, list every duty and scope on its single line. When two assets conflict on the same feature, user locks and L1 decide the winner; the compiler does not blend them implicitly.

@@ -2,7 +2,7 @@
 
 独立的 Codex skill：先用影视知识与大师作品完成镜头设计，再把锁定设计编译为可直接复制的 Seedance 2.5 原生分镜提示词。
 
-当前版本：`0.1.7`
+当前版本：`0.1.8`
 
 ## 核心架构
 
@@ -57,6 +57,12 @@ $seedance-2-5-director-compiler
 - `OPTIMIZE`：保留创意结构，只优化提示词。
 - `DIAGNOSE`：定位最早根因并返回最小替换块。
 
+### 已有提示词接入 Blender 白模视频
+
+提供原成片提示词与白模预演视频，进入轻量 `OPTIMIZE`：识别代理颜色与角色的对应，保留原角色/场景等素材及规范编号，只增补一次视频引用。白模提供空间、站位、粗走位、构图和摄影机路径的依据；原分镜继续保留运镜表达、连贯叙事、微表情与小动作、动作细节、对白、声音和特效。只适量压缩重复的静态空间说明，粗模动作和识别色不会自动成为最终表演与外观要求。
+
+详细规则位于 [白模参考接入](references/model/previs-reference.md)，仅在这类输入时读取。无需先制作工程交接包或重做 L1；单纯接入参考跳过导演取材与动作重设计，真正重设计仍按需读相关影视库和大师作品。
+
 动作模式：
 
 - `NARRATIVE`：文戏与普通运动。
@@ -100,6 +106,8 @@ python C:/Users/ASUS/.codex/skills/.system/skill-creator/scripts/quick_validate.
 ```powershell
 node scripts/validate-prompt.mjs prompt.txt
 ```
+
+维护已有素材编号（包括空缺）的修订样例时，可使用 `node scripts/validate-prompt.mjs --preserve-asset-numbering prompt.txt`；此选项仅放宽连续编号，仍检查一次性引用、规范格式、引用位置与素材总量。
 
 这些校验器只用于 skill 开发与维护，不参与运行时提示词生成；成品提示词没有最终自检阶段。
 
