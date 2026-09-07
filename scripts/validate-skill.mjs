@@ -18,6 +18,7 @@ const REQUIRED_FILES = [
   "modules/director-ir.md",
   "modules/knowledge-routing.md",
   "modules/shot-design.md",
+  "modules/micro-performance.md",
   "modules/action-design.md",
   "modules/compiler.md",
   "modules/diagnosis.md",

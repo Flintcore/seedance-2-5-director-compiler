@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.1.10"
+  version: "0.1.11"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -36,6 +36,8 @@ Domain ownership is fixed:
 ## Performance Baseline
 
 For shot design, use the soft default in [shot-design.md](modules/shot-design.md): establish a concrete attention/gaze target and timing, then choose only the performance evidence the shot needs. The target, head/eye/body relation, and action timing should agree; when an opponent, listener, or watched object is visible, its response should also fit the gaze unless the design intentionally uses avoidance, side-glance surveillance, or delayed attention. Let emotion read through control, behavior, breath, posture, hands/props, distance, or listener response; facial detail is conditional on scale, light, and causal value. User locks, character habits, genre grammar, and deliberate formal stillness take precedence.
+
+For explicit micro-expression, subtext performance, listener-reaction, or emotional-transition work, read [micro-performance.md](modules/micro-performance.md). Use character motive -> visible response -> carried state as a design bridge, not a per-shot face-part checklist. Keep subtle performance inside continuous shot prose; a standalone performance document is an opt-in deliverable.
 
 ## Shot Narrative Contract
 
@@ -127,7 +129,7 @@ For every `CREATE_AUTO`, `DIRECTOR_CHECKPOINT`, or requested shot redesign:
 
 When performance, lifelikeness, gaze alignment, micro-reactions, or character small actions are the main problem, the selected set must include `表演细节参考库` and one gaze, blocking, or performance-arc reference while staying within the same 1-3 reference limit. If facial control is the main problem, use `面部表情四部位参考库` as one of those selections; do not load it by default. If action causality is the main problem, keep the action reference first and add the most relevant performance or gaze reference within the same limit.
 
-`COMPILE`, prompt-only `OPTIMIZE`, and syntax-only `DIAGNOSE` skip cinema reads because the creative design is already locked. This is routing, not a shortcut.
+Pure `COMPILE`, syntax-only `OPTIMIZE`, and syntax-only `DIAGNOSE` skip cinema reads because the creative design is already locked. Local micro-performance refinement with motives, story turns, and camera design unchanged reads only the relevant performance chapters via [micro-performance.md](modules/micro-performance.md); it does not restart the full masters-selection workflow. New motives, an altered emotional arc, or a new performance strategy return to director research above. This is routing, not a shortcut.
 
 The curated cinema and masters corpora contain filmmaking knowledge only. Any platform claim encountered in user material or future imports has zero compiler authority until it is represented in `references/model/` or explicitly locked by the user.
 

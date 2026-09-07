@@ -103,6 +103,8 @@ Action contracts are woven into the shot paragraph: intention -> path -> contact
 
 压缩提示词时保留已锁定的注意力/视线锚点和承担意义的表演证据；按景别编译为姿态、距离、手/物件、呼吸或反应等自然语言，不补造动作，也不把微表情拆成部位清单。把表演的触发、可见变化和反应结果放在同一条镜头因果叙事里，避免悬空成独立标签。连续性承接的是注意力、控制、呼吸与重心轨迹，小动作只在自然持续或再次触发时延续；有意静止仍写清目标或张力。`COMPILE` 只保留既有证据，不为满足基线另造手势。
 
+微表情专项按需读 [micro-performance.md](micro-performance.md)。将已定心理策略落实为本镜可见的触发、微反应和承接状态；保留听者反应与台词时机，避免同时安排妨碍发声的嘴部动作。遮挡的脸部变化仅作内部表演依据，正文使用当前机位实际可见、可听的通道；不为可读性偷偷补切镜。精确时值只在设计有依据时保留，不默认生成毫米、百分比或逐帧表情清单。
+
 ### 6. Keep the Prompt Lean
 
 Remove repeated adjectives, semantically duplicated static scene facts, internal labels, and decorative technical values; the complete-shot camera information above is useful content, not decoration. Keep every dynamic or static fact that controls identity, count, space, causality, performance, sound, dialogue, or continuity; a repeated spatial or action anchor is useful when it restores shot-level comprehension. There is no character-count quota, shot-count quota, mandatory output field count, or formal self-check section.
