@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.1.9"
+  version: "0.1.10"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -42,6 +42,10 @@ For shot design, use the soft default in [shot-design.md](modules/shot-design.md
 Every complete shot combines camera parameters, movement or a held camera, and continuous visual performance. State shot size, focal length, camera position relative to a named character/place/object (horizontal bearing and height), and viewing angle (level/up/down) inside that shot, then weave movement, action, expression, gaze, dialogue, and reactions into readable prose as present in the design. These are information requirements, not separate output fields; see the [native shot schema](references/model/nine-layer-schema.md). Camera height and viewing tilt are distinct, and a previs reference does not replace this shot-local information.
 
 Each shot block is a readable visual event, not a list of internal fields. Build a soft causal spine—current composition and spatial relation, trigger, action process, linked reactions, dialogue or sound at its moment, camera/focus response, and resulting state—then weave it into one natural paragraph. Repeat dynamic anchors such as who is where, who is looking at what, the current action phase, and background movement whenever they are needed to reconstruct the frame; compress only static facts that no longer affect comprehension. The common rows provide navigation, while the shot body carries the concrete story event and the reason for the next cut or continuation.
+
+## Positive Spatial Constraints
+
+Express the desired visible result rather than stacking negative phrases. Size, position, support/contact, action, and composition must describe one compatible scene; an ending such as "保持身高一致" does not repair contradictory shot prose. For scale, staging, or negative-prompt repairs, read [positive-spatial-constraints.md](references/model/positive-spatial-constraints.md). Short delivery exclusions such as no subtitles or no BGM may follow project defaults, subject to explicit user text/music requirements; physical relations belong in the shot body. This is a writing strategy, not a claim about Seedance's sampling mathematics.
 
 ## Confirmed Seedance 2.5 Facts
 

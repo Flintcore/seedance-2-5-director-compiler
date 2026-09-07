@@ -33,6 +33,7 @@ const REQUIRED_FILES = [
   "references/model/complexity.md",
   "references/model/reference-assets.md",
   "references/model/previs-reference.md",
+  "references/model/positive-spatial-constraints.md",
   "schemas/director-ir.yaml",
   "scripts/clean-knowledge.mjs",
   "scripts/validate-prompt.mjs",

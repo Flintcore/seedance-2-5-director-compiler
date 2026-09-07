@@ -107,6 +107,10 @@ Action contracts are woven into the shot paragraph: intention -> path -> contact
 
 Remove repeated adjectives, semantically duplicated static scene facts, internal labels, and decorative technical values; the complete-shot camera information above is useful content, not decoration. Keep every dynamic or static fact that controls identity, count, space, causality, performance, sound, dialogue, or continuity; a repeated spatial or action anchor is useful when it restores shot-level comprehension. There is no character-count quota, shot-count quota, mandatory output field count, or formal self-check section.
 
+## Positive Constraints and Spatial Coherence
+
+Write the desired visible result in the affected shot. When size, staging, support/contact, action, and composition imply conflicting scenes, read [positive-spatial-constraints.md](../references/model/positive-spatial-constraints.md) and resolve the actual source conflict under the existing user-lock policy. Do not leave contradictory prose intact and append a size, height, or position prohibition in the ending. Preserve locked dimensions; reconcile only editable relations or ask about the specific unresolved lock conflict rather than silently shrinking a character. Short no-subtitle/no-BGM delivery exclusions are separate, user-overridable defaults, not a negative-phrase quota.
+
 ## Dialogue Compilation
 
 Braces contain spoken text only:
@@ -142,4 +146,4 @@ For a Blender coarse previs video, use the narrower duties in [previs-reference.
 
 ## Output Discipline
 
-For a full compilation, output one complete native shot prompt for each explicitly requested or boundary-justified generation segment inside its own fenced code block so line breaks remain copyable; ordinary single-scene input produces one block. Multiple camera shots, cuts, and action beats inside one locked `4-30s` scene remain in that one prompt; do not turn each shot into a separate generated segment. End each prompt at `【收尾约束】`. Keep segment-wide exclusions and tail-state constraints in that final block rather than scattering them across shots. Do not append a self-check, score, report, read log, capability essay, or rationale. For `OPTIMIZE`, preserve the locked shot design and return the complete revised prompt unless the user requests one replacement block. For `DIAGNOSE`, follow `modules/diagnosis.md` and return the smallest affected prompt block.
+For a full compilation, output one complete native shot prompt for each explicitly requested or boundary-justified generation segment inside its own fenced code block so line breaks remain copyable; ordinary single-scene input produces one block. Multiple camera shots, cuts, and action beats inside one locked `4-30s` scene remain in that one prompt; do not turn each shot into a separate generated segment. End each prompt at `【收尾约束】`. Keep short delivery exclusions and the final stable state in that block; size, support, position, and composition are positive relations in the affected shot, not a tail list of prohibited physical outcomes. Do not append a self-check, score, report, read log, capability essay, or rationale. For `OPTIMIZE`, preserve the locked shot design and return the complete revised prompt unless the user requests one replacement block. For `DIAGNOSE`, follow `modules/diagnosis.md` and return the smallest affected prompt block.
