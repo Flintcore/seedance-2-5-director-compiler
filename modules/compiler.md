@@ -78,13 +78,15 @@ Treat each shot block as a continuous visual event rather than a field-by-field 
 
 `current composition and spatial relation -> trigger -> action process -> linked reaction -> dialogue or sound at its moment -> camera/focus response -> result, ending composition, and next cut`
 
-The order is a writing aid, not a quota. Present a trigger, action, or reaction only when the locked L1 contains that event; for an observing, held, or purely continuous shot, describe the active state, attention, and tension that are actually present without inventing a new event. A shot paragraph should let a reader answer, from that block alone, who is where, what each visible subject is attending to, what caused the change when a change occurs, how the action unfolds when action is present, how the surrounding subjects respond, and what state remains at the end. Keep the common rows as navigation; the concrete action, reaction, dialogue placement, spatial relationship, and cut/continuation reason belong in the shot body. Repeat dynamic anchors when a cut or focus change would otherwise erase the frame from working memory; compress only stable static facts that have no effect on this shot's comprehension.
+The order is a writing aid, not a quota. Present a trigger, action, or reaction only when the locked L1 contains that event; for an observing, held, or purely continuous shot, describe the active state, attention, and tension that are actually present without inventing a new event. A shot paragraph should let a reader answer, from that block alone, who is where, what each visible subject is attending to, what caused the change when a change occurs, how the action unfolds when action is present, how the surrounding subjects respond, and what state remains at the end. Keep the common rows as navigation; the concrete action, reaction, dialogue placement, spatial relationship, and cut/continuation reason belong in the shot body. Repeat dynamic anchors when a cut or focus change would otherwise erase the frame from working memory; compress only semantically duplicated static wording without losing this shot's comprehension or expressive value.
 
 When the same space or camera continues, connect internal beats with natural temporal clauses such as "此时", "同时", "看到后", "就在这时", and "随后". A held or observational shot may explicitly state that the action, sound, or attention continues and that there is no new cut; it does not need a manufactured event. When a cut occurs, state the outgoing result and the first visible state after the cut so the new view has an explicit cause and landing point.
 
 写法示意（只示范信息织合，不是固定句式）：35mm三人中景，摄影机位于宋佳正面、与她眼睛等高，平视并保持固定。画面中宋佳居中、粑粑在右侧、大胃袋在左侧；宋佳先看向粑粑，看到它后退半步便伸手把它挡回队伍，同时锅巴在她头顶探身看热闹。宋佳说{回到原位}，大胃袋收住脚步，焦点随宋佳的手带到粑粑脸上，最后停在三人重新形成的关系上，为下一次视线转移留下明确起点。
 
 Preserve the approved audiovisual relationships, not just their technique names: staging/depth changes, framing contrasts, focus handoffs, held reactions, and a sound's source, onset, overlap, decay, or perspective at the relevant moment. Do not flatten those choices into identical close-ups with a common ambience list. Pure `COMPILE` does not invent moves, cuts, new sounds, or a different viewpoint to increase variety.
+
+Preserve expressive carriers even without a new event: the approved light source and direction, contrast between subjects, shadow placement, foreground material/coverage, reflection and sound perspective belong where they affect the shot. Internal meaning guides this translation; a label such as “象征创伤” is not a replacement for those observable relationships. Translate the carrier without explaining the symbol to the viewer, inventing a flashback, or promising a fixed audience interpretation. A steady shared light baseline may stay in the common row, but shot-specific differences or concealment stay explicit in the shot even when unchanged over time.
 
 ### 5. Write Each Shot
 
@@ -107,11 +109,13 @@ Action contracts are woven into the shot paragraph: intention -> path -> contact
 
 微表情专项按需读 [micro-performance.md](micro-performance.md)。将已定心理策略落实为本镜可见的触发、微反应和承接状态；保留听者反应与台词时机，避免同时安排妨碍发声的嘴部动作。遮挡的脸部变化仅作内部表演依据，正文使用当前机位实际可见、可听的通道；不为可读性偷偷补切镜。精确时值只在设计有依据时保留，不默认生成毫米、百分比或逐帧表情清单。
 
+有意藏眼或反射遮脸本身也可能承担意义：区分真实交谈目标与观众可见的眼部信息，保留定稿的藏露关系。不要为表演“清楚”自动补光、去反射、挪遮挡或新增泄露心理的身体反应；只有与原设计意图相反的意外遮蔽才是待修问题。
+
 普通对话的交谈对象和视线不是可有可无的表情装饰：把已有对象、站位与注意力明确写进说话/倾听所在的镜头，默认面向交谈对象脸部的目光，保留已定共同任务、回避或走神。目光转移交代触发、新落点与承接；压缩文字时保留这一关系，过肩视线指向实际对手而非附近的摄影机。反打重新按机位表达方向；细则见 [micro-performance.md](micro-performance.md)，对白与静默反应见 [dialogue-binding.md](../references/model/dialogue-binding.md)。
 
 ### 6. Keep the Prompt Lean
 
-Remove repeated adjectives, semantically duplicated static scene facts, internal labels, and decorative technical values; the complete-shot camera information above is useful content, not decoration. Keep every dynamic or static fact that controls identity, count, space, causality, performance, sound, dialogue, or continuity; a repeated spatial or action anchor is useful when it restores shot-level comprehension. There is no character-count quota, shot-count quota, mandatory output field count, or formal self-check section.
+Remove repeated adjectives, semantically duplicated static wording, internal labels, and decorative technical values; the complete-shot camera information above is useful content, not decoration. Keep dynamic or static facts that control identity, count, space, causality, performance, sound, dialogue, continuity, subtext, emotional distance, or deliberate uncertainty. An unchanged light/reflection relation can carry meaning; “the basic plot still works without it” is not a deletion test. Deduplicate wording, not the carrier or its subject-specific contrast. There is no character-count quota, shot-count quota, mandatory output field count, or formal self-check section.
 
 ## Positive Constraints and Spatial Coherence
 

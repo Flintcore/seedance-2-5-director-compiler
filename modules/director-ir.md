@@ -36,7 +36,7 @@ visual_strategy:
   viewpoint: "摄影机站在谁的认知或情感一侧"
   master_shot_logic: "用什么主镜骨架承载戏点"
   rhythm: "何处积累、何处转折、何处停留"
-  look_and_sound: "会改变叙事的光色与声音策略"
+  look_and_sound: "承担事件或表达作用的光色与声音策略，含有意的藏露与持续关系"
 
 knowledge_applications:
   - source: "references/cinema/... 或 references/masters/... §具体段落/场景"
@@ -47,7 +47,7 @@ knowledge_applications:
 shots:
   - id: SH01
     time: "00:00.0-00:04.0"
-    function: "这一镜给故事带来的变化"
+    function: "这一镜的事件作用或表达作用，亦可持续已有状态与意味"
     image_action: "可读的完整画面事件链：当前构图/关系→触发→主动作→联动反应→结果"
     camera: "景别、焦距、相对主体的水平方位与机位高度、平视/仰拍/俯拍、运镜或固定状态；视点、焦点及运动动机融入其中"
     staging: "人物和关键物的空间关系、注意力/视线落点、头眼身关系及出入画"
@@ -77,7 +77,7 @@ approval:
 
 ### `drama`
 
-`premise` 复述事件；`objective` 和 `obstacle` 产生可拍冲突；`turn` 决定镜头结构；`audience_landing` 是所有镜头取舍的判据。一个镜头若既不推进信息、关系、情绪、动作因果，也不建立必要空间，应被合并或删除。
+`premise` 复述事件；`objective` 和 `obstacle` 产生可拍冲突；`turn` 组织本段结构，不分摊为每镜必须新增转折；`audience_landing` 包括理解、感受及有意保留的疑问。镜头取舍同时看事件与表达作用：基础情节不变但潜台词、人物理解、情绪距离、主题联系或观看体验受损，仍有保留理由；详见 [表达价值](shot-design.md)。不将镜头删减测试机械套到镜内光影等载体。
 
 ### `continuity`
 
@@ -85,7 +85,7 @@ approval:
 
 ### `visual_strategy`
 
-只记录统领整段的导演选择：视点、主镜框架、节奏曲线、光色和声音态度。镜头级规格留在 `shots`，避免同一规则重复两次。
+只记录统领整段的导演选择：视点、主镜框架、节奏曲线、光色和声音态度。已有字段也承接表达意图与藏露选择，不加暗示字段；具体到某个人/某镜的明暗、反射或遮挡关系留在 `shots`，不以共享风格替代差异。
 
 ### `knowledge_applications`
 

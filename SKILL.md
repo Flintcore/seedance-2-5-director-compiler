@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.1.12"
+  version: "0.1.13"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -43,11 +43,13 @@ For explicit micro-expression, subtext performance, listener-reaction, or emotio
 
 When designing shots, actively seek motivated audiovisual range with [shot-design.md](modules/shot-design.md): shape what viewers see/hear first, how attention changes, and what contrast makes the turn felt. Richness may come from staging, depth, framing, camera movement, focus, rhythm, or sound perspective; it is not a quota of cuts, angles, moves, or effects. Pure compilation preserves the approved design rather than decorating it.
 
+Expressive value is not limited to new plot information: preserve the concrete light, reflection, occlusion, framing, or sound relationships that carry subtext, emotional distance, or deliberate uncertainty, even when the basic event is unchanged. Follow the expressive-value guidance in [shot-design.md](modules/shot-design.md); clear execution does not require explaining every implication or making every eye visible. The intended gaze target and the audience's access to that gaze are separate choices.
+
 ## Shot Narrative Contract
 
 Every complete shot combines camera parameters, movement or a held camera, and continuous visual performance. State shot size, focal length, camera position relative to a named character/place/object (horizontal bearing and height), and viewing angle (level/up/down) inside that shot, then weave movement, action, expression, gaze, dialogue, and reactions into readable prose as present in the design. These are information requirements, not separate output fields; see the [native shot schema](references/model/nine-layer-schema.md). Camera height and viewing tilt are distinct, and a previs reference does not replace this shot-local information.
 
-Each shot block is a readable visual event, not a list of internal fields. Build a soft causal spine—current composition and spatial relation, trigger, action process, linked reactions, dialogue or sound at its moment, camera/focus response, and resulting state—then weave it into one natural paragraph. Repeat dynamic anchors such as who is where, who is looking at what, the current action phase, and background movement whenever they are needed to reconstruct the frame; compress only static facts that no longer affect comprehension. The common rows provide navigation, while the shot body carries the concrete story event and the reason for the next cut or continuation.
+Each shot block is a readable visual event, not a list of internal fields. Build a soft causal spine—current composition and spatial relation, trigger, action process, linked reactions, dialogue or sound at its moment, camera/focus response, and resulting state—then weave it into one natural paragraph. Repeat dynamic anchors such as who is where, who is looking at what, the current action phase, and background movement whenever they are needed to reconstruct the frame; compress only semantically duplicated static wording without losing comprehension or expressive value. The common rows provide navigation, while the shot body carries the concrete story event and the reason for the next cut or continuation.
 
 ## Positive Spatial Constraints
 

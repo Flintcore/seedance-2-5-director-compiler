@@ -22,9 +22,11 @@ Preserve:
 2. identity, speaking source, instance count, critical props, and boundary state;
 3. causal action, spatial legibility, contact, reaction, and continuity;
 4. L1 shot and performance decisions;
-5. the single strongest approved texture, atmosphere, or impact detail;
+5. the approved expressive relationships carried by texture, light, reflection, occlusion, atmosphere, or sound; keep interacting carriers together rather than selecting a single detail by quota;
 
 Remove semantically duplicate static phrasing and flexible background business first. Preserve the shot's causal spine and the dynamic anchors that make the current frame readable: active positions, attention targets, held objects, action phase, linked reactions, and the result that motivates the next view. Then reduce decorative effects, secondary motion, redundant reference duties, and nonessential camera complexity. Do not solve overload by changing the locked meaning or dropping the physical result.
+
+An unchanged visual relation may carry subtext without advancing the basic plot. Compress its wording, not the subject-specific light/shadow, reflection, or foreground relationship that creates the intended impression. Deliberately hidden eyes or an unreadable expression are not legibility failures unless the approved design requires that information to be seen; do not add explanation or a revealing reaction to resolve intended uncertainty.
 
 ## Single Segment First; Split Only Beyond 30s
 
