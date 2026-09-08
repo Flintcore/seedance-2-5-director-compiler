@@ -38,8 +38,9 @@ Then compile it into the relevant shot paragraph and, when useful, the shared `å
 
 - One brace block has one speaker ID and one time window.
 - Establish the speaker visually before speech when the mouth is on screen.
-- State that the listener remains in a positive listening performance, then reacts after the line's landing point.
-- During a speaker handoff: current speaker closes or settles, visual attention transfers, next speaker begins, previous speaker listens.
+- For ordinary directed dialogue, make the addressee and speaker/listener eyelines explicit in the shot prose, normally toward the other's face/eyes; keep established task attention, avoidance, or distraction. The body facing a person does not by itself establish the eye target. Off-screen addressees retain their spatial location; an over-shoulder camera is not the addressee. For shifts and reverse-shot continuity, read [micro-performance.md](../../modules/micro-performance.md).
+- The listener may give a silent gaze/body response when the relevant information arrives, while the current speaker keeps speaking. The listener's own line follows the intended turn-taking or explicitly locked overlap; do not delay every listening reaction until the full sentence ends or turn a listening response into an extra spoken line.
+- During a speaker handoff, establish the next voice source and any visible speaking mouth correctly, while the previous speaker settles into listening. Framing, camera movement, focus, and the audience's viewing target follow the approved design: the image may remain on the listener while the next speaker is heard off screen. A new speaking turn does not by itself require a cut, focus transfer, or reset of character eyelines.
 - If deliberate overlap is locked by L1, give each speaker a separate brace block and explicit overlapping time window.
 
 ## Off-Screen Speech and Narration

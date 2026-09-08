@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.1.11"
+  version: "0.1.12"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -37,7 +37,11 @@ Domain ownership is fixed:
 
 For shot design, use the soft default in [shot-design.md](modules/shot-design.md): establish a concrete attention/gaze target and timing, then choose only the performance evidence the shot needs. The target, head/eye/body relation, and action timing should agree; when an opponent, listener, or watched object is visible, its response should also fit the gaze unless the design intentionally uses avoidance, side-glance surveillance, or delayed attention. Let emotion read through control, behavior, breath, posture, hands/props, distance, or listener response; facial detail is conditional on scale, light, and causal value. User locks, character habits, genre grammar, and deliberate formal stillness take precedence.
 
+Ordinary face-to-face dialogue explicitly carries the addressed character and the speaker/listener eyeline into the shot prose, normally toward the other person's face/eyes. Facing someone alone does not specify where the eyes look. Natural blinking and motivated task glances remain; a diverted gaze has a trigger, a concrete destination, and a return or deliberately continued state. Preserve established avoidance or distraction rather than forcing unbroken eye contact. A camera near the addressee is not automatically the gaze target.
+
 For explicit micro-expression, subtext performance, listener-reaction, or emotional-transition work, read [micro-performance.md](modules/micro-performance.md). Use character motive -> visible response -> carried state as a design bridge, not a per-shot face-part checklist. Keep subtle performance inside continuous shot prose; a standalone performance document is an opt-in deliverable.
+
+When designing shots, actively seek motivated audiovisual range with [shot-design.md](modules/shot-design.md): shape what viewers see/hear first, how attention changes, and what contrast makes the turn felt. Richness may come from staging, depth, framing, camera movement, focus, rhythm, or sound perspective; it is not a quota of cuts, angles, moves, or effects. Pure compilation preserves the approved design rather than decorating it.
 
 ## Shot Narrative Contract
 

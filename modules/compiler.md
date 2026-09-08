@@ -84,6 +84,8 @@ When the same space or camera continues, connect internal beats with natural tem
 
 写法示意（只示范信息织合，不是固定句式）：35mm三人中景，摄影机位于宋佳正面、与她眼睛等高，平视并保持固定。画面中宋佳居中、粑粑在右侧、大胃袋在左侧；宋佳先看向粑粑，看到它后退半步便伸手把它挡回队伍，同时锅巴在她头顶探身看热闹。宋佳说{回到原位}，大胃袋收住脚步，焦点随宋佳的手带到粑粑脸上，最后停在三人重新形成的关系上，为下一次视线转移留下明确起点。
 
+Preserve the approved audiovisual relationships, not just their technique names: staging/depth changes, framing contrasts, focus handoffs, held reactions, and a sound's source, onset, overlap, decay, or perspective at the relevant moment. Do not flatten those choices into identical close-ups with a common ambience list. Pure `COMPILE` does not invent moves, cuts, new sounds, or a different viewpoint to increase variety.
+
 ### 5. Write Each Shot
 
 For every shot, write the original native block:
@@ -104,6 +106,8 @@ Action contracts are woven into the shot paragraph: intention -> path -> contact
 压缩提示词时保留已锁定的注意力/视线锚点和承担意义的表演证据；按景别编译为姿态、距离、手/物件、呼吸或反应等自然语言，不补造动作，也不把微表情拆成部位清单。把表演的触发、可见变化和反应结果放在同一条镜头因果叙事里，避免悬空成独立标签。连续性承接的是注意力、控制、呼吸与重心轨迹，小动作只在自然持续或再次触发时延续；有意静止仍写清目标或张力。`COMPILE` 只保留既有证据，不为满足基线另造手势。
 
 微表情专项按需读 [micro-performance.md](micro-performance.md)。将已定心理策略落实为本镜可见的触发、微反应和承接状态；保留听者反应与台词时机，避免同时安排妨碍发声的嘴部动作。遮挡的脸部变化仅作内部表演依据，正文使用当前机位实际可见、可听的通道；不为可读性偷偷补切镜。精确时值只在设计有依据时保留，不默认生成毫米、百分比或逐帧表情清单。
+
+普通对话的交谈对象和视线不是可有可无的表情装饰：把已有对象、站位与注意力明确写进说话/倾听所在的镜头，默认面向交谈对象脸部的目光，保留已定共同任务、回避或走神。目光转移交代触发、新落点与承接；压缩文字时保留这一关系，过肩视线指向实际对手而非附近的摄影机。反打重新按机位表达方向；细则见 [micro-performance.md](micro-performance.md)，对白与静默反应见 [dialogue-binding.md](../references/model/dialogue-binding.md)。
 
 ### 6. Keep the Prompt Lean
 
