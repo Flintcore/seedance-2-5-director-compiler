@@ -22,9 +22,9 @@ hard_contracts:
     image: "@imageN"
     video: "@videoN"
     audio: "@audioN"
-    numbering: contiguous_per_type_from_1_in_first_use_order
+    numbering: first_use_per_type_from_1_for_new_prompt_preserve_mapping_for_augmentation
     occurrence: once_per_unique_source
-    location: "通用约束栏 > 素材绑定"
+    location: "素材绑定"
     source_locator_output: forbidden
 
   stability_zones_seconds:
@@ -38,22 +38,28 @@ hard_contracts:
     brace_content: exact_spoken_text_only
 
 output_format:
-  style: native_shot_prompt
+  style: five-part-shot-prose
+  authority: user_output_preference_not_model_mechanism
   order:
-    - "通用约束栏 · 本 segment 共享"
+    - "风格"
+    - "素材绑定"
     - "本段戏剧任务"
-    - "本段情节"
+    - "本段情绪总控"
     - "镜头 blocks"
-    - "收尾约束"
-  inline_heading_body:
-    - "本段戏剧任务"
-    - "本段情节"
-    - "收尾约束"
-  shot_heading: "【镜头N】| M:SS-M:SS"
-  asset_row: "素材绑定（有素材时才输出）"
-  optional_common_rows: true
+  shot_heading: "镜头N｜M:SS-M:SS"
+  shot_body: one_continuous_prose_paragraph
+  required_shot_sentences: ["光影", "现场声"]
+  dialogue_line: "台词：角色ID说{逐字台词}"
+  dialogue_optional: true
+  no_assets_text: "无外部参考素材"
+  ending: last_shot_prose_or_dialogue
   self_check_section: forbidden
   character_limit: unknown
+  new_design_style:
+    adjacent_cuts: different_focal_length_and_shot_scale
+    composition: off_center_primary_subject_with_existing_entities_on_other_side
+    priority: explicit_user_locks_and_approved_L1_first
+    continuous_take: preserve_no_manufactured_cuts
 
 unknown_field_policy:
   - Do not infer numeric reference weights.

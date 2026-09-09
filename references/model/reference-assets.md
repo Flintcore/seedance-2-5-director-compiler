@@ -18,10 +18,10 @@ asset:
   instance_effect: none | declared_instance
 ```
 
-Compile as one natural-language row in `【通用约束栏 · 本 segment 共享】`:
+Compile into the second part, `【素材绑定】`, after `【风格】`. This is a binding excerpt, not a complete prompt:
 
 ```text
-─ 素材绑定：@image1=定义对象或职责（内容描述）· @video1=动作职责（内容描述）
+【素材绑定】@image1为命名人物的外观参考；@video1为已批准动作或摄影机路径的参考。
 ```
 
 ## Canonical Placeholder Contract
@@ -31,8 +31,9 @@ Compile as one natural-language row in `【通用约束栏 · 本 segment 共享
 - When augmenting an existing prompt, preserve its canonical source-to-placeholder mappings and binding order, including gaps. Append each genuinely new source at the highest existing number of its media type plus 1 (or 1 if that type is absent). Reuse an already bound source and merge its new duties; do not renumber or replace the existing image, video, or audio references. Count unique sources, not the largest numeric suffix. This preserves established bindings, not malformed aliases or repeated occurrences.
 - Use lowercase English type names, no hyphen, underscore, space, Chinese alias, original filename, or path.
 - Keep paths, filenames, URLs, upload labels, and platform-native IDs only in the internal source ledger.
-- Emit each canonical placeholder exactly once in the entire formal prompt, on the `素材绑定` row in `【通用约束栏 · 本 segment 共享】`.
-- Merge multiple duties and disjoint time ranges for the same source into that row. Elsewhere use the story's natural name, such as `父亲`, `旧车站`, `起身动作`, or `父亲声源`, without another `@`.
+- Emit each canonical placeholder exactly once in the entire formal prompt, inside `【素材绑定】`.
+- Merge multiple duties and disjoint time ranges for the same source into its single binding item. Elsewhere, including the independent dialogue line, use the story's natural name, such as `父亲`, `旧车站`, `起身动作`, or `父亲声源`, without another `@`.
+- Without external references, keep `【素材绑定】` and write `无外部参考素材`; necessary character or setting facts may follow. Do not invent an asset token to fill the section. Static facts here do not replace the current pose, contact, gaze, or spatial relation inside each shot.
 
 The placeholder is deliberately a convenient replacement token. It does not claim that the destination platform has already bound the asset.
 

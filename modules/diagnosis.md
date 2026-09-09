@@ -38,7 +38,7 @@ Stop at the first layer that can explain every observed downstream symptom. Do n
 
 | Symptom | Inspect first | Typical direct repair |
 |---|---|---|
-| wrong face, duplicate character, extra prop | head lock, instance ledger, asset responsibility | stabilize ID/count and narrow asset scope |
+| wrong face, duplicate character, extra prop | identity facts, instance ledger, asset responsibility | stabilize ID/count and narrow asset scope |
 | teleport, reversed direction, pose reset | entry state, direction map, prior exit | replace boundary state and affected first beat |
 | wrong scale, conflicting support, position or framing | locked dimensions, common spatial reference, depth, pose, support/contact, action and composition | read [positive-spatial-constraints.md](../references/model/positive-spatial-constraints.md); repair the incompatible positive relation rather than adding an ending prohibition |
 | flat or excessive expression, unreadable listener response, emotional reset at a cut | character motive, knowledge timing, gaze target, visible channel, prior state | read [micro-performance.md](micro-performance.md); repair the affected trigger-response-transition in continuous shot prose, preserving the camera and dialogue locks |

@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.1.13"
+  version: "0.2.0"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -47,9 +47,15 @@ Expressive value is not limited to new plot information: preserve the concrete l
 
 ## Shot Narrative Contract
 
-Every complete shot combines camera parameters, movement or a held camera, and continuous visual performance. State shot size, focal length, camera position relative to a named character/place/object (horizontal bearing and height), and viewing angle (level/up/down) inside that shot, then weave movement, action, expression, gaze, dialogue, and reactions into readable prose as present in the design. These are information requirements, not separate output fields; see the [native shot schema](references/model/nine-layer-schema.md). Camera height and viewing tilt are distinct, and a previs reference does not replace this shot-local information.
+The formal prompt has exactly five parts in this order: `【风格】`, `【素材绑定】`, `【本段戏剧任务】`, `【本段情绪总控】`, then `镜头N｜M:SS-M:SS` blocks. Read the [five-part prose schema](references/model/nine-layer-schema.md) for the complete metatemplate; the historical filename is only a compatibility path.
 
-Each shot block is a readable visual event, not a list of internal fields. Build a soft causal spine—current composition and spatial relation, trigger, action process, linked reactions, dialogue or sound at its moment, camera/focus response, and resulting state—then weave it into one natural paragraph. Repeat dynamic anchors such as who is where, who is looking at what, the current action phase, and background movement whenever they are needed to reconstruct the frame; compress only semantically duplicated static wording without losing comprehension or expressive value. The common rows provide navigation, while the shot body carries the concrete story event and the reason for the next cut or continuation.
+Each shot is one continuous natural-language paragraph combining shot scale, focal length, camera bearing/height/tilt relative to a named entity, subject placement and approximate frame share, foreground/midground/background entities, camera start/path/speed/end or a held view, and narrative performance from starting pose to ending pose. Build a soft causal spine, not an internal-field list. Repeat dynamic anchors as needed for this shot to be independently imaginable; preserve expressive light/reflection/occlusion carriers even when no new plot event occurs.
+
+Every paragraph ends with `光影：` describing how light acts now and how it changes through an established physical carrier (or remains stable), and `现场声：` selecting 1–3 real diegetic sources, without BGM. Exact speech belongs on a separate `台词：角色说{逐字原文}` line, while prose keeps speaking/listening timing, gaze and reactions. No dialogue means no dialogue line. Explicit silence and later specific user sound locks take precedence over filling slots.
+
+For new shot design, adjacent cuts change both focal length and shot scale; compose the primary subject off-center and give the other side existing concrete entities and depth. Treat this as the user's chosen design contract, not a universal cinema or model law. User locks and approved L1 take precedence; pure compilation and continuous takes keep their approved optics, positions and cuts. Match each shot's opening world pose, contact, possession and action phase to the previous ending. First/last 0.5-second states stay in the first/last shot prose.
+
+Mood control states the main emotion, rhythm/temperature, and one contrast sentence clarifying what the scene is not. This requested expressive boundary is separate from prohibited physical-error negative lists. Camera texture stays in style, reference duties in asset binding, concrete story/action/light/sound in the relevant shot; no legacy common/story/tail cards return.
 
 ## Positive Spatial Constraints
 
@@ -66,7 +72,7 @@ These project facts are confirmed and may be treated as hard constraints:
 
 ## Segment Boundary Policy
 
-- Treat one coherent scene or shot request as **one generated segment by default**. A segment may contain many `【镜头N】` blocks; a camera cut is not a generation-segment boundary.
+- Treat one coherent scene or shot request as **one generated segment by default**. A segment may contain many `镜头N｜起止时间` blocks; a camera cut is not a generation-segment boundary.
 - Select `SEQUENCE` only when the user explicitly requests multiple generated segments, or when the required narrative span is demonstrably longer than 30 seconds from user-stated timing or locked events whose minimum necessary duration still exceeds 30 seconds. Multiple beats, action density, dialogue, references, or continuity concerns alone do not justify a split.
 - Before creating a boundary, compress optional embellishment, merge redundant shot changes, and keep the causal spine in one segment. If the evidence for more than 30 seconds is unclear, keep one segment and preserve the complete requested event.
 - When a boundary is genuinely required, place it after a readable settled state and carry the physical, visual, and audio state forward; do not split in the middle of an unresolved action or reaction.
@@ -75,7 +81,7 @@ Formal prompt references follow one canonical output contract:
 
 - For a new prompt, number unique sources by media type and first-use order: `@image1`, `@image2`; `@video1`, `@video2`; `@audio1`, `@audio2`. When augmenting an existing prompt, preserve its canonical source-to-placeholder mappings and order; append genuinely new sources after the highest existing number of their type, without closing gaps.
 - Keep source paths, filenames, URLs, upload labels, and platform-native IDs in the internal source ledger. Never print them in the formal prompt.
-- Print each canonical `@` placeholder exactly once in the entire formal prompt, on the `─ 素材绑定：` row inside `【通用约束栏 · 本 segment 共享】`. Merge all duties and scopes for that source into that row.
+- Print each canonical `@` placeholder exactly once in the entire formal prompt, inside `【素材绑定】`. Merge all duties and scopes for that source there. With no sources, retain the section and write `无外部参考素材`.
 - In the shot paragraphs and all other rows, refer to the bound character, prop, place, motion, or voice by semantic name rather than repeating the `@` placeholder.
 
 The `【本段戏剧任务】` row is a single causal sentence: state the character's original situation, the new situation, the explicit action or turn that moves between them, and the relationship, emotional, or next-action result the audience should understand or feel at the end. Keep it segment-local and concrete; do not turn it into a separate analysis block.
@@ -149,7 +155,7 @@ Default output is concise:
 
 Do not run or append a final self-check stage. Do not add pass/fail cards, scores, read logs, progress logs, capability essays, or repeated rationale.
 
-Use Chinese for the final prompt. Keep exact dialogue, canonical asset placeholder order, model names, timecodes, and necessary on-screen foreign text unchanged. Source-side asset IDs remain internal. The final prompt ends at `【收尾约束】`; it has no self-check or review section.
+Use Chinese for the final prompt. Keep exact dialogue, canonical asset placeholder order, model names, timecodes, and necessary on-screen foreign text unchanged. Source-side asset IDs remain internal. The final prompt ends at the last shot prose or its optional dialogue line; its final 0.5-second state stays inside that shot, with no extra tail, self-check or review section.
 
 ## Runtime Discipline
 

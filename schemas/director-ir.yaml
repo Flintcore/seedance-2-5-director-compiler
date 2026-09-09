@@ -101,8 +101,14 @@ properties:
     properties:
       viewpoint: {type: string, minLength: 1}
       master_shot_logic: {type: string, minLength: 1}
-      rhythm: {type: string, minLength: 1}
-      look_and_sound: {type: string, minLength: 1}
+      rhythm:
+        type: string
+        minLength: 1
+        description: "已有节奏曲线、主情绪的节奏与温度；输出情绪总控从此投影，不新增属性"
+      look_and_sound:
+        type: string
+        minLength: 1
+        description: "全段成像质感、光色与现场声策略、已定情绪边界及藏露选择；具体镜内受光关系保留在image_action"
 
   knowledge_applications:
     type: array
@@ -144,7 +150,7 @@ properties:
         image_action:
           type: string
           minLength: 1
-          description: "可读的完整画面事件链：当前构图/关系、触发、主动作、联动反应和结果"
+          description: "可读的完整画面事件链：当前构图/开始体态、触发、主动作、联动反应和结果，含必要的实际受光关系及有实体原因的变化或稳定"
         camera:
           type: string
           minLength: 1
@@ -157,7 +163,10 @@ properties:
           type: string
           minLength: 1
           description: "可观察的注意力、行为、控制和反应，按景别取舍"
-        sound: {type: string, minLength: 1}
+        sound:
+          type: string
+          minLength: 1
+          description: "实际声源、远近与发生时机，编译为本镜现场声句；对白触发与反应留在事件中，逐字文本仅编译到独立台词行"
         transition:
           type: string
           minLength: 1

@@ -1,159 +1,68 @@
-# Native Shot Prompt Compiler
+# Native Shot Prompt Compiler · five-part-shot-prose
 
-The compiler translates a locked L1 director design into a self-contained Seedance 2.5 shot prompt. It preserves the director's choices and writes them in the readable format used by `seedance-agent-2-5`; it is not a second director.
+把锁定L1、现有分镜或用户创意编译为五部分Seedance 2.5提示词。编译是保真翻译，不是第二次导演。每次完整编译读`references/model/INDEX.md`、[主模板](../references/model/nine-layer-schema.md) 和 [能力注册表](../references/model/capability-registry.yaml)，其他模型文档按当前问题读取。
 
-Read `references/model/INDEX.md`, then load only the model references needed for the active issue. For every full prompt, read `references/model/nine-layer-schema.md` and `references/model/capability-registry.yaml`. The schema filename is retained for compatibility; its contents define the native shot format.
+## 1. 保留当前对象
 
-## Input Contract
+接受已确认L1、用户锁、逐字对白、世界设定、素材职责、单段时长及进入/退出状态。已有提示词直接增补，不重建整套L1；Blender粗预演按 [previs-reference.md](../references/model/previs-reference.md) 接入。动作合同仍回到本镜正文。
 
-Accept any combination of:
+普通单段只在内存整理必要来源账本：故事人物、用户锁、对白原文、资产、时长和活跃状态。不自动写日志、项目文件、读库记录或额外表格。一个4–30秒连贯场景内的切镜和节拍都留在一个生成段；只有明确分段要求或叙事最低时长超过30秒才走边界政策。
 
-- an approved L1 director design or an existing locked shot list;
-- an existing final prompt to augment without rebuilding L1; when adding a Blender coarse previs video, read [previs-reference.md](../references/model/previs-reference.md);
-- user locks, exact story facts, exact dialogue, and world rules;
-- the current segment duration and, when relevant, its physical boundary state;
-- asset source locators, media types, and the intended responsibility of each asset;
-- an internal action contract from `action-design.md`.
+人物用故事姓名或自然角色名，不将有名人物改成ROLE_A内部编号。路径、源文件名、上传标签只在内部来源账本使用。区分实体本体、反射、影像和影子；只记录影响本段的位置、朝向、视线、持物、接触、可见性和未完成动作。
 
-Treat user locks and approved L1 as immutable creative input. The compiler may make relationships explicit, assign stable semantic IDs, divide time within the locked generation segment, and remove only semantically duplicated static wording. It must preserve shot order, performance, action, outcome, aesthetics, and any attention/gaze anchor or performance-bearing small behavior that controls the shot's meaning. Dynamic spatial relations, action phase, reactions, and transition causes remain available wherever they are needed to reconstruct the current frame. A missing operational value is filled with the least-committal choice supported by the locked facts; unresolved creative uncertainty stays outside the formal prompt.
+## 2. 五部分装配
 
-The compiler does not create a new generation segment for a coherent scene. It compiles the supplied segment as one prompt unless a multi-segment boundary is explicitly requested or already justified by the boundary policy; all camera cuts and beats remain inside that prompt.
+唯一顺序：`【风格】` → `【素材绑定】` → `【本段戏剧任务】` → `【本段情绪总控】` → `镜头N｜起止时间`序列。
 
-## Compile Pipeline
+- 风格：摄影机/成像目标、胶片或数字质感及必要色彩和画幅。无字幕/无BGM开关集中一次，服从后来明确用户锁。
+- 素材绑定：实际来源各一次规范@；没有素材也保留此节，写“无外部参考素材”。必要角色/场景静态设定留这里，不重建共享约束表。
+- 戏剧任务：原有处境→新的处境，由明确动作/转折推进→观众感知的关系/情绪/后续行动结果。只讲当前段，不输出评分或其他段故事。
+- 情绪总控：主情绪——节奏与温度；一句具体反面情绪排除。概括已定策略，不据此改变批准的表演强度或揭开有意隐藏的心理。
+- 镜头：景别、焦段、相对方位、高度、俯仰、构图、运镜、动作表演、光影和现场声织成一个连续段落；逐字台词另行。完整细则以主模板为准。
 
-### 1. Freeze the Source
+迁移旧输入时，原本段情节的事件回到对应镜头，原收尾内容回到末镜结束状态，共同质感到风格，绑定及必要静态设定到素材节。保留叙事信息和确认创意，不继承旧标题。缺事实不填想象；涉及改动用户锁的冲突只提出该处。
 
-Create a small in-memory ledger:
+## 3. 镜头级连续画面叙事
 
-```yaml
-source_ledger:
-  user_locks: []
-  approved_l1: []
-  exact_dialogue: []
-  entities: []
-  world_rules: []
-  segment_duration:
-  entry_state:
-  exit_state:
-  assets: []
-```
+先在内部形成 **causal spine**，再将`image_action`、`camera`、`staging`、`performance`、`sound`、`end_state`织回同一可想象画面，而非逐字段翻译：
 
-An ordinary single segment needs no project file, runtime log, or read-history artifact. Keep source locators internal and keep their output placeholders separate.
+`当前构图与空间关系 → 已有触发 → 动作过程 → 同场联动/反应 → 听说发生处 → 摄影机/焦点响应 → 结束体态与落幅`
 
-### 2. Normalize IDs and States
+这是软顺序；观察、停留、暗示镜头可描述持续状态与注意力，不增造转折。正文从本镜起点体态和画幅关系开始，以结束体态收束，读者无需从外部摘要拼回动作。技术参数与表演在同一段，不另起技术参数行或部位清单。
 
-- Give speaking characters, continuity-critical characters, props, devices, and off-screen sources stable semantic IDs based on the user's story names or natural scene roles. Do not emit `ROLE_A`, `ROLE_B`, `角色A`, or similar bookkeeping labels when the story provides a usable name such as `父亲`, `女儿`, `店员`, or `蒙面人`.
-- Distinguish one physical body from a reflection, screen image, shadow, memory, or other non-body appearance.
-- Record position, facing, gaze, contact, possession, condition, visibility, and motion only when they affect this segment.
-- Separate world direction from screen direction.
-- Deduplicate identical sources and follow the numbering policy in [reference-assets.md](../references/model/reference-assets.md): initialize new prompts by media type and first appearance; preserve existing canonical source bindings when augmenting a prompt.
-- Keep paths, filenames, URLs, upload labels, and platform-native IDs out of the formal prompt.
+动态锚点按需重述：人物在哪里、看谁、哪只手持物、接触/动作相位、背景还在进行什么。用“看到后、同时、随后、话音落下”等自然连接说明因果与同步；共享事实可简写，承担表达价值的稳定反射、遮挡、明暗差仍保留。只去重措辞，不删除具体载体。
 
-### 3. Apply Confirmed Facts
+每镜明确景别与焦段、相对主体的方位/高度与平仰俯、主体位置与近似占幅、已有前中后景。运镜给起点、路径、速度、终点和焦点变化；固定镜说明保持怎样的画幅。纯编译展开可确定的参数，不为填字段改视点、轴线或创造镜头。新增设计才执行相邻换焦段/换景别、偏心和实体占位的本次风格合同；一镜到底与确认L1优先。
 
-Use only the confirmed facts in `references/model/capability-registry.yaml`:
+前镜结束世界状态就是后镜开始状态。切换机位重新表达投影，不让人物无因换脚、换手、转脸或回到起势。剪在动作中从同相位继续，惯性、反应和恢复落实在动作镜头。首0.5秒建立可读起态，末0.5秒可复现末态写在最后镜头正文，不另做收尾字段。
 
-- one generated segment is `4-30s`;
-- image, video, and audio references together are at most `50`;
-- the first and last `0.5s` are stability zones;
-- exact dialogue is `角色ID说{逐字台词}` and narration is `旁白{逐字旁白}`.
+### 表演、视线与表达保真
 
-Do not invent platform weights, token or character budgets, camera-control switches, separate negative fields, or guarantees.
+保留动机→信息触发→微反应→延续状态，按景别用姿态、距离、视线、呼吸、手/物件或面部信号。不为“活人感”添无因抖动和重复手势。普通对话明确对谁说、看向谁脸部；回避、共同任务、走神按原意保留。反打按世界目标重映射屏幕方向，过肩对手不等于摄影机。
 
-### 4. Build the Segment Prompt
+有意藏眼、反射遮脸、背影和固定凝视保留心理不透明；不补光、移遮挡或新增泄露心理的小动作。部位不在画内就不编造可见细节。按需读 [micro-performance.md](micro-performance.md)，深化既有表演，不自动加特写。表演分寸和注意力时机服务叙事，不暴露全部内心。
 
-Use the native output order in `references/model/nine-layer-schema.md`:
+### 每镜光影与现场声
 
-1. `【通用约束栏 · 本 segment 共享】` with only the useful current-segment rows, led by `素材绑定` and `光影色彩风格`; add separate `角色外观` or `场景外观` rows only when the segment needs them.
-2. `【本段戏剧任务】正文` on the same line as its heading. Compile the L1 `objective/turn/audience_landing` into one causal sentence: the character's original situation becomes a new situation through an explicit action or turn, followed by the relationship, emotional, or next-action result the audience should understand or feel at the end.
-3. `【本段情节】正文` with a plain-language start-to-end summary of this segment only, also on the heading line.
-4. Ordered `【镜头N】| M:SS-M:SS` blocks.
-5. `【收尾约束】正文` with the final stable state and any confirmed end constraints on the same line.
+连续段落末部保留`光影：`和`现场声：`两个明确句子。光影既写此刻落在具体部位，也写镜内因人物、风、水、烟或实际光源怎样改变；稳定条件说明稳定。焦距/机位改变不让光源、门缝或物体穿越几何位置。保留受光差异、材质和反射的表达，不用“象征某情绪”替代画面。
 
-The prompt is self-contained at the segment level, and each shot block is independently readable enough to reconstruct its current visual event. Do not print other segment names, cross-segment IDs, internal lock names, review notes, or process commentary. Continuity is expressed as visible opening and closing states, not as a separate transition card.
+现场声选1–3种已成立声源，注明先后、远近、遮挡、主次或余响；不写BGM，不造声源填配额。显式静默照锁定处理。相邻镜承接持续声源，听觉距离变化不等于源头频率变化。对白原文在独立台词行；旁白不伪装成现场声。后来明确音乐锁属于风格例外，不污染现场声。
 
-### Shot-Level Continuous Visual Narrative
+## 4. 独立对白与素材
 
-Treat each shot block as a continuous visual event rather than a field-by-field transcription. Form the causal spine before prose compilation, then weave the available L1 fields into one paragraph in this soft order:
-
-`current composition and spatial relation -> trigger -> action process -> linked reaction -> dialogue or sound at its moment -> camera/focus response -> result, ending composition, and next cut`
-
-The order is a writing aid, not a quota. Present a trigger, action, or reaction only when the locked L1 contains that event; for an observing, held, or purely continuous shot, describe the active state, attention, and tension that are actually present without inventing a new event. A shot paragraph should let a reader answer, from that block alone, who is where, what each visible subject is attending to, what caused the change when a change occurs, how the action unfolds when action is present, how the surrounding subjects respond, and what state remains at the end. Keep the common rows as navigation; the concrete action, reaction, dialogue placement, spatial relationship, and cut/continuation reason belong in the shot body. Repeat dynamic anchors when a cut or focus change would otherwise erase the frame from working memory; compress only semantically duplicated static wording without losing this shot's comprehension or expressive value.
-
-When the same space or camera continues, connect internal beats with natural temporal clauses such as "此时", "同时", "看到后", "就在这时", and "随后". A held or observational shot may explicitly state that the action, sound, or attention continues and that there is no new cut; it does not need a manufactured event. When a cut occurs, state the outgoing result and the first visible state after the cut so the new view has an explicit cause and landing point.
-
-写法示意（只示范信息织合，不是固定句式）：35mm三人中景，摄影机位于宋佳正面、与她眼睛等高，平视并保持固定。画面中宋佳居中、粑粑在右侧、大胃袋在左侧；宋佳先看向粑粑，看到它后退半步便伸手把它挡回队伍，同时锅巴在她头顶探身看热闹。宋佳说{回到原位}，大胃袋收住脚步，焦点随宋佳的手带到粑粑脸上，最后停在三人重新形成的关系上，为下一次视线转移留下明确起点。
-
-Preserve the approved audiovisual relationships, not just their technique names: staging/depth changes, framing contrasts, focus handoffs, held reactions, and a sound's source, onset, overlap, decay, or perspective at the relevant moment. Do not flatten those choices into identical close-ups with a common ambience list. Pure `COMPILE` does not invent moves, cuts, new sounds, or a different viewpoint to increase variety.
-
-Preserve expressive carriers even without a new event: the approved light source and direction, contrast between subjects, shadow placement, foreground material/coverage, reflection and sound perspective belong where they affect the shot. Internal meaning guides this translation; a label such as “象征创伤” is not a replacement for those observable relationships. Translate the carrier without explaining the symbol to the viewer, inventing a flashback, or promising a fixed audience interpretation. A steady shared light baseline may stay in the common row, but shot-specific differences or concealment stay explicit in the shot even when unchanged over time.
-
-### 5. Write Each Shot
-
-For every shot, write the original native block:
-
-1. an optional cut declaration and one short technical sentence containing shot size, focal length, camera position relative to a named character/place/object (horizontal bearing and height), viewing tilt (level/up/down), and movement or a fixed camera; movement may continue in the event prose at its actual moment;
-2. one natural-language paragraph that reconstructs the shot as a visible causal event in the order the viewer perceives it:
-   - establish the current composition, foreground/middle/background, left/right placement, and attention relations;
-   - show the trigger and action from initiation through process to result, including performance, linked reactions, and information change;
-   - place exact dialogue or narration and synchronized sound at the moment they occur;
-   - write camera movement and focus handoff as responses to the event, then land the ending composition, focus, and next-cut state.
-
-Apply the complete-shot requirements in [nine-layer-schema.md](../references/model/nine-layer-schema.md). Keep each shot's camera information locally readable even for a continued setup or previs-assisted prompt; distinguish camera height from viewing tilt. Shared image texture, capture medium, and light/color baseline may stay in `光影色彩风格`, but they do not replace shot-local size, focal length, position, angle, and movement. This is a compact technical sentence plus continuous performance, not a field list or a new output format.
-
-Action contracts are woven into the shot paragraph: intention -> path -> contact -> force/inertia -> feedback -> resulting state. Do not add an action appendix or a second prompt format.
-
-### 表演连续性
-
-压缩提示词时保留已锁定的注意力/视线锚点和承担意义的表演证据；按景别编译为姿态、距离、手/物件、呼吸或反应等自然语言，不补造动作，也不把微表情拆成部位清单。把表演的触发、可见变化和反应结果放在同一条镜头因果叙事里，避免悬空成独立标签。连续性承接的是注意力、控制、呼吸与重心轨迹，小动作只在自然持续或再次触发时延续；有意静止仍写清目标或张力。`COMPILE` 只保留既有证据，不为满足基线另造手势。
-
-微表情专项按需读 [micro-performance.md](micro-performance.md)。将已定心理策略落实为本镜可见的触发、微反应和承接状态；保留听者反应与台词时机，避免同时安排妨碍发声的嘴部动作。遮挡的脸部变化仅作内部表演依据，正文使用当前机位实际可见、可听的通道；不为可读性偷偷补切镜。精确时值只在设计有依据时保留，不默认生成毫米、百分比或逐帧表情清单。
-
-有意藏眼或反射遮脸本身也可能承担意义：区分真实交谈目标与观众可见的眼部信息，保留定稿的藏露关系。不要为表演“清楚”自动补光、去反射、挪遮挡或新增泄露心理的身体反应；只有与原设计意图相反的意外遮蔽才是待修问题。
-
-普通对话的交谈对象和视线不是可有可无的表情装饰：把已有对象、站位与注意力明确写进说话/倾听所在的镜头，默认面向交谈对象脸部的目光，保留已定共同任务、回避或走神。目光转移交代触发、新落点与承接；压缩文字时保留这一关系，过肩视线指向实际对手而非附近的摄影机。反打重新按机位表达方向；细则见 [micro-performance.md](micro-performance.md)，对白与静默反应见 [dialogue-binding.md](../references/model/dialogue-binding.md)。
-
-### 6. Keep the Prompt Lean
-
-Remove repeated adjectives, semantically duplicated static wording, internal labels, and decorative technical values; the complete-shot camera information above is useful content, not decoration. Keep dynamic or static facts that control identity, count, space, causality, performance, sound, dialogue, continuity, subtext, emotional distance, or deliberate uncertainty. An unchanged light/reflection relation can carry meaning; “the basic plot still works without it” is not a deletion test. Deduplicate wording, not the carrier or its subject-specific contrast. There is no character-count quota, shot-count quota, mandatory output field count, or formal self-check section.
-
-## Positive Constraints and Spatial Coherence
-
-Write the desired visible result in the affected shot. When size, staging, support/contact, action, and composition imply conflicting scenes, read [positive-spatial-constraints.md](../references/model/positive-spatial-constraints.md) and resolve the actual source conflict under the existing user-lock policy. Do not leave contradictory prose intact and append a size, height, or position prohibition in the ending. Preserve locked dimensions; reconcile only editable relations or ask about the specific unresolved lock conflict rather than silently shrinking a character. Short no-subtitle/no-BGM delivery exclusions are separate, user-overridable defaults, not a negative-phrase quota.
-
-## Dialogue Compilation
-
-Braces contain spoken text only:
+正文负责开口动作、视线、听者反应、先后与结束姿态；原文只写在随后独立行：
 
 ```text
-父亲看向女儿，停一拍后说{门没有锁，是我们一直没推。}
-旁白{那天以后，钟再也没有走过。}
+台词：父亲看着女儿，停一拍后说{门没有锁，是我们一直没推。}
+台词：旁白{那天以后，钟再也没有走过。}
 ```
 
-Put delivery, mouth visibility, emotion, timing, position, sound source, and listener response outside the braces. Preserve every character and punctuation mark inside braces unless the user revises the line. An off-screen line states that its voice is off-screen and does not bind to a visible mouth.
+花括号内逐字保留含标点；外部注明情绪、时机、角色与画内/画外/设备来源。无对白省去行。多句和重叠按原锁顺序及时机表达，不因多说话者自动切镜。跨切同一句保留单一有范围的原文锚点或顺序拆分，不重复全文。见 [dialogue-binding.md](../references/model/dialogue-binding.md)。
 
-Use `<具体音效>` for a point sound embedded at its moment, and `（背景播放具体音乐）` for music when the project calls for it. Keep continuous ambience in the shared `光影色彩风格` row or in the shot prose where it changes.
+素材只放素材节，如`@image1=父亲外观与服装；@image2=夜街空间与光色；@video1=起身动作参考。`正文使用父亲、夜街等语义名称。新提示词按类型与首次使用从1编号；增补保留规范编号与职责，新来源追加，旧来源增加职责不新增@。同一来源的角色/预演映射职责合并，详见 [reference-assets.md](../references/model/reference-assets.md)。占位符为粘贴记号，不声称平台已绑定。
 
-## Asset Compilation
+## 5. 轻量交付
 
-All image, video, and audio references count together. Place the references in one natural-language row in the common section:
+保留4–30秒、混合50素材、首末0.5秒和花括号等确认事实，不补造字符/token上限、权重、平台控制开关或模型保证。空间控制用相容的尺寸、承托、路径和构图正文，不把矛盾留给负面词尾表；按需读 [positive-spatial-constraints.md](../references/model/positive-spatial-constraints.md)。情绪总控的一句对照是表达方向，不是尺寸否定补丁。
 
-```text
-─ 素材绑定：@image1=父亲参考图（外观与服装）· @image2=夜街场景图（空间与光色）· @video1=起身动作参考（起身与转身节奏）
-```
-
-1. Deduplicate the physical sources before numbering; a previously bound video gains duties on its existing binding rather than a second placeholder.
-2. Follow `reference-assets.md`: new prompts start each media type at 1; reference augmentation preserves existing canonical numbers and order, appending new sources after that type's highest number.
-3. Give each placeholder a semantic name and a short description of what it contributes.
-4. Put every unique placeholder exactly once on the `素材绑定` row; merge its duties and scope there.
-5. In every shot, use the semantic name rather than repeating `@imageN`, `@videoN`, or `@audioN`.
-
-When there are no reference assets, omit the `素材绑定` row entirely. Do not print an empty row or a sentence saying that the segment has no assets.
-
-A reference image defines only its declared object, a motion reference defines only its declared movement or camera relation, and a voice reference defines only its declared sound qualities. None silently adds a person, prop, voice, or setting.
-
-For a Blender coarse previs video, use the narrower duties in [previs-reference.md](../references/model/previs-reference.md), not an automatic exact-motion or rhythm lock. The reference supplements the existing shot paragraphs; it does not replace their camera prose, continuous story, performance, action detail, or effects with an instruction to follow the video.
-
-## Output Discipline
-
-For a full compilation, output one complete native shot prompt for each explicitly requested or boundary-justified generation segment inside its own fenced code block so line breaks remain copyable; ordinary single-scene input produces one block. Multiple camera shots, cuts, and action beats inside one locked `4-30s` scene remain in that one prompt; do not turn each shot into a separate generated segment. End each prompt at `【收尾约束】`. Keep short delivery exclusions and the final stable state in that block; size, support, position, and composition are positive relations in the affected shot, not a tail list of prohibited physical outcomes. Do not append a self-check, score, report, read log, capability essay, or rationale. For `OPTIMIZE`, preserve the locked shot design and return the complete revised prompt unless the user requests one replacement block. For `DIAGNOSE`, follow `modules/diagnosis.md` and return the smallest affected prompt block.
+完整提示词每个生成段放一个可复制代码围栏，只输出当前段；末镜现场声或台词行即结尾。无字符限额，无额外自检、评分、报告、候选轮次或读库日志。OPTIMIZE默认交完整修订稿并保留锁定创意，用户只要某块则交该块；DIAGNOSE依诊断模块给最小修补。开发脚本只做维护回归，不成为生成提示词的强制运行环节。
