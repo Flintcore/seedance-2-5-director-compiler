@@ -2,6 +2,8 @@
 
 把锁定L1、现有分镜或用户创意编译为五部分Seedance 2.5提示词。编译是保真翻译，不是第二次导演。每次完整编译读`references/model/INDEX.md`、[主模板](../references/model/nine-layer-schema.md) 和 [能力注册表](../references/model/capability-registry.yaml)，其他模型文档按当前问题读取。
 
+编译前沿 [设计判断](design-judgment.md) 的入口原则识别新出现的实质冲突：锁定设计约束改动权，但不消除提示问题的责任。发现时实读相关章节、先说明后果与最小修正，用户决定前不静默重导演或照单交付相互排斥结果；已接受的同一取舍直接沿用。无问题直编译，不创建例行报告。用户只给关键动作且允许完善开放表演时，先走相关微表演章节细化该处，再冻结为当前设计；纯格式/素材转写不走此分支。
+
 ## 1. 保留当前对象
 
 接受已确认L1、用户锁、逐字对白、世界设定、素材职责、单段时长及进入/退出状态。已有提示词直接增补，不重建整套L1；Blender粗预演按 [previs-reference.md](../references/model/previs-reference.md) 接入。动作合同仍回到本镜正文。

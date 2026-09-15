@@ -1,3 +1,53 @@
+# 当前补充说明：0.2.2 定向恢复（2026-09-11）
+
+下方原审计报告保留为历史快照，不代表此轮全库逐句复核或原版语义无损等价。当前哈希以 KNOWLEDGE-MANIFEST.yaml 为准；MIGRATION-MANIFEST.yaml 的 target 仍是初次迁移快照。
+
+本轮：44篇影视正文与184篇大师正文均做对应关系/大小/标题或逐行差异库存；其中20篇影视专项、9篇作品和2篇方法论的相关内容作人工对照、定向恢复与修正。其它文章未认定无语义缺口。总正文从4,025,579增至4,079,199字节，仍为44+67+117=228篇；不以篇数或增量证明质量。
+
+保留现有重编、既有作品纠错及输出合同；恢复动作受力与阶段、目光交涉、六类遮挡、层次构图、光影实体、特效工艺与逐镜观看/反应案例。物理几何、接触和已定连续状态按条件严格保留；固定审美、每镜数量和疑似影史参数不重新获得硬规则地位。新增影片示范标为教学重建，非逐帧考据。
+
+## 本轮实际改动的知识正文
+
+- `references/cinema/人物视线与目光设计参考库.md`
+- `references/cinema/光影设计参考库.md`
+- `references/cinema/分镜设计知识库_十三讲.md`
+- `references/cinema/切镜时机学.md`
+- `references/cinema/声音与音效叙事决策库.md`
+- `references/cinema/大师层视觉语言.md`
+- `references/cinema/文戏编排参考库.md`
+- `references/cinema/景深与焦点叙事决策库.md`
+- `references/cinema/机位情绪决策参考库.md`
+- `references/cinema/构图设计参考库.md`
+- `references/cinema/潜台词与言外之意设计参考库.md`
+- `references/cinema/物理交互与破坏效果参考库.md`
+- `references/cinema/特效真实感引擎.md`
+- `references/cinema/表演弧线与情绪阈值参考库.md`
+- `references/cinema/表演细节参考库.md`
+- `references/cinema/角色调度与走位参考库.md`
+- `references/cinema/超详细运镜规格参考库.md`
+- `references/cinema/镜头衔接与连续性参考库.md`
+- `references/cinema/静默时刻与留白设计参考库.md`
+- `references/cinema/面部表情四部位参考库.md`
+- `references/masters/hitchcock/后窗.md`
+- `references/masters/george-miller/公路战士.md`
+- `references/masters/george-miller/狂暴之路.md`
+- `references/masters/jia-zhangke/三峡好人.md`
+- `references/masters/kurosawa/乱.md`
+- `references/masters/spielberg/侏罗纪公园.md`
+- `references/masters/wong-kar-wai/阿飞正传.md`
+- `references/masters/frankel/穿普拉达的女王.md`
+- `references/masters/johnnie-to/枪火.md`
+- `references/masters/hitchcock/_希区柯克方法论总纲.md`
+- `references/masters/george-miller/_乔治米勒方法论总纲.md`
+
+## 维护方式
+
+使用 scripts/refresh-knowledge-manifest.mjs --write 记录实际当前正文；该脚本只写当前库存清单。历史清理器对curated-manual知识默认阻止写回，避免案例再次被标题匹配删除。普通生成不运行这些维护脚本；按需读取相关章节和所选大师作品，保留当前格式，不加读库报告。
+
+---
+
+# 以下为初次清理的历史审计记录
+
 # Seedance 2.5 Director Compiler 知识库逐文件终审报告
 
 > 本报告对应知识库审计基线 `v0.1.1`。`v0.1.2` 收紧运行层素材占位符合同；`v0.1.3` 将最终输出切换为原生分镜提示词并新增本段戏剧任务；`v0.1.4` 将该栏细化为“处境变化 → 明确动作或转折 → 结尾关系/情绪/后续结果”的单句合同；`v0.1.5` 收紧生成段边界，默认单段并仅在明确多段或必要叙事超过 30 秒时拆分；`v0.1.6` 增加轻量表演活人感落地规则与按需路由；`v0.1.7` 增加镜头级连续画面叙事与动态锚点织合，影视及大师知识正文保持原样。

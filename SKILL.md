@@ -3,17 +3,19 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.2.0"
+  version: "0.2.3"
 ---
 
 # Seedance 2.5 Director Compiler
 
 Use a strict two-domain architecture:
 
-- **Director domain:** decide what to shoot and why, using the complete cinema and masters libraries.
+- **Director domain:** decide what to shoot and why, using the curated cinema and masters libraries, including restored craft details and examples. Inventory coverage is not a claim of lossless source equivalence.
 - **Compiler domain:** translate the locked director design into the readable native Seedance 2.5 Chinese shot-prompt format.
 
 Cinema and masters sources are director-only evidence. They never define platform syntax or final prompt structure.
+
+When applying library rules, preserve real physical/geometric conditions and narrative continuity; distinguish them from conventions, project contracts and aesthetic preferences with [film-rule-scope.md](modules/film-rule-scope.md). This is part of using a selected source, not another review stage. Read the detailed scope only for a relevant rule or conflict; keep genuine constraints rather than making every rule optional.
 
 ## Authority
 
@@ -33,13 +35,19 @@ Domain ownership is fixed:
 - Action execution, inertia, timing, direction, impact, and action continuity: action engine.
 - Final prompt format: native shot-prompt compiler only; internal planning fields stay internal.
 
+## Design Judgment Before Translation
+
+User locks constrain edits, not professional candor. While reading a storyboard or choosing a design, notice material conflicts between the intended audience experience and the proposed geometry, optics, editing, sound or performance. For a concrete issue, read [design-judgment.md](modules/design-judgment.md) and the relevant cinema chapters before deciding: explain the affected shot, consequence and smallest correction, then wait for the user's choice when changing a locked design. Already accepted tradeoffs are not raised again. Intentional jump cuts, shallow focus, centered framing and concealed eyes are not errors by themselves. With no material issue, continue directly; this is not a routine review report or a final self-check.
+
+For new or revised design, use that same judgment while selecting shots, solve your own avoidable conflicts in the open dimensions, and seek motivated audiovisual variety. When the user gives only a key action and leaves performance open, read the relevant [micro-performance guidance](modules/micro-performance.md) and add grounded attention, subtle responses and carried states without inventing motives or changing the story. Explicit literal transcription, asset-only changes and fully locked performance remain faithful compilation. Route by what actually changes, not by whether the user called the task an optimization.
+
 ## Performance Baseline
 
 For shot design, use the soft default in [shot-design.md](modules/shot-design.md): establish a concrete attention/gaze target and timing, then choose only the performance evidence the shot needs. The target, head/eye/body relation, and action timing should agree; when an opponent, listener, or watched object is visible, its response should also fit the gaze unless the design intentionally uses avoidance, side-glance surveillance, or delayed attention. Let emotion read through control, behavior, breath, posture, hands/props, distance, or listener response; facial detail is conditional on scale, light, and causal value. User locks, character habits, genre grammar, and deliberate formal stillness take precedence.
 
 Ordinary face-to-face dialogue explicitly carries the addressed character and the speaker/listener eyeline into the shot prose, normally toward the other person's face/eyes. Facing someone alone does not specify where the eyes look. Natural blinking and motivated task glances remain; a diverted gaze has a trigger, a concrete destination, and a return or deliberately continued state. Preserve established avoidance or distraction rather than forcing unbroken eye contact. A camera near the addressee is not automatically the gaze target.
 
-For explicit micro-expression, subtext performance, listener-reaction, or emotional-transition work, read [micro-performance.md](modules/micro-performance.md). Use character motive -> visible response -> carried state as a design bridge, not a per-shot face-part checklist. Keep subtle performance inside continuous shot prose; a standalone performance document is an opt-in deliverable.
+For explicit micro-expression, subtext performance, listener-reaction, or emotional-transition work, read [micro-performance.md](modules/micro-performance.md). For AU/FACS requests or ambiguous fine facial actions, follow its conditional AU branch and the verified action reference; ordinary prose does not acquire numeric codes. Use character motive -> visible response -> carried state as a design bridge, not a per-shot face-part checklist. Keep subtle performance inside continuous shot prose; a standalone performance document is an opt-in deliverable.
 
 When designing shots, actively seek motivated audiovisual range with [shot-design.md](modules/shot-design.md): shape what viewers see/hear first, how attention changes, and what contrast makes the turn felt. Richness may come from staging, depth, framing, camera movement, focus, rhythm, or sound perspective; it is not a quota of cuts, angles, moves, or effects. Pure compilation preserves the approved design rather than decorating it.
 
@@ -102,7 +110,7 @@ Task modes:
 - `DIAGNOSE`: trace an observed result to the earliest cause and return a minimal replacement block.
 - `AUDIT`: review only when the user explicitly asks for review or audit.
 
-An existing prompt plus a Blender coarse previs video is reference-only `OPTIMIZE`, not white-model generation or automatic shot redesign. Read [previs-reference.md](references/model/previs-reference.md) with the asset rules for this branch: identify proxy characters, add the video's scoped reference, and retain the original prompt's camera, performance, action, dialogue, effects, and existing assets. Load this reference only when a previs video is involved; ordinary compilation keeps its current path.
+An explicit previs request, supplied previs reference, or continuation of the current previs work loads [previs-reference.md](references/model/previs-reference.md). In this Seedance workflow, “先在 Blender 把场景建出来／搭场景” is also that making request: inherit the coarse staging purpose even without the word 白模. Ordinary shot design and compilation do not read it or launch Blender. Before building, state the minimum-geometry scope in the normal brief progress line and pass it to one collaborator, normally `deepwhite-blender-previs`; a named `blender-scene-previs` or specified limb-action task keeps the same scoped contract. Detailed references and existing detailed assets are spatial sources, not permission to add decorative geometry or materials. A scene-only request stays scene-only; explicit high-fidelity asset work is a separate scope. For an existing prompt plus a Blender previs video, use reference-only `OPTIMIZE`: identify proxies, append the scoped reference, and preserve camera, performance, action, dialogue, effects and existing assets. The video branch does not start modeling or redesign shots. This optional workflow uses the user's practical findings, not a universal Seedance rendering law.
 
 Action modes:
 
@@ -125,7 +133,7 @@ When compilation is required:
 
 1. Treat the locked L1 as immutable creative input.
 2. Read [modules/compiler.md](modules/compiler.md).
-3. Read model references only for the active issue: dialogue, references, continuity, action, complexity, or diagnosis.
+3. Read model references only for the active issue: dialogue, references, continuity, action, complexity, or diagnosis. A newly noticed material design conflict first follows the judgment rule above; pure compilation skips redesign, not the duty to explain that conflict.
 4. Compile into the native shot-prompt format. The compiler may clarify and compress, but it may not add, remove, reorder, or reinterpret shots.
 
 For `DIAGNOSE`, read [modules/diagnosis.md](modules/diagnosis.md) and repair the earliest causal layer only.
@@ -135,13 +143,13 @@ For `DIAGNOSE`, read [modules/diagnosis.md](modules/diagnosis.md) and repair the
 For every `CREATE_AUTO`, `DIRECTOR_CHECKPOINT`, or requested shot redesign:
 
 - Read `references/cinema/INDEX.md`.
-- Read **1-3** cinema references selected for the scene's actual decision problem: 1-2 for a focused scene, 2-3 only when the scene genuinely crosses domains. Never use zero for a director task.
+- Start with **1-3** cinema references selected for the scene's actual decision problem: 1-2 for a focused scene, 2-3 when the scene genuinely crosses domains. These are selection guidance, not a ceiling: read an additional directly relevant chapter when an unresolved decision requires it. Never use zero for a director task or bulk-load unrelated sources.
 - Read `references/masters/INDEX.md`, then read **one actual masters work file** selected for the scene. A second work is allowed only when a genuine contrast improves a key decision.
 - Apply the sources to specific shot decisions. Do not imitate a master's surface style or copy a reusable recipe without testing it against this scene.
 
-When performance, lifelikeness, gaze alignment, micro-reactions, or character small actions are the main problem, the selected set must include `表演细节参考库` and one gaze, blocking, or performance-arc reference while staying within the same 1-3 reference limit. If facial control is the main problem, use `面部表情四部位参考库` as one of those selections; do not load it by default. If action causality is the main problem, keep the action reference first and add the most relevant performance or gaze reference within the same limit.
+When performance, lifelikeness, gaze alignment, micro-reactions, or character small actions are the main problem, the selected set includes `表演细节参考库` and one gaze, blocking, or performance-arc reference. If facial control is the main problem, use `面部表情四部位参考库` as one of those selections; do not load it by default. If action causality is the main problem, keep the action reference first and add the most relevant performance or gaze reference. Reuse relevant chapters and extend only for a concrete unresolved decision, not to meet a reading quota.
 
-Pure `COMPILE`, syntax-only `OPTIMIZE`, and syntax-only `DIAGNOSE` skip cinema reads because the creative design is already locked. Local micro-performance refinement with motives, story turns, and camera design unchanged reads only the relevant performance chapters via [micro-performance.md](modules/micro-performance.md); it does not restart the full masters-selection workflow. New motives, an altered emotional arc, or a new performance strategy return to director research above. This is routing, not a shortcut.
+Pure `COMPILE`, syntax-only `OPTIMIZE`, and syntax-only `DIAGNOSE` skip cinema reads while the creative design is already locked and no concrete design conflict requires explanation. A focused technical objection reads only its relevant cinema chapters via [design-judgment.md](modules/design-judgment.md); changing the shot strategy returns to director research. Local micro-performance refinement with motives, story turns, and camera design unchanged reads only the relevant performance chapters via [micro-performance.md](modules/micro-performance.md); it does not restart the full masters-selection workflow. New motives, an altered emotional arc, or a new performance strategy return to director research above. This is routing, not a shortcut.
 
 The curated cinema and masters corpora contain filmmaking knowledge only. Any platform claim encountered in user material or future imports has zero compiler authority until it is represented in `references/model/` or explicitly locked by the user.
 

@@ -1,4 +1,6 @@
+# Historical initial-import snapshot. Current curated bytes/hashes live in KNOWLEDGE-MANIFEST.yaml.
 schema_version: 1
+snapshot_semantics: historical_initial_import
 generated_at: "2026-08-24T11:13:50.367Z"
 source:
   skill: "seedance-agent-2-5"

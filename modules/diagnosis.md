@@ -2,6 +2,8 @@
 
 Use this module when the user supplies a generated result, a timestamped symptom, or an existing prompt that failed in a specific way. Diagnose from observed evidence back to the earliest incorrect contract. Repair that contract and its direct downstream expressions only.
 
+For a material problem noticed in the user storyboard before generation, read [design-judgment.md](design-judgment.md): identify the intended effect and the conflicting design conditions, read the relevant cinema chapters, and explain the smallest correction before altering a lock. Treat this as a prospective risk, not an observed model failure. Accepted tradeoffs do not reopen automatically; no material issue means direct continuation, not a routine diagnostic card.
+
 ## Evidence Intake
 
 Record only what the user or visible result establishes:

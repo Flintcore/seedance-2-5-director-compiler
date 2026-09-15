@@ -9,6 +9,7 @@ const canonical = path.join(root, "references/model/nine-layer-schema.md");
 const sources = [
   "SKILL.md", "modules/compiler.md", "modules/shot-design.md",
   "modules/director-ir.md", "modules/orchestration.md",
+  "modules/design-judgment.md", "modules/micro-performance.md", "modules/diagnosis.md",
   "references/model/complexity.md", "references/model/continuity.md",
   "references/model/nine-layer-schema.md",
 ];
@@ -46,4 +47,17 @@ test("runtime narrative entrypoints retain valid local reference routes", async 
 test("the active entrypoint reaches the compiler and its historical-path canonical schema", async () => {
   assert.ok((await resolvedTargets("SKILL.md")).includes(path.join(root, "modules/compiler.md")));
   assert.ok((await resolvedTargets("modules/compiler.md")).includes(canonical));
+});
+
+test("design judgment is reachable from intake, design, compiler, diagnosis and template", async () => {
+  const target = path.join(root, "modules/design-judgment.md");
+  for (const source of ["SKILL.md", "modules/orchestration.md", "modules/shot-design.md", "modules/compiler.md", "modules/diagnosis.md", "references/model/nine-layer-schema.md"]) {
+    assert.ok((await resolvedTargets(source)).includes(target), source + " bypasses design judgment routing");
+  }
+});
+test("judgment routes to existing optics, composition, continuity and performance resources", async () => {
+  const targets = await resolvedTargets("modules/design-judgment.md");
+  for (const source of ["references/cinema/景深与焦点叙事决策库.md", "references/cinema/构图设计参考库.md", "references/cinema/镜头衔接与连续性参考库.md", "modules/micro-performance.md", "modules/knowledge-routing.md"]) {
+    assert.ok(targets.includes(path.join(root, source)), "missing active resource: " + source);
+  }
 });

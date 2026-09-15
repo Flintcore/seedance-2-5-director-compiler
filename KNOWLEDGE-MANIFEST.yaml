@@ -1,35 +1,37 @@
 schema_version: 1
-generated_at: "2026-08-24T11:13:50.367Z"
+generated_at: "2026-09-14T01:07:52.716Z"
 skill: "seedance-2-5-director-compiler"
+maintenance_mode: "curated-manual"
+# Current inventory only; semantic equivalence to the historical source is not asserted.
 inventory:
   cinema_content_files: 44
   master_methodology_files: 67
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "25b8bcdaa515f0404949d701833057da12eff4c86d9faa53a80942d1eecf3bdc"
+  aggregate_sha256: "907f556fe20682942c7c470c0fad1355c2dd8c10b86f43043667eaf747c3074a"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
     bytes: 8374
     sha256: "41e7d24bd884edd70f88d40a2f3626022d65bd5ef61285db7cef0d82c26716f7"
   - path: "references/cinema/表演弧线与情绪阈值参考库.md"
-    bytes: 5161
-    sha256: "29fb5b2454b2af7b55c476f5df2170c43e959fdd362b76405aa441c83c1e45f1"
+    bytes: 6530
+    sha256: "bec9256a5e22feeb252b8325fd4507bf4993ef4d5d4d4eced7eb6c108e92eff2"
   - path: "references/cinema/表演细节参考库.md"
-    bytes: 4441
-    sha256: "09238a22f343d3c326a22017abc1ec84ba1c94e270780eb06da9f17247752ece"
+    bytes: 6208
+    sha256: "a78ee6e71b2a0861edb2edc32d1bee4b5ddca099e8455c9fd6e27e28828e1bb9"
   - path: "references/cinema/表演意义化与武戏状态影响.md"
     bytes: 6897
     sha256: "33585f9f31c2fa2476c8c1cea0cf01435bc35b163c2c069407946606899c0fa4"
   - path: "references/cinema/超详细运镜规格参考库.md"
-    bytes: 12230
-    sha256: "c10fad652868a725023d0e827fd8f600150f830178bb5f9c55470a7d19ed66b0"
+    bytes: 13615
+    sha256: "baf4147b6b39d810f54f0d67cda7402b60289d75ac1ab2ec77f9f8dd44598ecf"
   - path: "references/cinema/创意镜头与记忆点设计库.md"
     bytes: 11209
     sha256: "ea8eae274fb795298d9377c9f8c8b785dffbdc71e78b5def7d6cf0f3e0fbd888"
   - path: "references/cinema/大师层视觉语言.md"
-    bytes: 11308
-    sha256: "ce04bd1a3d1146253bfc74fa4fe5bc600ba5ffc656a0cb173c47d865c9222d62"
+    bytes: 13177
+    sha256: "94a0479243fb75455337720f9ddd4b444b53149e83cf9a00cdffed0215cf03aa"
   - path: "references/cinema/导演视觉风格参考库.md"
     bytes: 4884
     sha256: "c23053e092d5a6bcfb5369e106395e9df9d5819138f2b841429c94161b974a65"
@@ -46,26 +48,26 @@ files:
     bytes: 8987
     sha256: "5fdf2ec241a1eb2ed7f2a486a7951926bb6534d89fedcf138d8e75c49dff5067"
   - path: "references/cinema/分镜设计知识库_十三讲.md"
-    bytes: 15221
-    sha256: "5cee147e3c9c0d08d16ee9996f7e897c93899426481dd78750daaebdf5260547"
+    bytes: 16617
+    sha256: "6655b3bb12ca83afeac56ce2d0742328d40eb8f0389372b659edbb093276ae84"
   - path: "references/cinema/构图设计参考库.md"
-    bytes: 7401
-    sha256: "f70ce42a7432c8eb7472c5ec18364b001d9d339551c88b7120f94f4b0b11039f"
+    bytes: 11278
+    sha256: "9ca12465c538ccad00585c44cf7d82af4fbc5e8e6f25f1c70c812daf9c910cd3"
   - path: "references/cinema/光影设计参考库.md"
-    bytes: 11837
-    sha256: "a1013c644ed71c28237fd8ffca57a7f642d229bb96b13707da5756738e9119c3"
+    bytes: 13696
+    sha256: "3e77d9e8ba12418ea544227e9b329f28df87ca3b99b7846d94e666b9e0256f4c"
   - path: "references/cinema/机位技术规格详细参数库.md"
     bytes: 15153
     sha256: "d37d6c73f00e1ead57d9f9d0f51d96507d65e3972aa91c9b4b8418cfd70c0e94"
   - path: "references/cinema/机位情绪决策参考库.md"
-    bytes: 5265
-    sha256: "e1ffcc8d2ea37b4e5368d15908b4a96acd77e9888446eb8f23a7d70c255d90c8"
+    bytes: 6785
+    sha256: "e58fe1d643aefb7f857cc2c94d11852f806b1f5336d87a865a926c53061b5f94"
   - path: "references/cinema/讲戏口语解析参考库.md"
     bytes: 4937
     sha256: "6825078bb0fe11c1edfcbeddb827a01fcf65b6a88ecfdb65982794069742af71"
   - path: "references/cinema/角色调度与走位参考库.md"
-    bytes: 7056
-    sha256: "c9af4979ee5bc5a6080ae0311a6d7bbf54a72c69185f75fab0e6fab260ee2e83"
+    bytes: 11738
+    sha256: "d91629177bd710e70a3c6a40266b26b993937073f8f6836ecb6fa87a23677b95"
   - path: "references/cinema/角色与场景设定参考库.md"
     bytes: 6438
     sha256: "1e7b6e90cc34df6fb2ba157a049ef2b93f79aa36a10ffb9f612e101bdf52f1f4"
@@ -73,14 +75,14 @@ files:
     bytes: 8104
     sha256: "f96ec0c64275003926a1f4fd6f350ba95ed6d825bbc6b6fc55d35414d7c60692"
   - path: "references/cinema/景深与焦点叙事决策库.md"
-    bytes: 5123
-    sha256: "e790a267074f8ef287b788671638452c7dd34a0eb5bd423ecb6981af376603d4"
+    bytes: 6626
+    sha256: "f98e075c6dafadd13b6db4127c6d077c1dd36940b4b922ad2929815970104b6a"
   - path: "references/cinema/静默时刻与留白设计参考库.md"
-    bytes: 6608
-    sha256: "87dfb7929571c349f73b566adb911569c8cad244df47f0334490deeade68d2a7"
+    bytes: 7574
+    sha256: "0489e7b1c3a42590b1657332214596410ac8f917e72526e15d04e19f8bda065a"
   - path: "references/cinema/镜头衔接与连续性参考库.md"
-    bytes: 7664
-    sha256: "2d600de784745f4fa4b77ca6fec0192d6655afe15fe071a31cda40eaf2b28e88"
+    bytes: 9354
+    sha256: "236a22b252d6bd469be2549a2b4bc450907b6834fc1f44e474726e9fb49c5d94"
   - path: "references/cinema/镜头心理变化与情绪递进参考库.md"
     bytes: 6668
     sha256: "a1c71577c1e9f12ab5d41a8f42aa70e40dd834271f65530cbd5c9367fc5ea45c"
@@ -94,23 +96,23 @@ files:
     bytes: 8417
     sha256: "3125c09ea82d7bb72734d4ce53f34ff1bed32f07cb8b13c6b012dae6faf30fd9"
   - path: "references/cinema/面部表情四部位参考库.md"
-    bytes: 3678
-    sha256: "7129a0c402050c057627d421488909665d7f69f36fde9c46076ded2f804ba188"
+    bytes: 6560
+    sha256: "9fec951824750792c8b1c547929fe7029028df69202ada7a8ef5fa627c3e9996"
   - path: "references/cinema/潜台词与言外之意设计参考库.md"
-    bytes: 6656
-    sha256: "7124b6442260ee2827f7196db91db0f664dd3100ba52fb51866103aaafffebb6"
+    bytes: 8102
+    sha256: "c8f1b3d043ea69f6a5a53c34ef8847817d9c547480e8e4d9bf658a5aff29188a"
   - path: "references/cinema/切镜时机学.md"
-    bytes: 6105
-    sha256: "bf68616414b2df941129cf2a9eba97f72f9fffa2fa3056295cb0b36e8c992a92"
+    bytes: 7139
+    sha256: "0a2e6409f177558f08ff221f112a6c55127174dc63dfeb8cee12249d596ccb26"
   - path: "references/cinema/人物视线与目光设计参考库.md"
-    bytes: 5278
-    sha256: "e9fea3b50e73030eb29806c737d5fb3cf15ddc03d2a55defa7f70d5a7271eaf0"
+    bytes: 6444
+    sha256: "bf6f973b091284ec911893eb724454d932c3fb1fd8dee346217b6ec08caa94cc"
   - path: "references/cinema/色彩调性参考库.md"
     bytes: 10402
     sha256: "360fe20701592777637b1a8aff7b2de005cf405d5dca972a157dd5888f2787f2"
   - path: "references/cinema/声音与音效叙事决策库.md"
-    bytes: 7431
-    sha256: "c4834fa631f4b1c36c2ab5d040ceed864353d61347f804561b3f9d9c513d2d4c"
+    bytes: 8962
+    sha256: "80a1b6de109c35b2d4fbf2e657ce043c0d0ff352368ca50b43a7f50376e7e920"
   - path: "references/cinema/视点体系与镜头运动地基.md"
     bytes: 9823
     sha256: "72edce5d13f9cd160deffe112ed63ba03f03b9f41af1e31377f879e7c35d355e"
@@ -124,17 +126,17 @@ files:
     bytes: 11740
     sha256: "d7f61362a7ec688f7838dc9cdad1b992e2693b426ec755f51ff3b806408f4e3b"
   - path: "references/cinema/特效真实感引擎.md"
-    bytes: 13762
-    sha256: "cec26ba03f58e3a83aff0f05ec77389da8122d5964d2795578699451a0df9c1a"
+    bytes: 18084
+    sha256: "db01a2e0741d31f6d27d534c243d50abbdf19a453ccdb5872c04b792d9943eef"
   - path: "references/cinema/文戏编排参考库.md"
-    bytes: 9161
-    sha256: "90a1207b8f92659b2a525e0e46229f9b6cd8db85c69b9081d1aaf785d70a4fb3"
+    bytes: 11050
+    sha256: "4e0b4d92cf04c1236b4f45e9a9846c681cf125984ead9b0e6aecce8b562aace4"
   - path: "references/cinema/武戏动作模板库.md"
     bytes: 6512
     sha256: "d09a9f54876123f497eeb30c2b20a7e9fe4c8759d7dbbcd4f4a88cc5d6848490"
   - path: "references/cinema/物理交互与破坏效果参考库.md"
-    bytes: 11412
-    sha256: "e4567c354101874f46c8612a10a1b7547da9217d2b97e3e79ffcf27a9a43c0bf"
+    bytes: 13189
+    sha256: "60e608aface4abc03232a45112f4b3b04765fa302648f566cc265a93b1d2fbed"
   - path: "references/cinema/戏点选择与主镜框架法.md"
     bytes: 12938
     sha256: "2d2b9344bed33ca1fcc4e19358fff92f08e7ccaaa9a904042bc48868d9eee0dc"
@@ -283,11 +285,11 @@ files:
     bytes: 20884
     sha256: "d982c7e56f88d1e0577e008667efc8a334ca43fcf72939580846948fa540f567"
   - path: "references/masters/frankel/穿普拉达的女王.md"
-    bytes: 23115
-    sha256: "494cf24ee6a0e5699f6493cf3fa6e47a0407db90dc4bd8d13771209787497758"
+    bytes: 25066
+    sha256: "9b67a73309a110cba06135c68997ff4bd95211c5f59488cfe6dcdd114945953c"
   - path: "references/masters/george-miller/_乔治米勒方法论总纲.md"
-    bytes: 17273
-    sha256: "2010ec9afcdea31fb84837a3ff89a9cb08bf2a68fea5052f016bf031e6f02fcb"
+    bytes: 17862
+    sha256: "93dc33ae52acd95f24a200fe79789ad4cf9bea50f6b96bffc00d03abdf110311"
   - path: "references/masters/george-miller/疯狂麦克斯.md"
     bytes: 22567
     sha256: "55cdc95e31403afeac5539522fc656bc7183b2a6c0ab2716460e8bff0e752e3a"
@@ -295,11 +297,11 @@ files:
     bytes: 25190
     sha256: "4d6d4980574248fad17e36748822cc97aa6a11ddf4354f6b2df8744ddfc7a211"
   - path: "references/masters/george-miller/公路战士.md"
-    bytes: 26428
-    sha256: "b0cc107f3afaf617789e9994daf847900d7c3006ca9a99cfb56c7435fceafb60"
+    bytes: 26496
+    sha256: "a2100c2758b66dd5e6f4efee3a4a2b43d1bf098a1856f6a548b1899ca44f488b"
   - path: "references/masters/george-miller/狂暴之路.md"
-    bytes: 28327
-    sha256: "b53db3054ac6c97f852eadb57112c0a435c5d4a96fe9967dbe7678538b17df75"
+    bytes: 29182
+    sha256: "433116444b0af11342633df729a9e1cdb6f5109c80b20723e2a9f33e2726a503"
   - path: "references/masters/godard/_戈达尔方法论总纲.md"
     bytes: 19374
     sha256: "0858422d40aa94f642174cf236fb64c94fb54d6d3c258e7d2472828d533d414d"
@@ -319,11 +321,11 @@ files:
     bytes: 22640
     sha256: "5fc15fef07f25992f21bb959028daf03848ddce270c4ad47a971e87fc733786f"
   - path: "references/masters/hitchcock/_希区柯克方法论总纲.md"
-    bytes: 20844
-    sha256: "534944f5b2d3072045696b8e67f66c37096f53ea59963b7a9a0dab27f3eb474b"
+    bytes: 21296
+    sha256: "fa8e0da40efc61dc63f822cad1cf6c86384a3d8ff97427ba64d63db64552f09e"
   - path: "references/masters/hitchcock/后窗.md"
-    bytes: 23535
-    sha256: "b9a7570ceae8c55c8d067218a92e4d8a1f7c71c557900c2fddab1c5031138125"
+    bytes: 25424
+    sha256: "636a8536130af0ae551dc6916288a04a017a377a4b9669ef0ad033119ab4d995"
   - path: "references/masters/hitchcock/火车怪客.md"
     bytes: 28279
     sha256: "f82aeb12b90003201754941da7056d66610c8b2138cf60c7cea35a6bc205b1e4"
@@ -352,8 +354,8 @@ files:
     bytes: 16233
     sha256: "92487ef2ceccb5d7c3f2a33dc544731196c72a4340e3c90f2c0ec0dc4b6228ff"
   - path: "references/masters/jia-zhangke/三峡好人.md"
-    bytes: 25829
-    sha256: "416500a8d560d319f0f2d758a7d4cb887eb93e3ab93e3db67fcb2b9b7fce13f5"
+    bytes: 27932
+    sha256: "a4eb0058eb111c7b76e140358fb851d5177758b4594f3dcfb23160761edd66ad"
   - path: "references/masters/jia-zhangke/山河故人.md"
     bytes: 24575
     sha256: "bd3eccc1d4c97d2eb0359b7facdd0c70663161004f0d87215bbc951e10b11b34"
@@ -379,8 +381,8 @@ files:
     bytes: 21564
     sha256: "07fdbb0291ca32a953fc90d5683307850c5b9b3284690eb060251c29ffba7ecd"
   - path: "references/masters/johnnie-to/枪火.md"
-    bytes: 20837
-    sha256: "c80f311cc57e2d6503165c20c5a69d07d63061323183a2502a9cd52ef0f9b0ce"
+    bytes: 22717
+    sha256: "2dffd665b46f2699393648c1a63fb3d6c11128e0d68ad5c7aa3bbe7056dbf519"
   - path: "references/masters/kiarostami/_阿巴斯方法论总纲.md"
     bytes: 20514
     sha256: "4ebf4a08188718e31365cec132ae56435ff00ac08a7a042038f5c8ca464fc8a0"
@@ -415,8 +417,8 @@ files:
     bytes: 18229
     sha256: "c5d1f96a5c3666749a06a981f831d8b8637b28f41796e1bd4a03fb00154bd074"
   - path: "references/masters/kurosawa/乱.md"
-    bytes: 26803
-    sha256: "bc985ecde02836d3a70809c2db281a7db8feed055cfe8ce71ee8c12736e73855"
+    bytes: 28928
+    sha256: "53f082213a6962669f88617f6540060220a0143eda0d561d68b666c43053d552"
   - path: "references/masters/kurosawa/罗生门.md"
     bytes: 13231
     sha256: "1b490025805ed8641d6cd0d0297032f3d55964413315ef950e12d93cb8d0c871"
@@ -592,8 +594,8 @@ files:
     bytes: 21144
     sha256: "2126d44bd51dfa14f083b0e3cf20bfe878b35e6f25c9d81e9582b0c46470120a"
   - path: "references/masters/spielberg/侏罗纪公园.md"
-    bytes: 26460
-    sha256: "c906dbf6114871a160b431526f11451f7529631fa917f9a41ef8dd14ae4dfb1b"
+    bytes: 28614
+    sha256: "22bb05a8223020f01ffa64a0407c1be53e48f53adc5631c644aa14523f915da9"
   - path: "references/masters/spielberg/ET 外星人.md"
     bytes: 28138
     sha256: "5390516cba163eeaf485230acdb7bb6dde6efa422c7a53d2173dd4d72b5e5d6e"
@@ -646,8 +648,8 @@ files:
     bytes: 17972
     sha256: "e68833f42ceac886395409f28a2481907eb30faa3453df8f7f354b7ac3dafba9"
   - path: "references/masters/wong-kar-wai/阿飞正传.md"
-    bytes: 23297
-    sha256: "de2a284a673b4ec1aaeaffe83702f29c75e65d63d825ffd34e7283f86b94c45f"
+    bytes: 24996
+    sha256: "6820209333cc68414573343e5a53679806c793d7edc0998a70d05015be445884"
   - path: "references/masters/wong-kar-wai/重庆森林.md"
     bytes: 14683
     sha256: "d822a0713e966a9047535cf082b07d5965be06ce4b8352923a31edc5b98a4a26"

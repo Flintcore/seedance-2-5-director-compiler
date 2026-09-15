@@ -733,7 +733,16 @@ async function writeManifests(skillRoot, report, records) {
   await writeFile(path.join(skillRoot, "MIGRATION-MANIFEST.yaml"), `${migrationLines.join("\n")}\n`, "utf8");
 }
 
-export async function cleanKnowledge({ skillRoot = DEFAULT_SKILL_ROOT, write = false, manifests = false } = {}) {
+export async function cleanKnowledge({ skillRoot = DEFAULT_SKILL_ROOT, write = false, manifests = false, allowLegacyRewrite = false } = {}) {
+  // Historical importer: protect later manual restoration, including copied installations.
+  if (write && !allowLegacyRewrite) {
+    let current = '';
+    try { current = await readFile(path.join(skillRoot, 'KNOWLEDGE-MANIFEST.yaml'), 'utf8'); }
+    catch (error) { if (error?.code !== 'ENOENT') throw error; }
+    if (/^maintenance_mode: "curated-manual"$/m.test(current)) {
+      throw new Error('Curated knowledge is protected from legacy rewriting. Refresh hashes with scripts/refresh-knowledge-manifest.mjs --write; an intentional re-import requires reviewed diffs and --allow-legacy-rewrite.');
+    }
+  }
   const cinemaRoot = path.join(skillRoot, "references", "cinema");
   const mastersRoot = path.join(skillRoot, "references", "masters");
   const cinemaFiles = (await listMarkdownFiles(cinemaRoot)).filter((file) => path.basename(file) !== "INDEX.md");
@@ -804,6 +813,7 @@ function parseArgs(argv) {
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
     if (arg === "--write") options.write = true;
+    else if (arg === "--allow-legacy-rewrite") options.allowLegacyRewrite = true;
     else if (arg === "--manifests") options.manifests = true;
     else if (arg === "--json") options.json = true;
     else if (arg === "--root") options.skillRoot = path.resolve(argv[++index]);
