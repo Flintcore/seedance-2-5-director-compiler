@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: "2026-09-20T02:19:25.927Z"
+generated_at: "2026-09-20T05:27:01.592Z"
 skill: "seedance-2-5-director-compiler"
 maintenance_mode: "curated-manual"
 # Current inventory only; semantic equivalence to the historical source is not asserted.
@@ -9,7 +9,7 @@ inventory:
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "f9fb232ba29e50de69ed8aa73ea6a2670ba7efad205b407e5ba62b7db6c91716"
+  aggregate_sha256: "888c29d20083fa403db876aa9e65559fcb74156830bab7da11938578935e6836"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
     bytes: 8374
@@ -102,8 +102,8 @@ files:
     bytes: 6560
     sha256: "9fec951824750792c8b1c547929fe7029028df69202ada7a8ef5fa627c3e9996"
   - path: "references/cinema/潜台词与言外之意设计参考库.md"
-    bytes: 8102
-    sha256: "c8f1b3d043ea69f6a5a53c34ef8847817d9c547480e8e4d9bf658a5aff29188a"
+    bytes: 8447
+    sha256: "5561de566d798f6ffda897120955f28e032ac3095cfc4842f9327918627d15c6"
   - path: "references/cinema/切镜时机学.md"
     bytes: 7139
     sha256: "0a2e6409f177558f08ff221f112a6c55127174dc63dfeb8cee12249d596ccb26"
