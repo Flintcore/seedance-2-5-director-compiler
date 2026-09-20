@@ -2,6 +2,7 @@
 
 // Development-only structural checks, not photography/performance/physics QA.
 // Real-world sound-source count and reference-source identity are not inferred.
+import { lexInlineText } from "./inline-dialogue.mjs";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -17,7 +18,6 @@ const ASSET_RANGE = /@(image|video|audio)[1-9]\d*\s*(?:-|–|—|~|～|至)\s*@?
 const SOURCE_LOCATOR = /(?:file:\/\/|https?:\/\/|[A-Za-z]:[\\/]|(?:^|[\s：｜|=])\.{1,2}[\\/]|(?:^|[\s：｜|=])[^\r\n：｜|=]*?\.(?:png|jpe?g|webp|gif|bmp|tiff?|heic|mp4|mov|mkv|avi|webm|mp3|wav|m4a|flac|aac)(?=$|[\s，。；;｜|]))/imu;
 const LEGACY_HEADING = /(?:通用约束栏|本段情节|本段故事内容|场景\s*\+\s*调性|收尾约束|^约束$|头锁区|元信息|风险预判|衔接入|时间线|衔接出|参考图权重|执行约束|正向化检查|自检|自查|验收|光影风格卡|摄影机画面质感|音效风格卡|声音设计|场景空间关系|空间约束|物理空间约束|人物比例约束|表演风格|镜头与机位设置|运镜分段|Style Lock)/u;
 const LEGACY_ROW = /^\s*(?:[─*-]\s*)?(?:通用约束栏|本段情节|本段故事内容|收尾约束|头锁区|本镜NOT|光影色彩风格|角色外观|场景外观|机位|景别|焦距|运镜|叙述|表演)\s*[:：]/mu;
-const DIALOGUE_LINE = /^\s*台词\s*[:：]\s*(.*)$/u;
 
 function normalize(input) {
   const text = input.replace(/^\uFEFF/u, "").replace(/\r\n?/g, "\n").trim();
@@ -28,15 +28,16 @@ function parseTime(value) {
   const [minutes, seconds] = value.split(":").map(Number);
   return Number.isFinite(minutes) && Number.isFinite(seconds) && seconds < 60 ? minutes * 60 + seconds : null;
 }
-function scanPrompt(text) {
+function scanPrompt(text, options = {}) {
   const lines = text.split("\n"), sections = [], shots = [], malformedShots = [];
-  for (const [index, line] of lines.entries()) {
+  const structuralLines = lexInlineText(text, options).structuralText.split("\n");
+  for (const [index, line] of structuralLines.entries()) {
     const match = SHOT_LINE.exec(line);
     if (match) shots.push({ number: Number(match[1]), start: parseTime(match[2]), end: parseTime(match[3]), line: index + 1 });
     else if (SHOTISH_LINE.test(line)) malformedShots.push(index + 1);
     else {
       const heading = SECTION_LINE.exec(line);
-      if (heading) sections.push({ name: heading[1].trim(), inlineBody: heading[2], line: index + 1 });
+      if (heading) sections.push({ name: heading[1].trim(), inlineBody: SECTION_LINE.exec(lines[index])[2], line: index + 1 });
     }
   }
   const boundaries = [...sections, ...shots, ...malformedShots.map((line) => ({ line }))].sort((a, b) => a.line - b.line);
@@ -45,19 +46,6 @@ function scanPrompt(text) {
     return [item.inlineBody ?? "", ...lines.slice(item.line, end - 1)].join("\n").trim();
   };
   return { lines, sections, shots, malformedShots, body, boundaries };
-}
-function braceError(text) {
-  let open = -1;
-  for (let index = 0; index < text.length; index += 1) {
-    if (text[index] === "{") {
-      if (open !== -1) return "nested dialogue braces at character " + (index + 1);
-      open = index;
-    } else if (text[index] === "}") {
-      if (open === -1) return "unexpected closing brace at character " + (index + 1);
-      open = -1;
-    }
-  }
-  return open === -1 ? null : "unclosed opening brace at character " + (open + 1);
 }
 function tokens(text) {
   return [...text.matchAll(ASSET_TOKEN)].map((match) => ({ token: match[0], type: match[1], number: Number(match[2]), index: match.index }));
@@ -117,15 +105,15 @@ function stabilityDeclaration(text, opening, duration) {
   const number = (value) => value.includes(":") ? parseTime(value) : Number(value);
   return [...text.matchAll(ranges)].some((match) => number(match[1]) === (opening ? 0 : duration - 0.5) && number(match[2]) === (opening ? 0.5 : duration));
 }
-function validateShotBody(body, shot, errors) {
+function validateShotBody(body, shot, errors, options) {
   const add = (code, detail) => errors.push({ code, message: "shot " + shot.number + ": " + detail });
-  const lines = body.split("\n");
-  const dialogueIndexes = lines.flatMap((line, index) => DIALOGUE_LINE.test(line) ? [index] : []);
-  const firstDialogue = dialogueIndexes[0] ?? lines.length;
-  if (dialogueIndexes.length && lines.slice(firstDialogue + 1).some((line) => line.trim() && !DIALOGUE_LINE.test(line))) add("DIALOGUE_NOT_LAST", "the optional consecutive dialogue lines end the shot block; prose does not resume afterward");
-  const prose = lines.slice(0, firstDialogue).join("\n").trim();
-  if (!prose) add("SHOT_BODY_MISSING", "missing continuous visual prose");
-  if (/\n\s*\n/u.test(prose)) add("SHOT_PARAGRAPH", "use one prose paragraph, not separate information blocks");
+  const lex = lexInlineText(body, { speakerNames: options.speakerNames ?? [], expectedDialogue: options.expectedDialogue ?? [] });
+  for (const error of lex.errors) add(error.code, error.message);
+  if (/^\s*台词\s*[:：]/mu.test(lex.structuralText)) add("LEGACY_DIALOGUE_LINE", "put double-quoted speech inside continuous shot prose, not on a standalone dialogue line");
+  if (/[{}]/u.test(lex.structuralText)) add("LEGACY_DIALOGUE_BRACES", "final prompts use inline double quotes rather than dialogue braces");
+  if (!body.trim()) add("SHOT_BODY_MISSING", "missing continuous visual prose");
+  if (/\n\s*\n/u.test(body)) add("SHOT_PARAGRAPH", "use one prose paragraph, not separate information blocks");
+  const prose = lex.structuralText;
   const light = [...prose.matchAll(/光影\s*[:：]/gu)], sound = [...prose.matchAll(/现场声\s*[:：]/gu)];
   if (light.length !== 1) add("SHOT_LIGHT_SENTENCE", "require one 光影： sentence in the prose tail");
   if (sound.length !== 1) add("SHOT_SOUND_SENTENCE", "require one 现场声： sentence after 光影：");
@@ -138,38 +126,11 @@ function validateShotBody(body, shot, errors) {
       if (!prose.slice(b.index + b[0].length).replace(/[\s。；;.]/gu, "")) add("SHOT_SOUND_EMPTY", "现场声： has no content");
     }
   }
-  for (const index of dialogueIndexes) {
-    const value = DIALOGUE_LINE.exec(lines[index])[1];
-    const utterances = [...value.matchAll(/([^{}]+)\{([^{}]*)\}/gu)];
-    if (!utterances.length || utterances.some((match) => !match[2].trim())) add("DIALOGUE_FORMAT", "need a named speaker and nonempty {exact spoken text}");
-    let cursor = 0;
-    for (const match of utterances) {
-      if (value.slice(cursor, match.index).trim()) add("DIALOGUE_FORMAT", "unbound text or braces before a named utterance");
-      const prefix = match[1].replace(/^[\s，。；;、]+/u, "").trim();
-      if (!/^(?:[^{}\n]+说|旁白[^{}\n]*)$/u.test(prefix)) add("DIALOGUE_SPEAKER", "retain named 角色说{台词} or 旁白{旁白}; timing and delivery may precede the braces");
-      cursor = match.index + match[0].length;
-    }
-    // Delivery and cross-shot scope can appear before or after the exact-text
-    // braces. The braces alone delimit spoken content; prose still cannot resume
-    // on a new line after the dialogue block. Do not reject a valid sound bridge
-    // merely because its scope annotation follows the utterance.
-    const suffix = value.slice(cursor);
-    const unannotatedSuffix = suffix.replace(/（[^（）]*）|\([^()]*\)/gu, "");
-    // Scope/delivery prose can itself contain “说完”; distinguish its explicit
-    // annotation subject from an additional unbraced “角色说…” utterance.
-    // This is a structural heuristic, not a semantic dialogue validator.
-    const scopeSubject = /^(?:同(?:一|次)|(?:前|后)(?:半句|一分句|分句|半段)|(?:上|下|本)(?:一)?镜|镜头\s*\d|声音|声源|语气|语速|音量|重音|停顿|发声|对白|台词|句末|逗号处|约\s*\d)/u;
-    const unboundSpeech = unannotatedSuffix.split(/[，,。；;]/u)
-      .map((clause) => clause.trim())
-      .some((clause) => !scopeSubject.test(clause) && /^[^（）()]*说/u.test(clause));
-    if (/[{}]/u.test(suffix) || unboundSpeech) {
-      add("DIALOGUE_FORMAT", "unbound spoken text or braces after the named utterance");
-    }
-  }
+  shot.dialogue = lex.dialogue;
   return prose;
 }
 export function validatePrompt(input, options = {}) {
-  const text = normalize(input), scan = scanPrompt(text), errors = [];
+  const text = normalize(input), scan = scanPrompt(text, options), errors = [];
   for (const section of scan.sections) {
     if (!PREAMBLE.includes(section.name)) errors.push({ code: LEGACY_HEADING.test(section.name) ? "LEGACY_SECTION" : "UNEXPECTED_SECTION", message: "unsupported heading at line " + section.line + ": 【" + section.name + "】" });
     if (/(?:自检|自查|验收|正向化检查)/u.test(section.name)) errors.push({ code: "SELF_CHECK_HEADING", message: "self-check headings are outside the prompt" });
@@ -184,7 +145,7 @@ export function validatePrompt(input, options = {}) {
   if (JSON.stringify(ordered) !== JSON.stringify(PREAMBLE)
     || scan.sections.some((section) => section.line > (scan.shots[0]?.line ?? Infinity))) errors.push({ code: "SECTION_ORDER", message: "use 风格 → 素材绑定 → 全局约束 → 本段戏剧任务 → 本段情绪总控 → shots; no tail section" });
   if (scan.boundaries[0]?.line !== 1) errors.push({ code: "PROMPT_PREFIX", message: "the prompt begins at 【风格】" });
-  if (LEGACY_ROW.test(text)) errors.push({ code: "LEGACY_ROW", message: "retired or split technical-field row found" });
+  if (LEGACY_ROW.test(lexInlineText(text, options).structuralText)) errors.push({ code: "LEGACY_ROW", message: "retired or split technical-field row found" });
   for (const line of scan.malformedShots) errors.push({ code: "SHOT_HEADING_FORMAT", message: "line " + line + ": use 镜头N｜0:00-0:06 without brackets, names, or other fields" });
   if (!scan.shots.length) errors.push({ code: "SHOT_MISSING", message: "at least one numbered shot is required" });
   const prose = [];
@@ -193,7 +154,7 @@ export function validatePrompt(input, options = {}) {
     if (shot.start === null || shot.end === null || shot.end <= shot.start) errors.push({ code: "SHOT_TIME_FORMAT", message: "invalid or zero-length shot at line " + shot.line });
     const previous = scan.shots[index - 1];
     if (previous && shot.start !== null && previous.end !== null && Math.abs(shot.start - previous.end) > 1e-9) errors.push({ code: shot.start < previous.end ? "SHOT_TIME_OVERLAP" : "SHOT_TIME_GAP", message: "shot " + shot.number + " must start at the previous endpoint" });
-    prose.push(validateShotBody(scan.body(shot), shot, errors));
+    prose.push(validateShotBody(scan.body(shot), shot, errors, options));
   }
   const duration = scan.shots.at(-1)?.end ?? null;
   if (duration !== null && (duration < 4 || duration > 30)) errors.push({ code: "DURATION_RANGE", message: "duration " + duration + "s is outside 4-30s" });
@@ -202,14 +163,19 @@ export function validatePrompt(input, options = {}) {
     if (!stabilityDeclaration(prose[0], true, duration)) errors.push({ code: "ENTRY_STABILITY_ZONE", message: "declare the first 0.5s in the first shot prose" });
     if (!stabilityDeclaration(prose.at(-1), false, duration)) errors.push({ code: "EXIT_STABILITY_ZONE", message: "declare the final 0.5s in final-shot prose or sound, not a tail field" });
   }
-  const brace = braceError(text);
-  if (brace) errors.push({ code: "BRACE_BALANCE", message: brace });
-  for (const [index, line] of scan.lines.entries()) {
-    if (/[{}]/u.test(line) && !DIALOGUE_LINE.test(line)) errors.push({ code: "DIALOGUE_REFERENCE_LOCATION", message: "line " + (index + 1) + ": braces belong on an independent 台词： line" });
-    if (DIALOGUE_LINE.test(line) && !scan.shots.some((shot) => shot.line < index + 1)) errors.push({ code: "DIALOGUE_REFERENCE_LOCATION", message: "dialogue belongs inside a shot block" });
+  const structural = lexInlineText(text, options).structuralText;
+  if (/[{}]/u.test(structural)) errors.push({ code: "LEGACY_DIALOGUE_BRACES", message: "dialogue braces are retired in final prompts" });
+  for (const section of scan.sections) {
+    if (lexInlineText(scan.body(section)).dialogue.length || /^\s*台词\s*[:：]/mu.test(scan.body(section))) errors.push({ code: "DIALOGUE_REFERENCE_LOCATION", message: "spoken dialogue belongs in shot prose" });
+  }
+  const dialogue = scan.shots.flatMap(shot => shot.dialogue ?? []);
+  if (options.expectedDialogue !== undefined) {
+    const actual = dialogue.map(({ speaker, text }) => ({ speaker, text }));
+    const expected = options.expectedDialogue.map(({ speaker, text, spoken_text }) => ({ speaker, text: text ?? spoken_text }));
+    if (JSON.stringify(actual) !== JSON.stringify(expected)) errors.push({ code: "DIALOGUE_LOCK", message: "inline spoken text differs from supplied exact dialogue baseline" });
   }
   const asset = assetContract(text, scan, options, errors);
-  return { ok: errors.length === 0, errors, facts: { duration, ...asset, headings: ordered, shots: scan.shots } };
+  return { ok: errors.length === 0, errors, facts: { duration, ...asset, headings: ordered, shots: scan.shots, dialogue } };
 }
 async function main() {
   const args = process.argv.slice(2), json = args.includes("--json"), preserveAssetNumbering = args.includes("--preserve-asset-numbering");

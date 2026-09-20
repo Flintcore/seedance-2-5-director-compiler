@@ -56,7 +56,7 @@ properties:
           required: [speaker, text, shot_id]
           properties:
             speaker: {type: string, minLength: 1}
-            text: {type: string, minLength: 1}
+            text: {type: string, minLength: 1, description: "仅实际发声原文，含原标点；非发声表演说明留delivery，编译时不改变此原文"}
             shot_id: {type: string, minLength: 1}
             delivery: {type: string}
       reference_assets:
@@ -166,7 +166,7 @@ properties:
         sound:
           type: string
           minLength: 1
-          description: "实际声源、远近与发生时机，编译为本镜现场声句；对白触发与反应留在事件中，逐字文本仅编译到独立台词行"
+          description: "实际声源、远近与发生时机，编译为本镜现场声句；对白触发、逐字文本与反应编译到同一镜头事件中；双引号对白之外默认承载情绪与动作，长对白中途说明为条件式非发声标注"
         transition:
           type: string
           minLength: 1

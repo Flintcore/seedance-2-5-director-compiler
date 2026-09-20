@@ -112,36 +112,39 @@ test("requires one continuous prose paragraph with populated light and on-set so
   rejects(fixture.replace("光影：门厅", "现场声：门厅").replace("现场声：雨滴", "光影：雨滴"), "SHOT_TAIL_ORDER");
   rejects(fixture.replace("中景，50mm", "景别：中景，50mm"), "LEGACY_ROW");
 });
-test("dialogue stays on the independent final line; silence omits that line", () => {
-  accepts(fixture.replace(/^台词：.*\n/mu, ""));
-  accepts(fixture.replace("街口的人说{还走吗？}", "旁白{雨仍没有停。}"));
-  accepts(fixture.replace("街口的人说{还走吗？}", "街口的人看着林岚，停一拍后说{还走吗？}"));
-  accepts(fixture.replace("；林岚说", "；林岚（门内，轻声），随后说"));
-  accepts(fixture.replace("；林岚说", "\n台词：林岚说"));
-  rejects(fixture.replace("台词：街口的人", "街口的人"), "DIALOGUE_REFERENCE_LOCATION");
-  rejects(fixture.replace("身体仍留在门内。", "身体仍留在门内。林岚说{等我。}"), "DIALOGUE_REFERENCE_LOCATION");
-  rejects(fixture.replace("林岚说{等我。}", "林岚说等我。"), "DIALOGUE_FORMAT");
-  rejects(fixture.replace("林岚说{等我。}", "林岚{等我。}"), "DIALOGUE_SPEAKER");
-  rejects(fixture.replace("林岚说{等我。}", "林岚说{}"), "DIALOGUE_FORMAT");
-  rejects(fixture.replace("林岚说{等我。}", "林岚说{等我。}\n她转过身。"), "DIALOGUE_NOT_LAST");
+test("inline speech stays in the action paragraph; silence and narration are supported", () => {
+  const result = accepts(fixture);
+  assert.deepEqual(result.facts.dialogue.map(({ speaker, text }) => ({ speaker, text })), [
+    { speaker: "街口的人", text: "还走吗？" }, { speaker: "林岚", text: "等我。" },
+  ]);
+  accepts(fixture.replace('街口的人说：“还走吗？”；林岚说：“等我。”。', ''));
+  assert.equal(accepts(fixture.replace('街口的人说：“还走吗？”', '旁白：“雨仍没有停。”')).facts.dialogue[0].speaker, '旁白');
+  accepts(fixture.replace('林岚说：“等我。”', '林岚看着门外的人，停一拍后低声问：“等我。”'));
+  rejects(fixture.replace('林岚说：“等我。”', '\n台词：林岚说：“等我。”'), 'LEGACY_DIALOGUE_LINE');
+  rejects(fixture.replace('林岚说：“等我。”', '林岚说{等我。}'), 'LEGACY_DIALOGUE_BRACES');
 });
-test("keeps exact dialogue separate from trailing sound-bridge scope notes", () => {
-  accepts(fixture.replace("林岚说{等我。}", "林岚说{等我。}（同次声音延续到下一镜，画内人物闭口倾听）"));
-  accepts(fixture.replace("林岚说{等我。}", "林岚说{等我。}（同一次发声覆盖镜头1至镜头2；前一分句在镜头1画内说出，后半句在镜头2画外继续。）"));
-  accepts(fixture.replace("林岚说{等我。}", "林岚说{等我。}，同次声音覆盖下一镜开头，保留林岚声源。"));
-  accepts(fixture.replace("林岚说{等我。}", "林岚说{等我。}同一句由林岚在下一镜画外继续说完。"));
-  for (const separator of ["", "，", "。", "；"]) {
-    rejects(fixture.replace("林岚说{等我。}", "林岚说{等我。}" + separator + "陈默说别走。"), "DIALOGUE_FORMAT");
-  }
-  rejects(fixture.replace("林岚说{等我。}", "林岚说{等我。}（同次声音延续）{无主句}"), "DIALOGUE_SPEAKER");
-  rejects(fixture.replace("林岚说{等我。}", "林岚说{等我。}（同次声音延续）\n她转过身。"), "DIALOGUE_NOT_LAST");
+test("quoted spoken text and optional internal directions are separate with exact offsets", () => {
+  const input = fixture.replace('林岚说：“等我。”', '林岚说：“等【停顿，目光转回门口】我。”她仍握着门把。');
+  const result = accepts(input, { expectedDialogue: [{ speaker: '街口的人', text: '还走吗？' }, { speaker: '林岚', text: '等我。' }] });
+  const utterance = result.facts.dialogue[1];
+  assert.equal(utterance.spoken_text, '等我。');
+  assert.equal(utterance.annotations[0].text, '停顿，目光转回门口');
+  assert.equal(utterance.annotations[0].spokenOffset, 1);
+  rejects(input.replace('我。”', '我！”'), 'DIALOGUE_LOCK', { expectedDialogue: [{ speaker: '街口的人', text: '还走吗？' }, { speaker: '林岚', text: '等我。' }] });
 });
-test("rejects unbalanced, nested, orphan and unbound dialogue braces", () => {
-  for (const value of ["林岚说{等我。", "林岚说等我。}", "林岚说{{等我。}}"]) {
-    rejects(fixture.replace("林岚说{等我。}", value), "BRACE_BALANCE");
-  }
-  rejects(fixture.replace("台词：街口的人", "台词：{无主句}街口的人"), "DIALOGUE_FORMAT");
-  rejects(fixture.replace("【风格】", "【风格】林岚说{等我。}"), "DIALOGUE_REFERENCE_LOCATION");
+test("rejects unbalanced quotes or directions and retains the retired-brace regression", () => {
+  for (const value of ['林岚说：“等我。', '林岚说：等我。”', '林岚说：“等“我。”']) rejects(fixture.replace('林岚说：“等我。”', value), 'QUOTE_BALANCE');
+  for (const value of ['林岚说：“等【停顿我。”', '林岚说：“等停顿】我。”', '林岚说：“等【停【顿】】我。”']) rejects(fixture.replace('林岚说：“等我。”', value), 'STAGE_BALANCE');
+  rejects(fixture.replace('林岚说：“等我。”', '林岚说：“【停顿】”'), 'DIALOGUE_EMPTY');
+  rejects(fixture.replace('林岚说：“等我。”', '\n台词：林岚说{等我。}'), 'LEGACY_DIALOGUE_LINE');
+});
+test("quote and stage spans cannot impersonate headings, light tails or stability declarations", () => {
+  accepts(fixture.replace('林岚说：“等我。”', '林岚说：“光影：很暗，\n【她放低声音】现场声：雨声很近。”'));
+  accepts(fixture.replace('林岚说：“等我。”', '林岚说：“我看见\n【风格】这两个字。”'));
+  rejects(fixture.replace('开头0.5秒', '开头').replace('等我。', '开头0.5秒。'), 'ENTRY_STABILITY_ZONE');
+  rejects(fixture.replace('开头0.5秒', '开头').replace('等我。', '等【开头0.5秒保持】我。'), 'ENTRY_STABILITY_ZONE');
+  const paper = accepts(fixture.replace('身体仍留在门内。', '身体仍留在门内。纸条写着“等我。”，她留意标题中的“光影：”字样。'));
+  assert.equal(paper.facts.dialogue.length, 2);
 });
 test("canonical assets are bound once in their own section without file locators", () => {
   accepts(references("@image1为林岚参考。\n@video1为路径参考。"));

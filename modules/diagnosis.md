@@ -48,8 +48,8 @@ Stop at the first layer that can explain every observed downstream symptom. Do n
 | flat audiovisual language despite complete camera parameters | audience information/attention arc, spatial layers, framing or motion contrast, sound perspective and rhythm | use the motivated audiovisual guidance in [shot-design.md](shot-design.md) for permitted director redesign; if L1 already has these choices, repair compilation rather than inventing new shots |
 | weak or weightless hit | contact pair, force vector, inertia chain | replace the affected action beat and synchronized feedback |
 | unreadable 1vN action | pressure ownership and isolation | serialize the exchange and state why other opponents are delayed |
-| wrong speaker or moving listener mouth | speaking source, time window, mouth target | replace dialogue line, listener state, and human-voice mapping |
-| missing or changed words | exact brace text and available time | restore brace content and adjust surrounding timing without editing the words |
+| wrong speaker or moving listener mouth | speaking source, time window, mouth target | repair the inline speaking event, listener state, and human-voice mapping |
+| missing or changed words | exact spoken quote after excluding performance annotations and available time | restore the spoken content and adjust surrounding timing without editing the words |
 | wrong voice or imported background audio | audio asset responsibility | narrow the audio inheritance and replace the human-source mapping |
 | cut discontinuity | previous exit, current entry, sound bridge | make both sides share one state vector |
 | overloaded or omitted event | timeline competition | preserve locked essentials and move flexible decoration out of the block |

@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.3.1"
+  version: "0.4.0"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -59,7 +59,7 @@ The formal prompt has exactly six parts in this order: `【风格】`, `【素�
 
 Each shot is one continuous natural-language paragraph in this reading order: concise focal length/shot scale and relative camera bearing/height/tilt first; then the initial visible frame (who/what is where, depth, pose/contact and ongoing attention); then the continuous character action, speech/listening, reaction and camera movement; finally the ending state and any designed transition to the next shot. Character-led design does not mean character-first wording: establish the viewing position and initial image before advancing the event. Keep technical detail sufficient for the design, not an exhaustive parameter inventory; do not shorten away action causes, contact, dialogue response or recovery to make room for it. Repeat dynamic anchors as needed for the shot to be independently imaginable; preserve expressive light/reflection/occlusion even without a new plot event. Do not add a cut to a continuous take or announce another shot after the final one.
 
-Every paragraph ends with `光影：` describing how light acts now and how it changes through an established physical carrier (or remains stable), and `现场声：` selecting 1–3 real diegetic sources, without BGM. Exact speech belongs on a separate `台词：角色说{逐字原文}` line, while prose keeps speaking/listening timing, gaze and reactions. No dialogue means no dialogue line. Explicit silence and later specific user sound locks take precedence over filling slots.
+Every paragraph ends with `光影：` describing how light acts now and how it changes through an established physical carrier (or remains stable), and `现场声：` selecting 1–3 real diegetic sources, without BGM. Exact speech is embedded at its speaking moment in that same paragraph, inside Chinese double quotation marks: `角色看着对手，平静地说：“逐字原文”`。 Put emotion, delivery, facial response and action outside the quotes by default. Only when a longer utterance needs a specific mid-line change, insert `【non-spoken performance direction】` at that point inside the quote; length alone does not require annotation. Removing these directions leaves every spoken character and punctuation unchanged. Identify the speaker and source in prose; an ordinary quoted prop label is not speech. With no dialogue, add no speech placeholder. See [dialogue-binding.md](references/model/dialogue-binding.md) for continuity and exact-text handling. Explicit silence and later specific user sound locks take precedence over filling slots.
 
 For new shot design, adjacent cuts change both focal length and shot scale; compose the primary subject off-center and give the other side existing concrete entities and depth. Treat this as the user's chosen design contract, not a universal cinema or model law. User locks and approved L1 take precedence; pure compilation and continuous takes keep their approved optics, positions and cuts. Match each shot's opening world pose, contact, possession and action phase to the previous ending. First/last 0.5-second states stay in the first/last shot prose.
 
@@ -69,14 +69,14 @@ Mood control states the main emotion, rhythm/temperature, and one contrast sente
 
 Express the desired visible result rather than stacking negative phrases. Size, position, support/contact, action, and composition must describe one compatible scene; an ending such as "保持身高一致" does not repair contradictory shot prose. For scale, staging, or negative-prompt repairs, read [positive-spatial-constraints.md](references/model/positive-spatial-constraints.md). Short delivery exclusions such as no subtitles or no BGM may appear once in `【全局约束】`, subject to explicit user text/music requirements. Shared physical facts can be stated there; the visible relations that realize them still belong in each relevant shot body. This is a writing strategy, not a claim about Seedance's sampling mathematics.
 
-## Confirmed Seedance 2.5 Facts
+## Confirmed Project Contracts
 
-These project facts are confirmed and may be treated as hard constraints:
+These user-confirmed project limits remain in force:
 
 - One generated segment is **4-30 seconds**.
 - One segment may use up to **50 total reference assets**.
 - Reserve the first and last **0.5 seconds** as stability zones.
-- Exact spoken dialogue uses `角色ID说{逐字台词}`; narration uses `旁白{逐字旁白}`; braces contain spoken text only.
+The current local writing convention embeds speech/narration in shot prose using Chinese double quotes, with source identity outside the quote. It supersedes the earlier independent-line/braced convention; quotation and optional performance notation are user output preferences, not a guaranteed platform control interface.
 
 ## Segment Boundary Policy
 
@@ -163,7 +163,7 @@ Default output is concise:
 
 Do not run or append a final self-check stage. Do not add pass/fail cards, scores, read logs, progress logs, capability essays, or repeated rationale.
 
-Use Chinese for the final prompt. Keep exact dialogue, canonical asset placeholder order, model names, timecodes, and necessary on-screen foreign text unchanged. Source-side asset IDs remain internal. The final prompt ends at the last shot prose or its optional dialogue line; its final 0.5-second state stays inside that shot, with no extra tail, self-check or review section.
+Use Chinese for the final prompt. Keep exact dialogue, canonical asset placeholder order, model names, timecodes, and necessary on-screen foreign text unchanged. Source-side asset IDs remain internal. The final prompt ends at the last shot paragraph’s on-set sound sentence; its final 0.5-second state stays inside that shot, with no extra tail, self-check or review section.
 
 ## Runtime Discipline
 

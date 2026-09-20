@@ -1,20 +1,31 @@
-# Dialogue and Narration Binding
+# Dialogue and Narration Binding · inline speech
 
-The only confirmed exact-text syntax is:
+## Current Writing Contract
+
+Embed exact speech at its speaking moment inside the shot's continuous prose, using Chinese double quotation marks. State who speaks and where the voice originates. The default keeps all emotion, facial action, delivery and body action outside the quoted words:
 
 ```text
-台词：角色名说{逐字台词}
-台词：旁白{逐字旁白}
+父亲看着女儿，停一拍，语气放缓地说：“门没有锁，是我们一直没推。”女儿听完才转向门。
 ```
 
-These are local line examples, not a complete prompt or two mandatory lines. Braces contain spoken text only. Put speaker state, delivery, emotion, pause, position, time, sound source, mouth visibility, and listener response in the continuous shot prose, outside the braces. Necessary timing, delivery or source cues may also precede the braces on the dialogue line. The optional `台词：` line follows that paragraph's `光影：` and `现场声：` sentences and ends the shot block. List multiple utterances in order on one line, or use consecutive independent `台词：` lines for a complex multi-speaker exchange; prose does not resume after that dialogue tail. Omit the line when nobody speaks. Do not repeat the exact brace text inside the prose, wrap it in quotation marks, or place stage directions inside it.
+This is a local excerpt, not a complete prompt. A complete shot still begins with camera information and its initial visible frame, develops the event and ends with `光影：` and `现场声：`. There is no separate dialogue tail. Do not move the spoken words out of the event or repeat them in the sound sentence. When nobody speaks, preserve the action without inventing a speech placeholder.
 
-## Dialogue Contract
+A longer utterance may need an exact mid-line pause or performance turn. Only then insert `【non-spoken performance direction】` at that position inside the double quotes:
 
-For every line, build this internal mapping:
+```text
+父亲先把声音放缓，对女儿说：“我不是要你现在就原谅他，【停一拍，视线落到她脸上，后半句的语气更坚决】我是要你先听完，再决定要不要关上这扇门。”
+```
+
+This optional example is not a sentence to import into a scene. Short dialogue uses external performance prose; long dialogue also prefers it unless a mid-line change needs localization. Length alone is not a trigger, and there is no character-count threshold or annotation quota. Keep directions brief and tied to the known character/task, not a mandatory emotion-plus-every-face-part list. The `【】` text is a non-spoken insertion; removing the insertion reproduces the original words and punctuation. Close each quote and annotation and do not nest performance annotations. If the approved actual line already contains quotation marks or written brackets, preserve that source content rather than silently treating it as an inserted instruction.
+
+Double quotes and optional performance annotations are the user's local writing convention, not a claim that a platform guarantees parsing or voice control. This contract replaces the former independent-line/braced output convention; legacy input may be read for its content, but ordinary final output uses the current convention.
+
+## Internal Speaking-Event Map
+
+Use the existing internal mapping only as needed to preserve the utterance:
 
 ```yaml
-dialogue_line:
+dialogue_event:
   line_id:
   time_window:
   speaker_id:
@@ -28,61 +39,51 @@ dialogue_line:
   post_line_reaction:
 ```
 
-Compile the performance, listening, and sound-source timing into the relevant shot paragraph; put the exact utterance only on its independent dialogue line. Voice assets belong in `【素材绑定】`; the shot's `现场声：` describes the 1–3 relevant real-world sound sources, their timing and perspective, without duplicating the spoken text or adding BGM. Full layout belongs to [the canonical schema](nine-layer-schema.md).
+`exact_text` stores actual spoken words and punctuation only. Delivery, pauses, optional insertion positions and cross-shot scope remain in the existing delivery/context rather than being mixed into that source text. This is internal reasoning, not another required output table or file. Voice assets belong in `【素材绑定】`; the shot's `现场声：` contains the relevant 1–3 real-world sources and their timing/perspective without repeating spoken text or adding BGM. Full layout belongs to [the canonical schema](nine-layer-schema.md).
 
-## On-Screen Speech
+## On-Screen Speech and Listening
 
-```text
-6.0-8.5s，父亲位于画面左侧，抬眼看向女儿，短暂吸气后开口说明门一直可以推开；父亲的嘴部自然同步，女儿看着他聆听，台词结束后才转向门。
-台词：父亲说{门没有锁，是我们一直没推。}
-```
+- Establish the intended speaker and any visible speaking mouth. Every utterance has a clear voice source; do not infer that every quoted phrase is spoken. For example, `纸条上写着“请随手关门”` is visible prop text, not an instruction for a character to read it aloud.
+- For ordinary directed dialogue, make the addressee and speaker/listener eyelines explicit, normally toward the other's face/eyes; keep established task attention, avoidance or distraction. Body orientation alone does not establish eye direction. An over-shoulder camera is not the addressee. For shifts and reverse-shot continuity, use [micro-performance.md](../../modules/micro-performance.md).
+- The listener can react when the relevant information arrives while the current speaker continues. Their next spoken turn follows the intended timing or explicit overlap. Do not delay every reaction until the sentence ends or convert silent reception into extra dialogue.
+- During a speaker handoff, establish the next voice source and visible mouth correctly while the previous speaker settles into listening. The picture may stay on the listener with the next speaker off screen. Turn-taking alone does not require a cut, focus transfer or eyeline reset.
+- Speech is an action, not a hold command for the camera/body. Continue approved walking, handling, camera travel and listener behavior when compatible. Put closed-mouth, breath-holding or other conflicting actions before/after speech or at a real pause. Preserve the words while the tactic and reception shape their delivery.
+- For deliberate overlap locked by L1, keep each speaker's own quoted utterance and make their overlapping time windows clear. Do not merge two speakers into one quotation.
 
-- This excerpt demonstrates speech placement only; a complete shot also retains its approved camera, action, light and on-set sound sentences. One brace block has one named speaker and one internal time window.
-- Establish the speaker visually before speech when the mouth is on screen.
-- For ordinary directed dialogue, make the addressee and speaker/listener eyelines explicit in the shot prose, normally toward the other's face/eyes; keep established task attention, avoidance, or distraction. The body facing a person does not by itself establish the eye target. Off-screen addressees retain their spatial location; an over-shoulder camera is not the addressee. For shifts and reverse-shot continuity, read [micro-performance.md](../../modules/micro-performance.md).
-- The listener may give a silent gaze/body response when the relevant information arrives, while the current speaker keeps speaking. The listener's own line follows the intended turn-taking or explicitly locked overlap; do not delay every listening reaction until the full sentence ends or turn a listening response into an extra spoken line.
-- During a speaker handoff, establish the next voice source and any visible speaking mouth correctly, while the previous speaker settles into listening. Framing, camera movement, focus, and the audience's viewing target follow the approved design: the image may remain on the listener while the next speaker is heard off screen. A new speaking turn does not by itself require a cut, focus transfer, or reset of character eyelines.
-- Speech is an action inside the ongoing event, not a hold command for the camera or body. Continue approved walking, handling, camera travel and listener behavior during speech when physically compatible; place closed-mouth, breath-holding or other conflicting actions before/after speech or at a real pause. The speaker's tactic and the listener's reception shape timing without rewriting the line.
-- If deliberate overlap is locked by L1, give each speaker a separate brace block and explicit overlapping time window.
-
-## Off-Screen Speech and Narration
+## Off-Screen Speech, Narration and Devices
 
 ```text
-旁白来自画外；画内人物保持闭口，沿用既定视线和动作，不因旁白出现而补造反应。
-台词：旁白{那天以后，钟再也没有走过。}
+画外旁白平缓地说：“那天以后，钟再也没有走过。”画内人物延续既定动作，不对旁白配口型或凭空补反应。
 ```
 
-For an off-screen character, retain the character ID:
+An off-screen character retains their identity and spatial source:
 
 ```text
-父亲的声音来自门外；画内女儿闭口听到指示后，按既定动作看向电灯开关。
-台词：父亲说{把灯关掉。}
+门外的父亲低声说：“把灯关掉。”画内女儿闭口听到指示后，按既定动作看向电灯开关。
 ```
 
-A device voice names the device as spatial source and leaves all character mouths unbound.
+A device voice names the physical source, such as a radio or speaker, with human mouths unbound. Identify whether it is an established person's transmitted voice or the device's own announcement; avoid inventing a second speaker from a reference clip. These are local placement examples, not standalone complete shots.
 
 ## Voice References
 
-Bind each voice asset to one declared role and responsibility:
+Bind each voice asset to its declared role and responsibility:
 
 ```text
 @audio1：定义父亲的声线身份｜继承：已锁音色、口音与发声质感；当场速度、重音、音量、气息和停顿按各镜策略及身体状态表演，明确锁定的参考说法优先｜不继承：原素材台词、背景人声、音乐、画面人物或环境｜作用范围：父亲全部台词
 ```
 
-This local asset example belongs only inside `【素材绑定】`. In shot prose and the independent dialogue line, refer to `父亲` or `父亲声源` without repeating `@audio1`.
-
-An image defines appearance, a motion reference defines approved movement, and an audio reference defines approved sound qualities. None of them silently creates another speaking character.
+This local asset example belongs only inside `【素材绑定】`. In shot prose refer to `父亲` or `父亲声源` without repeating the asset token. An image defines appearance, a motion reference defines approved movement, and audio defines approved sound qualities; none silently creates a speaking character.
 
 ## Speech Across a Cut
 
-Keep a continuing utterance as one speaking event. Place its exact text once on the starting shot's dialogue line with an explicit shot/time range, or split the original text into consecutive exact substrings whose concatenation reproduces every character and punctuation mark. The later shot prose continues the voice, speaker identity and listener's received information; a cut does not restart the sentence or reassign a visible listener's mouth. Do not duplicate the full quote in both shots. The coverage may stay on a listener, show an approved insert or move while speech continues; first establish the actual spatial voice source, and keep any new context within the requested segment.
+A continuing utterance is one speaking event. Embed its full exact text once in the starting shot's prose with a clear shot/time scope outside the quote, or split the original into consecutive exact substrings whose concatenation reproduces every word and punctuation mark. Do not add an ellipsis or a full stop merely because the picture cuts. The later shot continues the same voice, identity and acoustic space without restarting the sentence or assigning it to the visible listener. Never repeat the full quote in both shots.
 
-## Exact-Text Preservation
+Picture may cut at a pause or during fluent speech, stay on a listener, show an approved insert, or move while the speech continues. No added pause is required just to make editing convenient. Keep the listener's knowledge and response aligned with the words they have heard. Cross-shot scope and transition description usually sit outside quotes; do not put an editing note inside a short utterance just because its sound crosses a cut. The continuation stays within the current generation segment unless multi-segment work was explicitly established.
 
-Delivery, timing, and cross-shot scope notes may appear before or after the exact-text braces on the same independent dialogue line. These notes describe the speaking event and are not spoken words; keep character action and listener performance in the shot prose, and keep every spoken character inside the braces.
+## Exact-Text Preservation and Lightweight Output
 
-- Reproduce all characters and punctuation inside braces exactly.
-- Preserve locked shot boundaries and timing. Adjust only flexible surrounding business before proposing a needed timing change; a long line alone does not authorize an extra generation segment. Keep the exact spoken text intact.
-- Keep time for the pre-speech cue, delivery, and listener reaction.
-- When exact speech competes with flexible camera motion, decoration, or background business, preserve the speech and simplify the flexible element.
-- Do not present punctuation, markup, or community conventions as additional platform syntax.
+- Strip only the deliberately inserted non-spoken performance annotations when comparing the compiled spoken content with the locked source. Preserve all original characters, punctuation, particles, repetitions and dialect. Ordinary prop/quotation text is outside this speech comparison unless it is explicitly read aloud.
+- Preserve locked shot boundaries and timing. Simplify only flexible camera decoration or background business before proposing a necessary timing change; long dialogue alone does not authorize another generation segment.
+- Keep time for the pre-speech cue, delivery and listener reaction. Do not invent internal emotional turns to justify inserting annotations.
+- Keep narration and transmitted voices distinguishable from live on-set speech and background sound. Sound-source identity follows the story, not the current visible face.
+- Maintenance parsing/tests can verify defined textual structure and exact words, not infer every speaker from unrestricted prose or prove model execution. They are not a mandatory runtime self-check stage.

@@ -1,17 +1,13 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { lexInlineText } from "../scripts/inline-dialogue.mjs";
 import { validatePrompt } from "../scripts/validate-prompt.mjs";
 
 const document = await readFile(new URL("../references/model/character-event-examples.md", import.meta.url), "utf8");
 const examples = [...document.matchAll(/\x60{3}text\r?\n([\s\S]*?)\r?\n\x60{3}/gu)].map((match) => match[1]);
-const utterances = (text) => [...text.matchAll(/^台词：([^{}\n]+)\{([^{}]*)\}/gmu)]
-  .map((match) => ({ prefix: match[1], text: match[2] }));
-const speechFacts = ({ prefix, text }) => ({
-  speaker: /^(陈砚|阿宁)/u.exec(prefix)?.[1],
-  times: [...prefix.matchAll(/(\d+):(\d{2}(?:\.\d+)?)/gu)].map((match) => Number(match[1]) * 60 + Number(match[2])),
-  text,
-});
+const utterances = (text) => lexInlineText(text, { speakerNames: ["陈砚", "阿宁"] }).dialogue;
+const speechFacts = ({ speaker, text }) => ({ speaker, text });
 const expectedLine = "我昨晚离开的时候，那盏灯还亮着。";
 const followupLine = "你再想想。";
 
@@ -40,11 +36,14 @@ test("the cross-cut utterance has one exact source anchor rather than a duplicat
   assert.deepEqual(lines.map(({ text }) => text), [expectedLine, followupLine]);
   const first = examples[0].slice(examples[0].indexOf("镜头1｜"), examples[0].indexOf("镜头2｜"));
   const second = examples[0].slice(examples[0].indexOf("镜头2｜"));
-  assert.deepEqual(utterances(first).map(speechFacts), [{ speaker: "陈砚", times: [2, 6.5], text: expectedLine }]);
-  assert.deepEqual(utterances(second).map(speechFacts), [{ speaker: "阿宁", times: [7.5, 8.8], text: followupLine }]);
+  assert.deepEqual(utterances(first).map(speechFacts), [{ speaker: "陈砚", text: expectedLine }]);
+  assert.deepEqual(utterances(second).map(speechFacts), [{ speaker: "阿宁", text: followupLine }]);
   // Continuous source speech spans the real cut. This explicitly checks the
   // supplied schedule, not an inferred natural-language lip-sync judgment.
   const result = validatePrompt(examples[0]);
+  assert.match(first, /陈砚从0:02开始说/u);
+  assert.match(first, /跨镜头1—2连续至0:06.5/u);
+  assert.match(second, /阿宁才在0:07.5—0:08.8/u);
   const [start, end] = [2, 6.5];
   assert.ok(start < result.facts.shots[0].end && end > result.facts.shots[1].start);
   assert.ok(end <= result.facts.duration);
@@ -61,21 +60,21 @@ test("no-dialogue action and deliberately still/hidden-face examples invent no u
 test("the sample preservation contract catches quote mutation, duplication and speaker reassignment", () => {
   const contract = (example) => assert.deepEqual(utterances(example).map(speechFacts), utterances(examples[0]).map(speechFacts));
   for (const changed of [
-    examples[0].replace("{我昨晚离开的时候，那盏灯还亮着。}", "{我昨天离开的时候，那盏灯还亮着。}"),
-    examples[0] + "\n台词：陈砚说{" + expectedLine + "}",
-    examples[0].replace("台词：陈砚从", "台词：阿宁从"),
+    examples[0].replace("我昨晚离开的时候，那盏灯还亮着。", "我昨天离开的时候，那盏灯还亮着。"),
+    examples[0] + "\n陈砚说：“" + expectedLine + "”",
+    examples[0].replace("陈砚从0:02", "阿宁从0:02"),
   ]) assert.throws(() => contract(changed));
 });
 
 test("a cross-cut quote may instead be split into exact consecutive substrings without replaying it", () => {
   const split = examples[0]
-    .replace(utterances(examples[0])[0].prefix, "陈砚于0:02—0:04.5说")
-    .replace("{" + expectedLine + "}", "{我昨晚离开的时候，}")
-    .replace("台词：阿宁", "台词：陈砚于0:04.5—0:06.5承接前镜继续说{那盏灯还亮着。}\n台词：阿宁");
+    .replace('陈砚从0:02开始说：“' + expectedLine + '”', '陈砚于0:02—0:04.5说：“我昨晚离开的时候，”')
+    .replace('阿宁才在0:07.5', '陈砚的画外音于0:04.5—0:06.5承接前镜继续说：“那盏灯还亮着。”阿宁才在0:07.5');
   assert.equal(validatePrompt(split).ok, true);
   const lines = utterances(split).map(speechFacts);
   assert.deepEqual(lines.map(({ speaker }) => speaker), ["陈砚", "陈砚", "阿宁"]);
-  assert.deepEqual(lines.slice(0, 2).map(({ times }) => times), [[2, 4.5], [4.5, 6.5]]);
+  assert.match(split, /陈砚于0:02—0:04.5说/u);
+  assert.match(split, /陈砚的画外音于0:04.5—0:06.5承接前镜继续说/u);
   assert.equal(lines[0].text + lines[1].text, expectedLine);
   assert.equal(lines[2].text, followupLine);
 });

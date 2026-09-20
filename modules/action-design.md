@@ -33,7 +33,7 @@ Use for sustained combat, weapons, 1vN, heavy weapons, powers, or dense projecti
 
 ## Internal Action Contract
 
-Keep this structure internal. Compile its content into the relevant continuous shot paragraphs of the current six-part prompt. Each paragraph ends with its concrete `光影：` and `现场声：` sentences; exact spoken text appears once on the independent dialogue line afterward. Body pose, contact, momentum and the final half-second state remain in the corresponding shot, not an extra tail field. Do not print a second prompt format.
+Keep this structure internal. Compile its content into the relevant continuous shot paragraphs of the current six-part prompt. Each paragraph ends with its concrete `光影：` and `现场声：` sentences; exact spoken text appears once in Chinese double quotes at the speaking moment within that same paragraph, with delivery and action outside the quote by default. Body pose, contact, momentum and the final half-second state remain in the corresponding shot, not an extra tail field. Do not print a second prompt format.
 
 ```yaml
 action_contract:
@@ -181,7 +181,7 @@ Return only the completed internal action contract to the compiler. The compiler
 - the shot's actual lighting relationship and physically caused changes or approved stability in its `光影：` sentence, without inventing a new effect or changing deliberate shadow/occlusion;
 - action sounds from the relevant 1–3 real-world sources, with their event timing and perspective, in that shot's `现场声：` sentence; no added BGM;
 - end body state, contact and outgoing momentum in each shot's ending, with the final half-second state in the last shot;
-- exact action dialogue only on the independent `台词：` line, while its timing, delivery and reactions remain in the continuous visual event;
+- exact action dialogue embedded in Chinese double quotes in the continuous visual event; its speaker, timing, delivery and reactions stay alongside it, outside the quote by default;
 - applicable short delivery switches once in `【全局约束】`; size, support and staging relations remain positive scene descriptions rather than a negative tail list.
 
-Keep the action contract internal. End the formal output with the last shot's on-set sound or optional dialogue line; no closing constraints card or extra action contract follows it.
+Keep the action contract internal. End the formal output with the last shot's on-set sound sentence; no closing constraints card or extra action contract follows it.

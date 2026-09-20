@@ -16,7 +16,7 @@ segment N actual final state
 = segment N+1 opening shot
 ```
 
-The outgoing shot and incoming shot may frame the state differently, but the physical state remains equal until an observable transition changes it. This equation is internal continuity guidance, not text to append to the prompt. The final half-second state lives in the final shot paragraph; the formal prompt ends after that shot's on-set sound or optional dialogue line, with no extra tail section.
+The outgoing shot and incoming shot may frame the state differently, but the physical state remains equal until an observable transition changes it. This equation is internal continuity guidance, not text to append to the prompt. The final half-second state lives in the final shot paragraph; the formal prompt ends after that shot's on-set sound sentence, with no extra tail section.
 
 ## State Vector
 
@@ -62,4 +62,4 @@ Do not hide a missing action result in the cut. Contact, landing, recoil, recove
 
 ## Sound Continuity
 
-Carry a sound by source, spatial position, level trend, and timing. Each shot's `现场声：` sentence names the relevant 1–3 real-world sources and their continuation or change, without inventing BGM. A sound bridge must not imply an unseen speaker or attach narration to a visible mouth. When picture cuts but a line continues within this generation segment, keep the same named speaker, exact text, source type, and acoustic space unless L1 changes them. Place that utterance once on the independent `台词：` line of the shot where it starts; describe its continuing voice and listener state in the next shot prose without repeating braces. Sound bridges operate at the approved local cut; they do not import another generation segment's events or dialogue.
+Carry a sound by source, spatial position, level trend, and timing. Each shot's `现场声：` sentence names the relevant 1–3 real-world sources and their continuation or change, without inventing BGM. A sound bridge must not imply an unseen speaker or attach narration to a visible mouth. When picture cuts but a line continues within this generation segment, keep the same named speaker, exact text, source type, and acoustic space unless L1 changes them. Embed that utterance once in Chinese double quotes where it starts, with its cross-shot/time scope clear in surrounding prose; the next shot continues the same voice and listener state without repeating the quote. Alternatively, use consecutive exact original substrings across shots; concatenating spoken text after excluding optional performance annotations must reproduce the original line including punctuation. Sound bridges operate at the approved local cut; they do not import another generation segment's events or dialogue.

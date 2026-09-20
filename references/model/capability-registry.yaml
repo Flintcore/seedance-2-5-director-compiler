@@ -32,11 +32,6 @@ hard_contracts:
     tail: 0.5
     purpose: reproducible_entry_and_exit_state
 
-  exact_speech_syntax:
-    onscreen_or_offscreen_character: '角色ID说{逐字台词}'
-    narration: '旁白{逐字旁白}'
-    brace_content: exact_spoken_text_only
-
 output_format:
   style: six-part-shot-prose
   authority: user_output_preference_not_model_mechanism
@@ -50,15 +45,26 @@ output_format:
   shot_heading: "镜头N｜M:SS-M:SS"
   shot_body: one_continuous_prose_paragraph
   required_shot_sentences: ["光影", "现场声"]
-  dialogue_line: "台词：角色ID说{逐字台词}"
-  dialogue_optional: true
+  dialogue:
+    placement: inline_in_shot_prose_at_speaking_moment
+    quotation: chinese_double_quotes
+    example: '角色看着对手，语气平稳地说：“逐字原文”'
+    optional: true
+    performance_default: outside_quotes
+    internal_annotation: '【非发声表演说明】'
+    internal_annotation_when: only_a_longer_utterance_with_a_needed_mid_line_change
+    length_alone_requires_annotation: false
+    spoken_text: exact_original_after_excluding_nonspoken_annotations
+    source_identity: explicit_character_offscreen_narration_or_device
+    prop_text_quotes: not_automatically_speech
+    authority: user_writing_preference_not_platform_guarantee
   no_assets_text: "无外部参考素材"
   global_constraints:
     scope: established_segment_shared_facts_with_scoped_exceptions
     no_extra_text: "无额外全局约束。"
     asset_tokens: forbidden
     dynamic_staging: retained_in_relevant_shot_prose
-  ending: last_shot_prose_or_dialogue
+  ending: last_shot_onset_sound_sentence
   self_check_section: forbidden
   character_limit: unknown
   new_design_style:
