@@ -125,6 +125,17 @@ test("dialogue stays on the independent final line; silence omits that line", ()
   rejects(fixture.replace("林岚说{等我。}", "林岚说{}"), "DIALOGUE_FORMAT");
   rejects(fixture.replace("林岚说{等我。}", "林岚说{等我。}\n她转过身。"), "DIALOGUE_NOT_LAST");
 });
+test("keeps exact dialogue separate from trailing sound-bridge scope notes", () => {
+  accepts(fixture.replace("林岚说{等我。}", "林岚说{等我。}（同次声音延续到下一镜，画内人物闭口倾听）"));
+  accepts(fixture.replace("林岚说{等我。}", "林岚说{等我。}（同一次发声覆盖镜头1至镜头2；前一分句在镜头1画内说出，后半句在镜头2画外继续。）"));
+  accepts(fixture.replace("林岚说{等我。}", "林岚说{等我。}，同次声音覆盖下一镜开头，保留林岚声源。"));
+  accepts(fixture.replace("林岚说{等我。}", "林岚说{等我。}同一句由林岚在下一镜画外继续说完。"));
+  for (const separator of ["", "，", "。", "；"]) {
+    rejects(fixture.replace("林岚说{等我。}", "林岚说{等我。}" + separator + "陈默说别走。"), "DIALOGUE_FORMAT");
+  }
+  rejects(fixture.replace("林岚说{等我。}", "林岚说{等我。}（同次声音延续）{无主句}"), "DIALOGUE_SPEAKER");
+  rejects(fixture.replace("林岚说{等我。}", "林岚说{等我。}（同次声音延续）\n她转过身。"), "DIALOGUE_NOT_LAST");
+});
 test("rejects unbalanced, nested, orphan and unbound dialogue braces", () => {
   for (const value of ["林岚说{等我。", "林岚说等我。}", "林岚说{{等我。}}"]) {
     rejects(fixture.replace("林岚说{等我。}", value), "BRACE_BALANCE");

@@ -79,6 +79,8 @@ Keep a continuing utterance as one speaking event. Place its exact text once on 
 
 ## Exact-Text Preservation
 
+Delivery, timing, and cross-shot scope notes may appear before or after the exact-text braces on the same independent dialogue line. These notes describe the speaking event and are not spoken words; keep character action and listener performance in the shot prose, and keep every spoken character inside the braces.
+
 - Reproduce all characters and punctuation inside braces exactly.
 - Preserve locked shot boundaries and timing. Adjust only flexible surrounding business before proposing a needed timing change; a long line alone does not authorize an extra generation segment. Keep the exact spoken text intact.
 - Keep time for the pre-speech cue, delivery, and listener reaction.

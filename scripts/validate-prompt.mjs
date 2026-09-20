@@ -149,7 +149,22 @@ function validateShotBody(body, shot, errors) {
       if (!/^(?:[^{}\n]+说|旁白[^{}\n]*)$/u.test(prefix)) add("DIALOGUE_SPEAKER", "retain named 角色说{台词} or 旁白{旁白}; timing and delivery may precede the braces");
       cursor = match.index + match[0].length;
     }
-    if (value.slice(cursor).replace(/[\s，。；;、]/gu, "")) add("DIALOGUE_FORMAT", "performance directions belong in prose, not after dialogue");
+    // Delivery and cross-shot scope can appear before or after the exact-text
+    // braces. The braces alone delimit spoken content; prose still cannot resume
+    // on a new line after the dialogue block. Do not reject a valid sound bridge
+    // merely because its scope annotation follows the utterance.
+    const suffix = value.slice(cursor);
+    const unannotatedSuffix = suffix.replace(/（[^（）]*）|\([^()]*\)/gu, "");
+    // Scope/delivery prose can itself contain “说完”; distinguish its explicit
+    // annotation subject from an additional unbraced “角色说…” utterance.
+    // This is a structural heuristic, not a semantic dialogue validator.
+    const scopeSubject = /^(?:同(?:一|次)|(?:前|后)(?:半句|一分句|分句|半段)|(?:上|下|本)(?:一)?镜|镜头\s*\d|声音|声源|语气|语速|音量|重音|停顿|发声|对白|台词|句末|逗号处|约\s*\d)/u;
+    const unboundSpeech = unannotatedSuffix.split(/[，,。；;]/u)
+      .map((clause) => clause.trim())
+      .some((clause) => !scopeSubject.test(clause) && /^[^（）()]*说/u.test(clause));
+    if (/[{}]/u.test(suffix) || unboundSpeech) {
+      add("DIALOGUE_FORMAT", "unbound spoken text or braces after the named utterance");
+    }
   }
   return prose;
 }
