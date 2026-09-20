@@ -5,6 +5,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { validatePrompt } from "../scripts/validate-prompt.mjs";
 
+// Historical fixture filename retained; its content follows the current six-part contract.
 const fixtureFile = fileURLToPath(new URL("./fixtures/five-part-prompt.txt", import.meta.url));
 const fixture = (await readFile(fixtureFile, "utf8")).replace(/\r\n?/g, "\n").trim();
 const script = fileURLToPath(new URL("../scripts/validate-prompt.mjs", import.meta.url));
@@ -28,9 +29,9 @@ function singleShot(duration) {
     + "\n中景，50mm，人物右前1/4、胸口高度，平拍并固定。开头0.5秒保持站姿，人物推门走出，最后0.5秒停稳。光影：人物离开门厅时面部暖光逐渐减弱。现场声：门轴摩擦声，鞋底踏地声。";
 }
 
-test("complete five-part fixture parses facts, exact times, and mixed-media references", () => {
+test("complete six-part fixture parses facts, exact times, and mixed-media references", () => {
   const result = accepts(fixture);
-  assert.deepEqual(result.facts.headings, ["风格", "素材绑定", "本段戏剧任务", "本段情绪总控"]);
+  assert.deepEqual(result.facts.headings, ["风格", "素材绑定", "全局约束", "本段戏剧任务", "本段情绪总控"]);
   assert.equal(result.facts.duration, 8);
   assert.equal(result.facts.assets, 3);
   assert.deepEqual(result.facts.assetTokens, ["@image1", "@video1", "@audio1"]);
@@ -49,7 +50,7 @@ test("accepts 4s and 30s boundaries, a fenced prompt, CRLF and a BOM", () => {
   accepts("\uFEFF" + fixture.replaceAll("\n", "\r\n"));
 });
 test("rejects missing, duplicate, empty and reordered fixed sections", () => {
-  for (const name of ["风格", "素材绑定", "本段戏剧任务", "本段情绪总控"]) {
+  for (const name of ["风格", "素材绑定", "全局约束", "本段戏剧任务", "本段情绪总控"]) {
     rejects(fixture.replace("【" + name + "】", "【未知栏】"), "SECTION_MISSING");
     rejects(fixture.replace("【" + name + "】", "【" + name + "】重复内容\n【" + name + "】"), "SECTION_DUPLICATE");
   }
@@ -66,6 +67,20 @@ test("rejects retired fields and bracketted or decorated shot headings", () => {
   }
   rejects(fixture + "\n收尾约束：保持结束状态。", "LEGACY_ROW");
   rejects(fixture + "\n【自检】通过", "SELF_CHECK_HEADING");
+});
+test("global constraints are a short required preamble, not an empty or late tail card", () => {
+  const globalLine = fixture.match(/^【全局约束】.*$/mu)[0];
+  accepts(fixture.replace(globalLine, "【全局约束】无额外全局约束。"));
+  accepts(fixture.replace(globalLine, "【全局约束】\n同一雨夜；保留既定人物外观。\n字幕只按用户已定的末镜范围出现。"));
+  rejects(fixture.replace(globalLine, "【全局约束】"), "SECTION_EMPTY");
+  rejects(fixture.replace(globalLine, "") + "\n" + globalLine, "SECTION_ORDER");
+  rejects(fixture.replace(globalLine, "").replace("【素材绑定】", globalLine + "\n【素材绑定】"), "SECTION_ORDER");
+});
+test("global constraints do not become a second asset-binding location", () => {
+  for (const token of ["@image1", "@video1", "@audio1", "@image2"]) {
+    rejects(fixture.replace("【全局约束】", "【全局约束】" + token + "为参考。"), "ASSET_REFERENCE_LOCATION");
+  }
+  rejects(fixture.replace("【全局约束】", "【全局约束】参考 C:/refs/hero.png\n"), "ASSET_SOURCE_LOCATOR");
 });
 test("checks contiguous shot numbering, timestamps and positive duration", () => {
   for (const [before, after, code] of [
@@ -136,7 +151,8 @@ test("canonical assets are bound once in their own section without file locators
 });
 test("no-reference prompts retain the section and the explicit empty declaration", () => {
   assert.equal(accepts(references("无外部参考素材")).facts.assets, 0);
-  accepts(references("无外部参考素材。林岚穿深色外套，场景为门外的湿润街道。"));
+  accepts(references("无外部参考素材。").replace(/^【全局约束】.*$/mu, "【全局约束】林岚穿深色外套，场景为门外的湿润街道；无字幕，无BGM。"));
+  rejects(references("无外部参考素材。林岚穿深色外套。"), "ASSET_EMPTY_DECLARATION");
   rejects(references(""), "ASSET_EMPTY_DECLARATION");
   rejects(references("无"), "ASSET_EMPTY_DECLARATION");
   rejects(references("@image1为人物；无外部参考素材"), "ASSET_EMPTY_CONFLICT");

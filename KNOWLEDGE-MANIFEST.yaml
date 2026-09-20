@@ -1,15 +1,15 @@
 schema_version: 1
-generated_at: "2026-09-14T01:07:52.716Z"
+generated_at: "2026-09-20T02:19:25.927Z"
 skill: "seedance-2-5-director-compiler"
 maintenance_mode: "curated-manual"
 # Current inventory only; semantic equivalence to the historical source is not asserted.
 inventory:
-  cinema_content_files: 44
+  cinema_content_files: 45
   master_methodology_files: 67
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "907f556fe20682942c7c470c0fad1355c2dd8c10b86f43043667eaf747c3074a"
+  aggregate_sha256: "f9fb232ba29e50de69ed8aa73ea6a2670ba7efad205b407e5ba62b7db6c91716"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
     bytes: 8374
@@ -68,6 +68,9 @@ files:
   - path: "references/cinema/角色调度与走位参考库.md"
     bytes: 11738
     sha256: "d91629177bd710e70a3c6a40266b26b993937073f8f6836ecb6fa87a23677b95"
+  - path: "references/cinema/角色行为与动作叙事参考库.md"
+    bytes: 13992
+    sha256: "41cea05e5b44181575631cc075d1158189dd60e188c786a4ea32612e3d91c4a2"
   - path: "references/cinema/角色与场景设定参考库.md"
     bytes: 6438
     sha256: "1e7b6e90cc34df6fb2ba157a049ef2b93f79aa36a10ffb9f612e101bdf52f1f4"

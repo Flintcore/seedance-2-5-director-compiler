@@ -38,11 +38,12 @@ hard_contracts:
     brace_content: exact_spoken_text_only
 
 output_format:
-  style: five-part-shot-prose
+  style: six-part-shot-prose
   authority: user_output_preference_not_model_mechanism
   order:
     - "风格"
     - "素材绑定"
+    - "全局约束"
     - "本段戏剧任务"
     - "本段情绪总控"
     - "镜头 blocks"
@@ -52,6 +53,11 @@ output_format:
   dialogue_line: "台词：角色ID说{逐字台词}"
   dialogue_optional: true
   no_assets_text: "无外部参考素材"
+  global_constraints:
+    scope: established_segment_shared_facts_with_scoped_exceptions
+    no_extra_text: "无额外全局约束。"
+    asset_tokens: forbidden
+    dynamic_staging: retained_in_relevant_shot_prose
   ending: last_shot_prose_or_dialogue
   self_check_section: forbidden
   character_limit: unknown

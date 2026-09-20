@@ -42,6 +42,7 @@ Compile the performance, listening, and sound-source timing into the relevant sh
 - For ordinary directed dialogue, make the addressee and speaker/listener eyelines explicit in the shot prose, normally toward the other's face/eyes; keep established task attention, avoidance, or distraction. The body facing a person does not by itself establish the eye target. Off-screen addressees retain their spatial location; an over-shoulder camera is not the addressee. For shifts and reverse-shot continuity, read [micro-performance.md](../../modules/micro-performance.md).
 - The listener may give a silent gaze/body response when the relevant information arrives, while the current speaker keeps speaking. The listener's own line follows the intended turn-taking or explicitly locked overlap; do not delay every listening reaction until the full sentence ends or turn a listening response into an extra spoken line.
 - During a speaker handoff, establish the next voice source and any visible speaking mouth correctly, while the previous speaker settles into listening. Framing, camera movement, focus, and the audience's viewing target follow the approved design: the image may remain on the listener while the next speaker is heard off screen. A new speaking turn does not by itself require a cut, focus transfer, or reset of character eyelines.
+- Speech is an action inside the ongoing event, not a hold command for the camera or body. Continue approved walking, handling, camera travel and listener behavior during speech when physically compatible; place closed-mouth, breath-holding or other conflicting actions before/after speech or at a real pause. The speaker's tactic and the listener's reception shape timing without rewriting the line.
 - If deliberate overlap is locked by L1, give each speaker a separate brace block and explicit overlapping time window.
 
 ## Off-Screen Speech and Narration
@@ -65,12 +66,16 @@ A device voice names the device as spatial source and leaves all character mouth
 Bind each voice asset to one declared role and responsibility:
 
 ```text
-@audio1：定义父亲的声音｜继承：音色、语速、语气与呼吸｜不继承：原素材台词、背景人声、音乐、画面人物或环境｜作用范围：父亲全部台词
+@audio1：定义父亲的声线身份｜继承：已锁音色、口音与发声质感；当场速度、重音、音量、气息和停顿按各镜策略及身体状态表演，明确锁定的参考说法优先｜不继承：原素材台词、背景人声、音乐、画面人物或环境｜作用范围：父亲全部台词
 ```
 
 This local asset example belongs only inside `【素材绑定】`. In shot prose and the independent dialogue line, refer to `父亲` or `父亲声源` without repeating `@audio1`.
 
 An image defines appearance, a motion reference defines approved movement, and an audio reference defines approved sound qualities. None of them silently creates another speaking character.
+
+## Speech Across a Cut
+
+Keep a continuing utterance as one speaking event. Place its exact text once on the starting shot's dialogue line with an explicit shot/time range, or split the original text into consecutive exact substrings whose concatenation reproduces every character and punctuation mark. The later shot prose continues the voice, speaker identity and listener's received information; a cut does not restart the sentence or reassign a visible listener's mouth. Do not duplicate the full quote in both shots. The coverage may stay on a listener, show an approved insert or move while speech continues; first establish the actual spatial voice source, and keep any new context within the requested segment.
 
 ## Exact-Text Preservation
 

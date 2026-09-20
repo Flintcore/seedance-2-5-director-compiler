@@ -33,7 +33,7 @@ Use for sustained combat, weapons, 1vN, heavy weapons, powers, or dense projecti
 
 ## Internal Action Contract
 
-Keep this structure internal. Compile its content into the relevant continuous shot paragraphs of the current five-part prompt. Each paragraph ends with its concrete `光影：` and `现场声：` sentences; exact spoken text appears once on the independent dialogue line afterward. Body pose, contact, momentum and the final half-second state remain in the corresponding shot, not an extra tail field. Do not print a second prompt format.
+Keep this structure internal. Compile its content into the relevant continuous shot paragraphs of the current six-part prompt. Each paragraph ends with its concrete `光影：` and `现场声：` sentences; exact spoken text appears once on the independent dialogue line afterward. Body pose, contact, momentum and the final half-second state remain in the corresponding shot, not an extra tail field. Do not print a second prompt format.
 
 ```yaml
 action_contract:
@@ -79,6 +79,8 @@ action_contract:
 
 The action engine receives the director's performance anchor with the physical start state. Carry the character's attention target or gaze direction, control level, breath load, and body trajectory through preparation, contact, recovery, and the outgoing state when those cues are part of the locked design. A small action repeats only when it naturally continues or is triggered again; continuity is not repeated gesture. Physical completeness must not erase the acting; express it through gaze, timing, grip, posture, weight, breath, recovery, or the opponent's reaction rather than a facial checklist.
 
+When the difficulty is generic character behavior, disappearing fatigue/injury, or a new exchange that resets what the previous one taught the character, read the relevant action/character chapters and examples in [角色行为与动作叙事参考库](../references/cinema/角色行为与动作叙事参考库.md). Reuse chapters already read; ordinary physical clarification does not load a new acting package. Preserve the director's character strategy through the choice of route, timing, protection, hesitation, grip and recovery. Accumulate established body conditions—breath demand, painful support, weakened grip, changed range—without inventing a new injury or imposing a numerical fatigue meter. A tactical pause still contains observation, recovery, support or an intentionally held stance, not a reset to idle.
+
 ## Tactical Causality
 
 Write each exchange as a causal chain:
@@ -95,6 +97,8 @@ current pressure or opportunity
 ```
 
 Every move must purchase something readable: distance, angle, cover, weapon access, escape route, balance, information, or control. Decorative choreography may remain only when L1 explicitly locks it; even then, connect it to a physical consequence.
+
+The written shot keeps the whole meaningful chain: tactical reason -> initiation -> path -> contact/avoidance -> feedback -> new state. Camera prose may become shorter; the chain does not. The new state constrains the next choice and carries the character's style and accumulated body condition, rather than ending at a result-only verb or returning to the original fighting pose.
 
 ## Beat Timing
 
@@ -178,6 +182,6 @@ Return only the completed internal action contract to the compiler. The compiler
 - action sounds from the relevant 1–3 real-world sources, with their event timing and perspective, in that shot's `现场声：` sentence; no added BGM;
 - end body state, contact and outgoing momentum in each shot's ending, with the final half-second state in the last shot;
 - exact action dialogue only on the independent `台词：` line, while its timing, delivery and reactions remain in the continuous visual event;
-- applicable short delivery switches once in `【风格】`; size, support and staging relations remain positive scene descriptions rather than a negative tail list.
+- applicable short delivery switches once in `【全局约束】`; size, support and staging relations remain positive scene descriptions rather than a negative tail list.
 
 Keep the action contract internal. End the formal output with the last shot's on-set sound or optional dialogue line; no closing constraints card or extra action contract follows it.

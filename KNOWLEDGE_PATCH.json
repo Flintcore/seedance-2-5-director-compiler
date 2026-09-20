@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "sync_mode": "targeted-patch-not-full-mirror",
+  "patches": [
+    {
+      "date": "2026-09-20",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.5.0",
+        "commit": "711f7b35f37cf21217c43da75775a4b119ce0ff5"
+      },
+      "files": [
+        {
+          "source_path": "references/角色行为与动作叙事参考库.md",
+          "target_path": "references/cinema/角色行为与动作叙事参考库.md",
+          "sha256": "41cea05e5b44181575631cc075d1158189dd60e188c786a4ea32612e3d91c4a2"
+        }
+      ],
+      "preserved": "Existing curated cinema, masters and historical full-import baseline unchanged."
+    }
+  ]
+}

@@ -150,11 +150,11 @@ properties:
         image_action:
           type: string
           minLength: 1
-          description: "可读的完整画面事件链：当前构图/开始体态、触发、主动作、联动反应和结果，含必要的实际受光关系及有实体原因的变化或稳定"
+          description: "人物正在做的事与目标、阻力/触发、行动及听说互动、调整与余态构成连续事件；持续行为和实际受光关系保全"
         camera:
           type: string
           minLength: 1
-          description: "景别、焦距、相对角色/场景/物品的水平方位与机位高度、平视/仰拍/俯拍、运动或固定状态；按事件表达视点、焦点与运动动机"
+          description: "足够执行事件的简洁景别/焦距、相对机位、必要构图和运动/固定状态；光学可见结果与摄影机响应服务人物过程"
         staging:
           type: string
           minLength: 1
@@ -162,7 +162,7 @@ properties:
         performance:
           type: string
           minLength: 1
-          description: "可观察的注意力、行为、控制和反应，按景别取舍"
+          description: "策略及触发式习惯落成持续行为、注意力、听说互动与反应；按可见性取舍，继承身体条件而非只列情绪关键帧"
         sound:
           type: string
           minLength: 1

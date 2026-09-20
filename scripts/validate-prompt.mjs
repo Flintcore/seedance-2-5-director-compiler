@@ -6,7 +6,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-export const PROMPT_HEADINGS = ["风格", "素材绑定", "本段戏剧任务", "本段情绪总控", "镜头"];
+export const PROMPT_HEADINGS = ["风格", "素材绑定", "全局约束", "本段戏剧任务", "本段情绪总控", "镜头"];
 const PREAMBLE = PROMPT_HEADINGS.slice(0, -1);
 const SECTION_LINE = /^\s*【([^】]+)】\s*(.*?)\s*$/u;
 const SHOT_LINE = /^\s*镜头([1-9]\d*)\s*｜\s*(\d{1,2}:\d{2}(?:\.\d+)?)\s*-\s*(\d{1,2}:\d{2}(?:\.\d+)?)\s*$/u;
@@ -79,7 +79,7 @@ function assetContract(text, scan, options, errors) {
     if (!binding || line < binding.line || line >= end) errors.push({ code: "ASSET_REFERENCE_LOCATION", message: item.token + " belongs only inside 【素材绑定】" });
   }
   for (const token of unique) if (occurrences.filter((item) => item.token === token).length > 1) errors.push({ code: "ASSET_DUPLICATE_REFERENCE", message: token + " must occur exactly once" });
-  if (!bound.length && binding && !/^无外部参考素材(?:[。；;.\s]|$)/u.test(bindingText)) errors.push({ code: "ASSET_EMPTY_DECLARATION", message: "without references, 【素材绑定】 starts with 无外部参考素材, followed by any necessary static setting" });
+  if (!bound.length && binding && !/^无外部参考素材[。.]?$/u.test(bindingText)) errors.push({ code: "ASSET_EMPTY_DECLARATION", message: "without references, 【素材绑定】 contains only 无外部参考素材; shared setting facts belong in 【全局约束】" });
   if (bound.length && bindingText.includes("无外部参考素材")) errors.push({ code: "ASSET_EMPTY_CONFLICT", message: "no-reference declaration conflicts with bound assets" });
   if (unique.length > 50) errors.push({ code: "ASSET_LIMIT", message: "unique asset count " + unique.length + " exceeds 50" });
   if (options.preserveAssetNumbering !== true) {
@@ -167,7 +167,7 @@ export function validatePrompt(input, options = {}) {
   }
   const ordered = scan.sections.map((section) => section.name);
   if (JSON.stringify(ordered) !== JSON.stringify(PREAMBLE)
-    || scan.sections.some((section) => section.line > (scan.shots[0]?.line ?? Infinity))) errors.push({ code: "SECTION_ORDER", message: "use 风格 → 素材绑定 → 本段戏剧任务 → 本段情绪总控 → shots; no tail section" });
+    || scan.sections.some((section) => section.line > (scan.shots[0]?.line ?? Infinity))) errors.push({ code: "SECTION_ORDER", message: "use 风格 → 素材绑定 → 全局约束 → 本段戏剧任务 → 本段情绪总控 → shots; no tail section" });
   if (scan.boundaries[0]?.line !== 1) errors.push({ code: "PROMPT_PREFIX", message: "the prompt begins at 【风格】" });
   if (LEGACY_ROW.test(text)) errors.push({ code: "LEGACY_ROW", message: "retired or split technical-field row found" });
   for (const line of scan.malformedShots) errors.push({ code: "SHOT_HEADING_FORMAT", message: "line " + line + ": use 镜头N｜0:00-0:06 without brackets, names, or other fields" });

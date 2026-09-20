@@ -189,7 +189,7 @@ test("migration manifest records fusion evidence, confirmed contracts, and exclu
     assert.match(manifest, /旁白\{逐字旁白\}/);
     assert.match(manifest, /canonical_asset_placeholders:[\s\S]*image: "@imageN"[\s\S]*video: "@videoN"[\s\S]*audio: "@audioN"/);
     assert.match(manifest, /occurrence: once_per_unique_source/);
-    assert.match(manifest, /formal_layer: "five-part-shot-prose"[\s\S]*source_locator_output: forbidden/);
+    assert.match(manifest, /formal_layer: "six-part-shot-prose"[\s\S]*source_locator_output: forbidden/);
     assert.match(manifest, /excluded_runtime_mechanisms:[\s\S]*project_state_ledgers_and_automatic_writes[\s\S]*reviewer_score_and_self_check_loops/);
   } finally {
     await rm(root, { recursive: true, force: true });

@@ -12,12 +12,15 @@ const sources = [
   "modules/design-judgment.md", "modules/micro-performance.md", "modules/diagnosis.md",
   "references/model/complexity.md", "references/model/continuity.md",
   "references/model/nine-layer-schema.md",
+  "modules/knowledge-routing.md", "modules/action-design.md",
+  "references/model/dialogue-binding.md", "references/model/character-event-examples.md",
 ];
 function localTargets(text) {
   const markdown = [...text.matchAll(/\[[^\]\r\n]+\]\(([^)\r\n]+)\)/gu)].map((match) => match[1]);
   const code = [...text.matchAll(/\x60([^\x60\r\n]+\.md)\x60/gu)].map((match) => match[1]);
   return [...new Set([...markdown, ...code])]
-    .filter((value) => !/^(?:[a-z]+:|#)/iu.test(value) && !/[<>]/u.test(value))
+    // Wildcards are explicit directory-discovery patterns, not literal links.
+    .filter((value) => !/^(?:[a-z]+:|#)/iu.test(value) && !/[<>*]/u.test(value))
     .map((value) => value.split("#")[0]);
 }
 async function resolvedTargets(relativeFile) {
@@ -60,4 +63,13 @@ test("judgment routes to existing optics, composition, continuity and performanc
   for (const source of ["references/cinema/景深与焦点叙事决策库.md", "references/cinema/构图设计参考库.md", "references/cinema/镜头衔接与连续性参考库.md", "modules/micro-performance.md", "modules/knowledge-routing.md"]) {
     assert.ok(targets.includes(path.join(root, source)), "missing active resource: " + source);
   }
+});
+
+test("character behavior is an actual dependency of problem routing, performance and action", async () => {
+  const target = path.join(root, "references/cinema/角色行为与动作叙事参考库.md");
+  for (const source of ["modules/knowledge-routing.md", "modules/micro-performance.md", "modules/action-design.md"]) {
+    assert.ok((await resolvedTargets(source)).includes(target), source + " lacks the live character-behavior route");
+  }
+  assert.ok((await resolvedTargets("references/model/nine-layer-schema.md"))
+    .includes(path.join(root, "references/model/character-event-examples.md")));
 });
