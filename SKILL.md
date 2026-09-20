@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.3.0"
+  version: "0.3.1"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -57,7 +57,7 @@ Expressive value is not limited to new plot information: preserve the concrete l
 
 The formal prompt has exactly six parts in this order: `【风格】`, `【素材绑定】`, `【全局约束】`, `【本段戏剧任务】`, `【本段情绪总控】`, then `镜头N｜M:SS-M:SS` blocks. Read the [six-part prose schema](references/model/nine-layer-schema.md) for the complete metatemplate; the historical filename is only a compatibility path.
 
-Each shot is one continuous natural-language paragraph whose spine is the character's event, interaction, action, speech/listening and carried state. Weave in concise executable coverage: shot scale, focal length, camera bearing/height/tilt relative to a named entity, subject placement and approximate frame share, actual depth layers, and camera start/path/speed/end or a held view. Keep technical detail sufficient for the design, not an exhaustive parameter inventory; do not shorten away action causes, contact, dialogue response or recovery to make room for it. Repeat dynamic anchors as needed for the shot to be independently imaginable, including a readable first-frame pose/contact; preserve expressive light/reflection/occlusion even without a new plot event.
+Each shot is one continuous natural-language paragraph in this reading order: concise focal length/shot scale and relative camera bearing/height/tilt first; then the initial visible frame (who/what is where, depth, pose/contact and ongoing attention); then the continuous character action, speech/listening, reaction and camera movement; finally the ending state and any designed transition to the next shot. Character-led design does not mean character-first wording: establish the viewing position and initial image before advancing the event. Keep technical detail sufficient for the design, not an exhaustive parameter inventory; do not shorten away action causes, contact, dialogue response or recovery to make room for it. Repeat dynamic anchors as needed for the shot to be independently imaginable; preserve expressive light/reflection/occlusion even without a new plot event. Do not add a cut to a continuous take or announce another shot after the final one.
 
 Every paragraph ends with `光影：` describing how light acts now and how it changes through an established physical carrier (or remains stable), and `现场声：` selecting 1–3 real diegetic sources, without BGM. Exact speech belongs on a separate `台词：角色说{逐字原文}` line, while prose keeps speaking/listening timing, gaze and reactions. No dialogue means no dialogue line. Explicit silence and later specific user sound locks take precedence over filling slots.
 

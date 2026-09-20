@@ -81,7 +81,8 @@ test("a cross-cut quote may instead be split into exact consecutive substrings w
 });
 
 test("shared references and optional silence do not loosen mechanical output safeguards", () => {
-  const duplicate = examples[0].replace("阿宁仍握着", "@image1中的阿宁仍握着");
+  const duplicate = examples[0].replace("她仍握着", "@image1中的她仍握着");
+  assert.notEqual(duplicate, examples[0]);
   const result = validatePrompt(duplicate);
   assert.equal(result.ok, false);
   assert.ok(result.errors.some(({ code }) => code === "ASSET_DUPLICATE_REFERENCE"));
@@ -89,4 +90,25 @@ test("shared references and optional silence do not loosen mechanical output saf
   const extra = validatePrompt(examples[2] + "\n【角色档案】强加的另一套交付表。");
   assert.equal(extra.ok, false);
   assert.ok(extra.errors.some(({ code }) => code === "UNEXPECTED_SECTION"));
+});
+
+test("maintained examples open with camera position and an initial image before progressing the event", async () => {
+  const corridor = await readFile(new URL("../references/model/shot-prose-example.md", import.meta.url), "utf8");
+  const paragraphs = [...(document + "\n" + corridor).matchAll(/^镜头\d+｜[^\n]+\r?\n([^\n]+)/gmu)]
+    .map((match) => match[1]);
+  assert.equal(paragraphs.length, 7);
+  // Only these maintained examples use this literal phrase. Runtime prose may
+  // express its initial image naturally; this does not score narrative quality.
+  for (const paragraph of paragraphs) {
+    assert.match(paragraph, /^\d+(?:\.\d+)?mm(?:双人)?(?:中近景|近景|全景|中景)，摄影机/u);
+    assert.ok(paragraph.indexOf("起始画面中") > 0);
+    assert.ok(paragraph.indexOf("起始画面中") < paragraph.indexOf("光影："));
+  }
+});
+
+test("compiler and metatemplate distinguish event-first design from camera-first prose", async () => {
+  for (const path of ["../modules/compiler.md", "../references/model/nine-layer-schema.md"]) {
+    const source = await readFile(new URL(path, import.meta.url), "utf8");
+    assert.ok(source.includes("摄影参数开头 → 起始画面 → 连续人物事件与运镜 → 结束状态及必要切镜衔接"));
+  }
 });
