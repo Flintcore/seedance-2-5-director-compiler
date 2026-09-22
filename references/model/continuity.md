@@ -48,6 +48,7 @@ boundary_state:
 
 - **Hard continuity:** same moment and physical state.
 - **Stable-pose cut:** movement resolves into a held state before the cut.
+- **Match-on-action:** cut during an attack, deflection, recoil or travel and resume the same event with compatible phase, direction and momentum; the consequence may arrive in the incoming shot. This is not a requirement to settle before cutting.
 - **Occlusion/wipe:** a moving foreground element covers the cut; state still transfers.
 - **Match cut:** visual relation matches while time or place may change; declare the new state.
 - **J-cut/L-cut:** sound begins before or continues after picture; name the sound source and boundary timing.
@@ -59,6 +60,8 @@ boundary_state:
 For action, preserve direction, path, contact, force, and momentum across the cut. If a weapon is descending at the cut, the next shot begins at the same descent phase unless L1 includes the intervening contact. If a character exits screen right and immediately continues, the next entry direction must match the established geography or show an axis-reestablishing transition.
 
 Do not hide a missing action result in the cut. Contact, landing, recoil, recovery, possession changes, and damage appear either before the boundary or after it in an explicitly continuous phase.
+
+These consequences may overlap or continue into another shot; they are not separate duration slots. A readable state can be moving. The half-second zones belong only to the whole generation segment, not to each shot, blow, focus change or camera move. Do not turn phase matching into repeated freezes or replay the impact after a cut.
 
 ## Sound Continuity
 

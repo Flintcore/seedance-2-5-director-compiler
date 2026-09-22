@@ -1,6 +1,6 @@
 # Action Execution Engine
 
-Use this module only when `action_mode` is `ACTION_LITE` or `ACTION_FULL`. It converts the locked director design into executable physical continuity. It does not choose the action's visual style, shot grammar, framing, lens, emotional tone, or master reference; those remain director-domain decisions.
+Use this module only when `action_mode` is `ACTION_LITE` or `ACTION_FULL`, including feedback that a fight is slow, weightless, pose-driven or obscured by effects. During open director design it supplies the action-specific decisions below; after L1 is locked it implements the approved design without changing its aesthetics or shot grammar. Do not wait until compilation to discover that the planned fight contains mostly waiting.
 
 ## Ownership Boundary
 
@@ -11,9 +11,39 @@ Preserve from L1 without reinterpretation:
 - exact story outcome, injuries, damage, powers, weapons, and continuity facts;
 - approved duration, dialogue, references, and segment boundaries.
 
-The action engine owns only the physical implementation: tactical causality, beat timing, direction, path, contact, force, inertia, environmental response, opponent isolation, start/end states, and cross-shot interfaces.
+The director owns the kinetic intent, attack/response vocabulary, coverage and rhythm. The execution engine owns tactical causality, beat timing, direction, path, contact, force, inertia, environmental response, participant state, and cross-shot interfaces. Use the shared decisions below while those director dimensions remain open; hand the resulting choices into L1 rather than treating this module as permission for the compiler to redesign it.
 
 If a physical detail is absent, choose the smallest compatible implementation that makes the locked design executable. Do not add a new stunt, reversal, injury, power, prop, opponent, or story beat.
+
+When the user authorizes richer action or provides an open fight brief, expand compatible attacks, evasions, counters and contested movement within the existing dramatic encounter. This is different from inventing a new plot event. Keep established participants, abilities, injuries, dialogue, key outcomes and ending intact; retain any explicitly locked move count or choreography. An instruction to preserve the story is not a reason to stretch a few unexpanded moves across the entire duration.
+
+## Director Decisions Before Locking L1
+
+### Kinetic intent and useful action density
+
+Choose the intended experience from the brief: explosive pursuit/close combat, graceful technique, fantasy escalation, desperate attrition, ritual confrontation, or deliberately detached violence. For a request for fast, forceful, exciting combat, make rapid linked exchanges and forceful consequences the active baseline. Do not default to dialogue-scene pacing, solemn eye contact, prolonged charge-ups, or one ceremonial move per shot. A tragic relationship does not make every attack slow.
+
+Allocate time to what must actually happen: attacks and counters, traversed distance, locked dialogue, decisive recognition and its outcome. Fill an open combat span with meaningful pressure and response, not padded approach/pose/reaction intervals. Conversely, if actions and duration are both locked and underfilled, identify that specific trade-off instead of inventing events. No fixed shot count, blows-per-second quota or equal-length beats.
+
+Read the relevant complete chapters of [动作设计与武指体系参考库](../references/cinema/动作设计与武指体系参考库.md) for the fight's family and character choices; use [武戏动作语汇](../references/cinema/武戏动作模板库.md) when the exchange itself is vague. A fast-action problem reads [速度与力量视觉标尺](../references/cinema/速度与力量量化标准.md) for speed/path/impact evidence, interpreted with the overlap rules below. These are problem routes, not an all-files package; selected master-work reading remains in the director workflow.
+
+### Coverage: see the action, feel the impact
+
+- Use wider/full-body or medium-wide views to make attack geometry, range, footwork, body silhouette, evasion and changed positions legible. A wide shot can move and cut quickly; it is not an instruction to observe passively for several seconds.
+- Use closer views when they add a specific contact, deformation, grip failure, pressured decision or reaction that the broader view would lose. Give the close view enough context from the surrounding movement to identify who affects whom. A close face is not automatically the next shot after every strike.
+- Cut on attack initiation, weapon/body passage, contact, deflection or a changing advantage when the next view carries the same force forward. Preserve the meaningful cause and result across the shot group; each shot need not restart a complete prepare–hit–recover cycle. Do not replay the same impact from several angles unless replay is designed. Matched movement or impact-to-reaction may keep a focal length or scale when that preserves momentum; avoid arbitrary jumps, not useful matched coverage.
+- Let tracking, a short pan, a move into depth, a low passing viewpoint or a purposeful reframe transfer attention between attack and response. Match the needed motion energy; an automatic slow orbit or dolly-in during a rapid exchange can drain urgency. Impact shake is an event response, not the scene's choreography.
+- A static side-on duel is an option for clearly designed continuous technique, comic observation or a specific spatial idea, including but not limited to Hong Kong-style action. It is not the fallback for every fight. A long take earns its duration through changing attack lines, levels, control or spatial pressure; a succession of empty camera moves does not replace these changes.
+
+When the brief explicitly asks for very fast cutting, design real short impact inserts and shot-length contrast, not a row of equally long 2–3-second blocks. An insert may be under a second when it only needs to show one readable contact and immediate response; surrounding coverage carries approach and aftermath. This is an available expressive timescale, not a quota, platform precision guarantee, or instruction to fragment every move. Use actual contact, pressure or viewpoint changes as cut triggers, with enough spatial coverage to keep the chain legible.
+
+### Distinctive choices and fantasy effects
+
+Derive the fighter's decisions from already-established training, goal, risk tolerance and moral boundary: who closes range, yields ground, protects an opening, redirects pressure or takes an opportunity? A clear silhouette, economical transition and decisive consequence create style; repeated heroic posing, arbitrary spins and newly invented signature habits do not.
+
+For fantasy/powers, read the relevant phenomenon in [特效真实感引擎](../references/cinema/特效真实感引擎.md). The effect is part of the move, not a decorative pass after ordinary sparring: specify the approved source, propagation path or field, contact mechanism, target response and residual state. Cutting, pushing, binding, absorbing and bursting have different tactical results. Tie color and shape to the selected world rules; multiple vivid colors can remain brilliant while their sources and directional edges stay distinct. Retain bodies, weapon routes and decisive contacts through contrast, depth, timing or localized exposure instead of covering every exchange with full-frame bloom.
+
+Fantasy physics need internal consistency, not compulsory everyday realism. Flight, superhuman acceleration and supernatural force can remain spectacular; provide the scene's chosen evidence of their operation without inventing a new ability, cost or power limit. Light, cloth, dust, water, surfaces and sound respond according to that chosen mechanism—visible light alone does not imply mechanical force.
 
 ## Route
 
@@ -29,11 +59,11 @@ Use for a chase beat, fall, grab, collision, single attack, block, dodge, or oth
 
 ### ACTION_FULL
 
-Use for sustained combat, weapons, 1vN, heavy weapons, powers, or dense projectiles. Build the complete action contract below for every shot or time block.
+Use for sustained combat, weapons, 1vN, heavy weapons, powers, or dense projectiles. Follow the contract's causal dimensions across each meaningful exchange. Reuse persistent state; record only applicable and changing fields rather than writing a complete form for every blow.
 
 ## Internal Action Contract
 
-Keep this structure internal. Compile its content into the relevant continuous shot paragraphs of the current six-part prompt. Each paragraph ends with its concrete `光影：` and `现场声：` sentences; exact spoken text appears once in Chinese double quotes at the speaking moment within that same paragraph, with delivery and action outside the quote by default. Body pose, contact, momentum and the final half-second state remain in the corresponding shot, not an extra tail field. Do not print a second prompt format.
+Keep this structure internal and sparse; it is a thinking/handoff aid, not a mandatory serialized document. Compile its content into the relevant continuous shot paragraphs of the current six-part prompt. Each paragraph ends with its concrete `光影：` and `现场声：` sentences; exact spoken text appears once in Chinese double quotes at the speaking moment within that same paragraph, with delivery and action outside the quote by default. Body pose, contact, momentum and the final half-second state remain in the corresponding shot, not an extra tail field. Do not print a second prompt format.
 
 ```yaml
 action_contract:
@@ -54,7 +84,7 @@ action_contract:
     path:
     contact_point:
   beats:
-    - time_window:
+    - time_window: # only when an actual timing or overlap decision needs it
       intent:
       initiation:
       travel:
@@ -62,7 +92,8 @@ action_contract:
       force_vector:
       inertia_chain:
       environment_feedback:
-      opponent_response:
+      opponent_response: # may begin as anticipation before contact
+      concurrent_pressure: # only for an active overlap that changes the exchange
       resulting_state:
   end_state:
     body_pose:
@@ -81,6 +112,8 @@ The action engine receives the director's performance anchor with the physical s
 
 When the difficulty is generic character behavior, disappearing fatigue/injury, or a new exchange that resets what the previous one taught the character, read the relevant action/character chapters and examples in [角色行为与动作叙事参考库](../references/cinema/角色行为与动作叙事参考库.md). Reuse chapters already read; ordinary physical clarification does not load a new acting package. Preserve the director's character strategy through the choice of route, timing, protection, hesitation, grip and recovery. Accumulate established body conditions—breath demand, painful support, weakened grip, changed range—without inventing a new injury or imposing a numerical fatigue meter. A tactical pause still contains observation, recovery, support or an intentionally held stance, not a reset to idle.
 
+In rapid combat, acting occurs inside the action: the eyes find a real threat or opening, the jaw/breath registers exertion, the guard or route changes with the decision. Do not stop an exchange to enumerate blinks, brows, lips and swallowing. At broader scales, body commitment and defensive choice carry the emotion; a motivated close view can reveal a brief recognition or restraint. Reserve genuine space for the locked emotional turn or dialogue when needed, then let that decision change the next action. It does not impose a reflective pause on every preceding strike. A suppressed or composed face is valid only when the body's choices still convey the intended character.
+
 ## Tactical Causality
 
 Write each exchange as a causal chain:
@@ -96,22 +129,25 @@ current pressure or opportunity
 -> next pressure or opening
 ```
 
-Every move must purchase something readable: distance, angle, cover, weapon access, escape route, balance, information, or control. Decorative choreography may remain only when L1 explicitly locks it; even then, connect it to a physical consequence.
+The meaningful exchange must purchase something readable: distance, angle, cover, weapon access, escape route, balance, information, or control. Several rapid strikes can collectively press a guard or drive a retreat; do not demand a new plot turn for each strike. Decorative choreography may remain when L1 locks it; connect it to a physical consequence rather than resetting to a pose.
 
-The written shot keeps the whole meaningful chain: tactical reason -> initiation -> path -> contact/avoidance -> feedback -> new state. Camera prose may become shorter; the chain does not. The new state constrains the next choice and carries the character's style and accumulated body condition, rather than ending at a result-only verb or returning to the original fighting pose.
+The shot group keeps the meaningful chain: tactical reason -> initiation -> path -> contact/avoidance -> feedback -> new state. A shot can contain several linked exchanges or just the active phase its viewpoint adds; neighboring shots supply the relevant cause/result rather than repeating the whole chain. Camera prose may become shorter; causal evidence remains. The resulting state constrains the next choice and carries the character's style and accumulated body condition, rather than ending at a result-only verb or returning to the original fighting pose.
 
 ## Beat Timing
 
-Partition only where physical state changes. A useful beat can contain:
+Partition where a meaningful pressure, path, contact or decision changes. A useful beat can contain:
 
 ```text
 prepare or perceive -> initiate -> travel -> contact or evade -> force response -> settle or carry momentum onward
 ```
 
-- Give every beat an ordered time window inside the segment duration.
-- Keep the first and last `0.5s` as stable entry and exit phases.
-- Let acceleration, contact, recoil, landing, and recovery occupy visible time; do not collapse cause and result into the same instant.
+- Keep shot timecodes and locate critical contacts, handoffs or overlaps when timing matters. Sub-beats need order and readable relationships, not a mandatory decimal timestamp for every preparatory movement.
+- Preserve the segment's first and last `0.5s` as readable entry/exit states under the existing user contract; these can be in motion. This allowance belongs to the generation segment, not every cut. An explicitly locked impact opening or abrupt ending follows that lock.
+- Acceleration, contact, recoil and recovery retain causal order, but they can be brief and overlap other actors' responses. A block becomes a counter while the first attack is still recovering; retreat can carry defense and re-attack; landing can redirect directly into the next move. Visible causality does not require each phase to receive a separate held shot or return to rest.
+- Anticipation and evasion may precede contact; an impact-caused reaction follows its actual cause. Show normal-speed pathways and consequences first, using framing and a known axis to aid readability instead of automatically slowing the fighters down.
+- Preserve actual speed differences: rapid approach closes the distance, strikes cross their paths decisively, recoil carries force onward. Do not use slow uniform movement with an adjective such as “激烈,” repeated ease-in/ease-out, or a prolonged pause between every attack and response.
 - Preserve director-locked slow/fast contrast. Do not introduce slow motion, freeze frames, speed ramps, or impact camera effects on the engine's own initiative.
+- In open design, a slow-motion emphasis or hit-stop remains a specific stylistic choice, not the default proof of weight. A fast fight can retain a longer shot if meaningful combat continues through it; a shorter shot is useful when it transfers action or highlights impact, not merely to satisfy a count.
 - When the locked actions do not fit, compress optional embellishment first and keep the action chain in one generated segment whenever its required narrative span is 30 seconds or less. Propose a segment boundary only for an explicit multi-segment request or a causal spine whose user-stated/locked minimum timing demonstrably exceeds 30 seconds, and place it at a stable physical state.
 
 ## Direction, Path, and Axis
@@ -127,7 +163,7 @@ Track world direction and screen direction separately.
 
 ## Contact, Force, and Inertia
 
-For every meaningful contact, specify:
+For every meaningful contact, make the applicable causal evidence clear across the adjacent views:
 
 1. contact pair and contact point;
 2. incoming direction and momentum;
@@ -147,20 +183,22 @@ An invisible power needs an observable carrier already compatible with the world
 
 ## 1vN Isolation
 
-Do not schedule all opponents as independent simultaneous action centers. Build temporary local contests through distance, obstacle, height, doorway, cover, line of sight, stagger, knockback, weapon reach, or another scene-supported separator.
+Keep one legible attention center while allowing opponents to apply overlapping pressure. Build temporary local contests through distance, obstacle, height, doorway, cover, line of sight, stagger, knockback, weapon reach, or another scene-supported separator. Isolation is a spatial/temporal advantage, not a queue in which everyone else stops fighting.
 
 For each handoff, state:
 
 - which opponent currently applies pressure;
-- why the others are delayed or spatially excluded;
+- what delays or separates the others, or how their overlapping approach is legible without stealing the current contact;
 - what result opens the next opponent's route;
 - where every visible opponent remains during the exchange.
+
+Unengaged opponents can close range, flank, recover, aim, block a route or move around an obstacle when the established scene supports it. A defensive move against one threat can also obstruct another; responses retain a specific target. Distinguish misses, deflections, direct hits and established area effects so nearby participants do not all react to an unrelated contact.
 
 This preserves the director's intended scale while keeping the action readable and causally ordered.
 
 ## Cross-Shot Interface
 
-The outgoing state of one shot is the incoming state of the next. Carry all physically active fields:
+The outgoing state of one shot is the incoming state of the next. State means a sampled phase of continuous action, not a required settled pose. The next first frame can inherit an unfinished strike, a fall or ongoing recoil at its corresponding later phase; it need not freeze/repeat the exact previous frame. Carry all physically active fields:
 
 - body pose, balance, planted foot, facing, gaze, and breathing load;
 - hand, weapon, prop, and grip state;
@@ -174,12 +212,12 @@ Do not reset a stance, grip, wound, broken object, opponent position, or momentu
 
 ## Compilation Handoff
 
-Return only the completed internal action contract to the compiler. The compiler places:
+Hand the relevant action decisions and changing state to the compiler through the existing IR/L1; do not add a separate mandatory report. The compiler places:
 
 - each shot's start body state, contact and incoming momentum in that shot's opening, preserving the previous shot's end state;
-- causal beats, paths, contact, force, inertia, and feedback in the relevant shot paragraphs;
+- linked attacks/responses, paths, contact, force, inertia and feedback in the relevant shot paragraphs; concise temporal connectors carry overlaps instead of giving each micro-phase its own sentence and pause;
 - the shot's actual lighting relationship and physically caused changes or approved stability in its `光影：` sentence, without inventing a new effect or changing deliberate shadow/occlusion;
-- action sounds from the relevant 1–3 real-world sources, with their event timing and perspective, in that shot's `现场声：` sentence; no added BGM;
+- action sounds from the relevant 1–3 established in-scene sources, including fantasy sources under their world rules, with event timing and perspective, in that shot's `现场声：` sentence; a pass, hard contact and residual vibration can form a distinct envelope rather than a uniform wall of noise; no added BGM;
 - end body state, contact and outgoing momentum in each shot's ending, with the final half-second state in the last shot;
 - exact action dialogue embedded in Chinese double quotes in the continuous visual event; its speaker, timing, delivery and reactions stay alongside it, outside the quote by default;
 - applicable short delivery switches once in `【全局约束】`; size, support and staging relations remain positive scene descriptions rather than a negative tail list.

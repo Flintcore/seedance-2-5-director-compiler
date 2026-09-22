@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.4.1"
+  version: "0.4.2"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -53,6 +53,12 @@ When designing shots, actively seek motivated audiovisual range with [shot-desig
 
 Expressive value is not limited to new plot information: preserve the concrete light, reflection, occlusion, framing, or sound relationships that carry subtext, emotional distance, or deliberate uncertainty, even when the basic event is unchanged. Follow the expressive-value guidance in [shot-design.md](modules/shot-design.md); clear execution does not require explaining every implication or making every eye visible. The intended gaze target and the audience's access to that gaze are separate choices.
 
+## Genre and Kinetic Tempo
+
+Set the scene's performance energy, physical speed, camera response and editing density separately; do not carry a restrained dialogue tempo into combat. Fast, impactful fighting reads [action-design.md](modules/action-design.md) before shot durations are frozen: readable wider attack geometry, short concentrated impact/reaction coverage and momentum-linked cuts, with actions and reactions allowed to overlap. A shot end is an in-flight state, not a command to stop. Reserve pauses for actual tactical or dramatic needs; rapid acting can be precise without a separate facial pause.
+
+For open design, actively develop grounded performance, light/depth and staging rather than merely preserve them when supplied. Use the existing [shot-design](modules/shot-design.md) and [micro-performance](modules/micro-performance.md) routes. Do not add story events, invented habits, altered dialogue or a default final critique. Strong cinematic expression need not be slow or uniformly subtle.
+
 ## Shot Narrative Contract
 
 The formal prompt has exactly six parts in this order: `【风格】`, `【素材绑定】`, `【全局约束】`, `【本段戏剧任务】`, `【本段情绪总控】`, then `镜头N｜M:SS-M:SS` blocks. Read the [six-part prose schema](references/model/nine-layer-schema.md) for the complete metatemplate; the historical filename is only a compatibility path.
@@ -61,7 +67,9 @@ Each shot is one continuous natural-language paragraph in this reading order: co
 
 Every paragraph ends with `光影：` describing how light acts now and how it changes through an established physical carrier (or remains stable), and `现场声：` selecting 1–3 real diegetic sources, without BGM. Exact speech is embedded at its speaking moment in that same paragraph, inside Chinese double quotation marks: `角色看着对手，平静地说：“逐字原文”`。 Put emotion, delivery, facial response and action outside the quotes by default. Only when a longer utterance needs a specific mid-line change, insert `【non-spoken performance direction】` at that point inside the quote; length alone does not require annotation. Removing these directions leaves every spoken character and punctuation unchanged. Identify the speaker and source in prose; an ordinary quoted prop label is not speech. With no dialogue, add no speech placeholder. See [dialogue-binding.md](references/model/dialogue-binding.md) for continuity and exact-text handling. Explicit silence and later specific user sound locks take precedence over filling slots.
 
-For new shot design, adjacent cuts change both focal length and shot scale; compose the primary subject off-center and give the other side existing concrete entities and depth. Treat this as the user's chosen design contract, not a universal cinema or model law. User locks and approved L1 take precedence; pure compilation and continuous takes keep their approved optics, positions and cuts. Match each shot's opening world pose, contact, possession and action phase to the previous ending. First/last 0.5-second states stay in the first/last shot prose.
+For new shot design, adjacent cuts change both focal length and shot scale except for the motivated action-matching/contact-reaction cases below; compose the primary subject off-center and give the other side existing concrete entities and depth. Treat this as the user's chosen design contract, not a universal cinema or model law. User locks and approved L1 take precedence; pure compilation and continuous takes keep their approved optics, positions and cuts. Match each shot's opening world pose, contact, possession and action phase to the previous ending. First/last 0.5-second states stay in the first/last shot prose.
+
+Action-specific scope: motivated impact-to-reaction cuts or match-on-action may retain focal length or scale; momentum and readable contact take priority over numeric alternation. Movement may cross the frame center and a decisive contact may occupy it. Do not expand these exceptions into arbitrary jump cuts or override an explicit user lock. End states may remain in motion; the 0.5-second zones occur once at the whole segment boundaries, not at every cut.
 
 Mood control states the main emotion, rhythm/temperature, and one contrast sentence clarifying what the scene is not. This requested expressive boundary is separate from prohibited physical-error negative lists. Camera texture stays in style and reference duties in asset binding. Keep a short `【全局约束】` section for grounded conditions shared by this segment: setting/time-space, identity/appearance, compatible physical scale, fixed scene geometry and delivery rules. State any known exception with its scope; with no extra shared condition write `无额外全局约束。` rather than inventing one. Use semantic names here, never another @ reference. Concrete staging changes, contact, gaze, story/action/light/sound stay in the relevant shot; retain necessary anchors there so the paragraph is independently imaginable. Global constraints neither freeze all positions nor repair contradictory shot prose. This restores a concise shared section, not legacy lock tables, story cards or tail cards.
 

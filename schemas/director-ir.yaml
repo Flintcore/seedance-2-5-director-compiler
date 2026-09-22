@@ -189,7 +189,8 @@ properties:
             items:
               type: object
               additionalProperties: false
-              required: [time, cause, motion, contact, inertia, recovery, shot_id]
+              description: "一个可含重叠攻防的交锋单元；只序列化当前有意义的接触、惯性、恢复与精确时间，恢复可接入下一次行动而非停稳。"
+              required: [cause, motion, shot_id]
               properties:
                 time: {type: string, minLength: 1}
                 cause: {type: string, minLength: 1}
@@ -197,6 +198,7 @@ properties:
                 contact: {type: string, minLength: 1}
                 inertia: {type: string, minLength: 1}
                 recovery: {type: string, minLength: 1}
+                concurrent_pressure: {type: string, minLength: 1}
                 shot_id: {type: string, minLength: 1}
           resulting_state: {type: string, minLength: 1}
 
