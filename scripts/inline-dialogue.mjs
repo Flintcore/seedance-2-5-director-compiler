@@ -14,6 +14,10 @@ function speechCue(text, quoteStart, previousEnd, names) {
   // Prefer a name at clause start; mentions of an interlocutor are not speakers.
   const direct = matching.filter(item => item.index === 0 || /[，,；;]\s*$/u.test(prefix.slice(0, item.index))).sort((a, b) => b.index - a.index)[0];
   if (direct) return { speaker: direct.name, speakerResolution: 'supplied-name-cue', cue: prefix };
+  // A limited positional modifier can precede an explicitly supplied source;
+  // do not select arbitrary last-mentioned interlocutors from a whole clause.
+  const located = matching.find(item => /^(?:桌对面|门外|门内|(?:画外|画内)(?:东侧|西侧|南侧|北侧)?|镜头外|镜头内|左侧|右侧|身后)的$/u.test(prefix.slice(0, item.index)));
+  if (located) return { speaker: located.name, speakerResolution: 'supplied-name-cue', cue: prefix };
   if (/^(?:画外)?旁白/u.test(prefix)) return { speaker: '旁白', speakerResolution: 'explicit-narration', cue: prefix };
   const source = /(?:传来|响起)([^，,。；;：:]{1,24}?)(?:的)?(?:画外音|声音|叫声)/u.exec(prefix);
   if (source) return { speaker: source[1].replace(/的$/u, ''), speakerResolution: 'surface-cue', cue: prefix };
@@ -29,6 +33,12 @@ function speechCue(text, quoteStart, previousEnd, names) {
 }
 export function lexInlineText(text, { speakerNames = [], expectedDialogue = [] } = {}) {
   text = String(text);
+  const baseline = Array.isArray(expectedDialogue) ? expectedDialogue.filter(item => item && typeof item === 'object') : [];
+  const names = [...speakerNames, ...baseline.map(item => item.speaker)].filter(name => typeof name === 'string' && name.length);
+  // Explicit fragment locks also preserve literal delimiters in source text.
+  // Do not invent fragment boundaries by guessing where a quote was cut.
+  const sourceLiterals = baseline.flatMap(item => [item.text ?? item.spoken_text,
+    ...(Array.isArray(item.fragments) ? item.fragments.map(fragment => fragment?.text) : [])]);
   const mask = text.split(''), quotes = [], dialogue = [], errors = [];
   let i = 0, previousEnd = 0;
   const erase = (start, end) => { for (let k = start; k < end; k++) if (text[k] !== '\n' && text[k] !== '\r') mask[k] = ' '; };
@@ -37,11 +47,11 @@ export function lexInlineText(text, { speakerNames = [], expectedDialogue = [] }
     if (open === '”') { errors.push({ code: 'QUOTE_BALANCE', message: 'unexpected closing double quote', index: i }); i++; continue; }
     if (open !== '“' && open !== '"') { i++; continue; }
     const start = i, close = open === '“' ? '”' : '"';
-    const cue = speechCue(text, start, previousEnd, [...speakerNames, ...expectedDialogue.map(item => item.speaker)]);
+    const cue = speechCue(text, start, previousEnd, names);
     // If the observed quote exactly contains a source-locked original with its
     // own delimiters, treat those original characters as literal spoken text.
     // This branch never rewrites, completes, or substitutes the supplied source.
-    const lockedLiteral = cue && expectedDialogue.map(item => item.text ?? item.spoken_text)
+    const lockedLiteral = cue && sourceLiterals
       .find(value => typeof value === 'string' && /[“”"【】]/u.test(value)
         && text.slice(start + 1, start + 1 + value.length) === value
         && text[start + 1 + value.length] === close);
@@ -57,7 +67,7 @@ export function lexInlineText(text, { speakerNames = [], expectedDialogue = [] }
     // A source lock can distinguish literal bracket characters being read aloud
     // from newly inserted nonspoken directions. Never drop locked original text.
     const literalBrackets = cue && candidate !== null && /[【】]/u.test(candidate)
-      && expectedDialogue.some(item => (item.text ?? item.spoken_text) === candidate);
+      && sourceLiterals.some(value => value === candidate);
     let spoken = '', annotations = [], stage = null, ended = false;
     i++;
     while (i < text.length) {

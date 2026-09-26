@@ -37,9 +37,12 @@ dialogue_event:
   pre_speech_cue:
   listener_state:
   post_line_reaction:
+  fragments: # optional internal cross-shot allocation, reusing the approved cut
+    - shot_id:
+      text: # only the consecutive source words heard in this shot
 ```
 
-`exact_text` stores actual spoken words and punctuation only. Delivery, pauses, optional insertion positions and cross-shot scope remain in the existing delivery/context rather than being mixed into that source text. This is internal reasoning, not another required output table or file. Voice assets belong in `【素材绑定】`; the shot's `现场声：` contains the relevant 1–3 real-world sources and their timing/perspective without repeating spoken text or adding BGM. Full layout belongs to [the canonical schema](nine-layer-schema.md).
+`exact_text` stores the full actual spoken words and punctuation only. Preserve the approved shot-local portions separately, using the existing L1 or optional `fragments` (shot ID plus consecutive source text); their concatenation equals `exact_text`. Keep necessary timing, pauses, source visibility and optional insertion positions in delivery/context, never mixed into that source text. This is internal reasoning, not another required output table or file. Voice assets belong in `【素材绑定】`; the shot's `现场声：` contains the relevant 1–3 real-world sources and their timing/perspective without repeating spoken text or adding BGM. Full layout belongs to [the canonical schema](nine-layer-schema.md).
 
 ## On-Screen Speech and Listening
 
@@ -76,9 +79,9 @@ This local asset example belongs only inside `【素材绑定】`. In shot prose
 
 ## Speech Across a Cut
 
-A continuing utterance is one speaking event. Embed its full exact text once in the starting shot's prose with a clear shot/time scope outside the quote, or split the original into consecutive exact substrings whose concatenation reproduces every word and punctuation mark. Do not add an ellipsis or a full stop merely because the picture cuts. The later shot continues the same voice, identity and acoustic space without restarting the sentence or assigning it to the visible listener. Never repeat the full quote in both shots.
+A continuing utterance is one speaking event, but its written words belong to the shots in which they are heard. Split the original at the approved picture cuts into consecutive exact substrings. Every shot carrying speech quotes its own audible substring in the continuous prose and names the original speaker or voice source; specify on-screen/off-screen/narration/device as needed. Preserve L1's established allocation rather than folding it back into one quote in the starting shot. Keep the full line as the internal source, not as an extra spoken quote in the first shot or preamble. Later prose such as “同一句话继续” does not substitute for the actual continuation words. Concatenating all portions in the speaking event reproduces every original word and punctuation mark without overlap or loss. A picture cut alone adds no ellipsis, full stop, pause or restart.
 
-Picture may cut at a pause or during fluent speech, stay on a listener, show an approved insert, or move while the speech continues. No added pause is required just to make editing convenient. Keep the listener's knowledge and response aligned with the words they have heard. Cross-shot scope and transition description usually sit outside quotes; do not put an editing note inside a short utterance just because its sound crosses a cut. The continuation stays within the current generation segment unless multi-segment work was explicitly established.
+Picture may cut at a pause or during fluent speech, stay on a listener, show an approved insert, or move while the speech continues. No added pause is required just to make editing convenient. Keep the listener's knowledge and response aligned with the words they have heard. Cross-shot scope and transition description usually sit outside quotes; do not put an editing note inside a short utterance just because its sound crosses a cut. The continuation stays within the current generation segment unless multi-segment work was explicitly established. The same rule covers sound leading picture (J-cut), picture leaving the speaker (L-cut), off-screen speech, narration and devices: locate words by the shot in which they are heard, not by the first view of a speaking face. Camera travel without a picture cut remains one shot and does not require splitting the line. A genuinely silent shot has no invented speech placeholder.
 
 ## Exact-Text Preservation and Lightweight Output
 
@@ -86,4 +89,4 @@ Picture may cut at a pause or during fluent speech, stay on a listener, show an 
 - Preserve locked shot boundaries and timing. Simplify only flexible camera decoration or background business before proposing a necessary timing change; long dialogue alone does not authorize another generation segment.
 - Keep time for the pre-speech cue, delivery and listener reaction. Do not invent internal emotional turns to justify inserting annotations.
 - Keep narration and transmitted voices distinguishable from live on-set speech and background sound. Sound-source identity follows the story, not the current visible face.
-- Maintenance parsing/tests can verify defined textual structure and exact words, not infer every speaker from unrestricted prose or prove model execution. They are not a mandatory runtime self-check stage.
+- Maintenance parsing/tests can compare ordered source text across consecutive quote fragments. An explicit shot-local baseline (optional `expectedDialogue[].fragments` containing `shot_id` and `text`, or a single-shot `shot_id`) additionally checks allocation; a text-only baseline proves no word-to-shot timing. Ordinary prose and arbitrary voice overlaps still need contextual interpretation. These developer checks neither guarantee model execution nor create a mandatory runtime self-check stage.

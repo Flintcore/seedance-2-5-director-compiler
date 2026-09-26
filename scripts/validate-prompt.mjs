@@ -3,6 +3,7 @@
 // Development-only structural checks, not photography/performance/physics QA.
 // Real-world sound-source count and reference-source identity are not inferred.
 import { lexInlineText } from "./inline-dialogue.mjs";
+import { compareDialogue } from "./dialogue-baseline.mjs";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -126,7 +127,7 @@ function validateShotBody(body, shot, errors, options) {
       if (!prose.slice(b.index + b[0].length).replace(/[\s。；;.]/gu, "")) add("SHOT_SOUND_EMPTY", "现场声： has no content");
     }
   }
-  shot.dialogue = lex.dialogue;
+  shot.dialogue = lex.dialogue.map(utterance => ({ ...utterance, shot_id: 'S' + shot.number }));
   return prose;
 }
 export function validatePrompt(input, options = {}) {
@@ -169,13 +170,10 @@ export function validatePrompt(input, options = {}) {
     if (lexInlineText(scan.body(section)).dialogue.length || /^\s*台词\s*[:：]/mu.test(scan.body(section))) errors.push({ code: "DIALOGUE_REFERENCE_LOCATION", message: "spoken dialogue belongs in shot prose" });
   }
   const dialogue = scan.shots.flatMap(shot => shot.dialogue ?? []);
-  if (options.expectedDialogue !== undefined) {
-    const actual = dialogue.map(({ speaker, text }) => ({ speaker, text }));
-    const expected = options.expectedDialogue.map(({ speaker, text, spoken_text }) => ({ speaker, text: text ?? spoken_text }));
-    if (JSON.stringify(actual) !== JSON.stringify(expected)) errors.push({ code: "DIALOGUE_LOCK", message: "inline spoken text differs from supplied exact dialogue baseline" });
-  }
+  const dialogueCheck = compareDialogue(dialogue, options.expectedDialogue);
+  errors.push(...dialogueCheck.errors);
   const asset = assetContract(text, scan, options, errors);
-  return { ok: errors.length === 0, errors, facts: { duration, ...asset, headings: ordered, shots: scan.shots, dialogue } };
+  return { ok: errors.length === 0, errors, facts: { duration, ...asset, headings: ordered, shots: scan.shots, dialogue, dialogueCheck } };
 }
 async function main() {
   const args = process.argv.slice(2), json = args.includes("--json"), preserveAssetNumbering = args.includes("--preserve-asset-numbering");

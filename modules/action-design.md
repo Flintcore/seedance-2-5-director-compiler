@@ -63,7 +63,7 @@ Use for sustained combat, weapons, 1vN, heavy weapons, powers, or dense projecti
 
 ## Internal Action Contract
 
-Keep this structure internal and sparse; it is a thinking/handoff aid, not a mandatory serialized document. Compile its content into the relevant continuous shot paragraphs of the current six-part prompt. Each paragraph ends with its concrete `光影：` and `现场声：` sentences; exact spoken text appears once in Chinese double quotes at the speaking moment within that same paragraph, with delivery and action outside the quote by default. Body pose, contact, momentum and the final half-second state remain in the corresponding shot, not an extra tail field. Do not print a second prompt format.
+Keep this structure internal and sparse; it is a thinking/handoff aid, not a mandatory serialized document. Compile its content into the relevant continuous shot paragraphs of the current six-part prompt. Each paragraph ends with its concrete `光影：` and `现场声：` sentences; that shot's exact audible words appear once in Chinese double quotes at their speaking moment, with delivery and action outside the quote by default. Speech crossing a picture cut keeps its original source and places each consecutive source portion in the shot where it is heard, rather than front-loading the whole line. Body pose, contact, momentum and the final half-second state remain in the corresponding shot, not an extra tail field. Do not print a second prompt format.
 
 ```yaml
 action_contract:

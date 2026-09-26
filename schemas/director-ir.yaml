@@ -53,11 +53,25 @@ properties:
         items:
           type: object
           additionalProperties: false
-          required: [speaker, text, shot_id]
+          required: [speaker, text]
+          oneOf:
+            - required: [shot_id]
+            - required: [fragments]
           properties:
             speaker: {type: string, minLength: 1}
             text: {type: string, minLength: 1, description: "仅实际发声原文，含原标点；非发声表演说明留delivery，编译时不改变此原文"}
-            shot_id: {type: string, minLength: 1}
+            shot_id: {type: string, minLength: 1, description: "单镜完整发声时使用，引用shots.id；跨镜使用fragments，不同时填写shot_id"}
+            fragments:
+              type: array
+              minItems: 1
+              description: "跨镜的逐镜发声分配；按发声顺序拼接text须逐字等于本条完整原文，shot_id引用已确认shots.id，不改切点或增补停顿"
+              items:
+                type: object
+                additionalProperties: false
+                required: [shot_id, text]
+                properties:
+                  shot_id: {type: string, minLength: 1}
+                  text: {type: string, minLength: 1}
             delivery: {type: string}
       reference_assets:
         type: array
