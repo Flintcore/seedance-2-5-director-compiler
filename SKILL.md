@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.4.3"
+  version: "0.5.0"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -14,6 +14,8 @@ Use a strict two-domain architecture:
 - **Compiler domain:** translate the locked director design into the readable native Seedance 2.5 Chinese shot-prompt format.
 
 Cinema and masters sources are director-only evidence. They never define platform syntax or final prompt structure.
+
+For a new scene, redesign, or unresolved cross-domain choice, follow [knowledge-routing.md](modules/knowledge-routing.md) into the [integrated director guide](references/cinema/导演体系/导演判断总纲.md) and the relevant complete topic sections. Use it to connect character response, audience knowledge, relational staging, camera/light/sound and editing—not as another output template. Local refinements load only the needed section; locked compilation does not load this course layer.
 
 When applying library rules, preserve real physical/geometric conditions and narrative continuity; distinguish them from conventions, project contracts and aesthetic preferences with [film-rule-scope.md](modules/film-rule-scope.md). This is part of using a selected source, not another review stage. Read the detailed scope only for a relevant rule or conflict; keep genuine constraints rather than making every rule optional.
 

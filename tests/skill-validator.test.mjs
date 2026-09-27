@@ -14,12 +14,12 @@ test("installed skill retains the complete curated knowledge inventory", async (
   const result = await validateSkill(DEFAULT_SKILL_ROOT);
   assert.equal(result.ok, true, result.errors.map((error) => `${error.code}: ${error.message}`).join("\n"));
   assert.deepEqual(result.facts, {
-    cinemaFiles: 45,
+    cinemaFiles: 50,
     masterContentFiles: 184,
     masterMethodologyFiles: 67,
     masterWorkFiles: 117,
     masterDirectories: 67,
-    manifestRecords: 229,
+    manifestRecords: 234,
   });
 });
 

@@ -27,6 +27,10 @@ Allocate time to what must actually happen: attacks and counters, traversed dist
 
 Read the relevant complete chapters of [动作设计与武指体系参考库](../references/cinema/动作设计与武指体系参考库.md) for the fight's family and character choices; use [武戏动作语汇](../references/cinema/武戏动作模板库.md) when the exchange itself is vague. A fast-action problem reads [速度与力量视觉标尺](../references/cinema/速度与力量量化标准.md) for speed/path/impact evidence, interpreted with the overlap rules below. These are problem routes, not an all-files package; selected master-work reading remains in the director workflow.
 
+### When action feedback and coverage disagree
+
+If cognition is being stretched into separate pauses, read the relevant complete [feedback section](../references/cinema/导演体系/感知反馈与相对调度.md#stage-06). If motion, cuts and force are being confused, use [relative tempo](../references/cinema/导演体系/感知反馈与相对调度.md#stage-08) or [action viewing](../references/cinema/导演体系/观看距离与运动光影.md#view-17). For an actual cut/ellipsis ambiguity, consult [microscopic connection](../references/cinema/导演体系/镜组节奏与跨场组织.md#edit-12) or [time omission](../references/cinema/导演体系/镜组节奏与跨场组织.md#edit-15). Select only the unresolved mechanism, reuse already read sections, and preserve locked choreography and dialogue; these sources do not add a round or a runtime checklist.
+
 ### Coverage: see the action, feel the impact
 
 - Use wider/full-body or medium-wide views to make attack geometry, range, footwork, body silhouette, evasion and changed positions legible. A wide shot can move and cut quickly; it is not an instruction to observe passively for several seconds.

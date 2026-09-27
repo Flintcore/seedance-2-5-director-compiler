@@ -1,15 +1,15 @@
 schema_version: 1
-generated_at: "2026-09-20T05:27:01.592Z"
+generated_at: "2026-09-27T10:02:33.906Z"
 skill: "seedance-2-5-director-compiler"
 maintenance_mode: "curated-manual"
 # Current inventory only; semantic equivalence to the historical source is not asserted.
 inventory:
-  cinema_content_files: 45
+  cinema_content_files: 50
   master_methodology_files: 67
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "888c29d20083fa403db876aa9e65559fcb74156830bab7da11938578935e6836"
+  aggregate_sha256: "1a88058a2ed73ffac3416e34dea0bfebc609a1e9a2c9094d17417615d912b564"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
     bytes: 8374
@@ -35,6 +35,21 @@ files:
   - path: "references/cinema/导演视觉风格参考库.md"
     bytes: 4884
     sha256: "c23053e092d5a6bcfb5369e106395e9df9d5819138f2b841429c94161b974a65"
+  - path: "references/cinema/导演体系/创作立场与关系表达.md"
+    bytes: 52003
+    sha256: "0503ca707c649f8b0fe4741ad6670a472a1675432095d948cc69e3a3e2a51656"
+  - path: "references/cinema/导演体系/导演判断总纲.md"
+    bytes: 9265
+    sha256: "a4a9550150688db77fe5425f011e5693e44c5b0e10752e12ba885ce0d1a68ec0"
+  - path: "references/cinema/导演体系/感知反馈与相对调度.md"
+    bytes: 36185
+    sha256: "1f2cb2bdbcbe0e92f0f7e2a5e4cb8e9b0b0cfda6b6afdd66375a09e4db23ccbd"
+  - path: "references/cinema/导演体系/观看距离与运动光影.md"
+    bytes: 20478
+    sha256: "eb7c3e4fef55d3781f776973901dc6de15b9464216fde80b237f690304078859"
+  - path: "references/cinema/导演体系/镜组节奏与跨场组织.md"
+    bytes: 45080
+    sha256: "996f7a81357d530cf001b1b5bc6a3b6df42a2b8f1f86e3470fafc4d98f646918"
   - path: "references/cinema/动态分镜决策树.md"
     bytes: 13891
     sha256: "96cc1f231d8e84b5b619172bc297509586063925ff57828c647fc278346e79f2"

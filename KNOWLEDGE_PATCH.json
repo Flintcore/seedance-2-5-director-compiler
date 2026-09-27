@@ -17,6 +17,42 @@
         }
       ],
       "preserved": "Existing curated cinema, masters and historical full-import baseline unchanged."
+    },
+    {
+      "date": "2026-09-27",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.0",
+        "commit": "6567e9cf782f89c950596bc7bbe689f0a3e52400"
+      },
+      "files": [
+        {
+          "source_path": "references/导演体系/创作立场与关系表达.md",
+          "target_path": "references/cinema/导演体系/创作立场与关系表达.md",
+          "sha256": "0503ca707c649f8b0fe4741ad6670a472a1675432095d948cc69e3a3e2a51656"
+        },
+        {
+          "source_path": "references/导演体系/导演判断总纲.md",
+          "target_path": "references/cinema/导演体系/导演判断总纲.md",
+          "sha256": "a4a9550150688db77fe5425f011e5693e44c5b0e10752e12ba885ce0d1a68ec0"
+        },
+        {
+          "source_path": "references/导演体系/感知反馈与相对调度.md",
+          "target_path": "references/cinema/导演体系/感知反馈与相对调度.md",
+          "sha256": "1f2cb2bdbcbe0e92f0f7e2a5e4cb8e9b0b0cfda6b6afdd66375a09e4db23ccbd"
+        },
+        {
+          "source_path": "references/导演体系/观看距离与运动光影.md",
+          "target_path": "references/cinema/导演体系/观看距离与运动光影.md",
+          "sha256": "eb7c3e4fef55d3781f776973901dc6de15b9464216fde80b237f690304078859"
+        },
+        {
+          "source_path": "references/导演体系/镜组节奏与跨场组织.md",
+          "target_path": "references/cinema/导演体系/镜组节奏与跨场组织.md",
+          "sha256": "996f7a81357d530cf001b1b5bc6a3b6df42a2b8f1f86e3470fafc4d98f646918"
+        }
+      ],
+      "preserved": "Targeted five-page addition only. Existing curated cinema and masters bodies, original full-import baseline and final prompt format preserved; runtime routes and local indices updated independently. Course transcripts and behavioral trial prompts excluded."
     }
   ]
 }
