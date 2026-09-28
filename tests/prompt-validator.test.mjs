@@ -99,6 +99,8 @@ test("requires explicit half-second declarations in the relevant shot rather tha
   rejects(fixture.replace("最后0.5秒", "结束时"), "EXIT_STABILITY_ZONE");
   accepts(fixture.replace("开头0.5秒", "0:00-0:00.5").replace("最后0.5秒", "0:07.5-0:08"));
   accepts(fixture.replace("开头0.5秒保持", "起幅固定半秒，保持").replace("最后0.5秒保持", "最后半秒机身停下，保持"));
+  accepts(fixture.replace("开头0.5秒", "最初半秒"));
+  accepts(fixture.replace("开头0.5秒", "起始0.5秒"));
   const spokenOnly = fixture.replace("开头0.5秒", "开头").replace("等我。", "开头0.5秒。");
   rejects(spokenOnly, "ENTRY_STABILITY_ZONE");
 });

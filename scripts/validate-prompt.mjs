@@ -99,7 +99,7 @@ function assetContract(text, scan, options, errors) {
 function stabilityDeclaration(text, opening, duration) {
   // Presence of an explicit half-second declaration, not a semantic promise.
   const words = opening
-    ? /(?:首|开头|前|起幅|开场|开始)[^。；;\n]*?(?:0?\.5\s*(?:秒|s)|半\s*秒)/u
+    ? /(?:首|开头|前|起始|最初|起幅|开场|开始)[^。；;\n]*?(?:0?\.5\s*(?:秒|s)|半\s*秒)/u
     : /(?:末|最后|收尾|结尾)[^。；;\n]*?(?:0?\.5\s*(?:秒|s)|半\s*秒)/u;
   if (words.test(text)) return true;
   const ranges = /(\d{1,2}:\d{2}(?:\.\d+)?|\d+(?:\.\d+)?)\s*(?:秒|s)?\s*[-–—~～至到]\s*(\d{1,2}:\d{2}(?:\.\d+)?|\d+(?:\.\d+)?)\s*(?:秒|s)?/gu;

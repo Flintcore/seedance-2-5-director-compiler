@@ -185,8 +185,8 @@ async function validateKnowledgeManifest(skillRoot, errors) {
   while ((match = pattern.exec(manifest))) {
     records.push({ path: match[1], bytes: Number(match[2]), sha256: match[3] });
   }
-  if (records.length !== 234) {
-    errors.push({ code: "MANIFEST_COUNT", message: `expected 234 manifest records, found ${records.length}` });
+  if (records.length !== 235) {
+    errors.push({ code: "MANIFEST_COUNT", message: `expected 235 manifest records, found ${records.length}` });
   }
   for (const record of records) {
     const file = path.join(skillRoot, ...record.path.split("/"));
@@ -218,7 +218,7 @@ export async function validateSkill(skillRoot = DEFAULT_SKILL_ROOT) {
   const works = masters.filter((file) => !path.basename(file).startsWith("_"));
   const masterDirectories = new Set(masters.map((file) => path.dirname(file))).size;
 
-  if (cinema.length !== 50) errors.push({ code: "CINEMA_COUNT", message: `expected 50 cinema files, found ${cinema.length}` });
+  if (cinema.length !== 51) errors.push({ code: "CINEMA_COUNT", message: `expected 51 cinema files, found ${cinema.length}` });
   if (masters.length !== 184) errors.push({ code: "MASTER_COUNT", message: `expected 184 master content files, found ${masters.length}` });
   if (methodologies.length !== 67) errors.push({ code: "METHODOLOGY_COUNT", message: `expected 67 methodology files, found ${methodologies.length}` });
   if (works.length !== 117) errors.push({ code: "WORK_COUNT", message: `expected 117 work analyses, found ${works.length}` });

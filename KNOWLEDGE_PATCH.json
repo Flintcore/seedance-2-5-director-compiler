@@ -53,6 +53,47 @@
         }
       ],
       "preserved": "Targeted five-page addition only. Existing curated cinema and masters bodies, original full-import baseline and final prompt format preserved; runtime routes and local indices updated independently. Course transcripts and behavioral trial prompts excluded."
+    },
+    {
+      "date": "2026-09-28",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.1",
+        "commit": "7a083e37f55d0f66f7760080d105c225434ffd0f"
+      },
+      "files": [
+        {
+          "source_path": "references/导演体系/创作立场与关系表达.md",
+          "target_path": "references/cinema/导演体系/创作立场与关系表达.md",
+          "sha256": "2e207f6ac8b7e57bffaed12d076e9802885a477035a6ed8ea0073c074ef21a16"
+        },
+        {
+          "source_path": "references/导演体系/导演判断总纲.md",
+          "target_path": "references/cinema/导演体系/导演判断总纲.md",
+          "sha256": "38c6046d534093b199bf2aa9247d44e28f62fa3cfbf68f11bb415c3c780b90cf"
+        },
+        {
+          "source_path": "references/导演体系/感知反馈与相对调度.md",
+          "target_path": "references/cinema/导演体系/感知反馈与相对调度.md",
+          "sha256": "5b7e4e459760b693c668d6e8d4db2a98354660e4c30540e58ac0bf786a2f4f2a"
+        },
+        {
+          "source_path": "references/导演体系/观看距离与运动光影.md",
+          "target_path": "references/cinema/导演体系/观看距离与运动光影.md",
+          "sha256": "6f4327e4d497e86d6048a350243c32a8440e5a937d920ad6b37b6d9fc6be1e11"
+        },
+        {
+          "source_path": "references/导演体系/课程来源与勘误.md",
+          "target_path": "references/cinema/导演体系/课程来源与勘误.md",
+          "sha256": "daf1df1ed48b66b6e9c7933829caba10da933b1b16cefc0e41bdd301e52d4099"
+        },
+        {
+          "source_path": "references/导演体系/镜组节奏与跨场组织.md",
+          "target_path": "references/cinema/导演体系/镜组节奏与跨场组织.md",
+          "sha256": "ea941ea64e3a18357e342d592447736162125a54eca32998ff60c290e5275495"
+        }
+      ],
+      "preserved": "Targeted six-course-page sync; compiler curated motion body deliberately preserved. Other cinema, masters, frozen baselines, previous provenance records and final prompt contract preserved. Course source files, media and behavioral prompts excluded. Conditional routes and maintainer navigation checks updated locally; no new generation gate."
     }
   ]
 }

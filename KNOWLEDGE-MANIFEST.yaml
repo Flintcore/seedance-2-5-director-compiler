@@ -1,15 +1,15 @@
 schema_version: 1
-generated_at: "2026-09-27T10:02:33.906Z"
+generated_at: "2026-09-28T03:29:26.573Z"
 skill: "seedance-2-5-director-compiler"
 maintenance_mode: "curated-manual"
 # Current inventory only; semantic equivalence to the historical source is not asserted.
 inventory:
-  cinema_content_files: 50
+  cinema_content_files: 51
   master_methodology_files: 67
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "1a88058a2ed73ffac3416e34dea0bfebc609a1e9a2c9094d17417615d912b564"
+  aggregate_sha256: "5be9bfb64fd0e54b6f761119ab18af41f7fbd050e05bf15489ddd6fec086996e"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
     bytes: 8374
@@ -36,20 +36,23 @@ files:
     bytes: 4884
     sha256: "c23053e092d5a6bcfb5369e106395e9df9d5819138f2b841429c94161b974a65"
   - path: "references/cinema/导演体系/创作立场与关系表达.md"
-    bytes: 52003
-    sha256: "0503ca707c649f8b0fe4741ad6670a472a1675432095d948cc69e3a3e2a51656"
+    bytes: 55631
+    sha256: "2e207f6ac8b7e57bffaed12d076e9802885a477035a6ed8ea0073c074ef21a16"
   - path: "references/cinema/导演体系/导演判断总纲.md"
-    bytes: 9265
-    sha256: "a4a9550150688db77fe5425f011e5693e44c5b0e10752e12ba885ce0d1a68ec0"
+    bytes: 10254
+    sha256: "38c6046d534093b199bf2aa9247d44e28f62fa3cfbf68f11bb415c3c780b90cf"
   - path: "references/cinema/导演体系/感知反馈与相对调度.md"
-    bytes: 36185
-    sha256: "1f2cb2bdbcbe0e92f0f7e2a5e4cb8e9b0b0cfda6b6afdd66375a09e4db23ccbd"
+    bytes: 42682
+    sha256: "5b7e4e459760b693c668d6e8d4db2a98354660e4c30540e58ac0bf786a2f4f2a"
   - path: "references/cinema/导演体系/观看距离与运动光影.md"
-    bytes: 20478
-    sha256: "eb7c3e4fef55d3781f776973901dc6de15b9464216fde80b237f690304078859"
+    bytes: 23515
+    sha256: "6f4327e4d497e86d6048a350243c32a8440e5a937d920ad6b37b6d9fc6be1e11"
   - path: "references/cinema/导演体系/镜组节奏与跨场组织.md"
-    bytes: 45080
-    sha256: "996f7a81357d530cf001b1b5bc6a3b6df42a2b8f1f86e3470fafc4d98f646918"
+    bytes: 46566
+    sha256: "ea941ea64e3a18357e342d592447736162125a54eca32998ff60c290e5275495"
+  - path: "references/cinema/导演体系/课程来源与勘误.md"
+    bytes: 13136
+    sha256: "daf1df1ed48b66b6e9c7933829caba10da933b1b16cefc0e41bdd301e52d4099"
   - path: "references/cinema/动态分镜决策树.md"
     bytes: 13891
     sha256: "96cc1f231d8e84b5b619172bc297509586063925ff57828c647fc278346e79f2"
