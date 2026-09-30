@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: "2026-09-28T03:29:26.573Z"
+generated_at: "2026-09-30T04:27:57.359Z"
 skill: "seedance-2-5-director-compiler"
 maintenance_mode: "curated-manual"
 # Current inventory only; semantic equivalence to the historical source is not asserted.
@@ -9,7 +9,7 @@ inventory:
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "5be9bfb64fd0e54b6f761119ab18af41f7fbd050e05bf15489ddd6fec086996e"
+  aggregate_sha256: "f6b9a51835824978309b9972648defad495f0dfa6ecbadf5988c84c0846cca3d"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
     bytes: 8374
@@ -36,23 +36,23 @@ files:
     bytes: 4884
     sha256: "c23053e092d5a6bcfb5369e106395e9df9d5819138f2b841429c94161b974a65"
   - path: "references/cinema/导演体系/创作立场与关系表达.md"
-    bytes: 55631
-    sha256: "2e207f6ac8b7e57bffaed12d076e9802885a477035a6ed8ea0073c074ef21a16"
+    bytes: 63339
+    sha256: "43faaf1d8bc8e1f8ae08c70ee9af7ba16b00c16b3126db235d5e8806cf928ec2"
   - path: "references/cinema/导演体系/导演判断总纲.md"
-    bytes: 10254
-    sha256: "38c6046d534093b199bf2aa9247d44e28f62fa3cfbf68f11bb415c3c780b90cf"
+    bytes: 12741
+    sha256: "426bd50ebb62624b9b1b044b6de7f021213c009001efd7cb471e014c3d1e7a60"
   - path: "references/cinema/导演体系/感知反馈与相对调度.md"
-    bytes: 42682
-    sha256: "5b7e4e459760b693c668d6e8d4db2a98354660e4c30540e58ac0bf786a2f4f2a"
+    bytes: 44847
+    sha256: "0f568414981b3926304c8a99878931ed663c72c3f406772eda88e76200459763"
   - path: "references/cinema/导演体系/观看距离与运动光影.md"
-    bytes: 23515
-    sha256: "6f4327e4d497e86d6048a350243c32a8440e5a937d920ad6b37b6d9fc6be1e11"
+    bytes: 26735
+    sha256: "4fe624cc9fd45522491e801083efaeb1d6e8a998c1574267fcb6d417c4f65da7"
   - path: "references/cinema/导演体系/镜组节奏与跨场组织.md"
-    bytes: 46566
-    sha256: "ea941ea64e3a18357e342d592447736162125a54eca32998ff60c290e5275495"
+    bytes: 49350
+    sha256: "3bfb0f83364078858fb3dee1185a11b539426c64ba90f36ad82bbde499de73c1"
   - path: "references/cinema/导演体系/课程来源与勘误.md"
-    bytes: 13136
-    sha256: "daf1df1ed48b66b6e9c7933829caba10da933b1b16cefc0e41bdd301e52d4099"
+    bytes: 15000
+    sha256: "a08aa483957157844341d8aaf1ac636ec04c7e310575887fab6b958a4a29a255"
   - path: "references/cinema/动态分镜决策树.md"
     bytes: 13891
     sha256: "96cc1f231d8e84b5b619172bc297509586063925ff57828c647fc278346e79f2"
@@ -306,8 +306,8 @@ files:
     bytes: 20884
     sha256: "d982c7e56f88d1e0577e008667efc8a334ca43fcf72939580846948fa540f567"
   - path: "references/masters/frankel/穿普拉达的女王.md"
-    bytes: 25066
-    sha256: "9b67a73309a110cba06135c68997ff4bd95211c5f59488cfe6dcdd114945953c"
+    bytes: 26803
+    sha256: "29be33bb7c105b5a3229244165946f06538bd4fbd82112fd9803c1ae8ee9f012"
   - path: "references/masters/george-miller/_乔治米勒方法论总纲.md"
     bytes: 17862
     sha256: "93dc33ae52acd95f24a200fe79789ad4cf9bea50f6b96bffc00d03abdf110311"
@@ -663,8 +663,8 @@ files:
     bytes: 21198
     sha256: "0482f6c07be32a24b259e153362ac1f21ebcb1ad7d605d3624fddf55db1ee12c"
   - path: "references/masters/wes-anderson/布达佩斯大饭店.md"
-    bytes: 21594
-    sha256: "a5c7ac8ebe159f554c9f235d42ff557d93ddbbbf984f31a99ec7ed2b194cee3a"
+    bytes: 23485
+    sha256: "62bad7de5965dbd656b55cc7ca18270c70b1966f131899108e465b4f8b507cdb"
   - path: "references/masters/wong-kar-wai/_王家卫方法论总纲.md"
     bytes: 17972
     sha256: "e68833f42ceac886395409f28a2481907eb30faa3453df8f7f354b7ac3dafba9"

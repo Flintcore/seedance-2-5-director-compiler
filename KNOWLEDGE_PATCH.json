@@ -94,6 +94,81 @@
         }
       ],
       "preserved": "Targeted six-course-page sync; compiler curated motion body deliberately preserved. Other cinema, masters, frozen baselines, previous provenance records and final prompt contract preserved. Course source files, media and behavioral prompts excluded. Conditional routes and maintainer navigation checks updated locally; no new generation gate."
+    },
+    {
+      "date": "2026-09-30",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.2",
+        "commit": "fb0a6ff1fbb66461ad1ed16dd3e6d2f9cf5daab5"
+      },
+      "files": [
+        {
+          "source_path": "references/导演体系/导演判断总纲.md",
+          "target_path": "references/cinema/导演体系/导演判断总纲.md",
+          "source_sha256": "426bd50ebb62624b9b1b044b6de7f021213c009001efd7cb471e014c3d1e7a60",
+          "sha256": "426bd50ebb62624b9b1b044b6de7f021213c009001efd7cb471e014c3d1e7a60",
+          "target_sha256": "426bd50ebb62624b9b1b044b6de7f021213c009001efd7cb471e014c3d1e7a60",
+          "transform": "canonical text with normalized line endings"
+        },
+        {
+          "source_path": "references/导演体系/创作立场与关系表达.md",
+          "target_path": "references/cinema/导演体系/创作立场与关系表达.md",
+          "source_sha256": "43faaf1d8bc8e1f8ae08c70ee9af7ba16b00c16b3126db235d5e8806cf928ec2",
+          "sha256": "43faaf1d8bc8e1f8ae08c70ee9af7ba16b00c16b3126db235d5e8806cf928ec2",
+          "target_sha256": "43faaf1d8bc8e1f8ae08c70ee9af7ba16b00c16b3126db235d5e8806cf928ec2",
+          "transform": "canonical text with normalized line endings"
+        },
+        {
+          "source_path": "references/导演体系/感知反馈与相对调度.md",
+          "target_path": "references/cinema/导演体系/感知反馈与相对调度.md",
+          "source_sha256": "0f568414981b3926304c8a99878931ed663c72c3f406772eda88e76200459763",
+          "sha256": "0f568414981b3926304c8a99878931ed663c72c3f406772eda88e76200459763",
+          "target_sha256": "0f568414981b3926304c8a99878931ed663c72c3f406772eda88e76200459763",
+          "transform": "canonical text with normalized line endings"
+        },
+        {
+          "source_path": "references/导演体系/镜组节奏与跨场组织.md",
+          "target_path": "references/cinema/导演体系/镜组节奏与跨场组织.md",
+          "source_sha256": "10c4b0eaf2f42511a39486794e937e45ca3a7483e494899ae11dc0edec70ed68",
+          "sha256": "3bfb0f83364078858fb3dee1185a11b539426c64ba90f36ad82bbde499de73c1",
+          "target_sha256": "3bfb0f83364078858fb3dee1185a11b539426c64ba90f36ad82bbde499de73c1",
+          "transform": "canonical text with normalized line endings"
+        },
+        {
+          "source_path": "references/导演体系/观看距离与运动光影.md",
+          "target_path": "references/cinema/导演体系/观看距离与运动光影.md",
+          "source_sha256": "4fe624cc9fd45522491e801083efaeb1d6e8a998c1574267fcb6d417c4f65da7",
+          "sha256": "4fe624cc9fd45522491e801083efaeb1d6e8a998c1574267fcb6d417c4f65da7",
+          "target_sha256": "4fe624cc9fd45522491e801083efaeb1d6e8a998c1574267fcb6d417c4f65da7",
+          "transform": "canonical text with normalized line endings"
+        },
+        {
+          "source_path": "references/导演体系/课程来源与勘误.md",
+          "target_path": "references/cinema/导演体系/课程来源与勘误.md",
+          "source_sha256": "a08aa483957157844341d8aaf1ac636ec04c7e310575887fab6b958a4a29a255",
+          "sha256": "a08aa483957157844341d8aaf1ac636ec04c7e310575887fab6b958a4a29a255",
+          "target_sha256": "a08aa483957157844341d8aaf1ac636ec04c7e310575887fab6b958a4a29a255",
+          "transform": "canonical text with normalized line endings"
+        },
+        {
+          "source_path": "masters/frankel/穿普拉达的女王.md",
+          "target_path": "references/masters/frankel/穿普拉达的女王.md",
+          "source_sha256": "bb6153f2bafbf13bb41b24d8f61beb961fe8707d61da25830b3664428dc7dc7d",
+          "sha256": "29be33bb7c105b5a3229244165946f06538bd4fbd82112fd9803c1ae8ee9f012",
+          "target_sha256": "29be33bb7c105b5a3229244165946f06538bd4fbd82112fd9803c1ae8ee9f012",
+          "transform": "curated semantic delta; preserve independent compiler edits"
+        },
+        {
+          "source_path": "masters/wes-anderson/布达佩斯大饭店.md",
+          "target_path": "references/masters/wes-anderson/布达佩斯大饭店.md",
+          "source_sha256": "25de06bfd83a87f9f6a95577e1bda192c2c811dd505229e097bfb239ae5763b8",
+          "sha256": "62bad7de5965dbd656b55cc7ca18270c70b1966f131899108e465b4f8b507cdb",
+          "target_sha256": "62bad7de5965dbd656b55cc7ca18270c70b1966f131899108e465b4f8b507cdb",
+          "transform": "curated semantic delta; preserve independent compiler edits"
+        }
+      ],
+      "preserved": "Targeted six course pages and two master analyses only. Compiler masters merged semantically to retain prior curation. Other knowledge, frozen baseline, full-import records, final six-part format, exact dialogue and generation workflow preserved. Tests and source media remain outside skill repositories. No new reading quota or generation-time review."
     }
   ]
 }
