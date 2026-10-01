@@ -226,4 +226,6 @@ Hand the relevant action decisions and changing state to the compiler through th
 - exact action dialogue embedded in Chinese double quotes in the continuous visual event; its speaker, timing, delivery and reactions stay alongside it, outside the quote by default;
 - applicable short delivery switches once in `【全局约束】`; size, support and staging relations remain positive scene descriptions rather than a negative tail list.
 
+In final action prose, name the initiator, recipient and body/weapon owner using the canonical names from the asset binding, including at cuts; do not let 他/它/自己/对方 obscure who strikes, grips or receives contact. Internal role IDs stay internal. Apply [the naming contract](../references/model/nine-layer-schema.md#角色统一名称与动作归属) without changing the IR or exact dialogue.
+
 Keep the action contract internal. End the formal output with the last shot's on-set sound sentence; no closing constraints card or extra action contract follows it.

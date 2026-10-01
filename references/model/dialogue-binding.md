@@ -13,7 +13,7 @@ This is a local excerpt, not a complete prompt. A complete shot still begins wit
 A longer utterance may need an exact mid-line pause or performance turn. Only then insert `【non-spoken performance direction】` at that position inside the double quotes:
 
 ```text
-父亲先把声音放缓，对女儿说：“我不是要你现在就原谅他，【停一拍，视线落到她脸上，后半句的语气更坚决】我是要你先听完，再决定要不要关上这扇门。”
+父亲先把声音放缓，对女儿说：“我不是要你现在就原谅他，【父亲停一拍，父亲的视线落到女儿脸上，后半句的语气更坚决】我是要你先听完，再决定要不要关上这扇门。”
 ```
 
 This optional example is not a sentence to import into a scene. Short dialogue uses external performance prose; long dialogue also prefers it unless a mid-line change needs localization. Length alone is not a trigger, and there is no character-count threshold or annotation quota. Keep directions brief and tied to the known character/task, not a mandatory emotion-plus-every-face-part list. The `【】` text is a non-spoken insertion; removing the insertion reproduces the original words and punctuation. Close each quote and annotation and do not nest performance annotations. If the approved actual line already contains quotation marks or written brackets, preserve that source content rather than silently treating it as an inserted instruction.
@@ -90,3 +90,7 @@ Picture may cut at a pause or during fluent speech, stay on a listener, show an 
 - Keep time for the pre-speech cue, delivery and listener reaction. Do not invent internal emotional turns to justify inserting annotations.
 - Keep narration and transmitted voices distinguishable from live on-set speech and background sound. Sound-source identity follows the story, not the current visible face.
 - Maintenance parsing/tests can compare ordered source text across consecutive quote fragments. An explicit shot-local baseline (optional `expectedDialogue[].fragments` containing `shot_id` and `text`, or a single-shot `shot_id`) additionally checks allocation; a text-only baseline proves no word-to-shot timing. Ordinary prose and arbitrary voice overlaps still need contextual interpretation. These developer checks neither guarantee model execution nor create a mandatory runtime self-check stage.
+
+## 发声归属与名称
+
+每次开口、续说或画外声提示沿用素材绑定/用户设定的角色统一名称，并点名真实交谈对象，不用“他继续说”让反打中的听者接管声音。实际台词和原画面文字中的代词逐字保留；新插入的 `【非发声表演说明】` 使用角色名称及明确视线/动作对象，原文要念出的括号文字另按原文保护。详见 [角色统一名称与动作归属](nine-layer-schema.md#角色统一名称与动作归属)，不追加新字段或自检。

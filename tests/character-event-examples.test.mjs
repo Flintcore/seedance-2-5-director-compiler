@@ -82,7 +82,7 @@ test("a maintained example cannot regress to all words in the onset shot and an 
 });
 
 test("shared references and optional silence do not loosen mechanical output safeguards", () => {
-  const duplicate = examples[0].replace("她仍握着", "@image1中的她仍握着");
+  const duplicate = examples[0].replace("阿宁仍握着", "@image1中的阿宁仍握着");
   assert.notEqual(duplicate, examples[0]);
   const result = validatePrompt(duplicate);
   assert.equal(result.ok, false);

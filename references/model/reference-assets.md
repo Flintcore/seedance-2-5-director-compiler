@@ -37,6 +37,8 @@ Compile into the second part, `【素材绑定】`, after `【风格】`. This i
 
 The placeholder is deliberately a convenient replacement token. It does not claim that the destination platform has already bound the asset.
 
+A character binding also anchors the canonical story name: `@image1=小明的外观参考` leads to `小明` in later prose, not 他/自己 or a rotating role alias. Separate face, costume, voice and previs references for that character share the same name. Each new descriptive sentence and named target/owner follows [the naming contract](nine-layer-schema.md#角色统一名称与动作归属); no extra name table or repeated asset token is needed. Exact dialogue and quoted prop text keep their original words.
+
 ## Separation of Duties
 
 - Character image: appearance of one named character; it does not create another body.

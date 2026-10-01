@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.5.2"
+  version: "0.5.3"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -74,6 +74,8 @@ For new shot design, adjacent cuts change both focal length and shot scale excep
 Action-specific scope: motivated impact-to-reaction cuts or match-on-action may retain focal length or scale; momentum and readable contact take priority over numeric alternation. Movement may cross the frame center and a decisive contact may occupy it. Do not expand these exceptions into arbitrary jump cuts or override an explicit user lock. End states may remain in motion; the 0.5-second zones occur once at the whole segment boundaries, not at every cut.
 
 Mood control states the main emotion, rhythm/temperature, and one contrast sentence clarifying what the scene is not. This requested expressive boundary is separate from prohibited physical-error negative lists. Camera texture stays in style and reference duties in asset binding. Keep a short `【全局约束】` section for grounded conditions shared by this segment: setting/time-space, identity/appearance, compatible physical scale, fixed scene geometry and delivery rules. State any known exception with its scope; with no extra shared condition write `无额外全局约束。` rather than inventing one. Use semantic names here, never another @ reference. Concrete staging changes, contact, gaze, story/action/light/sound stay in the relevant shot; retain necessary anchors there so the paragraph is independently imaginable. Global constraints neither freeze all positions nor repair contradictory shot prose. This restores a concise shared section, not legacy lock tables, story cards or tail cards.
+
+Use the same canonical character name from the asset binding or user setup throughout all final descriptive prose. Each new sentence, shot opening and speech-source cue names its character rather than switching to 他/她/它/自己/对方; also name gaze targets, action recipients and body/prop/voice owners. Connected predicates with one already named subject may share that subject. Preserve exact spoken words and prop text, including their pronouns; newly inserted non-spoken performance directions are prose and use explicit names. Keep unnamed identities under their established stable labels and distinguish bodies from their reflections/shadows. Do not repeat @ tokens to reinforce names. See [角色统一名称与动作归属](references/model/nine-layer-schema.md#角色统一名称与动作归属) for scope; this adds no review stage or output field.
 
 ## Positive Spatial Constraints
 
