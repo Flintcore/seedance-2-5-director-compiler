@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.5.3"
+  version: "0.5.4"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -58,6 +58,8 @@ Expressive value is not limited to new plot information: preserve the concrete l
 ## Genre and Kinetic Tempo
 
 Set the scene's performance energy, physical speed, camera response and editing density separately; do not carry a restrained dialogue tempo into combat. Fast, impactful fighting reads [action-design.md](modules/action-design.md) before shot durations are frozen: readable wider attack geometry, short concentrated impact/reaction coverage and momentum-linked cuts, with actions and reactions allowed to overlap. A shot end is an in-flight state, not a command to stop. Reserve pauses for actual tactical or dramatic needs; rapid acting can be precise without a separate facial pause.
+
+Hong Kong-style practical/stunt fighting uses that module’s conditional branch and the relevant action-library chapters: develop connected combinations, terrain opportunities and persistent impact consequences before coverage. A continuous take can remain fast and information-dense; do not replace choreography with a camera stunt or import this family’s stunts into every fantasy/realist fight. Keep approved combination links intact through compilation.
 
 For open design, actively develop grounded performance, light/depth and staging rather than merely preserve them when supplied. Use the existing [shot-design](modules/shot-design.md) and [micro-performance](modules/micro-performance.md) routes. Do not add story events, invented habits, altered dialogue or a default final critique. Strong cinematic expression need not be slow or uniformly subtle.
 

@@ -169,6 +169,41 @@
         }
       ],
       "preserved": "Targeted six course pages and two master analyses only. Compiler masters merged semantically to retain prior curation. Other knowledge, frozen baseline, full-import records, final six-part format, exact dialogue and generation workflow preserved. Tests and source media remain outside skill repositories. No new reading quota or generation-time review."
+    },
+    {
+      "date": "2026-10-03",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.3",
+        "commit": "2dff2ba9b5c9218fe283a3e2c132df46689d5b5a"
+      },
+      "files": [
+        {
+          "source_path": "references/动作设计与武指体系参考库.md",
+          "target_path": "references/cinema/动作设计与武指体系参考库.md",
+          "source_sha256": "d7bdc4430c657c4fa664600e9bf6279e2dfd6ee0c832f49adddc9f2a0d6a9090",
+          "sha256": "8876445b0c971e62720b299c88166f761f1460dda915f37686aa17ca850498bd",
+          "target_sha256": "8876445b0c971e62720b299c88166f761f1460dda915f37686aa17ca850498bd",
+          "transform": "curated semantic delta; preserve independent compiler edits"
+        },
+        {
+          "source_path": "references/武戏动作模板库.md",
+          "target_path": "references/cinema/武戏动作模板库.md",
+          "source_sha256": "5bde1f00bf710661a45785c9846d570ed6f465b17512e3593ad0b1f869c5dc88",
+          "sha256": "2f104bd3d8e591dba40009a3671ee7df421e3a1bc5307274eab51d1ffd586cfe",
+          "target_sha256": "2f104bd3d8e591dba40009a3671ee7df421e3a1bc5307274eab51d1ffd586cfe",
+          "transform": "curated semantic delta; preserve independent compiler edits"
+        },
+        {
+          "source_path": "references/速度与力量量化标准.md",
+          "target_path": "references/cinema/速度与力量量化标准.md",
+          "source_sha256": "b97491aa87ff5f2e2770278fa5e5f896213c530cb884ddb0411a575b6bce2f03",
+          "sha256": "07dd0be8d5b78b8ebd2d8660d348a79d00305e828e64f1a69790853838fc1cb3",
+          "target_sha256": "07dd0be8d5b78b8ebd2d8660d348a79d00305e828e64f1a69790853838fc1cb3",
+          "transform": "curated semantic delta; preserve independent compiler edits"
+        }
+      ],
+      "preserved": "Targeted three existing action pages only; compiler receives reviewed semantic deltas, not a full source overwrite. Other cinema, all masters, frozen baseline and full-import provenance preserved. Runtime six-part format, exact dialogue, names, assets and workflow maintained. User source prompts and isolated trial prompts stay outside skill repositories."
     }
   ]
 }
