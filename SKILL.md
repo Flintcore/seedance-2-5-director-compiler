@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.5.5"
+  version: "0.5.6"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -45,7 +45,7 @@ For new or revised design, use that same judgment while selecting shots, solve y
 
 ## Character-Led Shot Baseline
 
-For shot design, use [shot-design.md](modules/shot-design.md) to form a tellable event before selecting its coverage: what the character is doing and trying to obtain, what resists or reaches them, how their action/speech affects another person, and what remains afterward. The subject of a shot is this lived process, not a camera specification followed by a token reaction. Carry an ongoing behavioral undercurrent through the shot—doing, listening, watching, balancing, handling a prop or breathing as the situation permits—and let a specific stimulus change it. Do not make people inert between highlighted beats or give everyone synchronized idle gestures. User locks, character habits, genre grammar, deliberate stillness and withheld psychology take precedence; no motion or word-count quota applies.
+For shot design, use [shot-design.md](modules/shot-design.md) to form a tellable event before selecting its coverage: what the character is doing and trying to obtain, what resists or reaches them, how their action/speech affects another person, and what remains afterward. The subject of a shot is this lived process, not a camera specification followed by a token reaction. Carry an ongoing behavioral undercurrent through the shot—doing, listening, watching, balancing, handling a prop or breathing as the situation permits—and let a specific stimulus change it. Do not make people inert between highlighted beats or give everyone synchronized idle gestures. User locks, character habits, genre grammar, deliberate stillness and withheld psychology take precedence; no motion or word-count quota applies. [Compilation](modules/compiler.md#3-镜头级连续画面叙事) keeps the concise camera-first opening, then makes the named subject's action, recipient, reception and visible result understandable; technical terms explain that concrete image rather than replace it.
 
 Ordinary face-to-face dialogue explicitly carries the addressed character and the speaker/listener eyeline into the shot prose, normally toward the other person's face/eyes. Facing someone alone does not specify where the eyes look. Natural blinking and motivated task glances remain; a diverted gaze has a trigger, a concrete destination, and a return or deliberately continued state. Preserve established avoidance or distraction rather than forcing unbroken eye contact. A camera near the addressee is not automatically the gaze target.
 
