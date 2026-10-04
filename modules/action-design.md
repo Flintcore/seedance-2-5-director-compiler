@@ -195,6 +195,8 @@ Avoid result-only verbs such as “击飞” without the contact and force chain
 
 Use feedback as evidence of force, not decoration. Select the most legible response already compatible with the environment: foot slip, cloth pull, dust displacement, water splash, surface flex, debris movement, weapon vibration, displaced furniture, or a change in sound perspective.
 
+During open design, existing scenery/prop damage and its accumulated traces or before–after contrast can carry the intensity and cost of combat, even without a tactical turn. Preserve the causal material response and selected scale in the ongoing action and its sound; damage may remain in foreground/background while the next exchange proceeds, with no compulsory destruction insert, pause or escalation per hit. Locked consequences stay fixed.
+
 An invisible power needs an observable carrier already compatible with the world: air distortion, rain or dust deflection, cloth and loose-object motion, surface pressure, shadow/light change, or another approved phenomenon. The carrier shows origin, path, intensity, and result.
 
 ## 1vN Isolation

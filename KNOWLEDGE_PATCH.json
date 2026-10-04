@@ -204,6 +204,33 @@
         }
       ],
       "preserved": "Targeted three existing action pages only; compiler receives reviewed semantic deltas, not a full source overwrite. Other cinema, all masters, frozen baseline and full-import provenance preserved. Runtime six-part format, exact dialogue, names, assets and workflow maintained. User source prompts and isolated trial prompts stay outside skill repositories."
+    },
+    {
+      "date": "2026-10-04",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.4",
+        "commit": "0e2ef428ef1c1d093d008a0f749c4d8f22cc6ad7"
+      },
+      "files": [
+        {
+          "source_path": "references/动作设计与武指体系参考库.md",
+          "target_path": "references/cinema/动作设计与武指体系参考库.md",
+          "source_sha256": "f26374974568633f94605663d752638c991d43766a0906f4015292c15cd49733",
+          "sha256": "ade7742a396d1c6a55f6ec9d20806d6f375aba5ae91937c5e5a95a5ed72df5d5",
+          "target_sha256": "ade7742a396d1c6a55f6ec9d20806d6f375aba5ae91937c5e5a95a5ed72df5d5",
+          "transform": "curated semantic delta; preserve independent compiler edits"
+        },
+        {
+          "source_path": "references/武戏动作模板库.md",
+          "target_path": "references/cinema/武戏动作模板库.md",
+          "source_sha256": "e5c77027d14b8d4e5f4f931a35b3a1efb0dd32ab41042877380d6c9a2f548a80",
+          "sha256": "2e7f8bcb434d4f5319a61e9d7aecadd789c4b6375f4772a8856a68b61dc71234",
+          "target_sha256": "2e7f8bcb434d4f5319a61e9d7aecadd789c4b6375f4772a8856a68b61dc71234",
+          "transform": "curated semantic delta; preserve independent compiler edits"
+        }
+      ],
+      "preserved": "Targeted two existing action pages only; perceptual intensity and tactical opportunity remain distinct. Compiler receives semantic deltas, not a full overwrite. All other cinema, masters, frozen baseline, full-import records and final prompt contracts preserved. No new damage quota, mandatory insert, pause, escalation or raw/trial prompt. Existing conditional runtime handoff only."
     }
   ]
 }

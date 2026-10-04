@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: "2026-10-03T09:31:00.740Z"
+generated_at: "2026-10-04T04:16:30.680Z"
 skill: "seedance-2-5-director-compiler"
 maintenance_mode: "curated-manual"
 # Current inventory only; semantic equivalence to the historical source is not asserted.
@@ -9,7 +9,7 @@ inventory:
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "95ad9d02ff54b50dab9f0ff0abd515b5e9ae7a431bcd358ba4772b31ccaba74c"
+  aggregate_sha256: "88d2b3dfea615fcf4571a5fb06537d94f670c145381d4ff000746b46a6ac8673"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
     bytes: 8374
@@ -57,8 +57,8 @@ files:
     bytes: 13891
     sha256: "96cc1f231d8e84b5b619172bc297509586063925ff57828c647fc278346e79f2"
   - path: "references/cinema/动作设计与武指体系参考库.md"
-    bytes: 12612
-    sha256: "8876445b0c971e62720b299c88166f761f1460dda915f37686aa17ca850498bd"
+    bytes: 13783
+    sha256: "ade7742a396d1c6a55f6ec9d20806d6f375aba5ae91937c5e5a95a5ed72df5d5"
   - path: "references/cinema/对白情绪表达参考库.md"
     bytes: 13480
     sha256: "24768b8da7b3955fa502f09278d90e5b7dd017d800b768f86945ed66d1b3e10f"
@@ -153,8 +153,8 @@ files:
     bytes: 11050
     sha256: "4e0b4d92cf04c1236b4f45e9a9846c681cf125984ead9b0e6aecce8b562aace4"
   - path: "references/cinema/武戏动作模板库.md"
-    bytes: 8600
-    sha256: "2f104bd3d8e591dba40009a3671ee7df421e3a1bc5307274eab51d1ffd586cfe"
+    bytes: 8635
+    sha256: "2e7f8bcb434d4f5319a61e9d7aecadd789c4b6375f4772a8856a68b61dc71234"
   - path: "references/cinema/物理交互与破坏效果参考库.md"
     bytes: 13189
     sha256: "60e608aface4abc03232a45112f4b3b04765fa302648f566cc265a93b1d2fbed"
