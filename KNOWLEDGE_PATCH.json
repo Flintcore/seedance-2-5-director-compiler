@@ -231,6 +231,33 @@
         }
       ],
       "preserved": "Targeted two existing action pages only; perceptual intensity and tactical opportunity remain distinct. Compiler receives semantic deltas, not a full overwrite. All other cinema, masters, frozen baseline, full-import records and final prompt contracts preserved. No new damage quota, mandatory insert, pause, escalation or raw/trial prompt. Existing conditional runtime handoff only."
+    },
+    {
+      "date": "2026-10-08",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.5",
+        "commit": "a58cf9777829cf40b8ce461a211a2af592289feb"
+      },
+      "files": [
+        {
+          "source_path": "references/表演分寸场景映射库.md",
+          "target_path": "references/cinema/表演分寸场景映射库.md",
+          "source_sha256": "4c93e33f0d3e24e650bf7907eb044f42f3cf53b7f15ddef67f27b46060e14390",
+          "sha256": "7541e4249ba6aab5ad18824b96b6152899a8e1034a58c96b8bfd6770ddc23ade",
+          "target_sha256": "7541e4249ba6aab5ad18824b96b6152899a8e1034a58c96b8bfd6770ddc23ade",
+          "transform": "curated semantic delta; preserve independent compiler edits"
+        },
+        {
+          "source_path": "references/戏点选择与主镜框架法.md",
+          "target_path": "references/cinema/戏点选择与主镜框架法.md",
+          "source_sha256": "c55f1ad451ecf15306149d941826b2e104da33ca89498254834d4951fb256c9c",
+          "sha256": "6fdd7f62a304e939c32b4f5aae75465f16d3e8ec984c5b0bfa549efd054ba47f",
+          "target_sha256": "6fdd7f62a304e939c32b4f5aae75465f16d3e8ec984c5b0bfa549efd054ba47f",
+          "transform": "curated semantic delta; preserve independent compiler edits"
+        }
+      ],
+      "preserved": "Targeted performance and shot-focus conflict cleanup, not a full mirror. Compiler design/compile separation and Agent six-ring confirmation/review architecture remain distinct. Existing six-part prose, exact inline and cross-shot dialogue, canonical names, asset binding and segment contracts retained. All other cinema, all masters and historical full-import baselines preserved. No generated trial outputs or new generation-time report/checklist added."
     }
   ]
 }

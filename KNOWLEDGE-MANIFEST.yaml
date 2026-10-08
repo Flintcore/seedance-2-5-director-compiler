@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: "2026-10-04T04:16:30.680Z"
+generated_at: "2026-10-08T12:52:22.419Z"
 skill: "seedance-2-5-director-compiler"
 maintenance_mode: "curated-manual"
 # Current inventory only; semantic equivalence to the historical source is not asserted.
@@ -9,11 +9,11 @@ inventory:
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "88d2b3dfea615fcf4571a5fb06537d94f670c145381d4ff000746b46a6ac8673"
+  aggregate_sha256: "f8315c7714fa0813ad4c4680e406da5d9a99fdf97fff2b620e2aa7af82c0ada1"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
-    bytes: 8374
-    sha256: "41e7d24bd884edd70f88d40a2f3626022d65bd5ef61285db7cef0d82c26716f7"
+    bytes: 10205
+    sha256: "7541e4249ba6aab5ad18824b96b6152899a8e1034a58c96b8bfd6770ddc23ade"
   - path: "references/cinema/表演弧线与情绪阈值参考库.md"
     bytes: 6530
     sha256: "bec9256a5e22feeb252b8325fd4507bf4993ef4d5d4d4eced7eb6c108e92eff2"
@@ -159,8 +159,8 @@ files:
     bytes: 13189
     sha256: "60e608aface4abc03232a45112f4b3b04765fa302648f566cc265a93b1d2fbed"
   - path: "references/cinema/戏点选择与主镜框架法.md"
-    bytes: 12938
-    sha256: "2d2b9344bed33ca1fcc4e19358fff92f08e7ccaaa9a904042bc48868d9eee0dc"
+    bytes: 13301
+    sha256: "6fdd7f62a304e939c32b4f5aae75465f16d3e8ec984c5b0bfa549efd054ba47f"
   - path: "references/cinema/信息素控制参考库.md"
     bytes: 8800
     sha256: "d82450dfaa17c5600f422edd9705a3a5ed79dafb8b49b812a098a1b8ab0d16b9"

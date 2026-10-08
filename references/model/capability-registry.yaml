@@ -68,8 +68,8 @@ output_format:
   self_check_section: forbidden
   character_limit: unknown
   new_design_style:
-    adjacent_cuts: different_focal_length_and_shot_scale
-    composition: off_center_primary_subject_with_existing_entities_on_other_side
+    adjacent_cuts: chosen_for_information_performance_and_continuity_not_parameter_alternation
+    composition: chosen_for_relationships_and_visibility_centered_or_off_center_as_needed
     priority: explicit_user_locks_and_approved_L1_first
     continuous_take: preserve_no_manufactured_cuts
 
