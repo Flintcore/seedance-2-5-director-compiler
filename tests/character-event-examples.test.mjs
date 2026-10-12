@@ -56,6 +56,24 @@ test("the cross-cut source is represented by its exact audible fragment in each 
   assert.ok(end <= result.facts.duration);
 });
 
+test("character direction may be multiline or compact without becoming new fields or spoken words", () => {
+  // Reuse the maintained example, not a generated trial. This tests structural
+  // compatibility only; meaningful motive transfer is evaluated independently.
+  const task = /【本段戏剧任务】\r?\n([\s\S]*?)(?=\r?\n【本段情绪总控】)/u;
+  const compact = examples[0].replace(task, (_, body) => "【本段戏剧任务】\n" + body.trim().replace(/\r?\n/gu, " ") + "\n");
+  const simple = examples[0].replace(task, (_, body) => "【本段戏剧任务】\n" + body.split(/\r?\n/u)[0] + "\n");
+  const originalShots = examples[0].slice(examples[0].indexOf("镜头1｜"));
+  for (const value of [examples[0], compact, simple]) {
+    const result = validatePrompt(value, { expectedDialogue: dialogueBaseline });
+    assert.equal(result.ok, true, JSON.stringify(result.errors));
+    assert.equal(result.facts.headings.length, 5);
+    assert.equal(result.facts.duration, 12);
+    assert.equal(result.facts.dialogueCheck.shotMatches, true);
+    assert.equal(result.facts.dialogue.length, 3);
+    assert.equal(value.slice(value.indexOf("镜头1｜")), originalShots);
+  }
+});
+
 test("no-dialogue action and deliberately still/hidden-face examples invent no utterance", () => {
   for (const example of examples.slice(1)) {
     assert.deepEqual(utterances(example), []);
