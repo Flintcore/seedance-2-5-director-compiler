@@ -258,6 +258,49 @@
         }
       ],
       "preserved": "Targeted performance and shot-focus conflict cleanup, not a full mirror. Compiler design/compile separation and Agent six-ring confirmation/review architecture remain distinct. Existing six-part prose, exact inline and cross-shot dialogue, canonical names, asset binding and segment contracts retained. All other cinema, all masters and historical full-import baselines preserved. No generated trial outputs or new generation-time report/checklist added."
+    },
+    {
+      "date": "2026-10-12",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.6",
+        "commit": "990e5e0453ca26c033e892fcf25c51fa6a07cc93"
+      },
+      "files": [
+        {
+          "source_path": "references/角色行为与动作叙事参考库.md",
+          "target_path": "references/cinema/角色行为与动作叙事参考库.md",
+          "source_sha256": "293478db09a73f3b04d6fe4bec2e9a2188dc72f0897e8d0f19f011730415f8b1",
+          "sha256": "293478db09a73f3b04d6fe4bec2e9a2188dc72f0897e8d0f19f011730415f8b1",
+          "target_sha256": "293478db09a73f3b04d6fe4bec2e9a2188dc72f0897e8d0f19f011730415f8b1",
+          "transform": "canonical source bytes"
+        },
+        {
+          "source_path": "references/视点体系与镜头运动地基.md",
+          "target_path": "references/cinema/视点体系与镜头运动地基.md",
+          "source_sha256": "39f7eca3ac1d3567fd51198e442adc91a24e51b3164dcd595e10e1c1ae6bb778",
+          "sha256": "7fad53d52918676e41350ba08c19bac6b0e46f81f5fb40fb6ecb3497bc25230e",
+          "target_sha256": "7fad53d52918676e41350ba08c19bac6b0e46f81f5fb40fb6ecb3497bc25230e",
+          "transform": "curated semantic delta; preserve independent topic and index edits"
+        },
+        {
+          "source_path": "references/戏点选择与主镜框架法.md",
+          "target_path": "references/cinema/戏点选择与主镜框架法.md",
+          "source_sha256": "dd5c9db640b4d15ae7da3e56ccd7d4259e6cdbe24a218f1cd507fb43d85a9d41",
+          "sha256": "220613bdb5e539a3bed41192287cdb56db1a6e0d538b8d13acd432f01e459637",
+          "target_sha256": "220613bdb5e539a3bed41192287cdb56db1a6e0d538b8d13acd432f01e459637",
+          "transform": "curated semantic delta; preserve independent topic and index edits"
+        },
+        {
+          "source_path": "references/INDEX.md",
+          "target_path": "references/cinema/INDEX.md",
+          "source_sha256": "f1bceb5ab4bac4107fc2f3d11a2cfb0dc411d202bdd7b7e676d855489ba9ea25",
+          "sha256": "c7c5fed32896a6d9562a9c180392c7bea2975fd2d92972f36934ce0458e10726",
+          "target_sha256": "c7c5fed32896a6d9562a9c180392c7bea2975fd2d92972f36934ce0458e10726",
+          "transform": "curated semantic delta; preserve independent topic and index edits"
+        }
+      ],
+      "preserved": "Targeted three existing methods plus narrow index routes, not a full mirror. Compiler curation and two-domain workflow, Agent six rings and L1 confirmation remain distinct. Current six-part prose, inline exact and cross-shot dialogue, names, asset binding and segment contracts retained. All other cinema, all masters and historical full-import records preserved. Raw canvas and isolated trials remain outside skill repositories; no new generation-time review or reading quota."
     }
   ]
 }
