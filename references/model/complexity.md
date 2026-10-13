@@ -48,7 +48,7 @@ When a split is genuinely required, place it after a readable state change:
 - door, obstacle, or location threshold crossed;
 - line delivered and listener reaction landed.
 
-The preceding segment's final `0.5s` and the following segment's first `0.5s` share the same boundary state. Do not split inside an unspecified contact or identity handoff.
+The preceding segment's actual ending and the following segment's opening share the same boundary state, without prescribed hold durations. Do not split inside an unspecified contact or identity handoff.
 
 ## Reference Budget
 

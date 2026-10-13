@@ -16,8 +16,8 @@ function prompt(lines) {
   return ['【风格】数字摄影。', '【素材绑定】无外部参考素材。', '【全局约束】无额外全局约束。',
     '【本段戏剧任务】保留本段对话。', '【本段情绪总控】平静交流。',
     ...lines.map((speech, index) => '镜头' + (index + 1) + '｜' + time(index * 2) + '-' + time(index === lines.length - 1 ? duration : (index + 1) * 2)
-      + '\n50mm中景，平视固定。起始画面中，两人站在桌边。' + (index === 0 ? '首0.5秒保持起幅。' : '')
-      + speech + (index === lines.length - 1 ? '最后0.5秒保持落幅。' : '')
+      + '\n50mm中景，平视固定。起始画面中，两人站在桌边。'
+      + speech + (index === lines.length - 1 ? '话音落下后，两人仍站在桌边。' : '')
       + '光影：工作灯照亮桌边。现场声：持续的通风声。')].join('\n');
 }
 const two = () => prompt(['陈砚说：“' + first + '”', '陈砚的画外音继续说：“' + last + '”']);

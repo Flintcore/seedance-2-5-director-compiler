@@ -51,7 +51,7 @@ dialogue_event:
 - The listener can react when the relevant information arrives while the current speaker continues. Their next spoken turn follows the intended timing or explicit overlap. Do not delay every reaction until the sentence ends or convert silent reception into extra dialogue.
 - During a speaker handoff, establish the next voice source and visible mouth correctly while the previous speaker settles into listening. The picture may stay on the listener with the next speaker off screen. Turn-taking alone does not require a cut, focus transfer or eyeline reset.
 - Speech is an action, not a hold command for the camera/body. Continue approved walking, handling, camera travel and listener behavior when compatible. Put closed-mouth, breath-holding or other conflicting actions before/after speech or at a real pause. Preserve the words while the tactic and reception shape their delivery.
-- For deliberate overlap locked by L1, keep each speaker's own quoted utterance and make their overlapping time windows clear. Do not merge two speakers into one quotation.
+- For deliberate overlap locked by L1, keep each speaker's own quoted utterance and describe which phrase/event the overlap begins on and how delivery continues; measured time windows stay internal, not in final shot prose. Do not merge two speakers into one quotation.
 
 ## Off-Screen Speech, Narration and Devices
 
@@ -86,7 +86,7 @@ Picture may cut at a pause or during fluent speech, stay on a listener, show an 
 ## Exact-Text Preservation and Lightweight Output
 
 - Strip only the deliberately inserted non-spoken performance annotations when comparing the compiled spoken content with the locked source. Preserve all original characters, punctuation, particles, repetitions and dialect. Ordinary prop/quotation text is outside this speech comparison unless it is explicitly read aloud.
-- Preserve locked shot boundaries and timing. Simplify only flexible camera decoration or background business before proposing a necessary timing change; long dialogue alone does not authorize another generation segment.
+- Preserve locked cuts and word-to-shot allocation. Use phrase, event and emotional cues in final prose rather than numeric timing commands; internal editorial timing can remain precise. Simplify only flexible camera decoration or background business before proposing a necessary timing change; long dialogue alone does not authorize another generation segment.
 - Keep time for the pre-speech cue, delivery and listener reaction. Do not invent internal emotional turns to justify inserting annotations.
 - Keep narration and transmitted voices distinguishable from live on-set speech and background sound. Sound-source identity follows the story, not the current visible face.
 - Maintenance parsing/tests can compare ordered source text across consecutive quote fragments. An explicit shot-local baseline (optional `expectedDialogue[].fragments` containing `shot_id` and `text`, or a single-shot `shot_id`) additionally checks allocation; a text-only baseline proves no word-to-shot timing. Ordinary prose and arbitrary voice overlaps still need contextual interpretation. These developer checks neither guarantee model execution nor create a mandatory runtime self-check stage.

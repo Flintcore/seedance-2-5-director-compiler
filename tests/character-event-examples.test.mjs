@@ -43,17 +43,17 @@ test("the cross-cut source is represented by its exact audible fragment in each 
   const second = examples[0].slice(examples[0].indexOf("镜头2｜"));
   assert.deepEqual(utterances(first).map(speechFacts), [{ speaker: "陈砚", text: firstPart }]);
   assert.deepEqual(utterances(second).map(speechFacts), [{ speaker: "陈砚", text: lastPart }, { speaker: "阿宁", text: followupLine }]);
-  // Continuous source speech spans the real cut. This explicitly checks the
-  // supplied schedule, not an inferred natural-language lip-sync judgment.
+  // Exact fragments and their speakers span the cut without requiring a clock
+  // schedule inside prose. The coarse heading ranges remain independently tested.
   const result = validatePrompt(examples[0], { expectedDialogue: dialogueBaseline });
   assert.equal(result.ok, true, JSON.stringify(result.errors));
   assert.equal(result.facts.dialogueCheck.shotMatches, true);
-  assert.match(first, /陈砚从0:02开始说/u);
-  assert.match(second, /0:04.5—0:06.5从画外承接前镜继续说/u);
-  assert.match(second, /阿宁才在0:07.5—0:08.8/u);
-  const [start, end] = [2, 6.5];
-  assert.ok(start < result.facts.shots[0].end && end > result.facts.shots[1].start);
-  assert.ok(end <= result.facts.duration);
+  assert.deepEqual(result.facts.dialogue.map(({ speaker, text, shot_id }) => ({ speaker, text, shot_id })), [
+    { speaker: "陈砚", text: firstPart, shot_id: "S1" },
+    { speaker: "陈砚", text: lastPart, shot_id: "S2" },
+    { speaker: "阿宁", text: followupLine, shot_id: "S2" },
+  ]);
+  assert.ok(second.indexOf(lastPart) < second.indexOf(followupLine));
 });
 
 test("character direction may be multiline or compact without becoming new fields or spoken words", () => {
@@ -87,8 +87,11 @@ test("the sample preservation contract catches quote mutation, duplication and s
   for (const changed of [
     examples[0].replace(firstPart, "我昨天离开的时候，"),
     examples[0] + "\n陈砚说：“" + expectedLine + "”",
-    examples[0].replace("陈砚从0:02", "阿宁从0:02"),
-  ]) assert.throws(() => contract(changed));
+    examples[0].replace(utterances(examples[0])[0].cue, "阿宁说："),
+  ]) {
+    assert.notEqual(changed, examples[0], "each mutation changes its intended sample");
+    assert.throws(() => contract(changed));
+  }
 });
 
 test("a maintained example cannot regress to all words in the onset shot and an empty continuation", () => {

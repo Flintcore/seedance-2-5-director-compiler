@@ -26,10 +26,10 @@ function references(value) {
 function singleShot(duration) {
   return fixture.slice(0, fixture.indexOf("镜头1｜"))
     + "镜头1｜0:00-0:" + String(duration).padStart(2, "0")
-    + "\n中景，50mm，人物右前1/4、胸口高度，平拍并固定。开头0.5秒保持站姿，人物推门走出，最后0.5秒停稳。光影：人物离开门厅时面部暖光逐渐减弱。现场声：门轴摩擦声，鞋底踏地声。";
+    + "\n中景，50mm，人物右前1/4、胸口高度，平拍并固定。起始画面中林岚站在门内；听见门外招呼，林岚推门走出，鞋底落地后停稳。光影：林岚离开门厅时面部暖光逐渐减弱。现场声：门轴摩擦声，鞋底踏地声。";
 }
 
-test("complete six-part fixture parses facts, exact times, and mixed-media references", () => {
+test("complete six-part fixture parses facts, editorial shot ranges, and mixed-media references", () => {
   const result = accepts(fixture);
   assert.deepEqual(result.facts.headings, ["风格", "素材绑定", "全局约束", "本段戏剧任务", "本段情绪总控"]);
   assert.equal(result.facts.duration, 8);
@@ -94,15 +94,35 @@ test("checks contiguous shot numbering, timestamps and positive duration", () =>
   rejects(singleShot(3), "DURATION_RANGE");
   rejects(singleShot(31), "DURATION_RANGE");
 });
-test("requires explicit half-second declarations in the relevant shot rather than a tail card", () => {
-  rejects(fixture.replace("开头0.5秒", "开头"), "ENTRY_STABILITY_ZONE");
-  rejects(fixture.replace("最后0.5秒", "结束时"), "EXIT_STABILITY_ZONE");
-  accepts(fixture.replace("开头0.5秒", "0:00-0:00.5").replace("最后0.5秒", "0:07.5-0:08"));
-  accepts(fixture.replace("开头0.5秒保持", "起幅固定半秒，保持").replace("最后0.5秒保持", "最后半秒机身停下，保持"));
-  accepts(fixture.replace("开头0.5秒", "最初半秒"));
-  accepts(fixture.replace("开头0.5秒", "起始0.5秒"));
-  const spokenOnly = fixture.replace("开头0.5秒", "开头").replace("等我。", "开头0.5秒。");
-  rejects(spokenOnly, "ENTRY_STABILITY_ZONE");
+test("event-driven prose needs no timed opening, ending or action schedule", () => {
+  const example = singleShot(8);
+  const body = example.slice(example.indexOf("镜头1｜")).split("\n").slice(1).join("\n");
+  assert.equal(body.includes("秒"), false);
+  assert.match(body, /林岚站在门内.*听见门外招呼.*推门走出.*鞋底落地后停稳/u);
+  const result = accepts(example);
+  assert.equal(result.facts.duration, 8);
+  assert.deepEqual(result.facts.shots.map(({ start, end }) => [start, end]), [[0, 8]]);
+  accepts(fixture);
+});
+
+test("time mentioned by locked speech or visible text is retained as content", () => {
+  const line = "给我十秒。第3秒钟响时，牌上显示0:00-0:00.5。";
+  const sign = "设备响应0.5秒";
+  const input = fixture.replace('林岚说：“等我。”', '林岚说：“' + line + '”')
+    .replace('身体仍留在门内。', '身体仍留在门内。门上的标牌写着“' + sign + '”。');
+  const result = accepts(input, { expectedDialogue: [
+    { speaker: '街口的人', text: '还走吗？', shot_id: 'S1' },
+    { speaker: '林岚', text: line, shot_id: 'S1' },
+  ] });
+  assert.equal(result.facts.dialogueCheck.textMatches, true);
+  assert.equal(result.facts.dialogueCheck.shotMatches, true);
+  assert.equal(result.facts.dialogue.length, 2);
+  assert.equal(result.facts.dialogue[1].text, line);
+  assert.ok(input.includes('标牌写着“' + sign + '”'));
+  assert.ok(result.facts.dialogue.every(item => item.text !== sign));
+  rejects(input.replace('给我十秒。', '给我时间。'), 'DIALOGUE_LOCK', {
+    expectedDialogue: [{ speaker: '街口的人', text: '还走吗？' }, { speaker: '林岚', text: line }],
+  });
 });
 test("requires one continuous prose paragraph with populated light and on-set sound tails", () => {
   rejects(fixture.replace("她听见街口", "\n\n她听见街口"), "SHOT_PARAGRAPH");
@@ -140,11 +160,11 @@ test("rejects unbalanced quotes or directions and retains the retired-brace regr
   rejects(fixture.replace('林岚说：“等我。”', '林岚说：“【停顿】”'), 'DIALOGUE_EMPTY');
   rejects(fixture.replace('林岚说：“等我。”', '\n台词：林岚说{等我。}'), 'LEGACY_DIALOGUE_LINE');
 });
-test("quote and stage spans cannot impersonate headings, light tails or stability declarations", () => {
+test("quote and stage spans cannot impersonate headings or light tails", () => {
   accepts(fixture.replace('林岚说：“等我。”', '林岚说：“光影：很暗，\n【她放低声音】现场声：雨声很近。”'));
   accepts(fixture.replace('林岚说：“等我。”', '林岚说：“我看见\n【风格】这两个字。”'));
-  rejects(fixture.replace('开头0.5秒', '开头').replace('等我。', '开头0.5秒。'), 'ENTRY_STABILITY_ZONE');
-  rejects(fixture.replace('开头0.5秒', '开头').replace('等我。', '等【开头0.5秒保持】我。'), 'ENTRY_STABILITY_ZONE');
+  rejects(fixture.replace('光影：门厅', '照明：门厅').replace('等我。', '光影：等我。'), 'SHOT_LIGHT_SENTENCE');
+  rejects(fixture.replace('光影：门厅', '照明：门厅').replace('等我。', '等【光影：人物靠近窗户】我。'), 'SHOT_LIGHT_SENTENCE');
   const paper = accepts(fixture.replace('身体仍留在门内。', '身体仍留在门内。纸条写着“等我。”，她留意标题中的“光影：”字样。'));
   assert.equal(paper.facts.dialogue.length, 2);
 });

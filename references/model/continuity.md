@@ -16,7 +16,9 @@ segment N actual final state
 = segment N+1 opening shot
 ```
 
-The outgoing shot and incoming shot may frame the state differently, but the physical state remains equal until an observable transition changes it. This equation is internal continuity guidance, not text to append to the prompt. The final half-second state lives in the final shot paragraph; the formal prompt ends after that shot's on-set sound sentence, with no extra tail section.
+The outgoing shot and incoming shot may frame the state differently, but the physical state remains equal until an observable transition changes it. This equation is internal continuity guidance, not text to append to the prompt. The final state lives in the final shot paragraph; the formal prompt ends after that shot's on-set sound sentence, with no extra tail section.
+
+The global opening spatial baseline supplies scene anchors, initial positions/facing and key contacts, not permanent blocking. For each cut, project the previous ending world state through the new camera and framing to derive the visible composition. Narrated movement updates that world state; do not reset to opening positions or copy screen coordinates as if they were world positions. Characters off screen retain their established location. Same-side coverage does not promise an identical screen coordinate in differently framed shots.
 
 ## State Vector
 
@@ -38,10 +40,10 @@ boundary_state:
   camera_side_and_screen_axis:
 ```
 
-## Safety Zones
+## Entry and Exit States
 
-- The first `0.5s` establishes the declared entry state without a continuity reset.
-- The final `0.5s` settles or sustains the declared ending state so a later segment can reproduce it when needed.
+- Establish the declared opening state through the visible initial composition, without a timed hold.
+- Preserve the ending state or continuing action phase for a later segment when needed, without a fixed duration.
 - A continuing action may remain in motion, but its exact phase, direction, speed, balance, and contact state must be stable enough to reproduce.
 
 ## Transition Types
@@ -61,7 +63,7 @@ For action, preserve direction, path, contact, force, and momentum across the cu
 
 Do not hide a missing action result in the cut. Contact, landing, recoil, recovery, possession changes, and damage appear either before the boundary or after it in an explicitly continuous phase.
 
-These consequences may overlap or continue into another shot; they are not separate duration slots. A readable state can be moving. The half-second zones belong only to the whole generation segment, not to each shot, blow, focus change or camera move. Do not turn phase matching into repeated freezes or replay the impact after a cut.
+These consequences may overlap or continue into another shot; they are not separate duration slots. A readable state can be moving. No segment boundary, shot, blow, focus change or camera move requires a fixed-duration stability zone. Do not turn phase matching into repeated freezes or replay the impact after a cut.
 
 ## Sound Continuity
 

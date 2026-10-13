@@ -27,10 +27,9 @@ hard_contracts:
     location: "素材绑定"
     source_locator_output: forbidden
 
-  stability_zones_seconds:
-    head: 0.5
-    tail: 0.5
-    purpose: reproducible_entry_and_exit_state
+  boundary_states:
+    purpose: readable_entry_and_exit_or_continuing_action_phase
+    fixed_hold_duration: none
 
 output_format:
   style: six-part-shot-prose
@@ -43,6 +42,9 @@ output_format:
     - "本段情绪总控"
     - "镜头 blocks"
   shot_heading: "镜头N｜M:SS-M:SS"
+  shot_title_timing: coarse_editorial_budget_not_exact_execution
+  shot_body_timing: event_phrase_and_emotional_triggers_no_numeric_execution_schedule
+  exact_time_in_story_text: preserve_original_dialogue_and_visible_text
   shot_body: one_continuous_prose_paragraph
   required_shot_sentences: ["光影", "现场声"]
   dialogue:
@@ -63,6 +65,8 @@ output_format:
     scope: established_segment_shared_facts_with_scoped_exceptions
     no_extra_text: "无额外全局约束。"
     asset_tokens: forbidden
+    opening_spatial_baseline: initial_only_then_updated_by_narrated_movement
+    shot_composition: project_previous_world_state_through_current_camera
     dynamic_staging: retained_in_relevant_shot_prose
   ending: last_shot_onset_sound_sentence
   self_check_section: forbidden

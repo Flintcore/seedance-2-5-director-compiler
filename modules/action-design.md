@@ -77,7 +77,7 @@ Use for sustained combat, weapons, 1vN, heavy weapons, powers, or dense projecti
 
 ## Internal Action Contract
 
-Keep this structure internal and sparse; it is a thinking/handoff aid, not a mandatory serialized document. Compile its content into the relevant continuous shot paragraphs of the current six-part prompt. Each paragraph ends with its concrete `光影：` and `现场声：` sentences; that shot's exact audible words appear once in Chinese double quotes at their speaking moment, with delivery and action outside the quote by default. Speech crossing a picture cut keeps its original source and places each consecutive source portion in the shot where it is heard, rather than front-loading the whole line. Body pose, contact, momentum and the final half-second state remain in the corresponding shot, not an extra tail field. Do not print a second prompt format.
+Keep this structure internal and sparse; it is a thinking/handoff aid, not a mandatory serialized document. Compile its content into the relevant continuous shot paragraphs of the current six-part prompt. Each paragraph ends with its concrete `光影：` and `现场声：` sentences; that shot's exact audible words appear once in Chinese double quotes at their speaking moment, with delivery and action outside the quote by default. Speech crossing a picture cut keeps its original source and places each consecutive source portion in the shot where it is heard, rather than front-loading the whole line. Body pose, contact, momentum and the ending state remain in the corresponding shot, not an extra tail field. Do not print a second prompt format.
 
 ```yaml
 action_contract:
@@ -98,7 +98,7 @@ action_contract:
     path:
     contact_point:
   beats:
-    - time_window: # only when an actual timing or overlap decision needs it
+    - time_window: # internal measured/planned timing only; compile to causal event relationships, not body time commands
       intent:
       initiation:
       travel:
@@ -157,8 +157,8 @@ Partition where a meaningful pressure, path, contact or decision changes. A usef
 prepare or perceive -> initiate -> travel -> contact or evade -> force response -> settle or carry momentum onward
 ```
 
-- Keep shot timecodes and locate critical contacts, handoffs or overlaps when timing matters. Sub-beats need order and readable relationships, not a mandatory decimal timestamp for every preparatory movement.
-- Preserve the segment's first and last `0.5s` as readable entry/exit states under the existing user contract; these can be in motion. This allowance belongs to the generation segment, not every cut. An explicitly locked impact opening or abrupt ending follows that lock.
+- Keep shot-title ranges as coarse editorial budgets. Critical contacts, handoffs and overlaps use concrete event/phrase triggers in final prose; precise measurements stay in internal design or tool data. Do not export numeric sub-beat execution schedules.
+- Preserve readable entry/exit states without fixed-duration zones or holds. These states can remain in motion, including a locked impact opening or abrupt ending.
 - Acceleration, contact, recoil and recovery retain causal order, but they can be brief and overlap other actors' responses. A block becomes a counter while the first attack is still recovering; retreat can carry defense and re-attack; landing can redirect directly into the next move. Visible causality does not require each phase to receive a separate held shot or return to rest.
 - Anticipation and evasion may precede contact; an impact-caused reaction follows its actual cause. Show normal-speed pathways and consequences first, using framing and a known axis to aid readability instead of automatically slowing the fighters down.
 - Preserve actual speed differences: rapid approach closes the distance, strikes cross their paths decisively, recoil carries force onward. Do not use slow uniform movement with an adjective such as “激烈,” repeated ease-in/ease-out, or a prolonged pause between every attack and response.
@@ -236,7 +236,7 @@ Hand the relevant action decisions and changing state to the compiler through th
 - linked attacks/responses, paths, contact, force, inertia and feedback in the relevant shot paragraphs; concise temporal connectors carry overlaps instead of giving each micro-phase its own sentence and pause;
 - the shot's actual lighting relationship and physically caused changes or approved stability in its `光影：` sentence, without inventing a new effect or changing deliberate shadow/occlusion;
 - action sounds from the relevant 1–3 established in-scene sources, including fantasy sources under their world rules, with event timing and perspective, in that shot's `现场声：` sentence; a pass, hard contact and residual vibration can form a distinct envelope rather than a uniform wall of noise; no added BGM;
-- end body state, contact and outgoing momentum in each shot's ending, with the final half-second state in the last shot;
+- end body state, contact and outgoing momentum in each shot's ending, with the ending state in the last shot;
 - exact action dialogue embedded in Chinese double quotes in the continuous visual event; its speaker, timing, delivery and reactions stay alongside it, outside the quote by default;
 - applicable short delivery switches once in `【全局约束】`; size, support and staging relations remain positive scene descriptions rather than a negative tail list.
 

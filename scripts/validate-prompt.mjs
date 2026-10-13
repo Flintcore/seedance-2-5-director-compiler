@@ -96,16 +96,6 @@ function assetContract(text, scan, options, errors) {
   }
   return { assets: unique.length, assetTokens: unique };
 }
-function stabilityDeclaration(text, opening, duration) {
-  // Presence of an explicit half-second declaration, not a semantic promise.
-  const words = opening
-    ? /(?:首|开头|前|起始|最初|起幅|开场|开始)[^。；;\n]*?(?:0?\.5\s*(?:秒|s)|半\s*秒)/u
-    : /(?:末|最后|收尾|结尾)[^。；;\n]*?(?:0?\.5\s*(?:秒|s)|半\s*秒)/u;
-  if (words.test(text)) return true;
-  const ranges = /(\d{1,2}:\d{2}(?:\.\d+)?|\d+(?:\.\d+)?)\s*(?:秒|s)?\s*[-–—~～至到]\s*(\d{1,2}:\d{2}(?:\.\d+)?|\d+(?:\.\d+)?)\s*(?:秒|s)?/gu;
-  const number = (value) => value.includes(":") ? parseTime(value) : Number(value);
-  return [...text.matchAll(ranges)].some((match) => number(match[1]) === (opening ? 0 : duration - 0.5) && number(match[2]) === (opening ? 0.5 : duration));
-}
 function validateShotBody(body, shot, errors, options) {
   const add = (code, detail) => errors.push({ code, message: "shot " + shot.number + ": " + detail });
   const lex = lexInlineText(body, { speakerNames: options.speakerNames ?? [], expectedDialogue: options.expectedDialogue ?? [] });
@@ -149,21 +139,19 @@ export function validatePrompt(input, options = {}) {
   if (LEGACY_ROW.test(lexInlineText(text, options).structuralText)) errors.push({ code: "LEGACY_ROW", message: "retired or split technical-field row found" });
   for (const line of scan.malformedShots) errors.push({ code: "SHOT_HEADING_FORMAT", message: "line " + line + ": use 镜头N｜0:00-0:06 without brackets, names, or other fields" });
   if (!scan.shots.length) errors.push({ code: "SHOT_MISSING", message: "at least one numbered shot is required" });
-  const prose = [];
   for (const [index, shot] of scan.shots.entries()) {
     if (shot.number !== index + 1) errors.push({ code: "SHOT_NUMBERING", message: "shot numbers start at 1 and remain contiguous" });
     if (shot.start === null || shot.end === null || shot.end <= shot.start) errors.push({ code: "SHOT_TIME_FORMAT", message: "invalid or zero-length shot at line " + shot.line });
     const previous = scan.shots[index - 1];
     if (previous && shot.start !== null && previous.end !== null && Math.abs(shot.start - previous.end) > 1e-9) errors.push({ code: shot.start < previous.end ? "SHOT_TIME_OVERLAP" : "SHOT_TIME_GAP", message: "shot " + shot.number + " must start at the previous endpoint" });
-    prose.push(validateShotBody(scan.body(shot), shot, errors, options));
+    validateShotBody(scan.body(shot), shot, errors, options);
   }
   const duration = scan.shots.at(-1)?.end ?? null;
   if (duration !== null && (duration < 4 || duration > 30)) errors.push({ code: "DURATION_RANGE", message: "duration " + duration + "s is outside 4-30s" });
   if (scan.shots.length && scan.shots[0].start !== 0) errors.push({ code: "SHOT_START", message: "the first shot starts at 0:00" });
-  if (duration !== null && prose.length) {
-    if (!stabilityDeclaration(prose[0], true, duration)) errors.push({ code: "ENTRY_STABILITY_ZONE", message: "declare the first 0.5s in the first shot prose" });
-    if (!stabilityDeclaration(prose.at(-1), false, duration)) errors.push({ code: "EXIT_STABILITY_ZONE", message: "declare the final 0.5s in final-shot prose or sound, not a tail field" });
-  }
+  // Heading ranges are editorial budgets. Body events use causal/phrase cues;
+  // their timing and physical continuity need semantic review, not timed gates.
+  // Seconds in locked dialogue or visible text are content, not instructions.
   const structural = lexInlineText(text, options).structuralText;
   if (/[{}]/u.test(structural)) errors.push({ code: "LEGACY_DIALOGUE_BRACES", message: "dialogue braces are retired in final prompts" });
   for (const section of scan.sections) {
