@@ -73,3 +73,21 @@ test("character behavior is an actual dependency of problem routing, performance
   assert.ok((await resolvedTargets("references/model/nine-layer-schema.md"))
     .includes(path.join(root, "references/model/character-event-examples.md")));
 });
+
+// Structural reachability only; creative behavior is evaluated in isolated trials.
+test("group-design and actor-craft routes resolve to actual topic sections", async () => {
+  const groups = "references/cinema/戏点选择与主镜框架法.md";
+  const view = "references/cinema/视点体系与镜头运动地基.md";
+  const actor = "references/cinema/角色行为与动作叙事参考库.md";
+  for (const source of ["SKILL.md", "modules/shot-design.md", "modules/knowledge-routing.md"]) {
+    const targets = await resolvedTargets(source);
+    assert.ok(targets.includes(path.join(root, groups)), source + " missing group knowledge dependency");
+    assert.ok(targets.includes(path.join(root, actor)), source + " missing actor knowledge dependency");
+  }
+  for (const source of ["modules/shot-design.md", "modules/knowledge-routing.md"]) {
+    assert.ok((await resolvedTargets(source)).includes(path.join(root, view)));
+  }
+  assert.match(await readFile(path.join(root, groups), "utf8"), /^### 镜头组四问：摄影选择的上游$/mu);
+  assert.match(await readFile(path.join(root, view), "utf8"), /^### 先定镜头组的叙事视角，再定摄影位置$/mu);
+  assert.match(await readFile(path.join(root, actor), "utf8"), /<a id="actor-craft-four-senses"><\/a>/u);
+});

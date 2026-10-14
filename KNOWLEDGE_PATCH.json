@@ -301,6 +301,57 @@
         }
       ],
       "preserved": "Targeted three existing methods plus narrow index routes, not a full mirror. Compiler curation and two-domain workflow, Agent six rings and L1 confirmation remain distinct. Current six-part prose, inline exact and cross-shot dialogue, names, asset binding and segment contracts retained. All other cinema, all masters and historical full-import records preserved. Raw canvas and isolated trials remain outside skill repositories; no new generation-time review or reading quota."
+    },
+    {
+      "date": "2026-10-14",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.8",
+        "commit": "2d54fc3ad944af33b80e393b272ae8efadbe6817"
+      },
+      "files": [
+        {
+          "source_path": "references/INDEX.md",
+          "target_path": "references/cinema/INDEX.md",
+          "source_sha256": "97a2d41aec3563f314c342d1fc71592ecd5b9c72c7bfa2454ae71b104e1ed56a",
+          "sha256": "3331f0ff76594208c28df6e5d6fa8da1885c2036355a4fee59757fe2004b6296",
+          "target_sha256": "3331f0ff76594208c28df6e5d6fa8da1885c2036355a4fee59757fe2004b6296",
+          "transform": "targeted semantic delta; retain curated body and repository-specific index"
+        },
+        {
+          "source_path": "references/导演体系/导演判断总纲.md",
+          "target_path": "references/cinema/导演体系/导演判断总纲.md",
+          "source_sha256": "f523385ce950a25a1c1ab060aa5fd2a9d48a4b3580081f8d33e0cf99ff83d433",
+          "sha256": "f523385ce950a25a1c1ab060aa5fd2a9d48a4b3580081f8d33e0cf99ff83d433",
+          "target_sha256": "f523385ce950a25a1c1ab060aa5fd2a9d48a4b3580081f8d33e0cf99ff83d433",
+          "transform": "canonical source bytes"
+        },
+        {
+          "source_path": "references/戏点选择与主镜框架法.md",
+          "target_path": "references/cinema/戏点选择与主镜框架法.md",
+          "source_sha256": "59bcce731aa24b6221cfae4110290f25ac98d946b3dbc49a25aca37ba44a9921",
+          "sha256": "4d8ff5e61437f308f584741872d40aca4d282740443d9d1efb9318b09e583401",
+          "target_sha256": "4d8ff5e61437f308f584741872d40aca4d282740443d9d1efb9318b09e583401",
+          "transform": "targeted semantic delta; retain curated body and repository-specific index"
+        },
+        {
+          "source_path": "references/视点体系与镜头运动地基.md",
+          "target_path": "references/cinema/视点体系与镜头运动地基.md",
+          "source_sha256": "1daf4bb69ac64e0d9e4aab6d3b1fd47765cc1781c3f5f59d5378da64282300d6",
+          "sha256": "38f82e52ac3ace628463b1641bb81cad708142a4755a6ab344b704c26e4edb5c",
+          "target_sha256": "38f82e52ac3ace628463b1641bb81cad708142a4755a6ab344b704c26e4edb5c",
+          "transform": "targeted semantic delta; retain curated body and repository-specific index"
+        },
+        {
+          "source_path": "references/角色行为与动作叙事参考库.md",
+          "target_path": "references/cinema/角色行为与动作叙事参考库.md",
+          "source_sha256": "428bb32bac9e4b7422ef6bf6b319f8d832469f334f9259cf1f4a28d311fc3e65",
+          "sha256": "428bb32bac9e4b7422ef6bf6b319f8d832469f334f9259cf1f4a28d311fc3e65",
+          "target_sha256": "428bb32bac9e4b7422ef6bf6b319f8d832469f334f9259cf1f4a28d311fc3e65",
+          "transform": "canonical source bytes"
+        }
+      ],
+      "preserved": "Group-level script information, audience emotion, characterization and viewing outcome precede narrative viewpoint and photography; actor craft is conditionally read, not a per-shot checklist. Four existing knowledge methods and narrow index entries only; all other cinema and masters, historical import records, two-domain versus six-role workflows, six-part prose, exact dialogue, event-led timing and segment boundaries retained. Independent trial stays outside repositories; no generation-time review added."
     }
   ]
 }

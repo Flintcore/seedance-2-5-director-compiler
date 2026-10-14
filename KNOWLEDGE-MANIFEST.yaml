@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: "2026-10-12T14:27:54.065Z"
+generated_at: "2026-10-14T03:11:27.772Z"
 skill: "seedance-2-5-director-compiler"
 maintenance_mode: "curated-manual"
 # Current inventory only; semantic equivalence to the historical source is not asserted.
@@ -9,7 +9,7 @@ inventory:
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "80c23519cd55b728feae662b9c85b81436488ae0e09660a9db0069d2d0b9deed"
+  aggregate_sha256: "d2f4a7eb81fa3a9bf36975acf7e3c51e654db28c33ca993e6e64ffdcfac1e3f9"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
     bytes: 10205
@@ -39,8 +39,8 @@ files:
     bytes: 63339
     sha256: "43faaf1d8bc8e1f8ae08c70ee9af7ba16b00c16b3126db235d5e8806cf928ec2"
   - path: "references/cinema/导演体系/导演判断总纲.md"
-    bytes: 12741
-    sha256: "426bd50ebb62624b9b1b044b6de7f021213c009001efd7cb471e014c3d1e7a60"
+    bytes: 13302
+    sha256: "f523385ce950a25a1c1ab060aa5fd2a9d48a4b3580081f8d33e0cf99ff83d433"
   - path: "references/cinema/导演体系/感知反馈与相对调度.md"
     bytes: 44847
     sha256: "0f568414981b3926304c8a99878931ed663c72c3f406772eda88e76200459763"
@@ -87,8 +87,8 @@ files:
     bytes: 11738
     sha256: "d91629177bd710e70a3c6a40266b26b993937073f8f6836ecb6fa87a23677b95"
   - path: "references/cinema/角色行为与动作叙事参考库.md"
-    bytes: 16314
-    sha256: "293478db09a73f3b04d6fe4bec2e9a2188dc72f0897e8d0f19f011730415f8b1"
+    bytes: 21074
+    sha256: "428bb32bac9e4b7422ef6bf6b319f8d832469f334f9259cf1f4a28d311fc3e65"
   - path: "references/cinema/角色与场景设定参考库.md"
     bytes: 6438
     sha256: "1e7b6e90cc34df6fb2ba157a049ef2b93f79aa36a10ffb9f612e101bdf52f1f4"
@@ -135,8 +135,8 @@ files:
     bytes: 8962
     sha256: "80a1b6de109c35b2d4fbf2e657ce043c0d0ff352368ca50b43a7f50376e7e920"
   - path: "references/cinema/视点体系与镜头运动地基.md"
-    bytes: 11121
-    sha256: "7fad53d52918676e41350ba08c19bac6b0e46f81f5fb40fb6ecb3497bc25230e"
+    bytes: 12389
+    sha256: "38f82e52ac3ace628463b1641bb81cad708142a4755a6ab344b704c26e4edb5c"
   - path: "references/cinema/视觉创意词典.md"
     bytes: 24042
     sha256: "567e7ba257295b3e350155459d2a3316fe9fc32cd732246515bfb9eff17f9234"
@@ -159,8 +159,8 @@ files:
     bytes: 13189
     sha256: "60e608aface4abc03232a45112f4b3b04765fa302648f566cc265a93b1d2fbed"
   - path: "references/cinema/戏点选择与主镜框架法.md"
-    bytes: 13789
-    sha256: "220613bdb5e539a3bed41192287cdb56db1a6e0d538b8d13acd432f01e459637"
+    bytes: 16543
+    sha256: "4d8ff5e61437f308f584741872d40aca4d282740443d9d1efb9318b09e583401"
   - path: "references/cinema/信息素控制参考库.md"
     bytes: 8800
     sha256: "d82450dfaa17c5600f422edd9705a3a5ed79dafb8b49b812a098a1b8ab0d16b9"
