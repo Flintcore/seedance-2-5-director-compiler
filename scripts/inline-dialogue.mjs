@@ -1,22 +1,30 @@
 // Development-only lexical support for inline speech. Not a performance judge.
 // Quote/stage spans are exact UTF-16 source offsets; spokenOffset counts Unicode
 // code points. Speaker extraction is a bounded cue heuristic, not coreference.
-const SPEECH_END = /(?:说|问|追问|反问|回答|答道|喊|喊道|低语|低声道|说道|问道|回应|叫道|念道|读道|读出|念出|唱道|唱|哼唱|嘀咕|提醒|命令|请求|解释|宣布|补充|呼喊|呢喃|发出)(?:着)?\s*[:：]?\s*$/u;
+const SPEECH_END = /(?:说|问|追问|反问|回答|答道|喊|喊道|低语|低声道|说道|问道|回应|叫道|念道|读道|读出|念出|唱道|唱|哼唱|嘀咕|提醒|命令|请求|解释|宣布|补充|呼喊|呢喃|发出|低声|轻声|高声|嗤笑|应一声|吩咐|嚷|声调放软)(?:着)?\s*[:：]?\s*$/u;
 const VOICE_END = /(?:旁白|画外音|声音|叫声|拟声词)(?:传来|响起)?\s*[:：]?\s*$/u;
 const ACTION_START = /(?:的(?:画外音|声音|叫声)|从|于\d|才|终于|在|下颌|眉|眼|嘴|肩|手|仍|先|正|已经|刚|看着|看向|望着|望向|迎着|盯着|抬眼|抬头|低头|转头|转向|垂眼|轻吸|吸气|呼吸|停顿|停一|压低|提高|放低|放轻|轻声|低声|平静|平稳|缓慢|慢慢|急促|轻轻|冷冷|笑着|笑了|皱眉|开口|接着|继续|随后|用|以|将|把|伸手|收住|握着|按住|向|对着|对|说|问|追问|反问|回答|答道|喊|低语|回应|叫道|念道|读道|读出|念出|唱道|唱|哼唱|嘀咕|提醒|命令|请求|解释|宣布|补充|呼喊|呢喃|发出)/u;
 function speechCue(text, quoteStart, previousEnd, names) {
   const raw = text.slice(Math.max(previousEnd, quoteStart - 800), quoteStart);
   const prefix = raw.slice(Math.max(raw.lastIndexOf('。'), raw.lastIndexOf('！'), raw.lastIndexOf('？'), raw.lastIndexOf(';'), raw.lastIndexOf('；'), raw.lastIndexOf('\n')) + 1).trim();
-  if (!SPEECH_END.test(prefix) && !VOICE_END.test(prefix)) return null;
   // Explicit source names, when supplied by a source lock, avoid guessing them.
   const sorted = [...names].sort((a, b) => b.length - a.length);
   const matching = sorted.map(name => ({ name, index: prefix.lastIndexOf(name) })).filter(item => item.index >= 0);
-  // Prefer a name at clause start; mentions of an interlocutor are not speakers.
+  // A named speaker can start a later clause after an environmental lead-in.
+  // Mentions of the addressee inside that clause are not subject cues.
   const direct = matching.filter(item => item.index === 0 || /[，,；;]\s*$/u.test(prefix.slice(0, item.index))).sort((a, b) => b.index - a.index)[0];
+  // Handbook prose may place speech after a named action or simply Name:quote.
+  // Only accept colon-only cues with a supplied source at clause start; written
+  // inscriptions/quotations are still not voices. This is a bounded heuristic.
+  const namedColon = /[:：]\s*$/u.test(prefix)
+    && Boolean(direct)
+    && !/(?:写着|写下|印着|标着|题着|刻着|内容是|提到|听到|想到|说到)/u.test(prefix);
+  if (!SPEECH_END.test(prefix) && !VOICE_END.test(prefix) && !namedColon) return null;
+  // Prefer a name at clause start; mentions of an interlocutor are not speakers.
   if (direct) return { speaker: direct.name, speakerResolution: 'supplied-name-cue', cue: prefix };
   // A limited positional modifier can precede an explicitly supplied source;
   // do not select arbitrary last-mentioned interlocutors from a whole clause.
-  const located = matching.find(item => /^(?:桌对面|门外|门内|(?:画外|画内)(?:东侧|西侧|南侧|北侧)?|镜头外|镜头内|左侧|右侧|身后)的$/u.test(prefix.slice(0, item.index)));
+  const located = matching.find(item => /^(?:(?:桌对面|门外|门内|(?:画外|画内)(?:东侧|西侧|南侧|北侧)?|镜头外|镜头内|左侧|右侧|身后)的|(?:前景|中景|后景|远处后景)(?:里|中|的)?)$/u.test(prefix.slice(0, item.index)));
   if (located) return { speaker: located.name, speakerResolution: 'supplied-name-cue', cue: prefix };
   if (/^(?:画外)?旁白/u.test(prefix)) return { speaker: '旁白', speakerResolution: 'explicit-narration', cue: prefix };
   const source = /(?:传来|响起)([^，,。；;：:]{1,24}?)(?:的)?(?:画外音|声音|叫声)/u.exec(prefix);

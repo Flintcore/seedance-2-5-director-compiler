@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const canonical = path.join(root, "references/model/nine-layer-schema.md");
+const canonical = path.join(root, "modules/prompt-template.md");
 const sources = [
   "SKILL.md", "modules/compiler.md", "modules/shot-design.md",
   "modules/director-ir.md", "modules/orchestration.md",
@@ -47,7 +47,7 @@ async function resolvedTargets(relativeFile) {
 test("runtime narrative entrypoints retain valid local reference routes", async () => {
   for (const source of sources) await resolvedTargets(source);
 });
-test("the active entrypoint reaches the compiler and its historical-path canonical schema", async () => {
+test("the active entrypoint reaches the compiler and the handbook canonical template", async () => {
   assert.ok((await resolvedTargets("SKILL.md")).includes(path.join(root, "modules/compiler.md")));
   assert.ok((await resolvedTargets("modules/compiler.md")).includes(canonical));
 });

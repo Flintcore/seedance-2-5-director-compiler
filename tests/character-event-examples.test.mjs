@@ -114,25 +114,13 @@ test("shared references and optional silence do not loosen mechanical output saf
   assert.ok(extra.errors.some(({ code }) => code === "UNEXPECTED_SECTION"));
 });
 
-test("maintained examples open with camera position and an initial image before progressing the event", async () => {
-  const corridor = await readFile(new URL("../references/model/shot-prose-example.md", import.meta.url), "utf8");
-  const paragraphs = [...(document + "\n" + corridor).matchAll(/^【[\d:.]+-[\d:.]+】镜头\d+[^\n]*\r?\n([^\n]+)/gmu)]
-    .map((match) => match[1]);
-  assert.equal(paragraphs.length, 7);
-  // Only these maintained examples use this literal phrase. Runtime prose may
-  // express its initial image naturally; this does not score narrative quality.
-  for (const paragraph of paragraphs) {
-    assert.match(paragraph, /^\d+(?:\.\d+)?mm(?:双人)?(?:中近景|近景|全景|中景)，摄影机/u);
-    assert.ok(paragraph.indexOf("起始画面中") > 0);
-    assert.ok(paragraph.indexOf("起始画面中") < paragraph.length / 2);
-  }
-});
-
-test("compiler and metatemplate distinguish event-first design from camera-first prose", async () => {
+// Prose is no longer required to start with a focal-length formula or a literal
+// initial-image phrase. Actual seven-block examples and dialogue mutations above
+// remain the mechanical checks; independent trials evaluate scene readability.
+test("both writing owners reach the complete handbook example", async () => {
   for (const path of ["../modules/compiler.md", "../modules/prompt-template.md"]) {
     const source = await readFile(new URL(path, import.meta.url), "utf8");
-    assert.match(source, /摄影参数|摄影机相对/u);
-    assert.match(source, /起始.*画面|起始可见/u);
-    assert.match(source, /人物.*事件|角色具体行动/u);
+    const links = [...source.matchAll(/\]\(([^)]+)\)/gu)].map(m => m[1]);
+    assert.ok(links.includes("../references/writing/handbook-gold-mai-long.md"));
   }
 });

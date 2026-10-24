@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.6.0"
+  version: "0.6.1"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -69,13 +69,11 @@ For open design, actively develop grounded performance, light/depth and staging 
 
 ## Shot Narrative Contract
 
-Every design, compilation or formal revision starts with [mandatory writing SOP](modules/prompt-writing-sop.md). It is not an optional reference. Use [the seven-block template](modules/prompt-template.md): 【本段目标】→【参考绑定】→【空间】→【环境】→【时间线】→【声音】→【不可出错】. Conditional [18 variants](references/writing/variants.md) select the current mode; the [knowledge map](references/writing/knowledge-map.md) connects existing film and masters sources.
+The user's handbook is the writing SOP, not a style option. Before writing a final prompt, read [the mandatory SOP](modules/prompt-writing-sop.md), [the complete handbook worked example](references/writing/handbook-gold-mai-long.md), then [the seven-block template](modules/prompt-template.md). Reuse an unchanged version already read in this context. Old compiler prose and legacy examples do not define the writing style.
 
-Begin each shot with concise focal length/scale and camera position, then the actual opening image and continuous character action, gaze, exact inline double-quoted dialogue, reception and end state. Use canonical character names throughout narration; keep dialogue pronouns verbatim. Each cross-cut audible portion stays in its own shot, with the continuing original speaker identified; never front-load the whole sentence then omit subsequent words. Preserve one continuous paragraph rather than technical field lists. Concrete local light and sound belong to their events; shared layers appear once under environment/sound, with no mandatory tail-label pair.
+Use 【本段目标】→【参考绑定】→【空间】→【环境】→【时间线】→【声音】→【不可出错】. The goal plainly tells the scene, character motives/tactics and film language. Each shot header contains only its time range, number and camera/scale/movement name. Its paragraph establishes the camera and visible scene, then lets named characters act, speak and respond while the camera follows the event. Preserve specified focal lengths and technical choices without filling a technical checklist. State cuts directly, not what the cut is meant to teach the viewer. Keep important action detail, gaze, subtext and continuity in concrete pictures rather than explaining that the rules were obeyed.
 
-Shot headers use `【0:00-0:04】镜头1 <brief name>`. Time ranges are editorial budgets; events and emotional/phrase cues drive the body, not a seconds schedule. One-take event nodes have no new shot numbers. Opening and ending world states remain continuous while projection changes with camera position.
-
-Full-reference inputs provide scoped identity/scene/motion guidance, not a hard first frame; actual first/last-frame inputs select their own branch. Preserve the approved design, dialogue and user locks. Platform reminders stay outside the final copyable prompt. Source and task boundaries are in the SOP, not inherited from historic library templates.
+Actual dialogue remains inline and verbatim in Chinese double quotes. Cross-cut speech is distributed as the actual audible words in each shot with the original source named. Asset tokens appear once in binding only. Time ranges are budgets; events drive the body. Full reference is not a hard first frame; actual first/last-frame inputs select their own [mode](references/writing/modes-and-evidence.md). [Variants](references/writing/variants.md) and [film knowledge](references/writing/knowledge-map.md) remain connected and conditional.
 
 ## Positive Spatial Constraints
 
@@ -146,7 +144,7 @@ When shot design is required:
 When compilation is required:
 
 1. Treat the locked L1 as immutable creative input.
-2. Read [modules/compiler.md](modules/compiler.md).
+2. Read [modules/compiler.md](modules/compiler.md) and the complete [handbook worked example](references/writing/handbook-gold-mai-long.md); the example is mandatory for writing, not optional film research.
 3. Read model references only for the active issue: dialogue, references, continuity, action, complexity, or diagnosis. A newly noticed material design conflict first follows the judgment rule above; pure compilation skips redesign, not the duty to explain that conflict.
 4. Compile into the native shot-prompt format. The compiler may clarify and compress, but it may not add, remove, reorder, or reinterpret shots.
 
@@ -177,7 +175,7 @@ Default output is concise:
 
 Do not run or append a final self-check stage. Do not add pass/fail cards, scores, read logs, progress logs, capability essays, or repeated rationale.
 
-Use Chinese for the final prompt. Keep exact dialogue, canonical asset placeholder order, model names, timecodes, and necessary on-screen foreign text unchanged. Source-side asset IDs remain internal. The final prompt ends at the last shot paragraph’s on-set sound sentence; its final state stays inside that shot, with no extra tail, self-check or review section.
+Use Chinese for the final prompt. Keep exact dialogue, canonical asset placeholder order, model names, timecodes, and necessary on-screen foreign text unchanged. Source-side asset IDs remain internal. The final prompt ends with the handbook’s 【不可出错】 block. Do not append a self-check or review section.
 
 ## Runtime Discipline
 

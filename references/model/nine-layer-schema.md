@@ -3,7 +3,7 @@
 本路径保留给已有链接使用，不再存放九层或旧六部分模板。
 
 1. 每次设计/编译先读 [编写 SOP](../../modules/prompt-writing-sop.md)。
-2. 最终格式只用 [七块元模板](../../modules/prompt-template.md)。
+2. 写最终提示词先完整读 [手册成稿](../writing/handbook-gold-mai-long.md)，再用 [七块元模板](../../modules/prompt-template.md)。
 3. [模式与证据](../writing/modes-and-evidence.md) 区分全能参考与真实首尾帧槽位。
 4. [结构变体](../writing/variants.md) 按当前任务选择；[知识地图](../writing/knowledge-map.md) 接入影视与大师正文。
 
