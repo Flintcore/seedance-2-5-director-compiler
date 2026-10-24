@@ -1,6 +1,8 @@
 # 提示词写作资料：何时读哪一份
 
-每次设计、编译或正式改稿先读 [编写 SOP](../../modules/prompt-writing-sop.md)，正式写稿前完整读 [手册成稿范本](handbook-gold-mai-long.md)，再读 [唯一元模板](../../modules/prompt-template.md)。成稿范本是必读写作依据，不与案例分析的可选路由混淆。下表不是整套必读套餐，按当前决策缺口进入。
+完整来源在 [独立元模板与①—⑥原文库](handbook/INDEX.md)，与 [执行适配](handbook-adaptation.md) 分开保存。下表的旧摘要词典是查找与适配补充，不能代替完整原文。
+
+每次设计、编译或正式改稿先读 [编写 SOP](../../modules/prompt-writing-sop.md)，正式写稿前完整读 [手册成稿范本](handbook-gold-mai-long.md)，再读 [唯一元模板](../../modules/prompt-template.md)。成稿范本是必读写作依据，不与案例分析的可选路由混淆。原文必读范围按SOP执行；下表的补充资料仍按当前决策缺口进入。
 
 | 当前任务或问题 | 读取正文 | 用途 |
 |---|---|---|

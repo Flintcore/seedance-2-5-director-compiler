@@ -1,5 +1,7 @@
 # 参考分工、声音与失败诊断
 
+本页是既有摘要/适配补充，不代替[②参考句库全文](handbook/02-reference-space-timeline.md)、[⑤全文和完整速查](handbook/05-sound-dialogue-diagnosis.md)。先按 [原文SOP读取](../../modules/prompt-writing-sop.md#原文-sop-读取) 获得正文，差异见 [适配表](handbook-adaptation.md)。
+
 本页在涉及对应问题时读取；主流程始终执行 [SOP](../../modules/prompt-writing-sop.md)。表达清楚来源职责，不声称一句提示词可保证模型结果。
 
 ## 参考职责句库

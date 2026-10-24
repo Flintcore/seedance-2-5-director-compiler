@@ -1,0 +1,644 @@
+{
+  "schema": 1,
+  "description": "Complete single user message: exact UTF-8 archive plus lossless reading editions; no other conversation data.",
+  "sourceReceived": "2026-10-24",
+  "archived": "2026-10-25",
+  "rawFile": "source-verbatim.md",
+  "rawSha256": "e3791f4fde23db3b23bbbc4c6dc94a6a4fc01abed0b40a6d39823fedbd3d7191",
+  "rawUtf8Bytes": 83604,
+  "rawCharacters": 32816,
+  "readingTransform": [
+    "00 only: remove Markdown paste line-break backslashes and escape backslashes before Markdown punctuation; split the introductory title onto its own line",
+    "all: decode HTML character references as displayed characters; preserve words, numbers, examples and code blocks; no semantic edits"
+  ],
+  "documents": [
+    {
+      "id": 0,
+      "title": "独立元模板·全变体手册（十一节）",
+      "file": "00-independent.md",
+      "sourceStart": 0,
+      "sourceEnd": 11459,
+      "sourceStartByte": 0,
+      "sourceEndByte": 29192,
+      "sourceSliceSha256": "805bb8113a4998f4bfea1e495e3f1a68823204da6e4b4b51b581ba429480b11f",
+      "readingSha256": "bd079281a80c03ca38f5d1a7e13b1a1995983c6dc38936bc3ac365e770f0e7d6",
+      "sourceCharacters": 11459,
+      "readingCharacters": 10697,
+      "codeBlocks": 12,
+      "sections": [
+        {
+          "heading": "# Seedance 2.5 提示词元模板 · 全变体手册",
+          "line": 3
+        },
+        {
+          "heading": "## 一、总骨架：七块，顺序固定",
+          "line": 9
+        },
+        {
+          "heading": "### 空白模板",
+          "line": 13
+        },
+        {
+          "heading": "## 二、单个镜头的写法",
+          "line": 46
+        },
+        {
+          "heading": "## 三、镜头之间的衔接",
+          "line": 68
+        },
+        {
+          "heading": "### 3.1 硬切：上一镜的落幅等于下一镜的起幅",
+          "line": 72
+        },
+        {
+          "heading": "### 3.2 两镜合成一镜：前一个运动的终点就是后一个运动的起点",
+          "line": 91
+        },
+        {
+          "heading": "### 3.3 示例 A：穿行跟拍 → 同机位摇镜（硬切版）",
+          "line": 99
+        },
+        {
+          "heading": "### 3.4 示例 B：两镜合成一镜（一镜连版）",
+          "line": 109
+        },
+        {
+          "heading": "### 3.5 摇镜之后再硬切",
+          "line": 118
+        },
+        {
+          "heading": "## 四、运镜词典（单镜运动的写法）",
+          "line": 126
+        },
+        {
+          "heading": "## 五、结构变体",
+          "line": 136
+        },
+        {
+          "heading": "### 5.1 多镜头剪辑（默认）",
+          "line": 138
+        },
+        {
+          "heading": "### 5.2 一镜到底",
+          "line": 143
+        },
+        {
+          "heading": "### 5.3 对白很多",
+          "line": 150
+        },
+        {
+          "heading": "### 5.4 动作戏、打斗",
+          "line": 158
+        },
+        {
+          "heading": "### 5.5 有运镜参考视频（比如白模预演、别的片段）",
+          "line": 165
+        },
+        {
+          "heading": "### 5.6 有音乐或节拍参考",
+          "line": 171
+        },
+        {
+          "heading": "### 5.7 首尾帧模式（另一套写法）",
+          "line": 176
+        },
+        {
+          "heading": "### 5.8 延长已有片段",
+          "line": 182
+        },
+        {
+          "heading": "### 5.9 编辑已有片段（换物、改局部）",
+          "line": 188
+        },
+        {
+          "heading": "### 5.10 情绪空镜、蒙太奇",
+          "line": 194
+        },
+        {
+          "heading": "## 六、时长与节奏分配",
+          "line": 202
+        },
+        {
+          "heading": "## 七、常见翻车与改法总表",
+          "line": 210
+        },
+        {
+          "heading": "## 八、提交前自检",
+          "line": 216
+        },
+        {
+          "heading": "## 九、全片镜头语言 与 动静衔接",
+          "line": 233
+        },
+        {
+          "heading": "### 9.1 全片镜头语言是什么",
+          "line": 235
+        },
+        {
+          "heading": "### 9.2 四种常用写法",
+          "line": 247
+        },
+        {
+          "heading": "### 9.3 动静衔接的四种情况",
+          "line": 274
+        },
+        {
+          "heading": "### 9.4 一个可以避免“动接静”的取巧做法",
+          "line": 292
+        },
+        {
+          "heading": "## 十、案例提示词",
+          "line": 298
+        },
+        {
+          "heading": "### 案例 1：手持跟拍 → 停稳 → 固定近景（动接静）",
+          "line": 302
+        },
+        {
+          "heading": "### 案例 2：固定 → 停一拍 → 手持推进（静接动）",
+          "line": 314
+        },
+        {
+          "heading": "### 案例 3：手持摇镜 → 落进稳定构图 → 固定镜头（静接静的取巧版）",
+          "line": 324
+        },
+        {
+          "heading": "### 案例 4：动接动（运动中切换）",
+          "line": 334
+        },
+        {
+          "heading": "### 案例 5：完整 15 秒小段（混合语言，四处衔接全部标出）",
+          "line": 344
+        },
+        {
+          "heading": "### 回到婉-2：现在的节点需要改哪里",
+          "line": 360
+        },
+        {
+          "heading": "## 十一、每次提交任务前的思路（工作流程）",
+          "line": 369
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "① 总纲",
+      "file": "01-overview.md",
+      "sourceStart": 11459,
+      "sourceEnd": 14468,
+      "sourceStartByte": 29192,
+      "sourceEndByte": 36734,
+      "sourceSliceSha256": "52aca297a6c7a138d4f3a0e22bc467caeec4e982c483161e96ed39a92d8724ae",
+      "readingSha256": "0162e851c0bdbe9b09cb13031d9fb9c9806274f9834580c962a2660981a6e358",
+      "sourceCharacters": 3009,
+      "readingCharacters": 2995,
+      "codeBlocks": 2,
+      "sections": [
+        {
+          "heading": "# Seedance 2.5 提示词完整手册 · ① 总纲",
+          "line": 1
+        },
+        {
+          "heading": "## 1.1 硬参数〔S〕",
+          "line": 15
+        },
+        {
+          "heading": "## 1.2 六种模式怎么选〔S〕",
+          "line": 21
+        },
+        {
+          "heading": "## 1.3 一条还是几条〔S〕〔影〕",
+          "line": 27
+        },
+        {
+          "heading": "## 1.4 提交前的思路（每次都走一遍）",
+          "line": 35
+        },
+        {
+          "heading": "## 1.5 七块骨架，顺序固定〔S〕",
+          "line": 48
+        },
+        {
+          "heading": "## 1.6 总元模板（全能参考，直接复制）",
+          "line": 55
+        },
+        {
+          "heading": "## 1.7 精简模板（4–8 秒单镜）",
+          "line": 90
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "② 参考绑定、空间、时间线与景别角度",
+      "file": "02-reference-space-timeline.md",
+      "sourceStart": 14468,
+      "sourceEnd": 17381,
+      "sourceStartByte": 36734,
+      "sourceEndByte": 44032,
+      "sourceSliceSha256": "d561f843b2bafc9b454e6248b764933012658d5337ab5a46f8ccf0946cc7ddbb",
+      "readingSha256": "d561f843b2bafc9b454e6248b764933012658d5337ab5a46f8ccf0946cc7ddbb",
+      "sourceCharacters": 2913,
+      "readingCharacters": 2913,
+      "codeBlocks": 3,
+      "sections": [
+        {
+          "heading": "# 手册 ②　参考绑定 · 空间与环境 · 时间线 · 景别角度",
+          "line": 1
+        },
+        {
+          "heading": "## 2.1 参考优先级〔S〕",
+          "line": 3
+        },
+        {
+          "heading": "## 2.2 绑定句库（直接套）〔S〕",
+          "line": 9
+        },
+        {
+          "heading": "## 2.3 空间块〔影〕〔坑〕",
+          "line": 20
+        },
+        {
+          "heading": "## 2.4 环境块〔坑〕",
+          "line": 30
+        },
+        {
+          "heading": "## 2.5 时间线格式铁律〔S〕",
+          "line": 41
+        },
+        {
+          "heading": "## 2.6 事件语法：每个时间段都是一条因果链〔S〕",
+          "line": 49
+        },
+        {
+          "heading": "## 2.7 单镜七要素（每一镜都照填）〔影〕〔S〕",
+          "line": 56
+        },
+        {
+          "heading": "## 2.8 时长参考〔影〕",
+          "line": 68
+        },
+        {
+          "heading": "## 2.9 景别〔影〕",
+          "line": 74
+        },
+        {
+          "heading": "## 2.10 角度〔影〕",
+          "line": 78
+        },
+        {
+          "heading": "## 2.11 机位要点〔坑〕",
+          "line": 82
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "③ 运镜、镜头语言、衔接与剪辑",
+      "file": "03-camera-editing.md",
+      "sourceStart": 17381,
+      "sourceEnd": 21542,
+      "sourceStartByte": 44032,
+      "sourceEndByte": 55138,
+      "sourceSliceSha256": "44dd96f16dfcdec010b6b11be7fec74c05daff6bb145afcb6805541bd6d961a4",
+      "readingSha256": "44dd96f16dfcdec010b6b11be7fec74c05daff6bb145afcb6805541bd6d961a4",
+      "sourceCharacters": 4161,
+      "readingCharacters": 4161,
+      "codeBlocks": 9,
+      "sections": [
+        {
+          "heading": "# 手册 ③　运镜词典 · 全片镜头语言 · 动静衔接 · 剪辑语法",
+          "line": 1
+        },
+        {
+          "heading": "## 3.1 运镜词典",
+          "line": 3
+        },
+        {
+          "heading": "## 3.2 全片镜头语言 = 默认值〔影〕〔S〕",
+          "line": 14
+        },
+        {
+          "heading": "## 3.3 四种全片语言（直接抄）",
+          "line": 28
+        },
+        {
+          "heading": "## 3.4 动静衔接的四种情况〔影〕",
+          "line": 50
+        },
+        {
+          "heading": "### 案例 A：手持 → 停稳 → 固定（动接静）",
+          "line": 62
+        },
+        {
+          "heading": "### 案例 B：固定 → 停一拍 → 手持推进（静接动）",
+          "line": 70
+        },
+        {
+          "heading": "### 案例 C：摇镜落稳 → 固定（静接静的取巧版）",
+          "line": 77
+        },
+        {
+          "heading": "### 案例 D：动接动",
+          "line": 84
+        },
+        {
+          "heading": "## 3.5 剪辑：每个衔接点都要写明〔S〕",
+          "line": 93
+        },
+        {
+          "heading": "## 3.6 硬切顺不顺，看六条〔影〕",
+          "line": 99
+        },
+        {
+          "heading": "## 3.7 两镜合成一镜〔S〕",
+          "line": 115
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "④ 十八种结构变体元模板",
+      "file": "04-variants.md",
+      "sourceStart": 21542,
+      "sourceEnd": 25733,
+      "sourceStartByte": 55138,
+      "sourceEndByte": 65024,
+      "sourceSliceSha256": "795fcfde98f6133a27fbec501955d283dd690370d252285162feb69aa40d4ba0",
+      "readingSha256": "795fcfde98f6133a27fbec501955d283dd690370d252285162feb69aa40d4ba0",
+      "sourceCharacters": 4191,
+      "readingCharacters": 4191,
+      "codeBlocks": 16,
+      "sections": [
+        {
+          "heading": "# 手册 ④　结构变体元模板（18 种）",
+          "line": 1
+        },
+        {
+          "heading": "### V1　多镜头叙事（默认）",
+          "line": 7
+        },
+        {
+          "heading": "### V2　一镜到底 / 长镜头穿行",
+          "line": 22
+        },
+        {
+          "heading": "### V3　对白戏 / 正反打",
+          "line": 36
+        },
+        {
+          "heading": "### V4　动作 / 打斗",
+          "line": 54
+        },
+        {
+          "heading": "### V5　群像 / 多人同框",
+          "line": 71
+        },
+        {
+          "heading": "### V6　情绪空镜 / 蒙太奇 / 匹配剪辑",
+          "line": 80
+        },
+        {
+          "heading": "### V7　音乐 / 节拍驱动",
+          "line": 92
+        },
+        {
+          "heading": "### V8　运镜 / 动作迁移（带参考视频）",
+          "line": 103
+        },
+        {
+          "heading": "### V9　白模预演 → 成片",
+          "line": 117
+        },
+        {
+          "heading": "### V10　分镜图驱动",
+          "line": 126
+        },
+        {
+          "heading": "### V11　首尾帧（写法和全能参考相反）",
+          "line": 135
+        },
+        {
+          "heading": "### V12　图生视频",
+          "line": 153
+        },
+        {
+          "heading": "### V13　文生视频",
+          "line": 160
+        },
+        {
+          "heading": "### V14　延长已有片段",
+          "line": 164
+        },
+        {
+          "heading": "### V15　编辑已有片段（局部替换）",
+          "line": 172
+        },
+        {
+          "heading": "### V16　口播 / 台词主导",
+          "line": 183
+        },
+        {
+          "heading": "### V17　志怪特效 / 超自然变化",
+          "line": 193
+        },
+        {
+          "heading": "### V18　草稿 → 定稿",
+          "line": 204
+        },
+        {
+          "heading": "### 变体组合",
+          "line": 212
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "⑤ 声音、台词、诊断、自检与速查",
+      "file": "05-sound-dialogue-diagnosis.md",
+      "sourceStart": 25733,
+      "sourceEnd": 28867,
+      "sourceStartByte": 65024,
+      "sourceEndByte": 73121,
+      "sourceSliceSha256": "88394f4d3c9d305aea8f971f493db2f5bd53fdd8a1ac02b1d0f7bdd2c75c8446",
+      "readingSha256": "88394f4d3c9d305aea8f971f493db2f5bd53fdd8a1ac02b1d0f7bdd2c75c8446",
+      "sourceCharacters": 3134,
+      "readingCharacters": 3134,
+      "codeBlocks": 1,
+      "sections": [
+        {
+          "heading": "# 手册 ⑤　声音 · 台词表演 · 禁止项 · 翻车诊断 · 自检 · 《卖龙》速查",
+          "line": 1
+        },
+        {
+          "heading": "## 5.1 声音块分层写〔S〕",
+          "line": 3
+        },
+        {
+          "heading": "## 5.2 台词与表演〔S〕〔影〕〔坑〕",
+          "line": 14
+        },
+        {
+          "heading": "## 5.3 禁止项写法〔S〕",
+          "line": 24
+        },
+        {
+          "heading": "## 5.4 翻车诊断表〔S〕〔坑〕",
+          "line": 40
+        },
+        {
+          "heading": "## 5.5 单变量重试〔S〕",
+          "line": 44
+        },
+        {
+          "heading": "## 5.6 提交前自检",
+          "line": 56
+        },
+        {
+          "heading": "## 5.7 《卖龙》速查",
+          "line": 76
+        },
+        {
+          "heading": "### 现成的绑定句",
+          "line": 78
+        },
+        {
+          "heading": "### 后续场次结构建议",
+          "line": 87
+        },
+        {
+          "heading": "### 婉-2 翻车预案",
+          "line": 93
+        },
+        {
+          "heading": "## 附：来源说明",
+          "line": 99
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "⑥ 思路篇",
+      "file": "06-director-thinking.md",
+      "sourceStart": 28867,
+      "sourceEnd": 32604,
+      "sourceStartByte": 73121,
+      "sourceEndByte": 82986,
+      "sourceSliceSha256": "a693ee993e0224d3a624802bd91b3e26ce65ecde7892030f66f9bcc311094d00",
+      "readingSha256": "a693ee993e0224d3a624802bd91b3e26ce65ecde7892030f66f9bcc311094d00",
+      "sourceCharacters": 3737,
+      "readingCharacters": 3737,
+      "codeBlocks": 1,
+      "sections": [
+        {
+          "heading": "# 手册 ⑥　思路篇：分镜怎么想、提示词怎么搭",
+          "line": 1
+        },
+        {
+          "heading": "## 6.1 总原则：先当导演，再当写手",
+          "line": 7
+        },
+        {
+          "heading": "## 6.2 从剧本到分镜：八步思考法",
+          "line": 19
+        },
+        {
+          "heading": "### 第 1 步　一句话戏核",
+          "line": 21
+        },
+        {
+          "heading": "### 第 2 步　拆节拍（beat）",
+          "line": 27
+        },
+        {
+          "heading": "### 第 3 步　给每个人一条“动作线”",
+          "line": 33
+        },
+        {
+          "heading": "### 第 4 步　画“谁看谁”的视线图",
+          "line": 41
+        },
+        {
+          "heading": "### 第 5 步　空间先定死",
+          "line": 49
+        },
+        {
+          "heading": "### 第 6 步　选镜头：每一镜必须带来新信息",
+          "line": 53
+        },
+        {
+          "heading": "### 第 7 步　分配时长",
+          "line": 63
+        },
+        {
+          "heading": "### 第 8 步　接口：上一场怎么进、下一场怎么出",
+          "line": 69
+        },
+        {
+          "heading": "## 6.3 提示词怎么搭：七块积木的思考顺序",
+          "line": 76
+        },
+        {
+          "heading": "### 每一镜的写法公式",
+          "line": 84
+        },
+        {
+          "heading": "### 背景角色的写法（活人感）",
+          "line": 92
+        },
+        {
+          "heading": "### 画外角色的写法（阿大式）",
+          "line": 101
+        },
+        {
+          "heading": "### 音色参考的写法",
+          "line": 111
+        },
+        {
+          "heading": "## 6.4 示范：婉-2 是怎么一步步做出来的",
+          "line": 121
+        },
+        {
+          "heading": "### ① 戏核",
+          "line": 123
+        },
+        {
+          "heading": "### ② 节拍与力量关系",
+          "line": 127
+        },
+        {
+          "heading": "### ③ 节拍 → 镜头的选择理由",
+          "line": 131
+        },
+        {
+          "heading": "### ④ 这一版（take 2）改了什么、为什么",
+          "line": 135
+        },
+        {
+          "heading": "### ⑤ 留到婉-3 要接上的状态",
+          "line": 139
+        },
+        {
+          "heading": "## 6.5 一张自问清单（每写一场都过一遍）",
+          "line": 148
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "原消息末尾的作者要求",
+      "file": "07-author-context.md",
+      "sourceStart": 32604,
+      "sourceEnd": 32816,
+      "sourceStartByte": 82986,
+      "sourceEndByte": 83604,
+      "sourceSliceSha256": "dac888f6aa6a0335aecc1d64570735e3d4f6a211bdd852a5e6d6fafd8d0622d4",
+      "readingSha256": "dac888f6aa6a0335aecc1d64570735e3d4f6a211bdd852a5e6d6fafd8d0622d4",
+      "sourceCharacters": 212,
+      "readingCharacters": 212,
+      "codeBlocks": 0,
+      "sections": []
+    }
+  ],
+  "codeBlocks": 44
+}

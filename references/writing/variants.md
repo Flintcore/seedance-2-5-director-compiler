@@ -1,5 +1,7 @@
 # 18种结构变体：在同一 SOP 内切换
 
+本页是既有摘要/适配补充，不代替[④十八变体完整原文](handbook/04-variants.md)。先按 [原文SOP读取](../../modules/prompt-writing-sop.md#原文-sop-读取) 获得正文，差异见 [适配表](handbook-adaptation.md)。
+
 先执行 [必读 SOP](../../modules/prompt-writing-sop.md) 与 [七块模板](../../modules/prompt-template.md)。这不是18套互相竞争的元模板；选择当前任务对应的一节，未改动职责仍沿七块。时间段为粗略预算，不把例子秒数变成动作指令；例句均是写法片段，不是已生成验证的成片。
 
 ## V1 多镜头叙事

@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.6.1"
+  version: "0.6.2"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -69,7 +69,7 @@ For open design, actively develop grounded performance, light/depth and staging 
 
 ## Shot Narrative Contract
 
-The user's handbook is the writing SOP, not a style option. Before writing a final prompt, read [the mandatory SOP](modules/prompt-writing-sop.md), [the complete handbook worked example](references/writing/handbook-gold-mai-long.md), then [the seven-block template](modules/prompt-template.md). Reuse an unchanged version already read in this context. Old compiler prose and legacy examples do not define the writing style.
+The user's handbook is the writing SOP, not a style option. Before writing a final prompt, follow [the mandatory SOP source-reading route](modules/prompt-writing-sop.md#原文-sop-读取) into [the complete original handbook](references/writing/handbook/INDEX.md) and [explicit adaptations](references/writing/handbook-adaptation.md); for a complete new task the standalone manual and all six parts are read in full, not replaced by summaries. Then read [the complete handbook worked example](references/writing/handbook-gold-mai-long.md), then [the seven-block template](modules/prompt-template.md). Reuse an unchanged version already read in this context. Old compiler prose and legacy examples do not define the writing style.
 
 Use 【本段目标】→【参考绑定】→【空间】→【环境】→【时间线】→【声音】→【不可出错】. The goal plainly tells the scene, character motives/tactics and film language. Each shot header contains only its time range, number and camera/scale/movement name. Its paragraph establishes the camera and visible scene, then lets named characters act, speak and respond while the camera follows the event. Preserve specified focal lengths and technical choices without filling a technical checklist. State cuts directly, not what the cut is meant to teach the viewer. Keep important action detail, gaze, subtext and continuity in concrete pictures rather than explaining that the rules were obeyed.
 
@@ -78,6 +78,8 @@ Actual dialogue remains inline and verbatim in Chinese double quotes. Cross-cut 
 ## Positive Spatial Constraints
 
 最终七块以编写 SOP 和元模板为准；场景几何/开场站位归【空间】，背景活动/共享光向归【环境】，持续声与开关归【声音】，致命事项归【不可出错】；人物动态仍在【时间线】，不靠末尾约束修补矛盾。
+
+七块是默认完整稿；用户明确要求4—8秒精简单镜时，采用元模板所链接的手册①1.7例外，不自行按时长省栏目。
 
 ## Confirmed Project Contracts
 
@@ -180,7 +182,7 @@ Use Chinese for the final prompt. Keep exact dialogue, canonical asset placehold
 ## Runtime Discipline
 
 - Work in memory for ordinary single-scene tasks. Create project files only for multi-scene work, long iterative collaboration, or when the user requests files.
-- Read only source sections that change the current decision; never bulk-read the library.
+- The handbook is the mandatory writing SOP under its reading route; cinema/master libraries stay decision-specific. Reuse unchanged handbook text already obtained in this context; a local repair reads the complete affected sections/examples, not unrelated chapters. Never bulk-read the film library.
 - Avoid generated bundles and duplicated rule layers. Each rule has one owner file.
 - With subagents available, use at most three sequential roles: story/space, shot director, compiler. Run an extra critic only for explicit `AUDIT` or genuinely high-complexity design.
 - Without subagents, run the same stages serially and replace the active role instructions between stages.

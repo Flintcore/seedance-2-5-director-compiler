@@ -1,6 +1,6 @@
 # Seedance 2.5 手册写法编译
 
-把确认 L1 或用户给定分镜写成手册七块成稿，不再把旧字段逐项翻译成说明书。先完整读 [编写 SOP](prompt-writing-sop.md)、[婉-2完整范本](../references/writing/handbook-gold-mai-long.md)、[元模板](prompt-template.md)。这三份规定当前写作；[模型索引](../references/model/INDEX.md)与[能力表](../references/model/capability-registry.yaml)只在当前能力/素材问题需要时查。
+把确认 L1 或用户给定分镜写成手册七块成稿，不再把旧字段逐项翻译成说明书。先完整读 [编写 SOP](prompt-writing-sop.md)、[婉-2完整范本](../references/writing/handbook-gold-mai-long.md)、[元模板](prompt-template.md)。完整原文读取按SOP执行，先获得 [独立元模板和①—⑥](../references/writing/handbook/INDEX.md)，连同 [适配说明](../references/writing/handbook-adaptation.md) 作为写作依据；本页不代替手册正文。[模型索引](../references/model/INDEX.md)与[能力表](../references/model/capability-registry.yaml)只在当前能力/素材问题需要时查。
 
 ## 1. 保留当前对象
 
@@ -40,6 +40,6 @@
 
 ## 5. 轻量交付
 
-每段完整七块放一个可复制围栏，最后以【不可出错】收尾。标题时码只是粗略预算，镜内按事件与台词气口衔接；保留原对白里的时间数字，不安排逐秒动作或固定半秒区。角色、比例和接触按 [正向空间关系](../references/model/positive-spatial-constraints.md) 在正文成立，负面清单不兜底。
+默认每段完整七块放一个可复制围栏，最后以【不可出错】收尾。只有用户明确要4—8秒精简单镜时，按手册①1.7和元模板的明确例外交紧凑稿，空间/环境融入镜内；不套七块维护校验器。标题时码只是粗略预算，镜内按事件与台词气口衔接；保留原对白里的时间数字，不安排逐秒动作或固定半秒区。角色、比例和接触按 [正向空间关系](../references/model/positive-spatial-constraints.md) 在正文成立，负面清单不兜底。
 
 OPTIMIZE交完整修订稿；DIAGNOSE按 [诊断模块](diagnosis.md) 处理当前问题。无字数门、额外自检、读库日志或质量宣告。维护脚本只用于维护或用户明确要求的检查，文字验证不冒充生成成片。

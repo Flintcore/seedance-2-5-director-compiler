@@ -1,5 +1,7 @@
 # 模式、参数与证据边界
 
+本页是既有摘要/适配补充，不代替[①完整原文](handbook/01-overview.md)、[④模式原模板](handbook/04-variants.md)。先按 [原文SOP读取](../../modules/prompt-writing-sop.md#原文-sop-读取) 获得正文，差异见 [适配表](handbook-adaptation.md)。
+
 核对日期：2026-10-25。用户提供的独立元模板与完整手册①—⑥是当前写作 SOP 的主要来源，项目经验保留〔项目观察〕身份，不当成已验证的所有平台规律。
 
 ## 模式事实

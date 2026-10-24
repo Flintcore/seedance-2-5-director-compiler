@@ -1,0 +1,4 @@
+# The user-source archive and reading editions have pinned UTF-8 byte hashes.
+# Keep their LF endings on Windows checkouts without changing other files.
+# Source boundary blank lines are intentional and included in the pinned hashes.
+/references/writing/handbook/** text eol=lf whitespace=-blank-at-eof

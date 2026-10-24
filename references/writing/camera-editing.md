@@ -1,5 +1,7 @@
 # 摄影与剪辑写法词典
 
+本页是既有摘要/适配补充，不代替[③全文及完整模板/案例](handbook/03-camera-editing.md)、[独立手册③/⑨/⑩](handbook/00-independent.md)。先按 [原文SOP读取](../../modules/prompt-writing-sop.md#原文-sop-读取) 获得正文，差异见 [适配表](handbook-adaptation.md)。
+
 先执行 [SOP](../../modules/prompt-writing-sop.md)。此页解决怎样把已定摄影写成可见动作；新摄影选择仍读 [视点](../cinema/视点体系与镜头运动地基.md)、[运镜正文](../cinema/超详细运镜规格参考库.md)、[机位/光学](../cinema/机位技术规格详细参数库.md)，不只看词典就重新导演。
 
 ## 全段摄影默认与局部例外
