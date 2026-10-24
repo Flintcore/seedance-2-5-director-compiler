@@ -352,6 +352,25 @@
         }
       ],
       "preserved": "Group-level script information, audience emotion, characterization and viewing outcome precede narrative viewpoint and photography; actor craft is conditionally read, not a per-shot checklist. Four existing knowledge methods and narrow index entries only; all other cinema and masters, historical import records, two-domain versus six-role workflows, six-part prose, exact dialogue, event-led timing and segment boundaries retained. Independent trial stays outside repositories; no generation-time review added."
+    },
+    {
+      "date": "2026-10-25",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.9",
+        "commit": "97d9d4b1594a3975c2d10e42fd94f249aef763e0"
+      },
+      "files": [
+        {
+          "source_path": "references/INDEX.md",
+          "target_path": "references/cinema/INDEX.md",
+          "source_sha256": "8c07b97289fb22a0f0392c7a763c3b6f778e2551336a90a60f88fa96e6856954",
+          "sha256": "f1b894e3a673b1ec073a314d8a20b72b8a1352abbd1419db135303e724def4d5",
+          "target_sha256": "f1b894e3a673b1ec073a314d8a20b72b8a1352abbd1419db135303e724def4d5",
+          "transform": "targeted index reading-condition alignment; retain repository-specific catalog and runtime routes"
+        }
+      ],
+      "preserved": "All cinema and master bodies, handbook original text and historical import baseline unchanged. Index discovery is not actual reading or evidence of applied design. Runtime decision/handoff changes belong to the skill layer; no test prompts imported."
     }
   ]
 }

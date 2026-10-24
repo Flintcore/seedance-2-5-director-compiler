@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.6.2"
+  version: "0.6.3"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -112,6 +112,8 @@ Do not invent additional numeric platform limits, reference weights, control fie
 
 Choose one task mode and one action mode.
 
+Use [decision-driven reading and handoff](modules/knowledge-routing.md#决策驱动读取与交接) to distinguish a locked executable design from a story or numbered rough outline. If viewpoint, reveal timing, staging or performance still needs choosing, design those open dimensions before compilation; a mode label or seven-block draft is not evidence of a locked design.
+
 Task modes:
 
 - `CREATE_AUTO`: design L1 and compile the matching prompt in one pass.
@@ -157,7 +159,7 @@ For `DIAGNOSE`, read [modules/diagnosis.md](modules/diagnosis.md) and repair the
 For every `CREATE_AUTO`, `DIRECTOR_CHECKPOINT`, or requested shot redesign:
 
 - Read `references/cinema/INDEX.md`.
-- Start with **1-3** cinema references selected for the scene's actual decision problem: 1-2 for a focused scene, 2-3 when the scene genuinely crosses domains. These are selection guidance, not a ceiling: read an additional directly relevant chapter when an unresolved decision requires it. Never use zero for a director task or bulk-load unrelated sources.
+- Select complete cinema chapters for unresolved decisions, including their definitions and conditions. Stop when the relevant choices are supported; extend only for a remaining concrete gap. No file-count quota substitutes for research, and unrelated sources stay unloaded.
 - Read `references/masters/INDEX.md`, then read **one actual masters work file** selected for the scene. A second work is allowed only when a genuine contrast improves a key decision.
 - Apply the sources to specific shot decisions. Do not imitate a master's surface style or copy a reusable recipe without testing it against this scene.
 

@@ -4,6 +4,37 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const DEFAULT_ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 function walk(dir){return readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)]);}
+
+// Direct runtime handoffs are checked separately from global index reachability.
+// This is a maintenance diagnostic, not a generation gate or a quality score.
+export function decisionEdges(compiler){
+ const cinema=compiler?'references/cinema/':'references/';
+ const design=compiler?'modules/shot-design.md':'modules/agent-3-shot-designer.md';
+ const compile=compiler?'modules/compiler.md':'modules/agent-5-assembler.md';
+ const handoff=compiler?'modules/director-ir.md':'modules/assembly-l1-protocol.md';
+ const route='modules/knowledge-routing.md';
+ const pairs=[
+  ['SKILL.md','modules/orchestration.md'],
+  ['modules/orchestration.md',route],
+  ['modules/prompt-writing-sop.md',route],
+  [design,route],[compile,route],[compile,handoff],[handoff,route],
+  [route,cinema+'戏点选择与主镜框架法.md'],
+  [route,cinema+'视点体系与镜头运动地基.md'],
+  [route,cinema+'角色行为与动作叙事参考库.md'],
+  [route,'references/masters/INDEX.md'],
+ ];
+ if(!compiler){
+  pairs.push(['modules/agent-4-style-sound.md',handoff],['modules/agent-6-reviewer.md',handoff]);
+  for(const role of ['agent-1-script-parser','agent-2-scene-planner','agent-3-shot-designer','agent-4-style-sound','agent-5-assembler','agent-6-reviewer'])pairs.push(['SKILL.md',`modules/${role}.md`]);
+ }
+ return pairs;
+}
+export function auditDecisionHandoffs(edges,compiler){
+ const required=decisionEdges(compiler);
+ const missing=required.filter(([from,to])=>!(edges[from]??[]).includes(to)).map(([from,to])=>({from,to}));
+ return {ok:missing.length===0,checked:required.length,missing};
+}
+
 export function auditKnowledgeRoutes(root=DEFAULT_ROOT){
  root=path.resolve(root);const compiler=existsSync(path.join(root,'references/cinema'));
  const local=file=>path.relative(root,file).replaceAll('\\','/');
@@ -38,9 +69,11 @@ export function auditKnowledgeRoutes(root=DEFAULT_ROOT){
  const unreachable=required.filter(f=>!seen.has(f)).map(local);
  const entry=readFileSync(path.join(root,'SKILL.md'),'utf8');
  const mandatoryLinked=entry.includes('modules/prompt-writing-sop.md');
- return {ok:!broken.length&&!unreachable.length&&mandatoryLinked,mandatoryLinked,broken,unreachable,
+ const graph=Object.fromEntries([...edges].map(([k,v])=>[local(k),v.map(local)]));
+ const decisionHandoffs=auditDecisionHandoffs(graph,compiler);
+ return {ok:!broken.length&&!unreachable.length&&mandatoryLinked&&decisionHandoffs.ok,mandatoryLinked,broken,unreachable,decisionHandoffs,
   facts:{cinemaBodies:cinema.length,masterBodies:masters.length,writingResources:writing.length,reachableMarkdown:seen.size},
-  edges:Object.fromEntries([...edges].map(([k,v])=>[local(k),v.map(local)]))};
+  edges:graph};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const r=auditKnowledgeRoutes();const {edges,...summary}=r;

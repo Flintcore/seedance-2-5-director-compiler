@@ -234,12 +234,12 @@ Hand the relevant action decisions and changing state to the compiler through th
 
 - each shot's start body state, contact and incoming momentum in that shot's opening, preserving the previous shot's end state;
 - linked attacks/responses, paths, contact, force, inertia and feedback in the relevant shot paragraphs; concise temporal connectors carry overlaps instead of giving each micro-phase its own sentence and pause;
-- the shot's actual lighting relationship and physically caused changes or approved stability in its `光影：` sentence, without inventing a new effect or changing deliberate shadow/occlusion;
-- action sounds from the relevant 1–3 established in-scene sources, including fantasy sources under their world rules, with event timing and perspective, in that shot's `现场声：` sentence; a pass, hard contact and residual vibration can form a distinct envelope rather than a uniform wall of noise; no added BGM;
+- the shot's actual lighting relationship and physically caused changes or approved stability alongside the event, without inventing a new effect or changing deliberate shadow/occlusion; shared light belongs in the environment block, not a mandatory per-shot closing sentence;
+- action sounds from relevant established in-scene sources, including fantasy sources under their world rules, with event timing and perspective alongside the action; a pass, hard contact and residual vibration can form a distinct envelope rather than a uniform wall of noise; shared ambience belongs in the sound block, with no source-count quota or added BGM;
 - end body state, contact and outgoing momentum in each shot's ending, with the ending state in the last shot;
 - exact action dialogue embedded in Chinese double quotes in the continuous visual event; its speaker, timing, delivery and reactions stay alongside it, outside the quote by default;
 - 最终七块以编写 SOP 和元模板为准；场景几何/开场站位归【空间】，背景活动/共享光向归【环境】，持续声与开关归【声音】，致命事项归【不可出错】；人物动态仍在【时间线】，不靠末尾约束修补矛盾。
 
 In final action prose, name the initiator, recipient and body/weapon owner using the canonical names from the asset binding, including at cuts; do not let 他/它/自己/对方 obscure who strikes, grips or receives contact. Internal role IDs stay internal. Apply [the naming contract](../references/model/nine-layer-schema.md) without changing the IR or exact dialogue.
 
-Keep the action contract internal. End the formal output with the last shot's on-set sound sentence; no closing constraints card or extra action contract follows it.
+Keep the action contract internal. Compile through the current [seven-block template](prompt-template.md): local action sound stays with its event, shared sound follows the timeline, and the formal prompt ends with 【不可出错】. Do not append an extra action contract or review card.
