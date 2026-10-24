@@ -12,7 +12,7 @@ Mark the exact collision:
 - camera movement hiding the spatial relation or contact that the shot must explain;
 - many references defining the same identity or importing conflicting people, voices, motion, or scenery;
 - UI/text precision competing with action and performance;
-- entry or exit safety zones overloaded with new story events.
+- entry or exit state information overloaded with new story events.
 
 ## Simplification Order
 

@@ -15,6 +15,9 @@ hard_contracts:
 
   reference_assets:
     maximum_total: 50
+    maximum_images: 30
+    maximum_videos: 10
+    maximum_audios: 10
     counting_rule: image_video_audio_combined
     applies_to: one_generated_segment
 
@@ -24,7 +27,7 @@ hard_contracts:
     audio: "@audioN"
     numbering: first_use_per_type_from_1_for_new_prompt_preserve_mapping_for_augmentation
     occurrence: once_per_unique_source
-    location: "素材绑定"
+    location: "参考绑定"
     source_locator_output: forbidden
 
   boundary_states:
@@ -32,21 +35,18 @@ hard_contracts:
     fixed_hold_duration: none
 
 output_format:
-  style: six-part-shot-prose
+  style: seven-block-event-prose
   authority: user_output_preference_not_model_mechanism
-  order:
-    - "风格"
-    - "素材绑定"
-    - "全局约束"
-    - "本段戏剧任务"
-    - "本段情绪总控"
-    - "镜头 blocks"
-  shot_heading: "镜头N｜M:SS-M:SS"
+  order: ["本段目标", "参考绑定", "空间", "环境", "时间线", "声音", "不可出错"]
+  dialogue_order_exception: ["本段目标", "参考绑定", "空间", "声音", "环境", "时间线", "不可出错"]
+  shot_heading: "【M:SS-M:SS】镜头N optional_title"
   shot_title_timing: coarse_editorial_budget_not_exact_execution
   shot_body_timing: event_phrase_and_emotional_triggers_no_numeric_execution_schedule
   exact_time_in_story_text: preserve_original_dialogue_and_visible_text
   shot_body: one_continuous_prose_paragraph
-  required_shot_sentences: ["光影", "现场声"]
+  required_shot_sentences: []
+  local_light_sound: woven_into_events
+  shared_light_sound: environment_and_sound_sections
   dialogue:
     placement: inline_in_shot_prose_at_speaking_moment
     quotation: chinese_double_quotes
@@ -61,14 +61,9 @@ output_format:
     prop_text_quotes: not_automatically_speech
     authority: user_writing_preference_not_platform_guarantee
   no_assets_text: "无外部参考素材"
-  global_constraints:
-    scope: established_segment_shared_facts_with_scoped_exceptions
-    no_extra_text: "无额外全局约束。"
-    asset_tokens: forbidden
-    opening_spatial_baseline: initial_only_then_updated_by_narrated_movement
-    shot_composition: project_previous_world_state_through_current_camera
-    dynamic_staging: retained_in_relevant_shot_prose
-  ending: last_shot_onset_sound_sentence
+  shared_facts: world_geometry_in_space_background_in_environment_audio_in_sound
+  critical_constraints: few_concrete_items_at_end_no_fixed_quota
+  ending: critical_constraints_section
   self_check_section: forbidden
   character_limit: unknown
   new_design_style:
@@ -83,3 +78,12 @@ unknown_field_policy:
   - Do not infer camera-control parameters.
   - Do not infer a separate negative-prompt field.
   - Do not infer switches, guarantees, or capabilities absent from this registry.
+
+generation_modes:
+  reference: scoped_reference_not_hard_first_frame
+  first_last: actual_first_frame_and_last_frame_inputs
+  first_frame: actual_first_frame_input
+  text: no_external_inputs
+  edit: source_video_with_replacement_and_preservation_scope
+  extend: actual_source_video_and_boundary_state
+  evidence: "../writing/modes-and-evidence.md"

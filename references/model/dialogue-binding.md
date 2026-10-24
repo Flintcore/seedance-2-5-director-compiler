@@ -8,7 +8,7 @@ Embed exact speech at its speaking moment inside the shot's continuous prose, us
 父亲看着女儿，停一拍，语气放缓地说：“门没有锁，是我们一直没推。”女儿听完才转向门。
 ```
 
-This is a local excerpt, not a complete prompt. A complete shot still begins with camera information and its initial visible frame, develops the event and ends with `光影：` and `现场声：`. There is no separate dialogue tail. Do not move the spoken words out of the event or repeat them in the sound sentence. When nobody speaks, preserve the action without inventing a speech placeholder.
+This is a local excerpt, not a complete prompt. A complete shot still begins with camera information and its initial visible frame, develops the character event and carries local light/sound changes at their actual moment. Shared lighting/sound belongs to environment/sound blocks; fixed tail labels are optional, not required. There is no separate dialogue tail. Do not move the spoken words out of the event or repeat them in the sound sentence. When nobody speaks, preserve the action without inventing a speech placeholder.
 
 A longer utterance may need an exact mid-line pause or performance turn. Only then insert `【non-spoken performance direction】` at that position inside the double quotes:
 
@@ -42,7 +42,7 @@ dialogue_event:
       text: # only the consecutive source words heard in this shot
 ```
 
-`exact_text` stores the full actual spoken words and punctuation only. Preserve the approved shot-local portions separately, using the existing L1 or optional `fragments` (shot ID plus consecutive source text); their concatenation equals `exact_text`. Keep necessary timing, pauses, source visibility and optional insertion positions in delivery/context, never mixed into that source text. This is internal reasoning, not another required output table or file. Voice assets belong in `【素材绑定】`; the shot's `现场声：` contains the relevant 1–3 real-world sources and their timing/perspective without repeating spoken text or adding BGM. Full layout belongs to [the canonical schema](nine-layer-schema.md).
+`exact_text` stores the full actual spoken words and punctuation only. Preserve the approved shot-local portions separately, using the existing L1 or optional `fragments` (shot ID plus consecutive source text); their concatenation equals `exact_text`. Keep necessary timing, pauses, source visibility and optional insertion positions in delivery/context, never mixed into that source text. This is internal reasoning, not another required output table or file. Voice assets belong in `【参考绑定】`; the sound block carries stable layers and voice identity, while local sound and exact words stay in their actual shot. No source-count quota or repeated quote is added; user music choices retain their scope. Full layout belongs to [the canonical schema](nine-layer-schema.md).
 
 ## On-Screen Speech and Listening
 
@@ -75,7 +75,7 @@ Bind each voice asset to its declared role and responsibility:
 @audio1：定义父亲的声线身份｜继承：已锁音色、口音与发声质感；当场速度、重音、音量、气息和停顿按各镜策略及身体状态表演，明确锁定的参考说法优先｜不继承：原素材台词、背景人声、音乐、画面人物或环境｜作用范围：父亲全部台词
 ```
 
-This local asset example belongs only inside `【素材绑定】`. In shot prose refer to `父亲` or `父亲声源` without repeating the asset token. An image defines appearance, a motion reference defines approved movement, and audio defines approved sound qualities; none silently creates a speaking character.
+This local asset example belongs only inside `【参考绑定】`. In shot prose refer to `父亲` or `父亲声源` without repeating the asset token. An image defines appearance, a motion reference defines approved movement, and audio defines approved sound qualities; none silently creates a speaking character.
 
 ## Speech Across a Cut
 
@@ -93,4 +93,4 @@ Picture may cut at a pause or during fluent speech, stay on a listener, show an 
 
 ## 发声归属与名称
 
-每次开口、续说或画外声提示沿用素材绑定/用户设定的角色统一名称，并点名真实交谈对象，不用“他继续说”让反打中的听者接管声音。实际台词和原画面文字中的代词逐字保留；新插入的 `【非发声表演说明】` 使用角色名称及明确视线/动作对象，原文要念出的括号文字另按原文保护。详见 [角色统一名称与动作归属](nine-layer-schema.md#角色统一名称与动作归属)，不追加新字段或自检。
+每次开口、续说或画外声提示沿用参考绑定/用户设定的角色统一名称，并点名真实交谈对象，不用“他继续说”让反打中的听者接管声音。实际台词和原画面文字中的代词逐字保留；新插入的 `【非发声表演说明】` 使用角色名称及明确视线/动作对象，原文要念出的括号文字另按原文保护。详见 [角色统一名称与动作归属](nine-layer-schema.md)，不追加新字段或自检。

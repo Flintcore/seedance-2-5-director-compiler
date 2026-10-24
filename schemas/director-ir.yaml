@@ -118,7 +118,7 @@ properties:
       rhythm:
         type: string
         minLength: 1
-        description: "已有节奏曲线、主情绪的节奏与温度；输出情绪总控从此投影，不新增属性"
+        description: "已有节奏曲线、主情绪的节奏与温度；输出本段目标的情绪方向从此投影，不新增属性"
       look_and_sound:
         type: string
         minLength: 1
@@ -180,7 +180,7 @@ properties:
         sound:
           type: string
           minLength: 1
-          description: "实际声源、远近与发生时机，编译为本镜现场声句；对白触发、逐字文本与反应编译到同一镜头事件中；双引号对白之外默认承载情绪与动作，长对白中途说明为条件式非发声标注"
+          description: "实际声源、远近与发生时机，编译到声音发生处，共享底声归声音块；对白触发、逐字文本与反应编译到同一镜头事件中；双引号对白之外默认承载情绪与动作，长对白中途说明为条件式非发声标注"
         transition:
           type: string
           minLength: 1

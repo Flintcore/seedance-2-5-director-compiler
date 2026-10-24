@@ -1,10 +1,12 @@
 # Model Reference Router
 
+当前先执行 [必读写作 SOP](../../modules/prompt-writing-sop.md)；本入口只选择相关知识。全部现有专题和大师入口见 [知识调用地图](../writing/knowledge-map.md)。
+
 This directory is the compiler-domain authority. Read only the references needed by the active task.
 
 | Reference | Read when |
 |---|---|
-| `capability-registry.yaml` | every full compilation; duration, asset, safety-zone, or dialogue contract |
+| `capability-registry.yaml` | every full compilation; duration, asset, generation-mode, or dialogue contract |
 | `nine-layer-schema.md` | every full prompt or structural prompt repair; compatibility filename for the native shot schema |
 | `dialogue-binding.md` | any spoken line, narration, device voice, voice reference, or speaker failure |
 | `continuity.md` | cross-segment sequences, continuation, entry/exit matching, momentum, or sound bridges; read its cross-segment parts only after the boundary gate, while ordinary scenes use shot-level states |

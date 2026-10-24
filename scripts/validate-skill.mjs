@@ -10,6 +10,12 @@ export const DEFAULT_SKILL_ROOT = path.resolve(SCRIPT_DIR, "..");
 export const MAX_MASTER_INDEX_BYTES = 30000;
 
 const REQUIRED_FILES = [
+  "modules/prompt-writing-sop.md",
+  "modules/prompt-template.md",
+  "references/writing/knowledge-map.md",
+  "references/writing/variants.md",
+  "references/writing/modes-and-evidence.md",
+  "scripts/audit-knowledge-routes.mjs",
   "SKILL.md",
   "README.md",
   "VERSION",

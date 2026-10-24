@@ -77,7 +77,7 @@ Use for sustained combat, weapons, 1vN, heavy weapons, powers, or dense projecti
 
 ## Internal Action Contract
 
-Keep this structure internal and sparse; it is a thinking/handoff aid, not a mandatory serialized document. Compile its content into the relevant continuous shot paragraphs of the current six-part prompt. Each paragraph ends with its concrete `光影：` and `现场声：` sentences; that shot's exact audible words appear once in Chinese double quotes at their speaking moment, with delivery and action outside the quote by default. Speech crossing a picture cut keeps its original source and places each consecutive source portion in the shot where it is heard, rather than front-loading the whole line. Body pose, contact, momentum and the ending state remain in the corresponding shot, not an extra tail field. Do not print a second prompt format.
+Keep this structure internal and sparse; it is a thinking/handoff aid, not a mandatory serialized document. Compile its content into the relevant continuous shot paragraphs of the current seven-block prompt. Concrete light changes and sound effects stay with their events; shared layers appear once in environment/sound blocks; that shot's exact audible words appear once in Chinese double quotes at their speaking moment, with delivery and action outside the quote by default. Speech crossing a picture cut keeps its original source and places each consecutive source portion in the shot where it is heard, rather than front-loading the whole line. Body pose, contact, momentum and the ending state remain in the corresponding shot, not an extra tail field. Do not print a second prompt format.
 
 ```yaml
 action_contract:
@@ -238,8 +238,8 @@ Hand the relevant action decisions and changing state to the compiler through th
 - action sounds from the relevant 1–3 established in-scene sources, including fantasy sources under their world rules, with event timing and perspective, in that shot's `现场声：` sentence; a pass, hard contact and residual vibration can form a distinct envelope rather than a uniform wall of noise; no added BGM;
 - end body state, contact and outgoing momentum in each shot's ending, with the ending state in the last shot;
 - exact action dialogue embedded in Chinese double quotes in the continuous visual event; its speaker, timing, delivery and reactions stay alongside it, outside the quote by default;
-- applicable short delivery switches once in `【全局约束】`; size, support and staging relations remain positive scene descriptions rather than a negative tail list.
+- 最终七块以编写 SOP 和元模板为准；场景几何/开场站位归【空间】，背景活动/共享光向归【环境】，持续声与开关归【声音】，致命事项归【不可出错】；人物动态仍在【时间线】，不靠末尾约束修补矛盾。
 
-In final action prose, name the initiator, recipient and body/weapon owner using the canonical names from the asset binding, including at cuts; do not let 他/它/自己/对方 obscure who strikes, grips or receives contact. Internal role IDs stay internal. Apply [the naming contract](../references/model/nine-layer-schema.md#角色统一名称与动作归属) without changing the IR or exact dialogue.
+In final action prose, name the initiator, recipient and body/weapon owner using the canonical names from the asset binding, including at cuts; do not let 他/它/自己/对方 obscure who strikes, grips or receives contact. Internal role IDs stay internal. Apply [the naming contract](../references/model/nine-layer-schema.md) without changing the IR or exact dialogue.
 
 Keep the action contract internal. End the formal output with the last shot's on-set sound sentence; no closing constraints card or extra action contract follows it.

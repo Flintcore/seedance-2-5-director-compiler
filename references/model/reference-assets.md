@@ -18,10 +18,10 @@ asset:
   instance_effect: none | declared_instance
 ```
 
-Compile into the second part, `【素材绑定】`, after `【风格】`. This is a binding excerpt, not a complete prompt:
+Compile into the second part, `【参考绑定】`, after `【本段目标】`. This is a binding excerpt, not a complete prompt:
 
 ```text
-【素材绑定】@image1为命名人物的外观参考；@video1为已批准动作或摄影机路径的参考。
+【参考绑定】@image1为命名人物的外观参考；@video1为已批准动作或摄影机路径的参考。
 ```
 
 ## Canonical Placeholder Contract
@@ -31,13 +31,12 @@ Compile into the second part, `【素材绑定】`, after `【风格】`. This i
 - When augmenting an existing prompt, preserve its canonical source-to-placeholder mappings and binding order, including gaps. Append each genuinely new source at the highest existing number of its media type plus 1 (or 1 if that type is absent). Reuse an already bound source and merge its new duties; do not renumber or replace the existing image, video, or audio references. Count unique sources, not the largest numeric suffix. This preserves established bindings, not malformed aliases or repeated occurrences.
 - Use lowercase English type names, no hyphen, underscore, space, Chinese alias, original filename, or path.
 - Keep paths, filenames, URLs, upload labels, and platform-native IDs only in the internal source ledger.
-- Emit each canonical placeholder exactly once in the entire formal prompt, inside `【素材绑定】`.
-- Merge multiple duties and disjoint time ranges for the same source into its single binding item. Elsewhere, including `【全局约束】` and inline speaking events, use the story's natural name, such as `父亲`, `旧车站`, `起身动作`, or `父亲声源`, without another `@`.
-- Without external references, keep `【素材绑定】` and write `无外部参考素材`; place necessary shared character or setting facts in `【全局约束】` instead. Do not invent an asset token to fill the section. Neither static global facts nor reference duties replace the current pose, contact, gaze, or spatial relation inside each shot.
+- Emit each canonical placeholder exactly once in the entire formal prompt, inside `【参考绑定】`.
+- 最终七块以编写 SOP 和元模板为准；场景几何/开场站位归【空间】，背景活动/共享光向归【环境】，持续声与开关归【声音】，致命事项归【不可出错】；人物动态仍在【时间线】，不靠末尾约束修补矛盾。
 
 The placeholder is deliberately a convenient replacement token. It does not claim that the destination platform has already bound the asset.
 
-A character binding also anchors the canonical story name: `@image1=小明的外观参考` leads to `小明` in later prose, not 他/自己 or a rotating role alias. Separate face, costume, voice and previs references for that character share the same name. Each new descriptive sentence and named target/owner follows [the naming contract](nine-layer-schema.md#角色统一名称与动作归属); no extra name table or repeated asset token is needed. Exact dialogue and quoted prop text keep their original words.
+A character binding also anchors the canonical story name: `@image1=小明的外观参考` leads to `小明` in later prose, not 他/自己 or a rotating role alias. Separate face, costume, voice and previs references for that character share the same name. Each new descriptive sentence and named target/owner follows [the naming contract](nine-layer-schema.md); no extra name table or repeated asset token is needed. Exact dialogue and quoted prop text keep their original words.
 
 ## Separation of Duties
 

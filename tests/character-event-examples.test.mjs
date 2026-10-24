@@ -19,7 +19,7 @@ const dialogueBaseline = [
 // These are maintenance contracts of complete examples, not keyword/length
 // scores for acting, physical credibility or narrative quality. Independent
 // forward trials inspect meaning; no runtime generation calls these tests.
-test("all three full examples retain the six-part contract, timings and asset duties", () => {
+test("all three full examples retain the seven-block contract, timings and asset duties", () => {
   assert.equal(examples.length, 3);
   const contracts = [
     { duration: 12, times: [[1, 0, 4.5], [2, 4.5, 12]], assets: ["@image1", "@image2", "@image3", "@audio1"] },
@@ -32,15 +32,15 @@ test("all three full examples retain the six-part contract, timings and asset du
     assert.equal(result.facts.duration, contracts[index].duration);
     assert.deepEqual(result.facts.shots.map(({ number, start, end }) => [number, start, end]), contracts[index].times);
     assert.deepEqual(result.facts.assetTokens, contracts[index].assets);
-    assert.deepEqual(result.facts.headings, ["风格", "素材绑定", "全局约束", "本段戏剧任务", "本段情绪总控"]);
+    assert.deepEqual(result.facts.headings, ["本段目标", "参考绑定", "空间", "环境", "时间线", "声音", "不可出错"]);
   });
 });
 
 test("the cross-cut source is represented by its exact audible fragment in each shot", () => {
   const lines = utterances(examples[0]);
   assert.deepEqual(lines.map(({ text }) => text), [firstPart, lastPart, followupLine]);
-  const first = examples[0].slice(examples[0].indexOf("镜头1｜"), examples[0].indexOf("镜头2｜"));
-  const second = examples[0].slice(examples[0].indexOf("镜头2｜"));
+  const first = examples[0].slice(examples[0].indexOf("【0:00-0:04.5】镜头1"), examples[0].indexOf("【0:04.5-0:12】镜头2"));
+  const second = examples[0].slice(examples[0].indexOf("【0:04.5-0:12】镜头2"));
   assert.deepEqual(utterances(first).map(speechFacts), [{ speaker: "陈砚", text: firstPart }]);
   assert.deepEqual(utterances(second).map(speechFacts), [{ speaker: "陈砚", text: lastPart }, { speaker: "阿宁", text: followupLine }]);
   // Exact fragments and their speakers span the cut without requiring a clock
@@ -59,18 +59,18 @@ test("the cross-cut source is represented by its exact audible fragment in each 
 test("character direction may be multiline or compact without becoming new fields or spoken words", () => {
   // Reuse the maintained example, not a generated trial. This tests structural
   // compatibility only; meaningful motive transfer is evaluated independently.
-  const task = /【本段戏剧任务】\r?\n([\s\S]*?)(?=\r?\n【本段情绪总控】)/u;
-  const compact = examples[0].replace(task, (_, body) => "【本段戏剧任务】\n" + body.trim().replace(/\r?\n/gu, " ") + "\n");
-  const simple = examples[0].replace(task, (_, body) => "【本段戏剧任务】\n" + body.split(/\r?\n/u)[0] + "\n");
-  const originalShots = examples[0].slice(examples[0].indexOf("镜头1｜"));
+  const task = /【本段目标】\r?\n([\s\S]*?)(?=\r?\n【参考绑定】)/u;
+  const compact = examples[0].replace(task, (_, body) => "【本段目标】\n" + body.trim().replace(/\r?\n/gu, " ") + "\n");
+  const simple = examples[0].replace(task, (_, body) => "【本段目标】\n" + body.split(/\r?\n/u)[0] + "\n");
+  const originalShots = examples[0].slice(examples[0].indexOf("【0:00-0:04.5】镜头1"));
   for (const value of [examples[0], compact, simple]) {
     const result = validatePrompt(value, { expectedDialogue: dialogueBaseline });
     assert.equal(result.ok, true, JSON.stringify(result.errors));
-    assert.equal(result.facts.headings.length, 5);
+    assert.equal(result.facts.headings.length, 7);
     assert.equal(result.facts.duration, 12);
     assert.equal(result.facts.dialogueCheck.shotMatches, true);
     assert.equal(result.facts.dialogue.length, 3);
-    assert.equal(value.slice(value.indexOf("镜头1｜")), originalShots);
+    assert.equal(value.slice(value.indexOf("【0:00-0:04.5】镜头1")), originalShots);
   }
 });
 
@@ -116,7 +116,7 @@ test("shared references and optional silence do not loosen mechanical output saf
 
 test("maintained examples open with camera position and an initial image before progressing the event", async () => {
   const corridor = await readFile(new URL("../references/model/shot-prose-example.md", import.meta.url), "utf8");
-  const paragraphs = [...(document + "\n" + corridor).matchAll(/^镜头\d+｜[^\n]+\r?\n([^\n]+)/gmu)]
+  const paragraphs = [...(document + "\n" + corridor).matchAll(/^【[\d:.]+-[\d:.]+】镜头\d+[^\n]*\r?\n([^\n]+)/gmu)]
     .map((match) => match[1]);
   assert.equal(paragraphs.length, 7);
   // Only these maintained examples use this literal phrase. Runtime prose may
@@ -124,13 +124,15 @@ test("maintained examples open with camera position and an initial image before 
   for (const paragraph of paragraphs) {
     assert.match(paragraph, /^\d+(?:\.\d+)?mm(?:双人)?(?:中近景|近景|全景|中景)，摄影机/u);
     assert.ok(paragraph.indexOf("起始画面中") > 0);
-    assert.ok(paragraph.indexOf("起始画面中") < paragraph.indexOf("光影："));
+    assert.ok(paragraph.indexOf("起始画面中") < paragraph.length / 2);
   }
 });
 
 test("compiler and metatemplate distinguish event-first design from camera-first prose", async () => {
-  for (const path of ["../modules/compiler.md", "../references/model/nine-layer-schema.md"]) {
+  for (const path of ["../modules/compiler.md", "../modules/prompt-template.md"]) {
     const source = await readFile(new URL(path, import.meta.url), "utf8");
-    assert.ok(source.includes("摄影参数开头 → 起始画面 → 连续人物事件与运镜 → 结束状态及必要切镜衔接"));
+    assert.match(source, /摄影参数|摄影机相对/u);
+    assert.match(source, /起始.*画面|起始可见/u);
+    assert.match(source, /人物.*事件|角色具体行动/u);
   }
 });

@@ -13,12 +13,12 @@ const mapped = [{ speaker: '陈砚', text: whole, fragments: [
 function prompt(lines) {
   const duration = Math.max(4, lines.length * 2);
   const time = seconds => '0:' + String(seconds).padStart(2, '0');
-  return ['【风格】数字摄影。', '【素材绑定】无外部参考素材。', '【全局约束】无额外全局约束。',
-    '【本段戏剧任务】保留本段对话。', '【本段情绪总控】平静交流。',
-    ...lines.map((speech, index) => '镜头' + (index + 1) + '｜' + time(index * 2) + '-' + time(index === lines.length - 1 ? duration : (index + 1) * 2)
-      + '\n50mm中景，平视固定。起始画面中，两人站在桌边。'
-      + speech + (index === lines.length - 1 ? '话音落下后，两人仍站在桌边。' : '')
-      + '光影：工作灯照亮桌边。现场声：持续的通风声。')].join('\n');
+  return ['【本段目标】数字摄影，保留本段对话，平静交流。', '【参考绑定】无外部参考素材。', '【空间】两人在同一张桌旁。',
+    '【环境】工作灯照着桌边。', '【时间线】',
+    ...lines.map((speech, index) => '【' + time(index * 2) + '-' + time(index === lines.length - 1 ? duration : (index + 1) * 2) + '】镜头' + (index + 1)
+      + '\n50mm中景，平视固定。起始画面中，两人站在桌边。' + speech
+      + (index === lines.length - 1 ? '话音落下后，两人仍站在桌边。' : '硬切到镜头' + (index+2) + '。')),
+    '【声音】持续的通风声；对白由原声源自然跨切。', '【不可出错】原句、标点和说话人保持。'].join('\n');
 }
 const two = () => prompt(['陈砚说：“' + first + '”', '陈砚的画外音继续说：“' + last + '”']);
 const facts = result => result.facts ?? result;

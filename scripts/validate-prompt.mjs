@@ -1,58 +1,51 @@
-#!/usr/bin/env node
+// Shared seven-block contract implementation; installed as an independent file in each skill.
+// Development only: no automatic generation gate; syntax does not verify acting or rendered video.
+import { lexInlineText } from './inline-dialogue.mjs';
+import { compareDialogue } from './dialogue-baseline.mjs';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-// Development-only structural checks, not photography/performance/physics QA.
-// Real-world sound-source count and reference-source identity are not inferred.
-import { lexInlineText } from "./inline-dialogue.mjs";
-import { compareDialogue } from "./dialogue-baseline.mjs";
-import { readFile } from "node:fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-export const PROMPT_HEADINGS = ["风格", "素材绑定", "全局约束", "本段戏剧任务", "本段情绪总控", "镜头"];
-const PREAMBLE = PROMPT_HEADINGS.slice(0, -1);
-const SECTION_LINE = /^\s*【([^】]+)】\s*(.*?)\s*$/u;
-const SHOT_LINE = /^\s*镜头([1-9]\d*)\s*｜\s*(\d{1,2}:\d{2}(?:\.\d+)?)\s*-\s*(\d{1,2}:\d{2}(?:\.\d+)?)\s*$/u;
-const SHOTISH_LINE = /^\s*(?:【\s*)?镜头\s*\d/u;
+export const PROMPT_HEADINGS = ['本段目标','参考绑定','空间','环境','时间线','声音','不可出错'];
+export const DIALOGUE_ORDER = ['本段目标','参考绑定','空间','声音','环境','时间线','不可出错'];
+const HEADER = /^\s*【([^】]+)】\s*(.*?)\s*$/u;
+const NODE = /^\s*【(\d{1,2}:\d{2}(?:\.\d+)?)-(\d{1,2}:\d{2}(?:\.\d+)?)】\s*(?:镜头([1-9]\d*)\s*)?(.*)$/u;
 const ASSET_TOKEN = /@(image|video|audio)([1-9]\d*)(?![A-Za-z0-9_.\/-])/gu;
 const AT_TOKEN = /@[^@\s=＝：:，。；;、【】（）(){}]*/gu;
 const ASSET_RANGE = /@(image|video|audio)[1-9]\d*\s*(?:-|–|—|~|～|至)\s*@?(?:(?:image|video|audio))?[1-9]\d*/u;
 const SOURCE_LOCATOR = /(?:file:\/\/|https?:\/\/|[A-Za-z]:[\\/]|(?:^|[\s：｜|=])\.{1,2}[\\/]|(?:^|[\s：｜|=])[^\r\n：｜|=]*?\.(?:png|jpe?g|webp|gif|bmp|tiff?|heic|mp4|mov|mkv|avi|webm|mp3|wav|m4a|flac|aac)(?=$|[\s，。；;｜|]))/imu;
-const LEGACY_HEADING = /(?:通用约束栏|本段情节|本段故事内容|场景\s*\+\s*调性|收尾约束|^约束$|头锁区|元信息|风险预判|衔接入|时间线|衔接出|参考图权重|执行约束|正向化检查|自检|自查|验收|光影风格卡|摄影机画面质感|音效风格卡|声音设计|场景空间关系|空间约束|物理空间约束|人物比例约束|表演风格|镜头与机位设置|运镜分段|Style Lock)/u;
-const LEGACY_ROW = /^\s*(?:[─*-]\s*)?(?:通用约束栏|本段情节|本段故事内容|收尾约束|头锁区|本镜NOT|光影色彩风格|角色外观|场景外观|机位|景别|焦距|运镜|叙述|表演)\s*[:：]/mu;
-
-function normalize(input) {
-  const text = input.replace(/^\uFEFF/u, "").replace(/\r\n?/g, "\n").trim();
-  const fenced = /^(\x60{3,}|~{3,})[^\n]*\n([\s\S]*?)\n\1$/u.exec(text);
+const LEGACY = /风格|素材绑定|全局约束|本段戏剧任务|本段情绪总控|通用约束|头锁|收尾约束|自检|验收/u;
+function normalize(s) {
+  const text=String(s).replace(/^\uFEFF/u,'').replace(/\r\n?/g,'\n').trim();
+  const fenced=/^(\x60{3,}|~{3,})[^\n]*\n([\s\S]*?)\n\1$/u.exec(text);
   return fenced ? fenced[2].trim() : text;
 }
-function parseTime(value) {
-  const [minutes, seconds] = value.split(":").map(Number);
-  return Number.isFinite(minutes) && Number.isFinite(seconds) && seconds < 60 ? minutes * 60 + seconds : null;
+export function parseTime(v) {
+  const [m,s]=v.split(':').map(Number);
+  return Number.isFinite(m)&&Number.isFinite(s)&&s<60 ? m*60+s : null;
 }
-function scanPrompt(text, options = {}) {
-  const lines = text.split("\n"), sections = [], shots = [], malformedShots = [];
-  const structuralLines = lexInlineText(text, options).structuralText.split("\n");
-  for (const [index, line] of structuralLines.entries()) {
-    const match = SHOT_LINE.exec(line);
-    if (match) shots.push({ number: Number(match[1]), start: parseTime(match[2]), end: parseTime(match[3]), line: index + 1 });
-    else if (SHOTISH_LINE.test(line)) malformedShots.push(index + 1);
-    else {
-      const heading = SECTION_LINE.exec(line);
-      if (heading) sections.push({ name: heading[1].trim(), inlineBody: SECTION_LINE.exec(lines[index])[2], line: index + 1 });
-    }
+function tokens(s) { return [...s.matchAll(ASSET_TOKEN)].map(m=>({token:m[0],type:m[1],number:Number(m[2]),index:m.index})); }
+function scanPrompt(text,options) {
+  const lines=text.split('\n'), structural=lexInlineText(text,options).structuralText.split('\n');
+  const sections=[],shots=[],malformedShots=[];
+  for (const [i,line] of structural.entries()) {
+    const node=NODE.exec(line);
+    if (node) {
+      const raw=NODE.exec(lines[i]);
+      shots.push({number:node[3]?Number(node[3]):null,start:parseTime(node[1]),end:parseTime(node[2]),line:i+1,title:node[3]?raw[4]:'',inlineBody:node[3]?'':raw[4]});
+    } else if (/^\s*(?:镜头\s*\d|【\s*(?:镜头\d|\d+:\d))/u.test(line)) malformedShots.push(i+1);
+    else { const h=HEADER.exec(line);if(h) sections.push({name:h[1],inlineBody:HEADER.exec(lines[i])[2],line:i+1}); }
   }
-  const boundaries = [...sections, ...shots, ...malformedShots.map((line) => ({ line }))].sort((a, b) => a.line - b.line);
-  const body = (item) => {
-    const end = boundaries.find((boundary) => boundary.line > item.line)?.line ?? lines.length + 1;
-    return [item.inlineBody ?? "", ...lines.slice(item.line, end - 1)].join("\n").trim();
+  const boundaries=[...sections,...shots,...malformedShots.map(line=>({line}))].sort((a,b)=>a.line-b.line);
+  const body=item=>{
+    const end=(sections.includes(item)?sections:boundaries).find(x=>x.line>item.line)?.line??lines.length+1;
+    return [item.inlineBody??'',...lines.slice(item.line,end-1)].join('\n').trim();
   };
-  return { lines, sections, shots, malformedShots, body, boundaries };
+  return {lines,sections,shots,malformedShots,boundaries,body};
 }
-function tokens(text) {
-  return [...text.matchAll(ASSET_TOKEN)].map((match) => ({ token: match[0], type: match[1], number: Number(match[2]), index: match.index }));
-}
+
 function assetContract(text, scan, options, errors) {
-  const binding = scan.sections.find((section) => section.name === "素材绑定");
+  const binding = scan.sections.find((section) => section.name === "参考绑定");
   const bindingText = binding ? scan.body(binding) : "";
   const occurrences = tokens(text), bound = tokens(bindingText);
   const unique = [...new Set(occurrences.map((item) => item.token))];
@@ -65,10 +58,10 @@ function assetContract(text, scan, options, errors) {
   const end = binding ? (scan.boundaries.find((item) => item.line > binding.line)?.line ?? scan.lines.length + 1) : 0;
   for (const item of occurrences) {
     const line = text.slice(0, item.index).split("\n").length;
-    if (!binding || line < binding.line || line >= end) errors.push({ code: "ASSET_REFERENCE_LOCATION", message: item.token + " belongs only inside 【素材绑定】" });
+    if (!binding || line < binding.line || line >= end) errors.push({ code: "ASSET_REFERENCE_LOCATION", message: item.token + " belongs only inside 【参考绑定】" });
   }
   for (const token of unique) if (occurrences.filter((item) => item.token === token).length > 1) errors.push({ code: "ASSET_DUPLICATE_REFERENCE", message: token + " must occur exactly once" });
-  if (!bound.length && binding && !/^无外部参考素材[。.]?$/u.test(bindingText)) errors.push({ code: "ASSET_EMPTY_DECLARATION", message: "without references, 【素材绑定】 contains only 无外部参考素材; shared setting facts belong in 【全局约束】" });
+  if (!bound.length && binding && !/^无外部参考素材[。.]?$/u.test(bindingText)) errors.push({ code: "ASSET_EMPTY_DECLARATION", message: "without references, 【参考绑定】 contains only 无外部参考素材; shared setting facts belong in 【空间】和【环境】" });
   if (bound.length && bindingText.includes("无外部参考素材")) errors.push({ code: "ASSET_EMPTY_CONFLICT", message: "no-reference declaration conflicts with bound assets" });
   if (unique.length > 50) errors.push({ code: "ASSET_LIMIT", message: "unique asset count " + unique.length + " exceeds 50" });
   if (options.preserveAssetNumbering !== true) {
@@ -94,92 +87,89 @@ function assetContract(text, scan, options, errors) {
       }
     }
   }
+  for (const [type, limit] of [['image',30],['video',10],['audio',10]]) {
+    if (bound.filter(x=>x.type===type).length>limit) errors.push({code:'ASSET_TYPE_LIMIT',message:type+' exceeds '+limit});
+  }
   return { assets: unique.length, assetTokens: unique };
 }
-function validateShotBody(body, shot, errors, options) {
-  const add = (code, detail) => errors.push({ code, message: "shot " + shot.number + ": " + detail });
-  const lex = lexInlineText(body, { speakerNames: options.speakerNames ?? [], expectedDialogue: options.expectedDialogue ?? [] });
-  for (const error of lex.errors) add(error.code, error.message);
-  if (/^\s*台词\s*[:：]/mu.test(lex.structuralText)) add("LEGACY_DIALOGUE_LINE", "put double-quoted speech inside continuous shot prose, not on a standalone dialogue line");
-  if (/[{}]/u.test(lex.structuralText)) add("LEGACY_DIALOGUE_BRACES", "final prompts use inline double quotes rather than dialogue braces");
-  if (!body.trim()) add("SHOT_BODY_MISSING", "missing continuous visual prose");
-  if (/\n\s*\n/u.test(body)) add("SHOT_PARAGRAPH", "use one prose paragraph, not separate information blocks");
-  const prose = lex.structuralText;
-  const light = [...prose.matchAll(/光影\s*[:：]/gu)], sound = [...prose.matchAll(/现场声\s*[:：]/gu)];
-  if (light.length !== 1) add("SHOT_LIGHT_SENTENCE", "require one 光影： sentence in the prose tail");
-  if (sound.length !== 1) add("SHOT_SOUND_SENTENCE", "require one 现场声： sentence after 光影：");
-  if (light.length === 1 && sound.length === 1) {
-    const a = light[0], b = sound[0];
-    if (a.index >= b.index) add("SHOT_TAIL_ORDER", "光影： precedes 现场声：");
-    else {
-      if (!prose.slice(0, a.index).trim()) add("SHOT_BODY_MISSING", "light and sound labels do not replace the visual event");
-      if (!prose.slice(a.index + a[0].length, b.index).replace(/[\s。；;.]/gu, "")) add("SHOT_LIGHT_EMPTY", "光影： has no content");
-      if (!prose.slice(b.index + b[0].length).replace(/[\s。；;.]/gu, "")) add("SHOT_SOUND_EMPTY", "现场声： has no content");
-    }
+
+
+export function validatePrompt(input,options={}) {
+  const text=normalize(input), scan=scanPrompt(text,options), errors=[];
+  const add=(code,message)=>errors.push({code,message});
+  for(const section of scan.sections) {
+    section.body=scan.body(section);
+    if(!PROMPT_HEADINGS.includes(section.name)) add(LEGACY.test(section.name)?'LEGACY_SECTION':'UNEXPECTED_SECTION','unsupported 【'+section.name+'】');
+    if(!section.body) add('SECTION_EMPTY','empty 【'+section.name+'】');
+    if(/自检|自查|验收/u.test(section.name))add('SELF_CHECK_HEADING','self-check is outside prompt');
+    if(section.name!=='时间线'&&lexInlineText(section.body,options).dialogue.length) add('DIALOGUE_REFERENCE_LOCATION','actual dialogue belongs in its audible timeline node');
   }
-  shot.dialogue = lex.dialogue.map(utterance => ({ ...utterance, shot_id: 'S' + shot.number }));
-  return prose;
-}
-export function validatePrompt(input, options = {}) {
-  const text = normalize(input), scan = scanPrompt(text, options), errors = [];
-  for (const section of scan.sections) {
-    if (!PREAMBLE.includes(section.name)) errors.push({ code: LEGACY_HEADING.test(section.name) ? "LEGACY_SECTION" : "UNEXPECTED_SECTION", message: "unsupported heading at line " + section.line + ": 【" + section.name + "】" });
-    if (/(?:自检|自查|验收|正向化检查)/u.test(section.name)) errors.push({ code: "SELF_CHECK_HEADING", message: "self-check headings are outside the prompt" });
+  for(const name of PROMPT_HEADINGS) {
+    const n=scan.sections.filter(x=>x.name===name).length;
+    if(!n)add('SECTION_MISSING','missing 【'+name+'】');
+    if(n>1)add('SECTION_DUPLICATE','duplicate 【'+name+'】');
   }
-  for (const name of PREAMBLE) {
-    const matches = scan.sections.filter((item) => item.name === name);
-    if (!matches.length) errors.push({ code: "SECTION_MISSING", message: "missing 【" + name + "】" });
-    if (matches.length > 1) errors.push({ code: "SECTION_DUPLICATE", message: "duplicate 【" + name + "】" });
-    if (matches.length === 1 && !scan.body(matches[0])) errors.push({ code: "SECTION_EMPTY", message: "empty 【" + name + "】" });
+  const ordered=scan.sections.map(x=>x.name);
+  if(![PROMPT_HEADINGS,DIALOGUE_ORDER].some(order=>JSON.stringify(order)===JSON.stringify(ordered)))add('SECTION_ORDER','use default seven blocks or V3 sound-after-space order');
+  if(scan.sections[0]?.line!==1||scan.sections[0]?.name!=='本段目标')add('PROMPT_PREFIX','prompt begins with 【本段目标】');
+  for(const line of scan.malformedShots)add('SHOT_HEADING_FORMAT','line '+line+': use 【0:00-0:04】镜头1 or one-take event node');
+  if(!scan.shots.length)add('SHOT_MISSING','timeline needs at least one shot/event node');
+  const timeline=scan.sections.find(x=>x.name==='时间线');
+  const timelineEnd=scan.sections.find(x=>x.line>(timeline?.line??Infinity))?.line??Infinity;
+  const numbered=scan.shots.filter(x=>x.number!==null), continuous=numbered.length===0;
+  if(numbered.length&&numbered.length!==scan.shots.length)add('SHOT_NODE_MIX','do not mix shot numbers and no-cut event nodes');
+  if(continuous&&scan.shots.length&&!/单一连续镜头|同一个连续镜头|一镜到底/u.test(text))add('CONTINUOUS_SCOPE','unnumbered nodes need an explicit continuous-take scope');
+  for(const [i,shot] of scan.shots.entries()) {
+    if(!timeline||shot.line<=timeline.line||shot.line>=timelineEnd)add('SHOT_LOCATION','shot/event node belongs inside 时间线');
+    if(!continuous&&shot.number!==i+1)add('SHOT_NUMBERING','shot numbers start at 1 and stay contiguous');
+    if(shot.start===null||shot.end===null||shot.end<=shot.start)add('SHOT_TIME_FORMAT','invalid time at line '+shot.line);
+    const prev=scan.shots[i-1];
+    if(prev&&shot.start!==null&&prev.end!==null&&Math.abs(shot.start-prev.end)>1e-9)add(shot.start<prev.end?'SHOT_TIME_OVERLAP':'SHOT_TIME_GAP','adjacent budgets must meet');
+    if(i===0&&shot.start!==0)add('SHOT_START','first budget starts at 0:00');
+    let body=scan.body(shot);
+    // An explicit cut declaration can stand between paragraphs; it is still the preceding shot's interface.
+    body=body.replace(/\n\s*\n(?=(?:在[^\n]*?同时，)?(?:硬切|切到|匹配切|声音桥))/gu,'\n');
+    const lex=lexInlineText(body,options);
+    errors.push(...lex.errors);
+    if(!body||lex.structuralText.split(/\n\s*\n/u).length>1)add('SHOT_PARAGRAPH','one continuous prose paragraph per shot/event');
+    if(/^\s*台词\s*[:：]/mu.test(lex.structuralText))add('LEGACY_DIALOGUE_LINE','speech belongs inline at the moment it is heard');
+    if(/[{}]/u.test(lex.structuralText))add('LEGACY_DIALOGUE_BRACES','use double-quoted dialogue');
+    if(/^\s*(?:①|②|③|机位[:：]|景别[:：]|焦段[:：]|表演[:：])/mu.test(lex.structuralText))add('LEGACY_ROW','write continuous scene prose rather than separate technical fields');
+    shot.body=body;shot.structuralBody=lex.structuralText;
+    shot.dialogue=lex.dialogue.map(u=>({...u,shot_id:'S'+(continuous?i+1:shot.number)}));
+    shot.utterances=shot.dialogue;
   }
-  const ordered = scan.sections.map((section) => section.name);
-  if (JSON.stringify(ordered) !== JSON.stringify(PREAMBLE)
-    || scan.sections.some((section) => section.line > (scan.shots[0]?.line ?? Infinity))) errors.push({ code: "SECTION_ORDER", message: "use 风格 → 素材绑定 → 全局约束 → 本段戏剧任务 → 本段情绪总控 → shots; no tail section" });
-  if (scan.boundaries[0]?.line !== 1) errors.push({ code: "PROMPT_PREFIX", message: "the prompt begins at 【风格】" });
-  if (LEGACY_ROW.test(lexInlineText(text, options).structuralText)) errors.push({ code: "LEGACY_ROW", message: "retired or split technical-field row found" });
-  for (const line of scan.malformedShots) errors.push({ code: "SHOT_HEADING_FORMAT", message: "line " + line + ": use 镜头N｜0:00-0:06 without brackets, names, or other fields" });
-  if (!scan.shots.length) errors.push({ code: "SHOT_MISSING", message: "at least one numbered shot is required" });
-  for (const [index, shot] of scan.shots.entries()) {
-    if (shot.number !== index + 1) errors.push({ code: "SHOT_NUMBERING", message: "shot numbers start at 1 and remain contiguous" });
-    if (shot.start === null || shot.end === null || shot.end <= shot.start) errors.push({ code: "SHOT_TIME_FORMAT", message: "invalid or zero-length shot at line " + shot.line });
-    const previous = scan.shots[index - 1];
-    if (previous && shot.start !== null && previous.end !== null && Math.abs(shot.start - previous.end) > 1e-9) errors.push({ code: shot.start < previous.end ? "SHOT_TIME_OVERLAP" : "SHOT_TIME_GAP", message: "shot " + shot.number + " must start at the previous endpoint" });
-    validateShotBody(scan.body(shot), shot, errors, options);
+  const duration=scan.shots.at(-1)?.end??null;
+  if(duration!==null&&(duration<4||duration>30))add('DURATION_RANGE','segment duration must be 4–30 seconds');
+  const structural=lexInlineText(text,options).structuralText;
+  if(/[{}]/u.test(structural))add('LEGACY_DIALOGUE_BRACES','braces are not the final dialogue/binding syntax');
+  if(/^\s*[─*]\s*(?:素材绑定|参考绑定|角色外观|场景外观)[:：]/mu.test(structural))add('LEGACY_ROW','retired shared-field layout');
+  const asset=assetContract(text,scan,options,errors);
+  const mode=options.generationMode??null;
+  if(mode&&!['reference','first_last','first_frame','text','edit','extend'].includes(mode))add('GENERATION_MODE','unknown explicit generationMode');
+  const refs=tokens(scan.sections.find(x=>x.name==='参考绑定')?.body??'');
+  if(mode==='text'&&refs.length)add('MODE_ASSETS','text mode has no external input');
+  if(mode==='first_last'||mode==='first_frame') {
+    const needed=mode==='first_last'?2:1;
+    if(refs.length!==needed||refs.some(x=>x.type!=='image'))add('MODE_ASSETS','frame mode needs '+needed+' frame image input(s)');
+    if(/不作为首帧|不把[^。\n]*用作首帧|仅作参考/u.test(scan.sections.find(x=>x.name==='参考绑定')?.body??''))add('MODE_FRAME_CONFLICT','actual frame slots conflict with reference-only declaration');
   }
-  const duration = scan.shots.at(-1)?.end ?? null;
-  if (duration !== null && (duration < 4 || duration > 30)) errors.push({ code: "DURATION_RANGE", message: "duration " + duration + "s is outside 4-30s" });
-  if (scan.shots.length && scan.shots[0].start !== 0) errors.push({ code: "SHOT_START", message: "the first shot starts at 0:00" });
-  // Heading ranges are editorial budgets. Body events use causal/phrase cues;
-  // their timing and physical continuity need semantic review, not timed gates.
-  // Seconds in locked dialogue or visible text are content, not instructions.
-  const structural = lexInlineText(text, options).structuralText;
-  if (/[{}]/u.test(structural)) errors.push({ code: "LEGACY_DIALOGUE_BRACES", message: "dialogue braces are retired in final prompts" });
-  for (const section of scan.sections) {
-    if (lexInlineText(scan.body(section)).dialogue.length || /^\s*台词\s*[:：]/mu.test(scan.body(section))) errors.push({ code: "DIALOGUE_REFERENCE_LOCATION", message: "spoken dialogue belongs in shot prose" });
-  }
-  const dialogue = scan.shots.flatMap(shot => shot.dialogue ?? []);
-  const dialogueCheck = compareDialogue(dialogue, options.expectedDialogue);
+  if((mode==='edit'||mode==='extend')&&!refs.some(x=>x.type==='video'))add('MODE_SOURCE','edit/extend needs an actual source video');
+  const dialogue=scan.shots.flatMap(x=>x.dialogue);
+  const dialogueCheck=compareDialogue(dialogue,options.expectedDialogue);
   errors.push(...dialogueCheck.errors);
-  const asset = assetContract(text, scan, options, errors);
-  return { ok: errors.length === 0, errors, facts: { duration, ...asset, headings: ordered, shots: scan.shots, dialogue, dialogueCheck } };
+  return {ok:!errors.length,errors,facts:{duration,...asset,headings:ordered,sections:scan.sections,shots:scan.shots,continuous,mode,dialogue,dialogueCheck}};
 }
 async function main() {
-  const args = process.argv.slice(2), json = args.includes("--json"), preserveAssetNumbering = args.includes("--preserve-asset-numbering");
-  const positional = args.filter((arg) => !["--json", "--preserve-asset-numbering"].includes(arg));
-  if (positional.length > 1 || positional.some((arg) => arg.startsWith("--"))) throw new Error("Usage: node scripts/validate-prompt.mjs [--json] [--preserve-asset-numbering] [prompt-file]");
+  const args=process.argv.slice(2),json=args.includes('--json'),preserveAssetNumbering=args.includes('--preserve-asset-numbering');
+  const files=args.filter(x=>!['--json','--preserve-asset-numbering'].includes(x));
+  if(files.length>1||files.some(x=>x.startsWith('--')))throw Error('Usage: validate-prompt.mjs [--json] [--preserve-asset-numbering] [file]');
   let input;
-  if (positional.length) input = await readFile(path.resolve(positional[0]), "utf8");
-  else {
-    const chunks = [];
-    for await (const chunk of process.stdin) chunks.push(chunk);
-    input = Buffer.concat(chunks).toString("utf8");
-  }
-  const result = validatePrompt(input, { preserveAssetNumbering });
-  if (json) process.stdout.write(JSON.stringify(result, null, 2) + "\n");
-  else if (result.ok) process.stdout.write("valid duration=" + result.facts.duration + "s assets=" + result.facts.assets + " shots=" + result.facts.shots.length + " (structure only)\n");
-  else process.stderr.write(result.errors.map((error) => error.code + ": " + error.message).join("\n") + "\n");
-  if (!result.ok) process.exitCode = 1;
+  if(files.length)input=await readFile(path.resolve(files[0]),'utf8');
+  else {const chunks=[];for await(const x of process.stdin)chunks.push(x);input=Buffer.concat(chunks).toString('utf8');}
+  const r=validatePrompt(input,{preserveAssetNumbering});
+  if(json)process.stdout.write(JSON.stringify(r,null,2)+'\n');
+  else process.stdout.write(r.ok?'valid seven-block structure (not generated-video validation)\n':r.errors.map(x=>x.code+': '+x.message).join('\n')+'\n');
+  if(!r.ok)process.exitCode=1;
 }
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  main().catch((error) => { process.stderr.write((error.stack ?? error.message) + "\n"); process.exitCode = 1; });
-}
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))main().catch(e=>{process.stderr.write(String(e.stack??e)+'\n');process.exitCode=1;});

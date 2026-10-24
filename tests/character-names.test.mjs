@@ -26,7 +26,7 @@ test('curated formal samples keep explicit character references outside source q
 test('example guard catches pronoun regressions without treating source words as character instructions', () => {
   const original = examples[0];
   const name = "女人";
-  const shotStart = original.indexOf('镜头1｜');
+  const shotStart = original.indexOf('【时间线】');
   const changed = original.slice(0, shotStart) + original.slice(shotStart).replace(name, '自己');
   assert.notEqual(changed, original);
   assert.match(descriptions(changed), looseCharacter);
