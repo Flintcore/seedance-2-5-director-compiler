@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: "2026-10-14T03:11:27.772Z"
+generated_at: "2026-10-29T01:37:13.654Z"
 skill: "seedance-2-5-director-compiler"
 maintenance_mode: "curated-manual"
 # Current inventory only; semantic equivalence to the historical source is not asserted.
@@ -9,7 +9,7 @@ inventory:
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "d2f4a7eb81fa3a9bf36975acf7e3c51e654db28c33ca993e6e64ffdcfac1e3f9"
+  aggregate_sha256: "49d1b8ec9009c933e5e848577e45df2092dbfa219ebf52b47ef66ab83d66545f"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
     bytes: 10205
@@ -39,8 +39,8 @@ files:
     bytes: 63339
     sha256: "43faaf1d8bc8e1f8ae08c70ee9af7ba16b00c16b3126db235d5e8806cf928ec2"
   - path: "references/cinema/导演体系/导演判断总纲.md"
-    bytes: 13302
-    sha256: "f523385ce950a25a1c1ab060aa5fd2a9d48a4b3580081f8d33e0cf99ff83d433"
+    bytes: 14379
+    sha256: "c1c2a35ec9a4ede1c60b6b93f71a775a6fd00469db0caf8f6dc92ee445f636ed"
   - path: "references/cinema/导演体系/感知反馈与相对调度.md"
     bytes: 44847
     sha256: "0f568414981b3926304c8a99878931ed663c72c3f406772eda88e76200459763"
@@ -63,14 +63,14 @@ files:
     bytes: 13480
     sha256: "24768b8da7b3955fa502f09278d90e5b7dd017d800b768f86945ed66d1b3e10f"
   - path: "references/cinema/反平庸案例库.md"
-    bytes: 8987
-    sha256: "5fdf2ec241a1eb2ed7f2a486a7951926bb6534d89fedcf138d8e75c49dff5067"
+    bytes: 10277
+    sha256: "f469c9e91eab52d30f8d3b72f0bebf991fd688c652cadb01a3dd9dd8d6fe2a5f"
   - path: "references/cinema/分镜设计知识库_十三讲.md"
     bytes: 16617
     sha256: "6655b3bb12ca83afeac56ce2d0742328d40eb8f0389372b659edbb093276ae84"
   - path: "references/cinema/构图设计参考库.md"
-    bytes: 11278
-    sha256: "9ca12465c538ccad00585c44cf7d82af4fbc5e8e6f25f1c70c812daf9c910cd3"
+    bytes: 14086
+    sha256: "d2f3cbbb9e6c5987c01082d65c1a95b2b5dc5bf5968c07b54781d5400e89d460"
   - path: "references/cinema/光影设计参考库.md"
     bytes: 13696
     sha256: "3e77d9e8ba12418ea544227e9b329f28df87ca3b99b7846d94e666b9e0256f4c"
@@ -87,8 +87,8 @@ files:
     bytes: 11738
     sha256: "d91629177bd710e70a3c6a40266b26b993937073f8f6836ecb6fa87a23677b95"
   - path: "references/cinema/角色行为与动作叙事参考库.md"
-    bytes: 21074
-    sha256: "428bb32bac9e4b7422ef6bf6b319f8d832469f334f9259cf1f4a28d311fc3e65"
+    bytes: 21399
+    sha256: "a97a4e421e89ac840887f067db2ff4655ea8b03afd9942f5aff5528e3ee3e200"
   - path: "references/cinema/角色与场景设定参考库.md"
     bytes: 6438
     sha256: "1e7b6e90cc34df6fb2ba157a049ef2b93f79aa36a10ffb9f612e101bdf52f1f4"

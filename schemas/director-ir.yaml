@@ -172,7 +172,7 @@ properties:
         staging:
           type: string
           minLength: 1
-          description: "人物和关键物的空间关系、注意力/视线落点、头眼身关系及出入画"
+          description: "由世界锚与当前机位推导起始画面：人物/关键物的画左画右、实际前中后景、裁切遮挡、注意力与出入画；行动引起的重排写image_action，镜尾交end_state"
         performance:
           type: string
           minLength: 1

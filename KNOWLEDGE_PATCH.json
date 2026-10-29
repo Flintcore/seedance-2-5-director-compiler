@@ -371,6 +371,49 @@
         }
       ],
       "preserved": "All cinema and master bodies, handbook original text and historical import baseline unchanged. Index discovery is not actual reading or evidence of applied design. Runtime decision/handoff changes belong to the skill layer; no test prompts imported."
+    },
+    {
+      "date": "2026-10-29",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.10",
+        "commit": "ce5c1f8b98ab8beb934e5eabaa8522766e942abd"
+      },
+      "files": [
+        {
+          "source_path": "references/构图设计参考库.md",
+          "target_path": "references/cinema/构图设计参考库.md",
+          "source_sha256": "6874a0a67bf343739cae6ab461d49cb524791ee52f3309810363d6d6b5520e92",
+          "sha256": "d2f3cbbb9e6c5987c01082d65c1a95b2b5dc5bf5968c07b54781d5400e89d460",
+          "target_sha256": "d2f3cbbb9e6c5987c01082d65c1a95b2b5dc5bf5968c07b54781d5400e89d460",
+          "transform": "targeted semantic delta; preserve existing curated film body and local links"
+        },
+        {
+          "source_path": "references/反平庸案例库.md",
+          "target_path": "references/cinema/反平庸案例库.md",
+          "source_sha256": "e79af7c983712fb3681fc05f61421215d4f36e8d082d0065ba07908141a7fd53",
+          "sha256": "f469c9e91eab52d30f8d3b72f0bebf991fd688c652cadb01a3dd9dd8d6fe2a5f",
+          "target_sha256": "f469c9e91eab52d30f8d3b72f0bebf991fd688c652cadb01a3dd9dd8d6fe2a5f",
+          "transform": "targeted semantic delta; preserve existing curated film body and local links"
+        },
+        {
+          "source_path": "references/角色行为与动作叙事参考库.md",
+          "target_path": "references/cinema/角色行为与动作叙事参考库.md",
+          "source_sha256": "a97a4e421e89ac840887f067db2ff4655ea8b03afd9942f5aff5528e3ee3e200",
+          "sha256": "a97a4e421e89ac840887f067db2ff4655ea8b03afd9942f5aff5528e3ee3e200",
+          "target_sha256": "a97a4e421e89ac840887f067db2ff4655ea8b03afd9942f5aff5528e3ee3e200",
+          "transform": "canonical source bytes"
+        },
+        {
+          "source_path": "references/导演体系/导演判断总纲.md",
+          "target_path": "references/cinema/导演体系/导演判断总纲.md",
+          "source_sha256": "c1c2a35ec9a4ede1c60b6b93f71a775a6fd00469db0caf8f6dc92ee445f636ed",
+          "sha256": "c1c2a35ec9a4ede1c60b6b93f71a775a6fd00469db0caf8f6dc92ee445f636ed",
+          "target_sha256": "c1c2a35ec9a4ede1c60b6b93f71a775a6fd00469db0caf8f6dc92ee445f636ed",
+          "transform": "canonical source bytes"
+        }
+      ],
+      "preserved": "Four existing knowledge owners only. World-to-screen projection, conditional choice/evidence/cost, behavioral baseline under pressure, and event/information/relationship continuity. No external workflow or JSON imported; no scenario/test prompts in repositories. Handbook originals, all masters and unrelated cinema unchanged; skill-specific light versus six-ring/L1 workflows and seven-block prompt contract retained."
     }
   ]
 }

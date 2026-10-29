@@ -21,6 +21,13 @@ export function decisionEdges(compiler){
   [route,cinema+'戏点选择与主镜框架法.md'],
   [route,cinema+'视点体系与镜头运动地基.md'],
   [route,cinema+'角色行为与动作叙事参考库.md'],
+  [route,cinema+'构图设计参考库.md'],
+  [route,cinema+'反平庸案例库.md'],
+  [route,cinema+'导演体系/导演判断总纲.md'],
+  [design,cinema+'构图设计参考库.md'],
+  [handoff,'modules/prompt-writing-sop.md'],
+  [compile,'modules/prompt-writing-sop.md'],
+  ['modules/prompt-template.md','modules/prompt-writing-sop.md'],
   [route,'references/masters/INDEX.md'],
  ];
  if(!compiler){

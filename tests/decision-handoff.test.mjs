@@ -31,3 +31,21 @@ test('installed runtime routes and existing corpus remain connected',()=>{
  const r=auditKnowledgeRoutes();assert.deepEqual(r.decisionHandoffs.missing,[]);
  assert.deepEqual(r.unreachable,[]);assert.deepEqual(r.broken,[]);assert.equal(r.ok,true);
 });
+
+// A globally indexed composition library must also reach the actual designer/writer.
+for (const compiler of [true,false]) {
+ const name=compiler?'compiler':'six-ring';
+ test(name+': composition is not an index-only orphan',()=>{
+  const g={};for(const [from,to] of decisionEdges(compiler))(g[from]??=[]).push(to);
+  const design=compiler?'modules/shot-design.md':'modules/agent-3-shot-designer.md';
+  g[design]=g[design].filter(p=>!p.endsWith('构图设计参考库.md'));
+  const r=auditDecisionHandoffs(g,compiler);
+  assert.equal(r.ok,false);assert.ok(r.missing.some(x=>x.from===design&&x.to.endsWith('构图设计参考库.md')));
+ });
+ test(name+': projected L1 must reach the writing owner',()=>{
+  const g={};for(const [from,to] of decisionEdges(compiler))(g[from]??=[]).push(to);
+  const handoff=compiler?'modules/director-ir.md':'modules/assembly-l1-protocol.md';
+  g[handoff]=g[handoff].filter(p=>p!=='modules/prompt-writing-sop.md');
+  assert.equal(auditDecisionHandoffs(g,compiler).ok,false);
+ });
+}
