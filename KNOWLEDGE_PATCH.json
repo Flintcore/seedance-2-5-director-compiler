@@ -377,15 +377,15 @@
       "source": {
         "repository": "https://github.com/Flintcore/seedance-director-knowledge",
         "version": "kb-v1.6.10",
-        "commit": "ce5c1f8b98ab8beb934e5eabaa8522766e942abd"
+        "commit": "aa1d63fce9ccf4a523f13bdde78286fc2451b95d"
       },
       "files": [
         {
           "source_path": "references/构图设计参考库.md",
           "target_path": "references/cinema/构图设计参考库.md",
-          "source_sha256": "6874a0a67bf343739cae6ab461d49cb524791ee52f3309810363d6d6b5520e92",
-          "sha256": "d2f3cbbb9e6c5987c01082d65c1a95b2b5dc5bf5968c07b54781d5400e89d460",
-          "target_sha256": "d2f3cbbb9e6c5987c01082d65c1a95b2b5dc5bf5968c07b54781d5400e89d460",
+          "source_sha256": "bc182d4454835946f2b32926ca61f3724fe1b13ff76ccb4b2c44e656f8a8a942",
+          "sha256": "c99d40e8287d735a6eddaccdc877cb94b41122cbec1b85693ebb648911b93c50",
+          "target_sha256": "c99d40e8287d735a6eddaccdc877cb94b41122cbec1b85693ebb648911b93c50",
           "transform": "targeted semantic delta; preserve existing curated film body and local links"
         },
         {
