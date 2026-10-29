@@ -108,6 +108,8 @@ approval:
 
 通常保留最能解释核心选择的少量条目；实际读取及本场应用按 [决策驱动交接](knowledge-routing.md#决策驱动读取与交接)。`transformation` 说明选择带来的具体观看结果，`applied_to` 指向实际镜号；并非填写越多越好。既有世界状态可作为画外连续性依据，但观众得知它的时机须由 `image_action`、`sound` 和 `transition` 的实际显露/隐去承接，未拍到不冒充已交付。
 
+采用风格参考时，按 [六维转译](../references/cinema/导演视觉风格参考库.md#style-transfer) 将来源机制、主辅范围和本场取舍放入上述 `principle/transformation/applied_to`，具体决定接入既有 `shots` 与 `look_and_sound`；不另设六栏风格表。没有改变的维度复用，来源说明留在设计层，编译交接保留动作与声画依据。
+
 ### `shots`
 
 完整事件可由一组镜头合成，不要求每个镜头分别走完准备、接触、反应、恢复。`end_state` 可是快速运动中的相位及动量，下一镜接住它；先组织动作交锋链再定镜头时码，不把字段顺序当事件必须串行等完的日程。

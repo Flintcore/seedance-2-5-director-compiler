@@ -49,3 +49,21 @@ for (const compiler of [true,false]) {
   assert.equal(auditDecisionHandoffs(g,compiler).ok,false);
  });
 }
+
+// Style learning must survive selection, design and the existing handoff.
+for (const compiler of [true,false]) {
+ const name=compiler?'compiler':'six-ring';
+ const design=compiler?'modules/shot-design.md':'modules/agent-3-shot-designer.md';
+ const handoff=compiler?'modules/director-ir.md':'modules/assembly-l1-protocol.md';
+ const froms=['modules/knowledge-routing.md',design,handoff];
+ if(!compiler)froms.push('modules/agent-4-style-sound.md');
+ for(const from of froms)test(`${name}: style mechanism survives ${from}`,()=>{
+  const g={};for(const [src,to] of decisionEdges(compiler))(g[src]??=[]).push(to);
+  const target=(compiler?'references/cinema/':'references/')+'导演视觉风格参考库.md';
+  g[from]=g[from].filter(to=>to!==target);
+  // The library remains reachable through the global index; the runtime edge is still required.
+  (g['references/INDEX.md']??=[]).push(target);
+  const r=auditDecisionHandoffs(g,compiler);
+  assert.equal(r.ok,false);assert.ok(r.missing.some(x=>x.from===from&&x.to===target));
+ });
+}

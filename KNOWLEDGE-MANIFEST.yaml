@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: "2026-10-29T02:15:01.854Z"
+generated_at: "2026-10-29T07:11:19.886Z"
 skill: "seedance-2-5-director-compiler"
 maintenance_mode: "curated-manual"
 # Current inventory only; semantic equivalence to the historical source is not asserted.
@@ -9,7 +9,7 @@ inventory:
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "78072d23ba800e26325ac7560d06540ce164d1af48731be80c8849efc3ef082a"
+  aggregate_sha256: "af8862bc0361509bb922b8b23a6a13e1b8f0c3c4e96e607575e9d247c718ea00"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
     bytes: 10205
@@ -33,8 +33,8 @@ files:
     bytes: 13177
     sha256: "94a0479243fb75455337720f9ddd4b444b53149e83cf9a00cdffed0215cf03aa"
   - path: "references/cinema/导演视觉风格参考库.md"
-    bytes: 4884
-    sha256: "c23053e092d5a6bcfb5369e106395e9df9d5819138f2b841429c94161b974a65"
+    bytes: 12633
+    sha256: "11b4ab5093185d784e9b2ab8270f5e497dbb7b53d1ea164ffd59da87aa363a43"
   - path: "references/cinema/导演体系/创作立场与关系表达.md"
     bytes: 63339
     sha256: "43faaf1d8bc8e1f8ae08c70ee9af7ba16b00c16b3126db235d5e8806cf928ec2"

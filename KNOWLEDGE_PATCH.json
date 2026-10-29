@@ -414,6 +414,33 @@
         }
       ],
       "preserved": "Four existing knowledge owners only. World-to-screen projection, conditional choice/evidence/cost, behavioral baseline under pressure, and event/information/relationship continuity. No external workflow or JSON imported; no scenario/test prompts in repositories. Handbook originals, all masters and unrelated cinema unchanged; skill-specific light versus six-ring/L1 workflows and seven-block prompt contract retained."
+    },
+    {
+      "date": "2026-10-29",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.11",
+        "commit": "bab17eda5da5441847b97a666ae9d5e320ef6766"
+      },
+      "files": [
+        {
+          "source_path": "references/导演视觉风格参考库.md",
+          "target_path": "references/cinema/导演视觉风格参考库.md",
+          "source_sha256": "11b4ab5093185d784e9b2ab8270f5e497dbb7b53d1ea164ffd59da87aa363a43",
+          "sha256": "11b4ab5093185d784e9b2ab8270f5e497dbb7b53d1ea164ffd59da87aa363a43",
+          "target_sha256": "11b4ab5093185d784e9b2ab8270f5e497dbb7b53d1ea164ffd59da87aa363a43",
+          "transform": "canonical source bytes"
+        },
+        {
+          "source_path": "references/INDEX.md",
+          "target_path": "references/cinema/INDEX.md",
+          "source_sha256": "588fec5aaa785e1b4f36db13ae6c3468a9ff131ee7e645d34bb2b60ca946f299",
+          "sha256": "12c1a6e5318b048a3ef4f61f93f253666e5a93b3224fea92baa959603851aba7",
+          "target_sha256": "12c1a6e5318b048a3ef4f61f93f253666e5a93b3224fea92baa959603851aba7",
+          "transform": "targeted style index row only; preserve repository-specific catalog and current runtime routing"
+        }
+      ],
+      "preserved": "Only existing director-style owner and its index entry were synchronized. All masters, other cinema, handbook originals, templates and light/six-ring confirmation architecture unchanged. Original director-style-matcher installed independently, not copied or maintained by these repositories. No external retrieval dependency or test prompts imported."
     }
   ]
 }

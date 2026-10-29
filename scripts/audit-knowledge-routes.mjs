@@ -25,13 +25,16 @@ export function decisionEdges(compiler){
   [route,cinema+'反平庸案例库.md'],
   [route,cinema+'导演体系/导演判断总纲.md'],
   [design,cinema+'构图设计参考库.md'],
+  [route,cinema+'导演视觉风格参考库.md'],
+  [design,cinema+'导演视觉风格参考库.md'],
+  [handoff,cinema+'导演视觉风格参考库.md'],
   [handoff,'modules/prompt-writing-sop.md'],
   [compile,'modules/prompt-writing-sop.md'],
   ['modules/prompt-template.md','modules/prompt-writing-sop.md'],
   [route,'references/masters/INDEX.md'],
  ];
  if(!compiler){
-  pairs.push(['modules/agent-4-style-sound.md',handoff],['modules/agent-6-reviewer.md',handoff]);
+  pairs.push(['modules/agent-4-style-sound.md',handoff],['modules/agent-6-reviewer.md',handoff],['modules/agent-4-style-sound.md',cinema+'导演视觉风格参考库.md']);
   for(const role of ['agent-1-script-parser','agent-2-scene-planner','agent-3-shot-designer','agent-4-style-sound','agent-5-assembler','agent-6-reviewer'])pairs.push(['SKILL.md',`modules/${role}.md`]);
  }
  return pairs;
