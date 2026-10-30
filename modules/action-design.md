@@ -145,6 +145,8 @@ current pressure or opportunity
 
 The meaningful exchange must purchase something readable: distance, angle, cover, weapon access, escape route, balance, information, or control. Several rapid strikes can collectively press a guard or drive a retreat; do not demand a new plot turn for each strike. Decorative choreography may remain when L1 locks it; connect it to a physical consequence rather than resetting to a pose.
 
+When the number of blows is locked, preserve that count. Design how each incoming line is handled and how the resulting position permits the next contact; different costumes, props and landing labels alone do not distinguish the exchanges. Repeating a technique can express character or rhythm when intentional. Do not force novelty or add a round to compensate for an unresolved transition.
+
 The shot group keeps the meaningful chain: tactical reason -> initiation -> path -> contact/avoidance -> feedback -> new state. A shot can contain several linked exchanges or just the active phase its viewpoint adds; neighboring shots supply the relevant cause/result rather than repeating the whole chain. Camera prose may become shorter; causal evidence remains. The resulting state constrains the next choice and carries the character's style and accumulated body condition, rather than ending at a result-only verb or returning to the original fighting pose.
 
 Construct a combination by using the previous action’s result as the next action’s condition: remaining rotation, a planted foot, an exposed line, a retained grip, displaced range or arriving pressure. Show what connects the selected moves, not a recovery pause after each name. The internal handoff preserves those links and any simultaneous pressure; the compiler must not reduce them to “连续交锋” or retain only the final knockdown. Several contacts can pursue one tactical objective without adding a story event for each contact.
@@ -173,6 +175,7 @@ Track world direction and screen direction separately.
 - State start point, route, and end point for every displacement.
 - Use fixed environmental anchors to make paths readable.
 - State the exact body, weapon, projectile, surface, or prop that makes contact.
+- A changed force can reverse the travel direction. Distinguish continuing past the target, returning toward the attacker's origin and turning toward a third landmark; do not use an ambiguous “沿来势” to cover all three.
 - Preserve the established screen axis across cuts.
 - When L1 deliberately changes axis, include the transition view or movement that establishes the new screen-direction mapping.
 - A reverse, detour, arc, fall, ricochet, or projectile turn needs a visible cause. Trajectory follows the world rules rather than a universal curve rule.
@@ -188,6 +191,8 @@ For every meaningful contact, make the applicable causal evidence clear across t
 5. visible state after contact.
 
 Body-driven action uses the character's planted foot, hip, torso, shoulder, and limb chain. A heavy weapon has its own momentum: acceleration shifts the wielder's balance, the weapon pulls the body through its path, and the floor, target, guard, or recovery motion finally redirects or dissipates that momentum. Superhuman control may alter this chain only when the world rules or L1 establish it.
+
+Select the decisive force relationship, rather than enumerating every joint: what supplies or borrows the motion, what redirects or arrests it, and what visible response carries that force onward. Put that relationship into the existing continuous action sentence; adjectives such as fast/forceful and the result-only “受力折身” do not supply it. For complex holds or simultaneous hand tasks, establish one coherent whole-body support/contact pose before assigning hand details. If that pose is unresolved, solve the open design or identify the specific lock conflict; more limb-by-limb constraints are not a solution.
 
 Avoid result-only verbs such as “击飞” without the contact and force chain that produces the result.
 
@@ -216,7 +221,7 @@ This preserves the director's intended scale while keeping the action readable a
 
 ## Cross-Shot Interface
 
-The outgoing state of one shot is the incoming state of the next. State means a sampled phase of continuous action, not a required settled pose. The next first frame can inherit an unfinished strike, a fall or ongoing recoil at its corresponding later phase; it need not freeze/repeat the exact previous frame. Carry all physically active fields:
+The outgoing state of one shot is the incoming state of the next. State means a sampled phase of continuous action, not a required settled pose. The next first frame can inherit an unfinished strike, a fall or ongoing recoil at its corresponding later phase; it need not freeze/repeat the exact previous frame. Preserve the following relevant facts internally, including objects outside the current frame; this is an inheritance list, not a per-shot prose checklist:
 
 - body pose, balance, planted foot, facing, gaze, and breathing load;
 - hand, weapon, prop, and grip state;
@@ -232,14 +237,14 @@ Do not reset a stance, grip, wound, broken object, opponent position, or momentu
 
 Hand the relevant action decisions and changing state to the compiler through the existing IR/L1; do not add a separate mandatory report. The compiler places:
 
-- each shot's start body state, contact and incoming momentum in that shot's opening, preserving the previous shot's end state;
+- the actual opening frame and the state/contact/momentum needed to read its action; inherit other facts without printing an opening inventory;
 - linked attacks/responses, paths, contact, force, inertia and feedback in the relevant shot paragraphs; concise temporal connectors carry overlaps instead of giving each micro-phase its own sentence and pause;
 - the shot's actual lighting relationship and physically caused changes or approved stability alongside the event, without inventing a new effect or changing deliberate shadow/occlusion; shared light belongs in the environment block, not a mandatory per-shot closing sentence;
 - action sounds from relevant established in-scene sources, including fantasy sources under their world rules, with event timing and perspective alongside the action; a pass, hard contact and residual vibration can form a distinct envelope rather than a uniform wall of noise; shared ambience belongs in the sound block, with no source-count quota or added BGM;
-- end body state, contact and outgoing momentum in each shot's ending, with the ending state in the last shot;
+- the action's visible outcome or continuing phase at the cut; retain other exit facts in IR/L1 instead of adding a second inventory to the paragraph;
 - exact action dialogue embedded in Chinese double quotes in the continuous visual event; its speaker, timing, delivery and reactions stay alongside it, outside the quote by default;
 - 最终七块以编写 SOP 和元模板为准；场景几何/开场站位归【空间】，背景活动/共享光向归【环境】，持续声与开关归【声音】，致命事项归【不可出错】；人物动态仍在【时间线】，不靠末尾约束修补矛盾。
 
 In final action prose, name the initiator, recipient and body/weapon owner using the canonical names from the asset binding, including at cuts; do not let 他/它/自己/对方 obscure who strikes, grips or receives contact. Internal role IDs stay internal. Apply [the naming contract](../references/model/nine-layer-schema.md) without changing the IR or exact dialogue.
 
-Keep the action contract internal. Compile through the current [seven-block template](prompt-template.md): local action sound stays with its event, shared sound follows the timeline, and the formal prompt ends with 【不可出错】. Do not append an extra action contract or review card.
+Keep the action contract internal and apply the [information-use boundary](prompt-writing-sop.md#scene-first-handoff). Compile through the current [seven-block template](prompt-template.md): local action sound stays with its event, shared sound follows the timeline, and the formal prompt ends with 【不可出错】. Do not append an extra action contract or review card.

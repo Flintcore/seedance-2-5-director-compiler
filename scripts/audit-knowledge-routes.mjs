@@ -12,12 +12,14 @@ export function decisionEdges(compiler){
  const design=compiler?'modules/shot-design.md':'modules/agent-3-shot-designer.md';
  const compile=compiler?'modules/compiler.md':'modules/agent-5-assembler.md';
  const handoff=compiler?'modules/director-ir.md':'modules/assembly-l1-protocol.md';
+ const action=compiler?'modules/action-design.md':'modules/action-impact.md';
  const route='modules/knowledge-routing.md';
  const pairs=[
   ['SKILL.md','modules/orchestration.md'],
   ['modules/orchestration.md',route],
   ['modules/prompt-writing-sop.md',route],
   [design,route],[compile,route],[compile,handoff],[handoff,route],
+  [design,handoff],[action,'modules/prompt-writing-sop.md'],
   [route,cinema+'戏点选择与主镜框架法.md'],
   [route,cinema+'视点体系与镜头运动地基.md'],
   [route,cinema+'角色行为与动作叙事参考库.md'],

@@ -164,7 +164,7 @@ properties:
         image_action:
           type: string
           minLength: 1
-          description: "人物正在做的事与目标、阻力/触发、行动及听说互动、调整与余态构成连续事件；持续行为和实际受光关系保全"
+          description: "本镜连续画面主干：具体起始构图、人物行动与听说互动、摄影响应及结果；持续行为、已选表演和受光关系在实际发生处成立，其他字段是同一决定的依据而非另一版动作"
         camera:
           type: string
           minLength: 1
@@ -185,7 +185,7 @@ properties:
           type: string
           minLength: 1
           description: "切点或镜内连续的因果承接，包含前一状态结果与新视点首个可见状态"
-        end_state: {type: string, minLength: 1}
+        end_state: {type: string, minLength: 1, description: "接续依据，包含仍有效的画外状态；不要求逐字段印成镜尾清单，后镜保留事实并仅叙述当前可见可听及影响动作的部分"}
 
   action:
     oneOf:

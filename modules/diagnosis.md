@@ -36,6 +36,8 @@ Trace the symptom in this order:
 
 Stop at the first layer that can explain every observed downstream symptom. Do not rewrite later layers independently when correcting the earlier cause will resolve them.
 
+For instruction-like prose, compare the current prompt with its actual design input before adding rules. If the design already resolves the framing, body/action relation and viewing change, repair the compiler's lost or duplicated expression. If those decisions are absent or contradictory in the design, return only the open choice to the director layer. Without the original L1 or read trace, identify the observable text defect and keep the exact runtime cause unconfirmed. Apply the [information-use boundary](prompt-writing-sop.md#scene-first-handoff): replace the faulty scene description rather than append the diagnosis as another constraint; stable offscreen facts remain valid without a repeated inventory. Structural validator success is not evidence of an executable or expressive scene.
+
 ## Symptom Routing
 
 | Symptom | Inspect first | Typical direct repair |
