@@ -1,0 +1,33 @@
+// Maintained contracts and example fidelity, not automated cinematic judgement.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const read=f=>readFileSync(path.join(root,f),'utf8');
+test('execution template is self-contained and does not suggest a fatal-lock quota',()=>{
+ const s=read('modules/prompt-template.md').match(/```text\s*\n([\s\S]*?)\n```/u)[1];
+ assert.doesNotMatch(s,/上接……|下交……|通常3[–—-]6/u);
+ assert.match(s,/本镜焦距/u);assert.match(s,/画左\/画右/u);
+ assert.match(s,/受光/u);assert.match(s,/无额外限制/u);
+});
+test('writing handoff explicitly covers world light, standalone segments and real cut angle',()=>{
+ const s=read('modules/prompt-writing-sop.md');
+ for(const anchor of ['world-lighting','standalone-segment','segment-boundary'])assert.ok(s.includes(`id="${anchor}"`));
+ for(const term of ['至少30°','仅换焦距','固定实体','伦勃朗','丁达尔','不设条数下限','不读手册、范本、影视或大师知识'])assert.ok(s.includes(term),term);
+ assert.match(s,/光影设计参考库\.md#world-light-continuity/u);
+});
+test('last pass checks errors from current artifacts, not another knowledge research cycle',()=>{
+ const s=read('modules/delivery-check.md');
+ for(const term of ['不读取影视库','180°','30°','同景别','逐字保留','没有额外条件','文字通过不代表'])assert.ok(s.includes(term),term);
+ const owner=existsSync(path.join(root,'modules/compiler.md'))?'modules/compiler.md':'modules/agent-6-reviewer.md';
+ assert.match(read(owner),/delivery-check\.md/u);
+});
+test('canonical example is standalone and each shot includes focal length',()=>{
+ const s=read('references/writing/handbook-gold-mai-long.md').match(/```text\s*\n([\s\S]*?)\n```/u)[1];
+ assert.doesNotMatch(s,/承接上一段|交给婉-3|沿用上一段/u);
+ const shots=s.split(/^【[\d:.]+-[\d:.]+】镜头\d+[^\n]*\n/mu).slice(1);
+ assert.equal(shots.length,9);
+ for(const [i,x] of shots.entries())assert.match(x.split('【声音】')[0],/\d+\s*(?:mm|毫米)/u,`shot ${i+1}`);
+});

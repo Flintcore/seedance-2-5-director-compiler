@@ -441,6 +441,33 @@
         }
       ],
       "preserved": "Only existing director-style owner and its index entry were synchronized. All masters, other cinema, handbook originals, templates and light/six-ring confirmation architecture unchanged. Original director-style-matcher installed independently, not copied or maintained by these repositories. No external retrieval dependency or test prompts imported."
+    },
+    {
+      "date": "2026-11-14",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.12",
+        "commit": "7e010975801247df4eb4f7ce5299aaeb5e6df35a"
+      },
+      "files": [
+        {
+          "source_path": "references/光影设计参考库.md",
+          "target_path": "references/cinema/光影设计参考库.md",
+          "source_sha256": "db4c4c324b79a65d34f43a998e2b1a15c486f3dfe4e28f01eb085bb73bc36d23",
+          "sha256": "9064bc69a1fae4a34560a2b9b82f586515bef71e3022dbc935ffa6ee576158c0",
+          "target_sha256": "9064bc69a1fae4a34560a2b9b82f586515bef71e3022dbc935ffa6ee576158c0",
+          "transform": "targeted section/corrections or index row only; preserve curated body and catalog"
+        },
+        {
+          "source_path": "references/INDEX.md",
+          "target_path": "references/cinema/INDEX.md",
+          "source_sha256": "d5a980348408d6107d964cd1afd094b6d59f87a861cc236df622c7f9dcda1cda",
+          "sha256": "230c8c4d6dde38305493d3f4566d2860fdf1accb187d89129d50e9494fca8fe1",
+          "target_sha256": "230c8c4d6dde38305493d3f4566d2860fdf1accb187d89129d50e9494fca8fe1",
+          "transform": "targeted section/corrections or index row only; preserve curated body and catalog"
+        }
+      ],
+      "preserved": "Only existing light-method owner and its index entry updated. All masters and other cinema retained, compiler curated lighting chapters retained; no source-wide mirror, model contract or test prompt imported."
     }
   ]
 }

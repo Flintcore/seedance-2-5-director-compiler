@@ -122,7 +122,7 @@ properties:
       look_and_sound:
         type: string
         minLength: 1
-        description: "全段成像质感、光色与现场声策略、已定情绪边界及藏露选择；具体镜内受光关系保留在image_action"
+        description: "全段成像质感、光色与现场声策略、已定情绪边界及藏露选择；固定世界灯位/照向/色光/反差归环境，具体镜内受光关系保留在image_action；镜头焦距逐镜写camera"
 
   knowledge_applications:
     type: array

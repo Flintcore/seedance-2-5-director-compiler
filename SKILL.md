@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.6.7"
+  version: "0.6.8"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -23,9 +23,9 @@ metadata:
 
 ## 不变的边界
 
-- 最新用户锁、确认 L1、原故事与逐字对白优先。编译只澄清表达，不改镜头、事件、声源或未授权的表演；新发现实质矛盾按 [设计判断](modules/design-judgment.md) 定点说明，需改用户锁时等选择。无具体问题不加审查环。
+- 最新用户锁、确认 L1、原故事与逐字对白优先。编译只澄清表达，不改镜头、事件、声源或未授权的表演；新发现实质矛盾按 [设计判断](modules/design-judgment.md) 定点说明，需改用户锁时等选择。末次编译按[基础检查](modules/delivery-check.md)检查当前稿，不重新查库或另加角色。
 - 单次生成 **4–30秒**，最多 **50个**素材；镜多、文字长、动作复杂不自动拆生成段。真正多段按编排的 `SEQUENCE` 边界。
-- 输出保持七块：本段目标、参考绑定、空间、环境、时间线、声音、不可出错。时间线每镜连续自然语言：必要摄影定位与画面左右/前中后景起幅，再写姓名明确的行动、对白、接收及随事运镜。世界位置和屏幕投影分开；构图可以随行动变化，切镜不搬人物。详细文风只由 SOP/范本/模板定义。
+- 输出保持七块：本段目标、参考绑定、空间、环境、时间线、声音、不可出错。时间线每镜连续自然语言：必要摄影定位与画面左右/前中后景起幅，再写姓名明确的行动、对白、接收及随事运镜。世界位置和屏幕投影分开；构图可以随行动变化，切镜不搬人物。每镜独立写焦距与当前受光，环境固定世界灯位/颜色/强弱；详见SOP，目标不统一焦距。
 - 对白在发生处使用中文双引号逐字保留。跨镜每镜写当镜真实听到的连续原词与原声源；单句未说完就切反应可以成立。角色叙述沿稳定姓名，重新起句或换主体仍点名；对白内的代词不改。
 - 每份素材只在参考绑定出现一次 `@imageN/@videoN/@audioN`；正文用语义名称。既有编号保持，新素材顺延；路径、文件名留内部。无素材仍保留绑定块，写无外部参考素材。
 - 标题时码是预算，镜内由事件/原词/气口驱动，不写逐秒动作控制或首末半秒稳定区。全能参考不等于硬首帧，首尾帧按实际模式；能力疑问查 [能力证据](references/model/capability-registry.yaml)，不新增未经确认的参数保证。
@@ -50,3 +50,7 @@ metadata:
 - 本轮含新设计时给完整 L1；默认 `CREATE_AUTO` 同轮给匹配提示词，明确要求先确认则停 L1。纯编译不再交一份重设计。
 - 每个生成段一个完整中文提示词围栏；诊断给最小替换块。建议、能力说明、来源应用说明在提示词外，不附读书日志、评分、自检或反复重写循环。
 - 多场、持续协作或用户要文件时才落盘；保留现有状态与编号，定点更新。实际生成须有工具结果，不把文本验证说成成片通过。
+
+## 当前成稿重点 · 2026-11-14
+
+每镜写具体左右与实际前中后景、独立焦距、运镜引起的画面变化和主体/背景受光；环境中的灯固定在世界实体，人物默认伦勃朗塑形，背景可见光束需介质，切镜不搬灯。每段正文自足，不用上/下一生成段指代；末栏只保当前致命事项，不凑3–6条。独立生成段的首末接点在同轴侧换视角至少30°，保世界状态而非复制末帧；具体见[SOP](modules/prompt-writing-sop.md#segment-boundary)。
