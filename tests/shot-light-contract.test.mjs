@@ -31,3 +31,15 @@ test('canonical example is standalone and each shot includes focal length',()=>{
  assert.equal(shots.length,9);
  for(const [i,x] of shots.entries())assert.match(x.split('【声音】')[0],/\d+\s*(?:mm|毫米)/u,`shot ${i+1}`);
 });
+
+test('light selection is story and source driven rather than a portrait-light preset',()=>{
+ const s=read('modules/prompt-writing-sop.md');
+ for(const term of ['伦勃朗光是可选塑形方法','不是默认或必选项','柔光不等于大平光','不固定为正派暖、反派冷','入射角','遮挡','反射表面','光参与构图'])assert.ok(s.includes(term),term);
+ for(const name of ['光影设计参考库.md','色彩调性参考库.md','构图设计参考库.md'])assert.ok(s.includes(name),name);
+ const files=['SKILL.md','modules/prompt-template.md','modules/prompt-writing-sop.md','modules/delivery-check.md','modules/film-rule-scope.md','references/writing/handbook-adaptation.md'];
+ for(const file of files)assert.doesNotMatch(read(file),/人物可见脸部默认优先伦勃朗|默认人物脸优先伦勃朗|人物默认伦勃朗|人物优先伦勃朗|主光\/弱填充/u,file);
+ const check=read('modules/delivery-check.md');
+ assert.match(check,/有依据的柔光、高调或正面光保留/u);
+ assert.match(check,/不以是否采用伦勃朗/u);
+ assert.match(check,/不读取影视库/u);
+});

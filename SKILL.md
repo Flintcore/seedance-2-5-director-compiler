@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.6.8"
+  version: "0.6.9"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -53,4 +53,4 @@ metadata:
 
 ## 当前成稿重点 · 2026-11-14
 
-每镜写具体左右与实际前中后景、独立焦距、运镜引起的画面变化和主体/背景受光；环境中的灯固定在世界实体，人物默认伦勃朗塑形，背景可见光束需介质，切镜不搬灯。每段正文自足，不用上/下一生成段指代；末栏只保当前致命事项，不凑3–6条。独立生成段的首末接点在同轴侧换视角至少30°，保世界状态而非复制末帧；具体见[SOP](modules/prompt-writing-sop.md#segment-boundary)。
+每镜写具体左右与实际前中后景、独立焦距、运镜引起的画面变化和主体/背景受光；环境中的灯固定在世界实体，光型按叙事/逻辑光源/构图选择，伦勃朗仅是选项，背景可见光束需介质，切镜不搬灯。每段正文自足，不用上/下一生成段指代；末栏只保当前致命事项，不凑3–6条。独立生成段的首末接点在同轴侧换视角至少30°，保世界状态而非复制末帧；具体见[SOP](modules/prompt-writing-sop.md#segment-boundary)。
