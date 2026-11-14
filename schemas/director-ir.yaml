@@ -33,7 +33,7 @@ properties:
         maximum: 30
       task_mode:
         enum: [CREATE_AUTO, DIRECTOR_CHECKPOINT, COMPILE, SEQUENCE, OPTIMIZE, DIAGNOSE, AUDIT]
-        description: "SEQUENCE is reserved for an explicit multi-segment request or a minimum duration established by user-stated timing or locked events that exceeds 30 seconds."
+        description: "New records keep the actual task path for each segment. Multi-segment execution is a scope, not a replacement approval policy. SEQUENCE remains a legacy value for an explicit multi-segment request or a locked minimum span exceeding 30 seconds; recover the actual path and confirmation policy from the current request and approval.status."
       action_mode:
         enum: [NARRATIVE, ACTION_LITE, ACTION_FULL]
 
@@ -83,6 +83,10 @@ properties:
           properties:
             source_ref: {type: string, minLength: 1}
             type: {enum: [image, video, audio]}
+            output_placeholder:
+              type: string
+              pattern: '^@(image|video|audio)[1-9][0-9]*$'
+              description: "Optional existing canonical source-to-placeholder mapping; preserve its media type, number and gaps. Omit for a genuinely new source until compilation assigns the next number of that media type."
             binds_to: {type: string, minLength: 1}
             purpose: {type: string, minLength: 1}
       assumptions:

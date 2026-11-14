@@ -1,6 +1,6 @@
 # Seedance 2.5 手册写法编译
 
-把确认 L1 或用户给定分镜写成手册七块成稿，不再把旧字段逐项翻译成说明书。先完整读 [编写 SOP](prompt-writing-sop.md)、[婉-2完整范本](../references/writing/handbook-gold-mai-long.md)、[元模板](prompt-template.md)。完整原文读取按SOP执行，先获得 [独立元模板和①—⑥](../references/writing/handbook/INDEX.md)，连同 [适配说明](../references/writing/handbook-adaptation.md) 作为写作依据；本页不代替手册正文。[模型索引](../references/model/INDEX.md)与[能力表](../references/model/capability-registry.yaml)只在当前能力/素材问题需要时查。
+把确认 L1 或用户给定分镜写成手册七块成稿，不再把旧字段逐项翻译成说明书。读取范围沿 [当前路径](orchestration.md)：新设计、整段重写或首次正式编译，实际取得 [编写 SOP](prompt-writing-sop.md)、[独立元模板和①—⑥全文](../references/writing/handbook/INDEX.md)、[适配说明](../references/writing/handbook-adaptation.md)、[婉-2完整范本](../references/writing/handbook-gold-mai-long.md) 与 [元模板](prompt-template.md)；同上下文同版本已完整取得的正文直接复用。明确局部修订只取所涉完整手册节/例、适配和编译局部，不因进入本页重读全册；咨询/诊断未要求成稿时不进入完整编译。本页不代替手册正文。[模型索引](../references/model/INDEX.md)与[能力表](../references/model/capability-registry.yaml)只在当前能力/素材问题需要时查。
 
 ## 1. 保留当前对象
 
@@ -14,7 +14,7 @@
 
 本段目标直接讲当前场次、开场事实、世界、冲突、人物怎么做、质感和镜头语言，不写上接下交或统一镜头焦距；不粘贴镜组四问或逐项心理分析。参考绑定写素材职责；空间给固定方位与开场站位；环境给背景独立活动与光向；时间线逐镜演戏；声音给共享声层和音色；不可出错留下真正致命事项。
 
-先选正确 [模式和变体](../references/writing/variants.md)：全能参考不当硬首帧，真实首尾帧用指定输入；白模只在 [已有预演/制作任务](../references/model/previs-reference.md) 触发，保留原人物表演。一个素材只在参考绑定中写一次 @imageN/@videoN/@audioN，正文用统一姓名或已定稳定称谓，无姓名不造ROLE_A。新句和换主体继续点名，同句连续谓语可共用主语，动作对象、肢体归属与声源明确；原对白中的代词保留。路径和文件名不代替素材绑定。
+先选正确 [模式和变体](../references/writing/variants.md)：全能参考不当硬首帧，真实首尾帧用指定输入；白模只在 [已有预演/制作任务](../references/model/previs-reference.md) 触发，保留原人物表演。已有 `reference_assets[].output_placeholder` 与来源映射原样继承，包括空号；同一来源合并职责，仅新素材按本类型最高已有编号续号，不从 L1 的展示顺序重排。一个素材只在参考绑定中写一次 @imageN/@videoN/@audioN，正文用统一姓名或已定稳定称谓，无姓名不造ROLE_A。新句和换主体继续点名，同句连续谓语可共用主语，动作对象、肢体归属与声源明确；原对白中的代词保留。路径和文件名不代替素材绑定。
 
 ## 3. 镜头级连续画面叙事
 

@@ -11,7 +11,7 @@ meta:
   segment_id: S01
   l1_version: 1
   duration_s: 12
-  task_mode: CREATE_AUTO
+  task_mode: CREATE_AUTO # 多段仍保存实际任务路径；SEQUENCE 仅兼容旧值
   action_mode: NARRATIVE
 
 authority:
@@ -74,7 +74,7 @@ approval:
 - `user_locks`：原样保存用户点名锁定的镜头、风格、角色行为、素材关系或禁止变更项。
 - `story_facts`：输入中已经成立的剧情、人物关系、世界设定。
 - `exact_dialogue`：保存角色名与完整逐字原文；单镜用 `shot_id` 指明归属，跨镜可用 `fragments: [{shot_id, text}]` 保留每镜连续原文片段，各片段按序拼回须等于完整 `text`。镜号对应已有 `shots.id`，不把起声镜ID当整句仅属于首镜。`delivery` 记录必要时机、画内/画外与表演。已有L1逐镜范围直接复用；这是内存交接信息，不新增每次必写表格或文件。语法包装留给编译器。
-- `reference_assets`：保存素材类型、内部来源 ID、用途和它绑定的对象。来源路径或文件名只留在内部 IR；L1 使用语义标签，编译器再生成一次性的 `@imageN / @videoN / @audioN` 占位符。单段总素材数遵守已确认的 50 上限。
+- `reference_assets`：保存素材类型、内部来源 ID、用途和它绑定的对象；已有规范编号存入可选 `output_placeholder`，例如 `@image4`，与 `source_ref` 一起交接，保留空号和原映射。新素材尚未编号可省略该属性，编译器仅为新来源按本类型最高已有编号续号。来源路径或文件名只留在内部 IR；L1 使用语义标签，不展示编号并不删除内部映射。单段总素材数遵守已确认的 50 上限。
 - `assumptions`：只放推进设计所需但尚未由用户确认的最小假设，不混进锁定项。
 
 ### `drama`
@@ -138,6 +138,8 @@ approval:
 - `revision_requested`：用户已经提出修改，禁止继续以旧版编译。
 
 编译结果需记录其 `compiled_from_version`，以免多轮对话串用旧镜头。
+
+多段是执行范围，`meta.task_mode` 新记录仍沿本段实际任务路径；旧 `SEQUENCE` 值按 [运行编排](orchestration.md) 恢复当前路径与批准策略。含创意的局部修订同样递增 `l1_version`，沿本轮确认策略交完整 L1 并冻结新版，不让旧 `user_approved` 自动批准已修改内容；纯素材/格式转写不补造新设计版本。
 
 ## 三、IR 到 L1
 

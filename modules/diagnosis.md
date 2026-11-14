@@ -34,7 +34,7 @@ Trace the symptom in this order:
 6. prompt translation or end constraint;
 7. optional decoration.
 
-Stop at the first layer that can explain every observed downstream symptom. Do not rewrite later layers independently when correcting the earlier cause will resolve them.
+For each related symptom chain, stop at the earliest layer that explains that chain's downstream symptoms. If the evidence shows independent causes, localize each independently and repair only its direct dependents; do not force unrelated faults into one root cause. Do not rewrite later layers independently when correcting their shared earlier cause will resolve them. Without sufficient observed evidence, state the supported mismatch or suspected cause rather than declaring a verified runtime cause.
 
 For instruction-like prose, compare the current prompt with its actual design input before adding rules. If the design already resolves the framing, body/action relation and viewing change, repair the compiler's lost or duplicated expression. If those decisions are absent or contradictory in the design, return only the open choice to the director layer. Without the original L1 or read trace, identify the observable text defect and keep the exact runtime cause unconfirmed. Apply the [information-use boundary](prompt-writing-sop.md#scene-first-handoff): replace the faulty scene description rather than append the diagnosis as another constraint; stable offscreen facts remain valid without a repeated inventory. Structural validator success is not evidence of an executable or expressive scene.
 
@@ -58,11 +58,11 @@ For instruction-like prose, compare the current prompt with its actual design in
 
 ## Minimal Repair Output
 
-Return a compact repair card followed by the exact replacement text:
+When repair is requested, return a compact repair card followed by the exact replacement text. A consultation or audit that asks only for findings returns those findings, without an unsolicited replacement. For independent causes, keep the same compact form for each affected chain; do not add a whole-prompt review round:
 
 ```text
 症状：{timestamp + observable mismatch}
-最早根因：{one cause in one owner layer}
+最早失配/疑似根因：{one supported cause and its owner layer for this symptom chain}
 只修改：{named layer/block and direct dependents}
 严格保留：{already correct locks and blocks}
 
@@ -86,10 +86,10 @@ Preserve the director's action aesthetics and camera design. A weak impact does 
 
 ## Continuity Repair
 
-When a fault begins at a cut, define one corrected state vector and apply it to both sides:
+When a fault begins at a cut, define the corrected world/action state and apply it to both sides, including an unfinished motion phase when relevant:
 
 ```text
-previous segment's visible end state = current segment's visible opening state
+previous segment's outgoing world/action state -> current segment's compatible incoming world/action phase
 ```
 
-If the user intends a discontinuity or time jump, label that transition and state the new entry condition rather than fabricating an unseen continuous movement.
+This preserves positions, ownership, contact, momentum and established light/sound facts, not identical visible framing or screen coordinates. Recompute the projection from the new camera; independent generation segments follow the [current segment contract](prompt-writing-sop.md#segment-boundary), rather than copying the last composition. If the user intends a discontinuity or time jump, label that transition and state the new entry condition rather than fabricating an unseen continuous movement.

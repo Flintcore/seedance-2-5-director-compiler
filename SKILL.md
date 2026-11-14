@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.6.9"
+  version: "0.6.10"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -24,7 +24,7 @@ metadata:
 ## 不变的边界
 
 - 最新用户锁、确认 L1、原故事与逐字对白优先。编译只澄清表达，不改镜头、事件、声源或未授权的表演；新发现实质矛盾按 [设计判断](modules/design-judgment.md) 定点说明，需改用户锁时等选择。末次编译按[基础检查](modules/delivery-check.md)检查当前稿，不重新查库或另加角色。
-- 单次生成 **4–30秒**，最多 **50个**素材；镜多、文字长、动作复杂不自动拆生成段。真正多段按编排的 `SEQUENCE` 边界。
+- 单次生成 **4–30秒**，最多 **50个**素材；镜多、文字长、动作复杂不自动拆生成段。真正多段沿编排的 `SEQUENCE` 执行范围，各段保留实际任务路径与确认策略。
 - 输出保持七块：本段目标、参考绑定、空间、环境、时间线、声音、不可出错。时间线每镜连续自然语言：必要摄影定位与画面左右/前中后景起幅，再写姓名明确的行动、对白、接收及随事运镜。世界位置和屏幕投影分开；构图可以随行动变化，切镜不搬人物。每镜独立写焦距与当前受光，环境固定世界灯位/颜色/强弱；详见SOP，目标不统一焦距。
 - 对白在发生处使用中文双引号逐字保留。跨镜每镜写当镜真实听到的连续原词与原声源；单句未说完就切反应可以成立。角色叙述沿稳定姓名，重新起句或换主体仍点名；对白内的代词不改。
 - 每份素材只在参考绑定出现一次 `@imageN/@videoN/@audioN`；正文用语义名称。既有编号保持，新素材顺延；路径、文件名留内部。无素材仍保留绑定块，写无外部参考素材。
