@@ -41,5 +41,26 @@ test('compilation and template do not invent readability fill', () => {
 test('final pass remains six basic fidelity checks with no relighting research', () => {
  const s = read('modules/delivery-check.md');
  assert.deepEqual([...s.matchAll(/^(\d+)\. /gmu)].map(m => Number(m[1])), [1,2,3,4,5,6]);
- for (const term of ['不重新查库设计灯位', '未把灯具拍入不算遗漏', '不按脸是否始终清楚判合格', '有依据的柔光、高调或正面光保留']) assert.ok(s.includes(term), term);
+ for (const term of ['不重新查库设计灯位', '未把灯具拍入不算遗漏', '不按脸是否始终清楚判合格', '有方向和层次的柔光、高调保留']) assert.ok(s.includes(term), term);
+});
+
+test('entry, design, compile and final checks link to the same project policy anchor', () => {
+ const sop = read('modules/prompt-writing-sop.md');
+ const anchor = '<a id="project-flat-light-ban"></a>';
+ assert.equal(sop.split(anchor).length, 2);
+ for (const f of ['SKILL.md', 'modules/shot-design.md', 'modules/compiler.md', 'modules/film-rule-scope.md', 'modules/delivery-check.md']) {
+  const link = [...read(f).matchAll(/\[[^\]]+\]\(([^)]+)#project-flat-light-ban\)/gu)][0];
+  assert.ok(link, f);
+  const target = path.resolve(root, path.dirname(f), link[1]);
+  assert.equal(target, path.join(root, 'modules/prompt-writing-sop.md'));
+  assert.ok(readFileSync(target,'utf8').includes(anchor));
+ }
+});
+
+test('project policy bars automatic flat-fill exemptions and preserves conditional dark onset', () => {
+ const s = read('modules/prompt-writing-sop.md');
+ for (const term of ['禁止以正面均匀补亮', '都不构成豁免', '只有导演明确修改这一约束才可例外', '不改写通用电影知识', '导演锁定极暗起步时', '不偷换成身体清楚', '不把这一显露曲线套给所有场景']) assert.ok(s.includes(term), term);
+ const d = read('modules/delivery-check.md');
+ assert.ok(!d.includes('有依据的柔光、高调或正面光保留'));
+ assert.ok(d.includes('不打开链接重新研究'));
 });

@@ -39,7 +39,8 @@ test('light selection is story and source driven rather than a portrait-light pr
  const files=['SKILL.md','modules/prompt-template.md','modules/prompt-writing-sop.md','modules/delivery-check.md','modules/film-rule-scope.md','references/writing/handbook-adaptation.md'];
  for(const file of files)assert.doesNotMatch(read(file),/人物可见脸部默认优先伦勃朗|默认人物脸优先伦勃朗|人物默认伦勃朗|人物优先伦勃朗|主光\/弱填充/u,file);
  const check=read('modules/delivery-check.md');
- assert.match(check,/有依据的柔光、高调或正面光保留/u);
+ assert.match(check,/有方向和层次的柔光、高调保留/u);
+ assert.match(check,/只有导演明确改约束才可例外/u);
  assert.match(check,/不以是否采用伦勃朗/u);
  assert.match(check,/不读取影视库/u);
 });
