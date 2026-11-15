@@ -468,6 +468,25 @@
         }
       ],
       "preserved": "Only existing light-method owner and its index entry updated. All masters and other cinema retained, compiler curated lighting chapters retained; no source-wide mirror, model contract or test prompt imported."
+    },
+    {
+      "date": "2026-11-15",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.13",
+        "commit": "601fff7525f3fb0ea61d7b0b53385a0526b9ad4e"
+      },
+      "files": [
+        {
+          "source_path": "references/光影设计参考库.md",
+          "target_path": "references/cinema/光影设计参考库.md",
+          "source_sha256": "bf55e385148a9e02e86f70570069ec0bddca5cc9d7cd816bf12fb9e84d25d193",
+          "sha256": "f59b5be2efd14d092e6f57aff673912b54c605f45df2eb4c0d9ca5939285a83f",
+          "target_sha256": "f59b5be2efd14d092e6f57aff673912b54c605f45df2eb4c0d9ca5939285a83f",
+          "transform": "targeted adaptation only; preserve curated chapters and existing catalog"
+        }
+      ],
+      "preserved": "Other film knowledge, masters, frozen manuals and baseline KNOWLEDGE_VERSION unchanged; no test story imported. No blanket darkening of approved high-key or front-light scenes."
     }
   ]
 }

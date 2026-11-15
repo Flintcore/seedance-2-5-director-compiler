@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: "2026-11-14T07:06:15.832Z"
+generated_at: "2026-11-15T03:59:04.954Z"
 skill: "seedance-2-5-director-compiler"
 maintenance_mode: "curated-manual"
 # Current inventory only; semantic equivalence to the historical source is not asserted.
@@ -9,7 +9,7 @@ inventory:
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "07ac4be361c347ced9867b4088f0677ddb0fc6c72e39d9b1da42f8dfe3bbd394"
+  aggregate_sha256: "2702535ee2c7fcf4480bc217797718266f81e46f701e606950a2d51d977b6634"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
     bytes: 10205
@@ -72,8 +72,8 @@ files:
     bytes: 14697
     sha256: "c99d40e8287d735a6eddaccdc877cb94b41122cbec1b85693ebb648911b93c50"
   - path: "references/cinema/光影设计参考库.md"
-    bytes: 16818
-    sha256: "9064bc69a1fae4a34560a2b9b82f586515bef71e3022dbc935ffa6ee576158c0"
+    bytes: 20292
+    sha256: "f59b5be2efd14d092e6f57aff673912b54c605f45df2eb4c0d9ca5939285a83f"
   - path: "references/cinema/机位技术规格详细参数库.md"
     bytes: 15153
     sha256: "d37d6c73f00e1ead57d9f9d0f51d96507d65e3972aa91c9b4b8418cfd70c0e94"
