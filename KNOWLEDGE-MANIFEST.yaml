@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: "2026-11-15T03:59:04.954Z"
+generated_at: "2026-11-16T11:02:56.954Z"
 skill: "seedance-2-5-director-compiler"
 maintenance_mode: "curated-manual"
 # Current inventory only; semantic equivalence to the historical source is not asserted.
@@ -9,7 +9,7 @@ inventory:
   master_work_analysis_files: 117
   master_content_files: 184
   master_directories: 67
-  aggregate_sha256: "2702535ee2c7fcf4480bc217797718266f81e46f701e606950a2d51d977b6634"
+  aggregate_sha256: "d762bc3a5b8b6aa9eb8691781ac8af0a6aa1c2011b5fd4810f5a7ff15078c178"
 files:
   - path: "references/cinema/表演分寸场景映射库.md"
     bytes: 10205
@@ -72,8 +72,8 @@ files:
     bytes: 14697
     sha256: "c99d40e8287d735a6eddaccdc877cb94b41122cbec1b85693ebb648911b93c50"
   - path: "references/cinema/光影设计参考库.md"
-    bytes: 20292
-    sha256: "f59b5be2efd14d092e6f57aff673912b54c605f45df2eb4c0d9ca5939285a83f"
+    bytes: 26609
+    sha256: "faac700face1f1f39b4c4fe0a587ec17274fa1b52f5db2c00e1e2719c17c7fc9"
   - path: "references/cinema/机位技术规格详细参数库.md"
     bytes: 15153
     sha256: "d37d6c73f00e1ead57d9f9d0f51d96507d65e3972aa91c9b4b8418cfd70c0e94"
@@ -129,8 +129,8 @@ files:
     bytes: 6444
     sha256: "bf6f973b091284ec911893eb724454d932c3fb1fd8dee346217b6ec08caa94cc"
   - path: "references/cinema/色彩调性参考库.md"
-    bytes: 10402
-    sha256: "360fe20701592777637b1a8aff7b2de005cf405d5dca972a157dd5888f2787f2"
+    bytes: 13218
+    sha256: "b5a8afadcd4a5227923a62fc1616d72f9e1bf6e93c76fd164ade2d59186fced4"
   - path: "references/cinema/声音与音效叙事决策库.md"
     bytes: 8962
     sha256: "80a1b6de109c35b2d4fbf2e657ce043c0d0ff352368ca50b43a7f50376e7e920"

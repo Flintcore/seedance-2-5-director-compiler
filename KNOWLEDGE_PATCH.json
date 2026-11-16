@@ -487,6 +487,41 @@
         }
       ],
       "preserved": "Other film knowledge, masters, frozen manuals and baseline KNOWLEDGE_VERSION unchanged; no test story imported. No blanket darkening of approved high-key or front-light scenes."
+    },
+    {
+      "date": "2026-11-16",
+      "source": {
+        "repository": "https://github.com/Flintcore/seedance-director-knowledge",
+        "version": "kb-v1.6.14",
+        "commit": "9fa580ee5cba84b0b591003eb47b58ec1c65b676"
+      },
+      "files": [
+        {
+          "source_path": "references/光影设计参考库.md",
+          "target_path": "references/cinema/光影设计参考库.md",
+          "source_sha256": "faac700face1f1f39b4c4fe0a587ec17274fa1b52f5db2c00e1e2719c17c7fc9",
+          "sha256": "faac700face1f1f39b4c4fe0a587ec17274fa1b52f5db2c00e1e2719c17c7fc9",
+          "target_sha256": "faac700face1f1f39b4c4fe0a587ec17274fa1b52f5db2c00e1e2719c17c7fc9",
+          "transform": "source body synchronized after reviewed conditional-method merge"
+        },
+        {
+          "source_path": "references/色彩调性参考库.md",
+          "target_path": "references/cinema/色彩调性参考库.md",
+          "source_sha256": "b5a8afadcd4a5227923a62fc1616d72f9e1bf6e93c76fd164ade2d59186fced4",
+          "sha256": "b5a8afadcd4a5227923a62fc1616d72f9e1bf6e93c76fd164ade2d59186fced4",
+          "target_sha256": "b5a8afadcd4a5227923a62fc1616d72f9e1bf6e93c76fd164ade2d59186fced4",
+          "transform": "source body synchronized after reviewed conditional-method merge"
+        },
+        {
+          "source_path": "references/INDEX.md",
+          "target_path": "references/cinema/INDEX.md",
+          "source_sha256": "e9e0ccc047dab61ba10fd8f759247a85e8c4ce1da9602719734f935d78307d6e",
+          "sha256": "388b98497b2636c4cd2dcab3ebcdc417d2f957b3f27fbbe4cdf6ed3b7418a0bf",
+          "target_sha256": "388b98497b2636c4cd2dcab3ebcdc417d2f957b3f27fbbe4cdf6ed3b7418a0bf",
+          "transform": "targeted index entry only; retain repository-specific catalog"
+        }
+      ],
+      "preserved": "Targeted lighting/color methods and existing index entries only. Other knowledge and masters, frozen handbook, seven-block format, solo/six-ring boundaries and historical full-sync KNOWLEDGE_VERSION preserved. External type attachments not imported; broad externalization deferred. Creator plots and forward-test prompts remain outside repositories."
     }
   ]
 }

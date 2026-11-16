@@ -34,13 +34,13 @@ test('canonical example is standalone and each shot includes focal length',()=>{
 
 test('light selection is story and source driven rather than a portrait-light preset',()=>{
  const s=read('modules/prompt-writing-sop.md');
- for(const term of ['伦勃朗光是可选塑形方法','不是默认或必选项','柔光不等于大平光','不固定为正派暖、反派冷','入射角','遮挡','反射表面','光参与构图'])assert.ok(s.includes(term),term);
+ for(const term of ['伦勃朗光是可选塑形方法','不是默认或必选项','柔光不等于大平光','正暖邪冷、普遍红蓝对打或全员伦勃朗都不是默认','来源色、相机白平衡与材质','遮挡','色光落在具体墙面、衣物或皮肤上','光参与构图'])assert.ok(s.includes(term),term);
  for(const name of ['光影设计参考库.md','色彩调性参考库.md','构图设计参考库.md'])assert.ok(s.includes(name),name);
  const files=['SKILL.md','modules/prompt-template.md','modules/prompt-writing-sop.md','modules/delivery-check.md','modules/film-rule-scope.md','references/writing/handbook-adaptation.md'];
  for(const file of files)assert.doesNotMatch(read(file),/人物可见脸部默认优先伦勃朗|默认人物脸优先伦勃朗|人物默认伦勃朗|人物优先伦勃朗|主光\/弱填充/u,file);
  const check=read('modules/delivery-check.md');
  assert.match(check,/有方向和层次的柔光、高调保留/u);
- assert.match(check,/只有导演明确改约束才可例外/u);
+ assert.match(check,/恒定正面全脸补平不因.*而放行；迎面车灯等已允许的动态正面暴露.*扫入扫出及恢复原光场/u);
  assert.match(check,/不以是否采用伦勃朗/u);
  assert.match(check,/不读取影视库/u);
 });

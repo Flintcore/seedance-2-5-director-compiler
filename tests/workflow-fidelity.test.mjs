@@ -62,7 +62,7 @@ test('fidelity stays in the existing pass without knowledge rereads or a new loo
 test('conditional lighting and distinct segment boundaries are retained', () => {
   assert.match(item(4), /不以是否采用伦勃朗、低调或固定正邪配色判合格/u);
   assert.match(item(4), /有方向和层次的柔光、高调保留/u);
-  assert.match(item(4), /只有导演明确改约束才可例外/u);
+  assert.match(item(4), /恒定正面全脸补平不因.*而放行；迎面车灯等已允许的动态正面暴露.*扫入扫出及恢复原光场/u);
   assert.match(item(4), /丁达尔束有光路与介质/u);
   assert.match(item(3), /180°.*独立生成segment.*同轴侧视角至少30°/u);
   assert.match(item(3), /首尾帧\/源片延长时另记例外/u);

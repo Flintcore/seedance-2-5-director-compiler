@@ -1,4 +1,4 @@
-# Seedance 2.5 Director Compiler · 0.6.13
+# Seedance 2.5 Director Compiler · 0.6.14
 
 轻量导演设计与提示词编译。已确认内容保真转写；开放的新设计按需实读电影与大师知识。不是六环编排器，不增加确认轮次或生成后自检。
 
