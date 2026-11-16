@@ -2,7 +2,7 @@
 
 Director IR 保存“为什么这样拍、具体拍什么、镜头结束后留下什么状态”。它是导演思考与 L1 的结构化底稿，不是 Seedance 提示词，也不承载平台语法。
 
-机器可读约束见 [director-ir.yaml](../schemas/director-ir.yaml)。日常单场景可在内存中维护，无需落盘。
+本页只在需要机器可读、跨多场持久状态、结构化协作者字段互操作时按相关完整节读取；机器可读约束见 [director-ir.yaml](../schemas/director-ir.yaml)。普通单场自然L1直接用 [内置交付合同](runtime-foundation.md#自然l1与扩读边界)，无需读取或填写本页schema。已采用IR的项目保持原字段与版本，不因轻量路径丢失既有状态。
 
 ## 一、最小结构
 

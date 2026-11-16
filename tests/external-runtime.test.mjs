@@ -74,3 +74,32 @@ test('standalone compilation checks actual submitted inputs instead of agent mem
   assert.match(read('modules/delivery-check.md'),/本说明并入既有第1项，不多开审查轮/u);
   assert.match(sop,/不新增可读性审查环/u);
 });
+
+test('ordinary natural L1 has a complete resident handoff without IR or course pre-read',()=>{
+  const foundation=read('modules/runtime-foundation.md');
+  const handoff=foundation.split('## 自然L1与扩读边界')[1];
+  assert.ok(handoff);
+  for(const detail of ['戏核','人物策略','观看立场','原对白','前中后景','当前受光和声音','切连','CREATE_AUTO','DIRECTOR_CHECKPOINT','真实六环'])assert.ok(handoff.includes(detail),detail);
+  assert.match(read('modules/orchestration.md'),/普通自然L1不读取整本Director IR/u);
+  assert.match(read('modules/director-ir.md'),/普通单场自然L1[\s\S]*无需读取或填写本页schema/u);
+});
+
+test('source navigation and general methods no longer form a compulsory new-design read cascade',()=>{
+  const routing=read('modules/knowledge-routing.md');
+  assert.match(routing,/基础或已选知识完整单元已解决当前选择时，不进入本页扩搜/u);
+  assert.match(routing,/不通读索引/u);
+  assert.match(routing,/新建或重做一场戏本身不触发通读总纲/u);
+  assert.doesNotMatch(routing,/每次导演任务按此顺序/u);
+  assert.doesNotMatch(routing,/\*\*读影视索引\*\*：打开/u);
+  assert.match(read('SKILL.md'),/不通读路由、索引、总纲、镜头设计或IR/u);
+  assert.match(read('references/cinema/INDEX.md'),/不因新建\/重做一场戏就通读索引/u);
+});
+
+test('complex capability and real conflict handling remain conditional rather than deleted',()=>{
+  const shot=read('modules/shot-design.md'),judgment=read('modules/design-judgment.md');
+  assert.match(shot,/只读当前仍未解决问题所在的完整节及必要定义/u);
+  assert.match(judgment,/仅已发现实际锁冲突、目标与做法不相容/u);
+  for(const heading of ['## 三类判断，三种处理','## 实质问题怎样交给用户'])assert.ok(judgment.includes(heading));
+  for(const heading of ['## 二、建立主镜骨架','## 三、逐镜设计顺序','## 八、锁定与编译交接'])assert.ok(shot.includes(heading));
+  assert.ok(read('schemas/director-ir.yaml').includes('knowledge_applications'));
+});
