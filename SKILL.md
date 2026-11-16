@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.6.14"
+  version: "0.7.0"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -13,8 +13,8 @@ metadata:
 ## 先走这个入口
 
 1. 实际读 [运行编排](modules/orchestration.md)，按**仍需作出的决定**选路，不按“优化/编译”字样或已有镜号判断。有故事和技术参数但观看、调度、表演尚未定，仍是设计。
-2. 新设计、整段重写、首次正式编译：读 [写作 SOP](modules/prompt-writing-sop.md)，按其“原文 SOP 读取”取得独立手册及①—⑥全文和适配。同上下文同版本已取得的正文直接复用；局部改动只取相关完整节，模板和索引不抵正文。
-3. 设计路径进入 [知识路由](modules/knowledge-routing.md#决策驱动读取与交接)：先理解创作意图与镜组观看，再实读相关影视完整章节和选中大师作品全文，最后作摄影选择。按 [镜头设计](modules/shot-design.md) 与 [Director IR](modules/director-ir.md) 把来源机制变成当前镜头的行动、构图、表演、声画或切点；有来源名但没改变具体决定，不算应用。
+2. 新设计实际读 [内置导演地基](modules/runtime-foundation.md)；正式写作读 [唯一运行 SOP](modules/prompt-writing-sop.md)。同上下文同版本已取得的正文直接复用；原文全册保真保存，当前任务按完整单元选读，不再每次全册吸收。模板和索引不抵当前必要正文。
+3. 风格未定时沿 [外接流程](modules/external-knowledge.md) 使用独立 director-style-matcher；已选路线复用，不每段重新选片。设计路径进入 [知识路由](modules/knowledge-routing.md#决策驱动读取与交接)：先理解创作意图与镜组观看，再实读相关影视完整章节和选中大师作品全文，最后作摄影选择。按 [镜头设计](modules/shot-design.md) 与 [Director IR](modules/director-ir.md) 把来源机制变成当前镜头的行动、构图、表演、声画或切点；有来源名但没改变具体决定，不算应用。
 4. 仅当设计已经确定，进入 [编译](modules/compiler.md)：读 [完整成稿范本](references/writing/handbook-gold-mai-long.md) 与 [唯一元模板](modules/prompt-template.md)，保真写稿。没有新设计就不重新选大师。`DIRECTOR_CHECKPOINT` 等用户确认；`CREATE_AUTO` 同轮展示 L1 后按该快照编译，不冒充历史批准。
 
 这四项是入口与分支，不是每个任务都串行跑四轮。仅读索引、元模板或搜索命中行就从新剧情直接出稿，属于漏读。被截断的工具返回不计作完整取得，按原文件章节/行范围补齐；不要为省调用把多份长正文合并到一次截断输出。

@@ -24,5 +24,6 @@ test('external type attachments remain opt-in without replacing the resident wor
  const routing=read('modules/knowledge-routing.md');
  const block=routing.split('**外部题材资料按本次授权使用**')[1]?.split('\n\n')[0];
  assert.ok(block);
- for(const rule of ['本轮提供或明确指定','题材名称本身不触发自动载入','七块SOP','不把其全文','跨题材不沿用上次外挂','不启动外接库重组']) assert.ok(block.includes(rule),rule);
+ for(const rule of ['本轮提供或明确指定','题材名称本身不触发自动载入','七块SOP','不把其全文','跨题材不沿用上次外挂','目录查询只召回候选']) assert.ok(block.includes(rule),rule);
+ assert.ok(routing.includes('(external-knowledge.md)'), 'approved external-repo architecture has an executable opt-in entry');
 });

@@ -1,6 +1,6 @@
 # 现有知识到 SOP 的调用地图
 
-写作SOP的完整来源在 [手册原文库](handbook/INDEX.md)，执行差异在 [适配层](handbook-adaptation.md)。本图负责把电影问题接到知识正文，不另定义手册文风。
+写作SOP的完整来源在 [手册原文库](handbook/INDEX.md)，执行差异在 [适配层](handbook-adaptation.md)。本图是现有正文的完整覆盖清册，不是第二套任务路由。当前必需基础由 [内置导演地基](../../modules/runtime-foundation.md) 承担，专项触发由 [唯一知识路由](../../modules/knowledge-routing.md) 决定，新增外接包由 [外接流程](../../modules/external-knowledge.md) 接入；本图保留全部独有知识去向，不再扩写另一套触发规则。
 
 运行取舍沿 [决策驱动读取与交接](../../modules/knowledge-routing.md#决策驱动读取与交接)；本图是发现入口，不替代该链中的实际正文与应用。不是日常整库必读表。先由 [主 SOP](../../modules/prompt-writing-sop.md) 的决策点选择以下入口，实读当前问题的完整章节；结论落实到本段目标、空间/环境或逐镜动作与摄影。索引不代替正文。
 新设计按原有知识路由选大师作品全文；纯已锁编译不重设计。下面所有链接在独立安装包内成立。

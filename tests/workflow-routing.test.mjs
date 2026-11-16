@@ -76,9 +76,11 @@ test('IR asset object carries optional canonical numbering without breaking unnu
   }
 });
 
-test('full first-run reading and local repair reading remain distinct', () => {
+test('runtime authority and conditional complete source reading remain distinct', () => {
   const compilerEntry = read('modules/compiler.md').split('## 1.')[0];
-  assert.match(compilerEntry, /新设计、整段重写或首次正式编译[\s\S]*①—⑥全文/u);
+  assert.match(compilerEntry, /prompt-writing-sop\.md/u);
+  assert.match(compilerEntry, /完整范本/u);
+  assert.match(compilerEntry, /不再叠加成首次全册读取门槛/u);
   assert.match(compilerEntry, /同上下文同版本已完整取得[\s\S]*直接复用/u);
   assert.match(compilerEntry, /明确局部修订只取所涉完整手册节\/例[\s\S]*不因进入本页重读全册/u);
   assert.match(compilerEntry, /咨询\/诊断未要求成稿时不进入完整编译/u);

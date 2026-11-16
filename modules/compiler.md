@@ -1,8 +1,10 @@
 # Seedance 2.5 手册写法编译
 
-把确认 L1 或用户给定分镜写成手册七块成稿，不再把旧字段逐项翻译成说明书。读取范围沿 [当前路径](orchestration.md)：新设计、整段重写或首次正式编译，实际取得 [编写 SOP](prompt-writing-sop.md)、[独立元模板和①—⑥全文](../references/writing/handbook/INDEX.md)、[适配说明](../references/writing/handbook-adaptation.md)、[婉-2完整范本](../references/writing/handbook-gold-mai-long.md) 与 [元模板](prompt-template.md)；同上下文同版本已完整取得的正文直接复用。明确局部修订只取所涉完整手册节/例、适配和编译局部，不因进入本页重读全册；咨询/诊断未要求成稿时不进入完整编译。本页不代替手册正文。[模型索引](../references/model/INDEX.md)与[能力表](../references/model/capability-registry.yaml)只在当前能力/素材问题需要时查。
+把确认 L1 或用户给定分镜写成手册七块成稿，不把旧字段逐项翻译成说明书。读取范围沿 [当前路径](orchestration.md)：实际取得 [唯一运行 SOP](prompt-writing-sop.md)、[婉-2完整范本](../references/writing/handbook-gold-mai-long.md) 与 [元模板](prompt-template.md)；同上下文同版本已完整取得的正文直接复用。明确局部修订只取所涉完整手册节/例和编译局部，不因进入本页重读全册；咨询/诊断未要求成稿时不进入完整编译。原文与历史差异可按需查 [原文库](../references/writing/handbook/INDEX.md) 和 [适配说明](../references/writing/handbook-adaptation.md)，它们不再叠加成首次全册读取门槛。纯编译不读取导演基础或外接包重做设计。[模型索引](../references/model/INDEX.md)与[能力表](../references/model/capability-registry.yaml)只在当前能力/素材问题需要时查。
 
 ## 1. 保留当前对象
+
+先沿 [输入自足转译](prompt-writing-sop.md#standalone-readable-prose) 区分Agent可用设计上下文与本段视频模型的实际输入集合。对七块中的内部位置号、历史指代、未上传参考和仅凭姓名继承的音色，用已定实体/位置/状态/声音展开；不是删除它们所承载的信息，也不是编造缺失决定。本页中“承接/继承”指编译者保真取得设计，不是让生成模型自行读取前段。
 
 用户锁、已确认 L1、逐字对白、事件顺序、镜头、素材、时长、入场与结束状态照原稿。纯编译改变表达，不重做导演。新出现的实质设计矛盾沿 [设计判断](design-judgment.md) 最小协商；已接受的取舍直接保留。有开放表演需要设计时先走 [微表演](micro-performance.md) 对应知识，不借格式修改发明剧情。
 

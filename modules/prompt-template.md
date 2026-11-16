@@ -1,6 +1,6 @@
 # 手册七块提示词元模板
 
-先按 [手册 SOP](prompt-writing-sop.md#原文-sop-读取) 实读 [完整手册原文](../references/writing/handbook/INDEX.md)，同时应用 [明确适配](../references/writing/handbook-adaptation.md)，再读 [完整成稿范本](../references/writing/handbook-gold-mai-long.md)，再用本骨架。填进去的是一场能看见、能听见的戏，不是设计稿摘要或执行检查单。七块职责保持，摄影与表演详略跟着当前戏走。
+先实际取得 [唯一运行 SOP](prompt-writing-sop.md#原文-sop-读取) 与 [完整成稿范本](../references/writing/handbook-gold-mai-long.md)，再用本骨架。当前模式有未决写法才按完整单元查 [原文](../references/writing/handbook/INDEX.md) 与 [差异来源](../references/writing/handbook-adaptation.md)，不重读全册。填进去的是一场能看见、能听见的戏，不是设计稿摘要或执行检查单。七块职责保持，摄影与表演详略跟着当前戏走。
 
 ```text
 【本段目标】

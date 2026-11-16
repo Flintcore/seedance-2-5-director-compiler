@@ -1,8 +1,11 @@
-# Seedance 2.5 Director Compiler · 0.6.14
+# Seedance 2.5 Director Compiler · 0.7.0
 
 轻量导演设计与提示词编译。已确认内容保真转写；开放的新设计按需实读电影与大师知识。不是六环编排器，不增加确认轮次或生成后自检。
 
 ## 当前执行入口
+
+0.7.0采用唯一运行SOP＋[内置导演地基](modules/runtime-foundation.md)＋[外接知识流程](modules/external-knowledge.md)。完整手册、旧知识正文与独有案例保留，取消每次首次任务全册重读。匹配器独立使用，已有风格方向复用；素材/设计数据不直灌成稿。
+
 
 1. [SKILL.md](SKILL.md) 选择当前对象与设计/编译边界。
 2. [提示词编写 SOP](modules/prompt-writing-sop.md) 是每次设计、完整编译及正式改稿的必读骨干；同上下文且版本未变可复用。
