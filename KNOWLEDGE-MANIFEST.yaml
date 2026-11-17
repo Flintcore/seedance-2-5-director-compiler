@@ -126,8 +126,8 @@ files:
     bytes: 7139
     sha256: "0a2e6409f177558f08ff221f112a6c55127174dc63dfeb8cee12249d596ccb26"
   - path: "references/cinema/人物视线与目光设计参考库.md"
-    bytes: 6444
-    sha256: "bf6f973b091284ec911893eb724454d932c3fb1fd8dee346217b6ec08caa94cc"
+    bytes: 6756
+    sha256: "fc2dab65d83de9918ec3fdeba1fd825309093771480778dc498cf527e47bb392"
   - path: "references/cinema/色彩调性参考库.md"
     bytes: 13218
     sha256: "b5a8afadcd4a5227923a62fc1616d72f9e1bf6e93c76fd164ade2d59186fced4"

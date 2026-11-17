@@ -522,6 +522,20 @@
         }
       ],
       "preserved": "Targeted lighting/color methods and existing index entries only. Other knowledge and masters, frozen handbook, seven-block format, solo/six-ring boundaries and historical full-sync KNOWLEDGE_VERSION preserved. External type attachments not imported; broad externalization deferred. Creator plots and forward-test prompts remain outside repositories."
+    },
+    {
+      "date": "2026-11-17",
+      "source": {
+        "type": "local-targeted-maintenance",
+        "reason": "Natural gaze and action; shadow patterns belong to a pose phase, not a permanent actor lock."
+      },
+      "files": [
+        {
+          "target_path": "references/cinema/人物视线与目光设计参考库.md",
+          "sha256": "fc2dab65d83de9918ec3fdeba1fd825309093771480778dc498cf527e47bb392"
+        }
+      ],
+      "preserved": "Targeted gaze coordination and reveal guidance only; each local library structure and historical import baseline retained."
     }
   ]
 }
