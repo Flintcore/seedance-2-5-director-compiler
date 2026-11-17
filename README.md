@@ -1,10 +1,10 @@
-# Seedance 2.5 Director Compiler · 0.7.0
+# Seedance 2.5 Director Compiler · 0.7.1
 
 轻量导演设计与提示词编译。已确认内容保真转写；开放的新设计按需实读电影与大师知识。不是六环编排器，不增加确认轮次或生成后自检。
 
 ## 当前执行入口
 
-0.7.0采用唯一运行SOP＋[内置导演地基](modules/runtime-foundation.md)＋[外接知识流程](modules/external-knowledge.md)。完整手册、旧知识正文与独有案例保留，取消每次首次任务全册重读。匹配器独立使用，已有风格方向复用；素材/设计数据不直灌成稿。
+0.7.1沿用唯一运行SOP＋[内置导演地基](modules/runtime-foundation.md)＋[外接知识流程](modules/external-knowledge.md)。常驻基础将信息藏露、剪影背景分离、明暗塑形和有据局部补光落实到设计；场景光场与导演逐镜受光分别交付，互不替代。完整手册、旧知识正文与独有案例保留，不恢复首次任务全册重读。匹配器独立使用，已有风格方向复用；素材/设计数据不直灌成稿。
 
 
 1. [SKILL.md](SKILL.md) 选择当前对象与设计/编译边界。
