@@ -27,6 +27,19 @@ test('external routing is opt in, missing packs do not erase core, and formal ma
   for(const contract of ['~/.codex/seedance-external-knowledge.json','catalog_path','catalog_version','不代表启用任何包','不全盘搜索','不等于上传给视频模型'])assert.ok(x.includes(contract),contract);
 });
 
+test('paired establishing-frame handoff stays an optional route, not resident shot design',()=>{
+  const external=read('modules/external-knowledge.md');
+  assert.match(read('SKILL.md'),/配对提供的定场帧包与本段图/u);
+  const pair=external.split('**成对提供定场帧。**')[1]?.split('当前确定需要的包')[0];
+  assert.ok(pair);
+  for(const id of ['定场帧.md','establishing-frame','anchor-workflow'])assert.ok(pair.includes(id),id);
+  assert.match(pair,/本生成段匹配[\s\S]*明确选用[\s\S]*无需再问/u);
+  assert.match(pair,/普通场景图[\s\S]*概念提及[\s\S]*附件正文[\s\S]*不触发/u);
+  assert.match(pair,/若只为生成定位而后期剪掉[\s\S]*真正保留的切出点/u);
+  for(const f of ['modules/runtime-foundation.md','modules/prompt-template.md','modules/prompt-writing-sop.md'])
+    assert.doesNotMatch(read(f),/establishing-frame|anchor-workflow/u,f);
+});
+
 test('all seven blocks reject explicit unsubmitted segment history, including last-column negative history',()=>{
   for(const h of headings){
     const r=auditStandaloneContext(fixture({[h]:'与上一段相同。'}));
