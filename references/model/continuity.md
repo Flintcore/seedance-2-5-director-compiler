@@ -11,12 +11,12 @@ At every camera cut or focus handoff, the incoming shot paragraph re-establishes
 For hard continuity:
 
 ```text
-segment N actual final state
-= segment N final-shot body pose, contact, momentum, light and sound state
-= segment N+1 opening shot
+selected take at its actual retained cut
+(body pose, contact, ongoing motion and relevant light/sound)
+→ compatible physical state at segment N+1 opening, seen from its new camera
 ```
 
-The outgoing shot and incoming shot may frame the state differently, but the physical state remains equal until an observable transition changes it. This equation is internal continuity guidance, not text to append to the prompt. The final state lives in the final shot paragraph; shared sound follows the timeline and the final block lists only concrete critical constraints, not a duplicate ending scene.
+The outgoing shot and incoming shot may frame the state differently, but the physical state remains equal until an observable transition changes it. This handoff is internal continuity guidance, not text to append to the prompt. The final shot paragraph records the intended endpoint only. For a dependent next segment, use the selected take or confirmed actual state according to the [execution gate](../../modules/orchestration.md#生成段边界闸门). Shared sound follows the timeline and the final block lists only concrete critical constraints, not a duplicate ending scene.
 
 The global opening spatial baseline supplies scene anchors, initial positions/facing and key contacts, not permanent blocking. For each cut, project the previous ending world state through the new camera and framing to derive the visible composition. Narrated movement updates that world state; do not reset to opening positions or copy screen coordinates as if they were world positions. Characters off screen retain their established location. Same-side coverage does not promise an identical screen coordinate in differently framed shots.
 

@@ -34,6 +34,38 @@ test('multi-segment scope preserves task routes and legacy SEQUENCE without gran
   assert.match(ir, /meta\.task_mode[\s\S]*旧 `SEQUENCE`[\s\S]*当前路径与批准策略/u);
 });
 
+// These are source-contract regressions on the actual entry, dispatch and specialist
+// paths, not a simulated model, media inspection or a film continuity verdict.
+test('a long script can have coarse beats or an explicit non-executable preview without batching dependent L1s', () => {
+  const gate = section(orchestration, '### 生成段边界闸门');
+  assert.match(read('SKILL.md'), /粗分段[\s\S]*当前一个生成段/u);
+  assert.match(gate, /多个镜头、镜组及节拍/u);
+  assert.match(gate, /粗分段[\s\S]*每轮只详细设计一个生成段[\s\S]*先确认则停 E[\s\S]*交付该段即止/u);
+  assert.match(gate, /明确要全片预案[\s\S]*暂定·非执行[\s\S]*独立试镜[\s\S]*不互等成片/u);
+  assert.match(read('modules/compiler.md'), /只编译当前可执行段[\s\S]*不把暂定全片预案批量转成提示词/u);
+});
+
+test('the selected take at the retained cut, not an L1 or a discarded tail, supplies the next entry', () => {
+  const gate = section(orchestration, '### 生成段边界闸门');
+  assert.match(gate, /选用成片的最后可用镜头[\s\S]*实际保留的切出点[\s\S]*关键帧[\s\S]*用户明确确认的实际末态/u);
+  assert.match(gate, /单张静帧[\s\S]*运动方向或接触先后[\s\S]*连续关键帧/u);
+  assert.match(gate, /只问影响这次承接的缺口，停在下段详细设计之前[\s\S]*不自动改剧本/u);
+  assert.match(gate, /同轴侧实质换视角至少30°[\s\S]*新段正文自足/u);
+  assert.match(ir, /exit_state` 仅是计划末态[\s\S]*entry_state` 依据选用成片实际切出点/u);
+  assert.match(schema, /Planned endpoint of this design, not evidence of a rendered take/u);
+  assert.match(read('references/model/continuity.md'), /selected take at its actual retained cut[\s\S]*final shot paragraph records the intended endpoint only/u);
+});
+
+test('a missing handoff stops the dependent deliverable, not just a note in final QA', () => {
+  const sop = section(read('modules/prompt-writing-sop.md'), '### 独立生成段的接点');
+  assert.match(sop, /选用成片实际切出[\s\S]*先停下段执行/u);
+  assert.match(read('modules/delivery-check.md'), /执行性续段缺前段实际接点[\s\S]*停交该段；对预案或仅审已有稿可标接点待核/u);
+  const shots = read('modules/shot-design.md');
+  assert.match(shots, /当前段设计的落点是预期[\s\S]*取得选用成片实际切出状态/u);
+  assert.doesNotMatch(shots, /为每段建立简短交接条目|才另交下一段 Brief|结尾供下一段继承的事实/u);
+  assert.doesNotMatch(ir, /前段 `exit_state` 是后段 `entry_state` 的事实来源/u);
+});
+
 test('creative local revision has a complete current L1 and an explicit approval disposition', () => {
   const lock = section(orchestration, '### E. L1 锁定门');
   assert.match(lock, /OPTIMIZE[\s\S]*更新 L1 版本并交完整当前稿/u);

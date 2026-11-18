@@ -110,7 +110,7 @@ properties:
     required: [entry_state, exit_state]
     properties:
       entry_state: {type: string, minLength: 1}
-      exit_state: {type: string, minLength: 1}
+      exit_state: {type: string, minLength: 1, description: "Planned endpoint of this design, not evidence of a rendered take. For a dependent segment, derive entry_state from the selected take or its confirmed actual state."}
 
   visual_strategy:
     type: object
