@@ -3,7 +3,7 @@ name: seedance-2-5-director-compiler
 description: "Design film-quality shots from scripts, storyboards, director notes, and references, then compile the approved design into a native Seedance 2.5 storyboard prompt. Use for Seedance 2.5 shot design, director collaboration, prompt compilation, continuity repair, dialogue binding, action scenes, prompt optimization, Blender previs reference integration, and result diagnosis."
 metadata:
   label: "Seedance 2.5 Director Compiler"
-  version: "0.7.5"
+  version: "0.7.6"
 ---
 
 # Seedance 2.5 Director Compiler
@@ -53,7 +53,7 @@ metadata:
 
 ## 当前成稿重点 · 2026-11-17
 
-本项目视频直出是粗剪素材，只交付对白、实际环境声与动作物理声；配乐和非现场情绪音效留后期，执行[SOP同期声交付](modules/prompt-writing-sop.md#sync-sound-delivery)，不因外接审美包或音乐案例自动加乐。
+每条可独立复制的影视粗剪提示词，默认在【声音】写“无BGM（无配乐）”，保留剧情对白、实际环境与动作物理声，在【不可出错】写“无字幕、无文字叠加。”；只按用户明确要求调整对应开关。执行[SOP同期声交付](modules/prompt-writing-sop.md#sync-sound-delivery)。
 
 本项目禁用把人脸正面均匀补亮、抹平明暗与空间层次的大平光；设计、编译与末检统一执行 [SOP 项目布光禁令](modules/prompt-writing-sop.md#project-flat-light-ban)，知识中的一般例外不自动豁免用户锁。
 

@@ -10,7 +10,7 @@ test('execution template is self-contained and does not suggest a fatal-lock quo
  const s=read('modules/prompt-template.md').match(/```text\s*\n([\s\S]*?)\n```/u)[1];
  assert.doesNotMatch(s,/上接……|下交……|通常3[–—-]6/u);
  assert.match(s,/本镜焦距/u);assert.match(s,/画左\/画右/u);
- assert.match(s,/受光/u);assert.match(s,/无额外限制/u);
+ assert.match(s,/受光/u);assert.match(s,/无字幕、无文字叠加。/u);
 });
 test('writing handoff explicitly covers world light, standalone segments and real cut angle',()=>{
  const s=read('modules/prompt-writing-sop.md');

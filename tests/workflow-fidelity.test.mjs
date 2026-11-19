@@ -41,10 +41,10 @@ test('approved causal acting and audiovisual decisions survive compilation', () 
   assert.match(fidelity, /因果可跨镜成立.*有意静止、隐藏反应和留白照留.*不要求每镜走完一套动作链/u);
 });
 
-test('an empty extra-limit list remains a valid ending', () => {
+test('no extra scene risks is valid without dropping the output switch', () => {
   const limits = item(6);
   assert.match(limits, /零到少量.*不设3–6条下限/u);
-  assert.match(limits, /没有额外条件时写“无额外限制。”/u);
+  assert.match(limits, /没有额外条件就只留交付开关/u);
   assert.match(limits, /不发明限制填空/u);
 });
 

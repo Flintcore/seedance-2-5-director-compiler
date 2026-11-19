@@ -21,9 +21,39 @@ test('one authoritative project contract separates rough-cut production sound fr
 test('runtime entry, deciding foundation, writing template and final check reach the same contract',()=>{
  for(const f of ['SKILL.md','modules/runtime-foundation.md','modules/prompt-template.md','modules/delivery-check.md','references/writing/reference-sound-diagnosis.md']) assert.ok(read(f).includes(anchor),f);
  const t=read('modules/prompt-template.md').split('【声音】')[1].split('【不可出错】')[0];
- assert.match(t,/无配乐、无额外情绪性音效/);
+ assert.match(t,/无BGM（无配乐），无额外情绪性音效/);
  assert.match(t,/动作接触产生的物理声/);
  assert.match(t,/无对白的段落明确无对白/);
+});
+
+test('each copyable template or working example carries its own switches in the correct sections',()=>{
+ const sources=[
+  ['modules/prompt-template.md',2], // full draft and the compact 1.7 audio/ending
+  ['references/writing/handbook-gold-mai-long.md',1],
+  ...(multi ? [['modules/gold-samples.md',2]] : [
+   ['references/model/shot-prose-example.md',1],['references/model/character-event-examples.md',3]])
+ ];
+ for(const [file,count] of sources){
+  const fences=[...read(file).matchAll(/^```text\r?\n([\s\S]*?)^```\s*$/gmu)].map(m=>m[1]);
+  assert.equal(fences.length,count,file);
+  for(const [i,draft] of fences.entries()){
+   const section=name=>draft.split(new RegExp('^【'+name+'】','mu'))[1]?.split(/^【/mu)[0]??'';
+   assert.ok(section('声音').includes('无BGM（无配乐）'),file+' audio '+(i+1));
+   assert.ok(section('不可出错').includes('无字幕、无文字叠加。'),file+' picture '+(i+1));
+  }
+ }
+});
+
+test('independent user exceptions leave other switches, story sound, physical text and scene locks intact',()=>{
+ const sop=read('modules/prompt-writing-sop.md');
+ for(const phrase of ['只替换有冲突的一项','只要片名卡时','只要配乐时','保留的源片声轨、字幕或叠字',
+   '节拍或风格参考本身不算要直出配乐','画外对白、旁白','不抹掉场景原有的招牌、纸条或屏幕字',
+   '不计入场景锁条数，也不挤掉已有锁','优化/返修后重交的成稿逐条执行','不为此提前交整稿']){
+  assert.ok(sop.includes(phrase),phrase);
+ }
+ const check=read('modules/delivery-check.md');
+ assert.match(check,/【声音】写有“无BGM（无配乐）”.*仅写“同期声”或只在围栏外说明算漏写/u);
+ assert.match(check,/【不可出错】写有“无字幕、无文字叠加。”/u);
 });
 
 test('scene-locked performances remain diegetic while past music examples do not activate a score',()=>{
