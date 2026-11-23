@@ -2,7 +2,7 @@
 
 完整来源在 [独立元模板与①—⑥原文库](handbook/INDEX.md)，与 [来源适配记录](handbook-adaptation.md) 分开保存。当前有效写法由唯一运行SOP执行；下表提供专项完整单元的入口，需追溯来源独有例子时再取得相应原文章节，不把目录当正文。
 
-实际读取沿 [编写 SOP](../../modules/prompt-writing-sop.md#原文-sop-读取)：新设计读 [内置导演基础](../../modules/runtime-foundation.md)；正式写稿取得 [完整成稿范本](handbook-gold-mai-long.md) 与 [唯一元模板](../../modules/prompt-template.md)，同上下文同版本正文直接复用。局部修订取受影响的完整节/例，咨询和末检不新启完整写作读取。范本承担连贯文风校准，不与电影案例取材混淆；下表资料按当前缺口选用，不形成第二个全读清单。
+实际读取沿 [编写 SOP](../../modules/prompt-writing-sop.md#原文-sop-读取)：新设计读 [内置导演基础](../../modules/runtime-foundation.md)；正式写稿使用当前 SOP 与[七块元模板](../../modules/prompt-template.md)，同上下文同版本正文直接复用。局部修订取受影响的完整节/例，咨询和末检不新启完整写作读取。措辞依当前戏与已选方法，不以旧成稿校准文风；下表资料按当前缺口选用，不形成第二个全读清单。
 
 | 当前任务或问题 | 读取正文 | 用途 |
 |---|---|---|

@@ -111,13 +111,13 @@ test('IR asset object carries optional canonical numbering without breaking unnu
 test('runtime authority and conditional complete source reading remain distinct', () => {
   const compilerEntry = read('modules/compiler.md').split('## 1.')[0];
   assert.match(compilerEntry, /prompt-writing-sop\.md/u);
-  assert.match(compilerEntry, /完整范本/u);
+  assert.match(compilerEntry, /prompt-template\.md/u);
   assert.match(compilerEntry, /不再叠加成首次全册读取门槛/u);
   assert.match(compilerEntry, /同上下文同版本已完整取得[\s\S]*直接复用/u);
   assert.match(compilerEntry, /明确局部修订只取所涉完整手册节\/例[\s\S]*不因进入本页重读全册/u);
   assert.match(compilerEntry, /咨询\/诊断未要求成稿时不进入完整编译/u);
   assert.ok(existsSync(path.join(root, 'references/writing/handbook/INDEX.md')));
-  assert.ok(existsSync(path.join(root, 'references/writing/handbook-gold-mai-long.md')));
+  assert.ok(!compilerEntry.includes('handbook-gold-mai-long.md'));
 });
 
 test('long take phases and independent boundaries preserve events rather than timed or settled poses', () => {

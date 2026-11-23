@@ -29,7 +29,6 @@ test('runtime entry, deciding foundation, writing template and final check reach
 test('each copyable template or working example carries its own switches in the correct sections',()=>{
  const sources=[
   ['modules/prompt-template.md',2], // full draft and the compact 1.7 audio/ending
-  ['references/writing/handbook-gold-mai-long.md',1],
   ...(multi ? [['modules/gold-samples.md',2]] : [
    ['references/model/shot-prose-example.md',1],['references/model/character-event-examples.md',3]])
  ];

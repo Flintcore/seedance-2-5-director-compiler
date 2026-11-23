@@ -13,7 +13,7 @@ const read=f=>readFileSync(path.join(root,f),'utf8');
 test('mandatory SOP reaches every retained film/master and new writing resource',()=>{
  const r=auditKnowledgeRoutes(root);assert.equal(r.ok,true,JSON.stringify(r));
  assert.equal(r.facts.cinemaBodies,compiler?51:53);assert.equal(r.facts.masterBodies,184);
- assert.equal(r.facts.writingResources,21);assert.deepEqual(r.unreachable,[]);
+ assert.equal(r.facts.writingResources,20);assert.deepEqual(r.unreachable,[]);
  assert.ok(r.edges['SKILL.md'].includes('modules/prompt-writing-sop.md'));
  assert.ok(r.edges['modules/prompt-writing-sop.md'].includes('modules/knowledge-routing.md'));
 });

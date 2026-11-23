@@ -117,10 +117,10 @@ test("shared references and optional silence do not loosen mechanical output saf
 // Prose is no longer required to start with a focal-length formula or a literal
 // initial-image phrase. Actual seven-block examples and dialogue mutations above
 // remain the mechanical checks; independent trials evaluate scene readability.
-test("both writing owners reach the complete handbook example", async () => {
+test("both writing owners link the current SOP without depending on optional examples", async () => {
   for (const path of ["../modules/compiler.md", "../modules/prompt-template.md"]) {
     const source = await readFile(new URL(path, import.meta.url), "utf8");
     const links = [...source.matchAll(/\]\(([^)]+)\)/gu)].map(m => m[1]);
-    assert.ok(links.includes("../references/writing/handbook-gold-mai-long.md"));
+    assert.ok(links.some(x => /^prompt-writing-sop\.md(?:#|$)/u.test(x)));
   }
 });

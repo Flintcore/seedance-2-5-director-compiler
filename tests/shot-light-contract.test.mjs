@@ -24,12 +24,12 @@ test('last pass checks errors from current artifacts, not another knowledge rese
  const owner=existsSync(path.join(root,'modules/compiler.md'))?'modules/compiler.md':'modules/agent-6-reviewer.md';
  assert.match(read(owner),/delivery-check\.md/u);
 });
-test('canonical example is standalone and each shot includes focal length',()=>{
- const s=read('references/writing/handbook-gold-mai-long.md').match(/```text\s*\n([\s\S]*?)\n```/u)[1];
- assert.doesNotMatch(s,/承接上一段|交给婉-3|沿用上一段/u);
- const shots=s.split(/^【[\d:.]+-[\d:.]+】镜头\d+[^\n]*\n/mu).slice(1);
- assert.equal(shots.length,9);
- for(const [i,x] of shots.entries())assert.match(x.split('【声音】')[0],/\d+\s*(?:mm|毫米)/u,`shot ${i+1}`);
+test('focal-length belongs to each shot while format and texture belong at the start',()=>{
+ const s=read('modules/prompt-template.md').split('```text')[1].split('```')[0];
+ const goal=s.split('【本段目标】')[1].split('【参考绑定】')[0];
+ assert.match(goal,/胶片幅面\/颗粒是质感，不是镜头焦距/u);
+ const shots=s.split('【时间线】')[1].split('【声音】')[0].split(/^【[\d:.]+-[\d:.]+】镜头\d+/mu).slice(1);
+ assert.ok(shots.length>1);for(const shot of shots)assert.match(shot,/本镜焦距/u);
 });
 
 test('light selection is story and source driven rather than a portrait-light preset',()=>{
